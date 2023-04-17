@@ -1,0 +1,40 @@
+<resources>
+
+    <!-- not translatable strings -->
+    <string name="database_name" translatable="false">B4s3D4t4b4s3N4m3</string>
+    <string name="channel_default_id" translatable="false">default</string>
+
+    <!-- translatable strings -->
+    <string name="about_text">Copyright © Active Orbit 2023</string>
+    <string name="about_the_app">About the app</string>
+    <string name="add">Add</string>
+    <string name="app_version">App Version:</string>
+    <string name="cancel">Cancel</string>
+    <string name="copy">Copy</string>
+    <string name="done">Done</string>
+    <string name="faq_answers_1">The application is developed and maintained by Active Orbit Ltd - activeorbit.co.uk.</string>
+    <string name="faq_answers_2">The application aims to improve mobility by offering you an insight into your daily travel.</string>
+    <string name="faq_answers_3">The app sends any collected information to a database to be analysed, but this data is anonymised and cannot be linked to a particular individual. This information is used to assess the success of the app, to feed into future improvements and allow research into improving mobility.</string>
+    <string name="faq_answers_4">Yes, the application encrypts data and uses secure storage to make sure that any data is protected.</string>
+    <string name="faq_answers_5">Using the sensors in your phone, the application measures when you started moving. Using this data it will determine whether you are walking, cycling or in a motorised vehicle.</string>
+    <string name="faq_answers_6">No, while the application will work without having the requested permissions, its functionality might be limited and inaccurate. We recommend granting all requested permissions for a more enjoyable and insightful experience.</string>
+    <string name="faq_answers_7">The application will ask for a few permissions, such as:\nInternet access: to send-us any issues you have observed.\nPush notifications: to receive updates on mobility around your area.\nLocation services and activity tracking; to record how you are moving (walking, cycling, driving, etc), to  calculate the calories you burnt.</string>
+    <string name="faq_answers_8">In such an event we recommend that you check if there are any updates. Please always update the application to the latest version in order to get the best functionality. If that does not fix your issue please uninstall the application and install it again from your app store.\nYou can also contact through the Raise Issue button.</string>
+    <string name="faq_answers_9">It is possible that your model has some very strict battery saving options and therefore you need to exclude this app from those.</string>
+    <string name="faq_categories_1">General</string>
+    <string name="faq_categories_2">Setup</string>
+    <string name="faq_categories_3">Technical Issues</string>
+    <string name="faq_questions_general_1">Who developed the application?</string>
+    <string name="faq_questions_general_2">What is the application’s purpose?</string>
+    <string name="faq_questions_general_3">How is my data used?</string>
+    <string name="faq_questions_general_4">Is the mobile application secure?</string>
+    <string name="faq_questions_setup_1">How does the application track activity?</string>
+    <string name="faq_questions_setup_2">Do I have to grant the application the requested permissions?</string>
+    <string name="faq_questions_setup_3">What permissions do I have to grant the application?</string>
+    <string name="faq_questions_technical_1">What if I have technical problems with the application?</string>
+    <string name="faq_questions_technical_2">Why is the app stopping when I do not open it for a few days?</string>
+    <string name="frequently_asked_questions">Frequently Asked Questions</string>
+    <string name="ok">OK</string>
+    <string name="vote">Vote</string>
+
+</resources>

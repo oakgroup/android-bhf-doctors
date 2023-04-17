@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "64217313870",
+    "project_id": "baseapp-dev-fd848",
+    "storage_bucket": "baseapp-dev-fd848.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:64217313870:android:c1e404844b6c4a204a491f",
+        "android_client_info": {
+          "package_name": "com.active.orbit.baseapp.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "64217313870-vffmhrgck5fikcn1j39gt6ie0obeg724.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.active.orbit.baseapp.dev",
+            "certificate_hash": "fd78c8e4c60afd72879706c9e75e1593a62c6b08"
+          }
+        },
+        {
+          "client_id": "64217313870-0r3abb1iknil3dq7laj313iuddcsqnv3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFuvJA2IJubjGYe19MNIjdrfH4VBrjAoI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "64217313870-0r3abb1iknil3dq7laj313iuddcsqnv3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "64217313870-n67gblgokl12mu12lrhjf1bf0cq0n7io.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.active.orbit.baseapp.dev"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

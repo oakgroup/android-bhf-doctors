@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_drawer_top"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:paddingBottom="10dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <com.active.orbit.baseapp.design.widgets.BaseImageView
+        android:id="@+id/closeDrawer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="25dp"
+        android:src="@drawable/ic_close"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/imageLayout"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/bg_avatar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/colorTransparent"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:visibility="visible"
+            app:cardCornerRadius="40dp"
+            tools:visibility="visible">
+
+            <com.active.orbit.baseapp.design.widgets.BaseImageView
+                android:id="@+id/avatar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_app_logo_alpha"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:visibility="visible"
+                tools:visibility="visible" />
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+    <com.active.orbit.baseapp.design.widgets.BaseTextView
+        android:id="@+id/userFullNameText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="25dp"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:typeface="regular"
+        app:layout_constraintTop_toBottomOf="@id/imageLayout"
+        tools:text="George Stavrou" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

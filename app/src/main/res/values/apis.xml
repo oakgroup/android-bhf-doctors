@@ -1,0 +1,8 @@
+<resources>
+
+    <!-- not translatable strings -->
+    <string name="api_empty" translatable="false" />
+    <string name="api_images_get" translatable="false">api/?key=13507831-82d44bd12fb5930fe5d9fce34&amp;image_type=all&amp;lang=en&amp;per_page=200&amp;page=1&amp;q=hello</string>
+    <string name="api_user_registration" translatable="false">user_registration</string>
+
+</resources>

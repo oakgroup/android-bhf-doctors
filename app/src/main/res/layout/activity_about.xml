@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context=".design.activities.SplashActivity">
+
+    <com.active.orbit.baseapp.design.widgets.BaseImageView
+        android:id="@+id/aboutAppLogo"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="26dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:srcCompat="@drawable/ic_app_logo_alpha"
+        tools:ignore="NotSibling" />
+
+    <com.active.orbit.baseapp.design.widgets.BaseImageView
+        android:id="@+id/aboutAppTitle"
+        android:layout_width="150dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="@dimen/margin_vertical_half"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/aboutAppLogo"
+        app:srcCompat="@drawable/ic_app_header_dark" />
+
+    <View
+        android:id="@+id/aboutAppStroke"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/margin_lateral"
+        android:layout_marginTop="@dimen/margin_vertical_half"
+        android:layout_marginEnd="@dimen/margin_lateral"
+        android:background="@color/colorGray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/aboutAppTitle" />
+
+    <com.active.orbit.baseapp.design.widgets.BaseTextView
+        android:id="@+id/aboutAppText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_lateral"
+        android:layout_marginTop="@dimen/margin_vertical"
+        android:layout_marginEnd="@dimen/margin_lateral"
+        android:text="@string/about_text"
+        android:textColor="@color/textColorBlack"
+        android:textSize="@dimen/h2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/aboutAppStroke"
+        app:typeface="regular" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.active.orbit.baseapp.design.widgets.BaseTextView
+            android:id="@+id/aboutAppVersionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_vertical_half"
+            android:layout_marginEnd="@dimen/margin_lateral_half_half"
+            android:text="@string/app_version"
+            android:textColor="@color/textColorBlack"
+            android:textSize="@dimen/h2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/aboutAppStroke"
+            app:typeface="regular" />
+
+        <com.active.orbit.baseapp.design.widgets.BaseTextView
+            android:id="@+id/aboutAppVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_lateral_half_half"
+            android:layout_marginTop="@dimen/margin_vertical_half"
+            android:textColor="@color/textColorBlack"
+            android:textSize="@dimen/h2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/aboutAppStroke"
+            app:typeface="regular"
+            tools:text="1.0.0" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="black">#000000</color>
+    <color name="colorAccent">#7300FF</color>
+    <color name="colorBackground">#FFFFFF</color>
+    <color name="colorGray">#949494</color>
+    <color name="colorDialog">#96000000</color>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#0000FF</color>
+    <color name="colorPrimaryLight">#DEDEDE</color>
+    <color name="colorProgress">#96000000</color>
+    <color name="colorTransparent">#00000000</color>
+    <color name="textColorAccent">#7300FF</color>
+    <color name="textColorBlack">#000000</color>
+    <color name="textColorGray">#949494</color>
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="textColorPrimaryDark">#0000FF</color>
+    <color name="textColorWhite">#FFFFFF</color>
+    <color name="toolbarColorBackground">#0000FF</color>
+    <color name="toolbarColorText">#FFFFFF</color>
+    <color name="white">#FFFFFF</color>
+
+</resources>

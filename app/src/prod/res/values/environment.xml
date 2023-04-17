@@ -1,0 +1,7 @@
+<resources>
+
+    <!-- not translatable strings -->
+    <string name="app_name" translatable="false">BaseApp</string>
+    <string name="base_url" translatable="false">https://5x5u3omk94.execute-api.eu-west-2.amazonaws.com/prod</string>
+
+</resources>

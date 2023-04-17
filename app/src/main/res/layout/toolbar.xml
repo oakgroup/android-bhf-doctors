@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/toolbarColorBackground"
+    android:elevation="@dimen/toolbar_elevation"
+    app:contentInsetEnd="0dp"
+    app:contentInsetStart="0dp"
+    app:contentInsetStartWithNavigation="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/margin_vertical_half"
+        android:paddingBottom="@dimen/margin_vertical_half">
+
+        <com.active.orbit.baseapp.design.widgets.BaseImageButton
+            android:id="@+id/toolbarLeftIcon"
+            android:layout_width="24dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:background="@color/colorTransparent"
+            android:paddingStart="@dimen/margin_lateral"
+            android:paddingEnd="@dimen/margin_lateral"
+            android:src="@drawable/ic_back"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="RtlSymmetry"
+            tools:visibility="visible" />
+
+        <com.active.orbit.baseapp.design.widgets.BaseImageView
+            android:id="@+id/toolbarLogo"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:clickable="false"
+            android:contentDescription="@string/app_name"
+            android:src="@mipmap/ic_launcher_round"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.active.orbit.baseapp.design.widgets.BaseTextView
+            android:id="@+id/toolbarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_lateral"
+            android:clickable="false"
+            android:text="@string/app_name"
+            android:textColor="@color/toolbarColorText"
+            android:textSize="@dimen/h2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/toolbarLeftIcon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.active.orbit.baseapp.design.components.MenuComponent
+            android:id="@+id/toolbarMenuComponent"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="@dimen/margin_lateral"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:ignore="RtlSymmetry"
+            tools:visibility="visible" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.appcompat.widget.Toolbar>

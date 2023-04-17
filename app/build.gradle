@@ -1,0 +1,137 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
+
+android {
+
+    compileSdkVersion 33
+    flavorDimensions "default"
+    namespace 'com.active.orbit.baseapp'
+
+    defaultConfig {
+
+        applicationId "com.active.orbit.baseapp"
+        minSdkVersion 21
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.0.0"
+
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+
+        dev {
+            storeFile file("${keystore_dev}")
+            storePassword "${keystore_password_dev}"
+            keyAlias "${key_alias_dev}"
+            keyPassword "${key_password_dev}"
+        }
+        prod {
+            storeFile file("${keystore}")
+            storePassword "${keystore_password}"
+            keyAlias "${key_alias}"
+            keyPassword "${key_password}"
+        }
+    }
+
+    signingConfigs {
+
+        dev {
+            storeFile file("${keystore_dev}")
+            storePassword "${keystore_password_dev}"
+            keyAlias "${key_alias_dev}"
+            keyPassword "${key_password_dev}"
+        }
+        prod {
+            storeFile file("${keystore}")
+            storePassword "${keystore_password}"
+            keyAlias "${key_alias}"
+            keyPassword "${key_password}"
+        }
+    }
+
+    productFlavors {
+        dev {
+            applicationIdSuffix ".dev"
+            signingConfig signingConfigs.dev
+        }
+
+        prod {
+            signingConfig signingConfigs.prod
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig null
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            minifyEnabled false
+            shrinkResources false
+            debuggable true
+            jniDebuggable true
+        }
+        release {
+            signingConfig null
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            minifyEnabled true
+            shrinkResources true
+            debuggable false
+            jniDebuggable false
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    // firebase
+    implementation 'com.google.firebase:firebase-core:21.1.1'
+    implementation 'com.google.firebase:firebase-analytics-ktx:21.2.1'
+    implementation 'com.google.firebase:firebase-messaging-ktx:23.1.2'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx:18.3.6'
+
+    // database
+    implementation 'androidx.room:room-runtime:2.5.1'
+    kapt 'androidx.room:room-compiler:2.5.1'
+
+    // database encryption
+    implementation 'net.zetetic:android-database-sqlcipher:4.4.2'
+    implementation "androidx.sqlite:sqlite-ktx:2.3.1"
+
+    // json deserialization
+    implementation 'com.google.code.gson:gson:2.10'
+
+    // image caching
+    implementation 'com.github.bumptech.glide:glide:4.14.2'
+    kapt 'com.github.bumptech.glide:compiler:4.14.2'
+
+    // maps
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+
+    // test
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
