@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
 
-        applicationId "com.active.orbit.baseapp"
+        applicationId "com.active.orbit.doctors"
         minSdkVersion 21
         targetSdkVersion 33
         versionCode 1
@@ -20,22 +20,6 @@ android {
 
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    signingConfigs {
-
-        dev {
-            storeFile file("${keystore_dev}")
-            storePassword "${keystore_password_dev}"
-            keyAlias "${key_alias_dev}"
-            keyPassword "${key_password_dev}"
-        }
-        prod {
-            storeFile file("${keystore}")
-            storePassword "${keystore_password}"
-            keyAlias "${key_alias}"
-            keyPassword "${key_password}"
-        }
     }
 
     signingConfigs {

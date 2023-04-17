@@ -1,7 +1,7 @@
 <resources>
 
     <!-- not translatable strings -->
-    <string name="app_name" translatable="false">BaseApp-Dev</string>
+    <string name="app_name" translatable="false">Doctors-Dev</string>
     <string name="base_url" translatable="false">https://ba75xb6snl.execute-api.eu-west-2.amazonaws.com/dev</string>
 
 </resources>

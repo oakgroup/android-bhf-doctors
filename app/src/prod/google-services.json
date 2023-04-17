@@ -1,48 +1,48 @@
 {
   "project_info": {
-    "project_number": "200993513017",
-    "project_id": "baseapp-ff45c",
-    "storage_bucket": "baseapp-ff45c.appspot.com"
+    "project_number": "482905095518",
+    "project_id": "doctors-5a73e",
+    "storage_bucket": "doctors-5a73e.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:200993513017:android:8b9b652cb525fe404e37e8",
+        "mobilesdk_app_id": "1:482905095518:android:9c0d53a2121ca01c2463cf",
         "android_client_info": {
-          "package_name": "com.active.orbit.baseapp"
+          "package_name": "com.active.orbit.doctors"
         }
       },
       "oauth_client": [
         {
-          "client_id": "200993513017-ehe899dvip02do0heijnn0k9vj9e595q.apps.googleusercontent.com",
+          "client_id": "482905095518-3t4cvcrv2atp7b9226nhh9en7n4c0cbd.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.active.orbit.baseapp",
-            "certificate_hash": "ecf62d664c499b24b4e4371d92cf02b61eec21ca"
+            "package_name": "com.active.orbit.doctors",
+            "certificate_hash": "c7f718eaeb8afbcdd21bdbe0d205dce50b286523"
           }
         },
         {
-          "client_id": "200993513017-o9sksnp4sfb1d3r37dsrvucfckt7fqol.apps.googleusercontent.com",
+          "client_id": "482905095518-e7uqhpd8paid5lfk7ofdah9i45i80vof.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAjhjqZUwrfm1ujpTGM4J_rmIH_iNYtRKQ"
+          "current_key": "AIzaSyAdkFdMaPZ1e92sT6QUuSAEFi70Q2BE0JA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "200993513017-o9sksnp4sfb1d3r37dsrvucfckt7fqol.apps.googleusercontent.com",
+              "client_id": "482905095518-e7uqhpd8paid5lfk7ofdah9i45i80vof.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "200993513017-j422kla9gl3eeqpi8ah93emsllqmp8k8.apps.googleusercontent.com",
+              "client_id": "482905095518-n39k49o21uutlqo53air35t3nk45bpui.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.active.orbit.baseapp"
+                "bundle_id": "com.active.orbit.doctors"
               }
             }
           ]
