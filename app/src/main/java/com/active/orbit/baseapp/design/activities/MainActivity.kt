@@ -13,9 +13,8 @@ class MainActivity : BaseActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         showMenuComponent()
-        hideBackButton()
         showLogo()
-        hideTitle()
+
 
 
     }

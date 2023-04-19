@@ -149,9 +149,8 @@ abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListen
 
     @SuppressLint("CutPasteId")
     protected fun setToolbarTitle(title: String) {
-        mToolbar?.findViewById<BaseTextView>(R.id.toolbarTitle)?.visibility = View.VISIBLE
         mToolbar?.findViewById<BaseTextView>(R.id.toolbarTitle)?.text = title
-        mToolbar?.findViewById<BaseImageView>(R.id.toolbarLogo)?.visibility = View.GONE
+        showTitle()
     }
 
     protected fun setToolbarTitleUppercase() {
@@ -164,6 +163,7 @@ abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListen
 
     protected fun showBackButton() {
         mToolbar?.findViewById<BaseImageButton>(R.id.toolbarLeftIcon)?.visibility = View.VISIBLE
+        hideMenuComponent()
     }
 
     protected fun hideBackButton() {
@@ -172,6 +172,7 @@ abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListen
 
     protected fun showTitle() {
         mToolbar?.findViewById<BaseTextView>(R.id.toolbarTitle)?.visibility = View.VISIBLE
+        hideLogo()
     }
 
     protected fun hideTitle() {
@@ -180,6 +181,7 @@ abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListen
 
     protected fun showLogo() {
         mToolbar?.findViewById<BaseImageView>(R.id.toolbarLogo)?.visibility = View.VISIBLE
+        hideTitle()
     }
 
     protected fun hideLogo() {
@@ -188,6 +190,7 @@ abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListen
 
     protected fun showMenuComponent() {
         mToolbar?.findViewById<MenuComponent>(R.id.toolbarMenuComponent)?.visibility = View.VISIBLE
+        hideBackButton()
     }
 
     protected fun hideMenuComponent() {
@@ -197,6 +200,16 @@ abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListen
     protected fun setMenuIconLight() {
         mToolbar?.findViewById<MenuComponent>(R.id.toolbarMenuComponent)?.setIconLight()
     }
+
+    protected fun showToolbarRightIcon() {
+        mToolbar?.findViewById<BaseImageButton>(R.id.toolbarRightIcon)?.visibility = View.VISIBLE
+    }
+
+    protected fun hideToolbarRightIcon() {
+        mToolbar?.findViewById<BaseImageButton>(R.id.toolbarRightIcon)?.visibility = View.GONE
+    }
+
+
 
     protected fun hideToolbar() {
         mToolbar?.visibility = View.GONE

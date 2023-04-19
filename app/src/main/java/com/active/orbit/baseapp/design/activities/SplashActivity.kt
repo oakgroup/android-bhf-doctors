@@ -30,11 +30,10 @@ class SplashActivity : BaseActivity() {
     override fun onResume() {
         super.onResume()
 
-        // DEMO_CODE!
-        Utils.delay(TimeUtils.ONE_SECOND_MILLIS.toLong()) {
+        Utils.delay(TimeUtils.ONE_SECOND_MILLIS.toLong() * 2) {
             Router.getInstance()
                 .activityAnimation(ActivityAnimation.FADE)
-                .startBaseActivity(this, Activities.SPLASH)
+                .startBaseActivity(this, Activities.MAIN)
         }
     }
 
