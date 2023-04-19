@@ -30,7 +30,6 @@ class MenuComponent : FrameLayout {
     }
 
     fun setIconLight() {
-        //TODO change the icon to light
-        binding.image.setImageResource(R.drawable.ic_menu_dark)
+        binding.image.setImageResource(R.drawable.ic_menu)
     }
 }

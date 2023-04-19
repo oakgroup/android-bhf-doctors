@@ -229,21 +229,12 @@ abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListen
     }
 
     private fun showNavigationViewData() {
-        val userName = mNavigationView?.getHeaderView(0)?.findViewById<BaseTextView>(R.id.userFullNameText)
+        val patientId = mNavigationView?.getHeaderView(0)?.findViewById<BaseTextView>(R.id.patientId)
 
-        userName?.text = "Username"
+        patientId?.text = "Patient ID"
 
-        showNavigationAvatar()
     }
 
-    private fun showNavigationAvatar() {
-        val cardView = mNavigationView?.getHeaderView(0)?.findViewById<CardView>(R.id.cardView)
-        val avatar = mNavigationView?.getHeaderView(0)?.findViewById<BaseImageView>(R.id.avatar)
-
-        if (cardView != null && avatar != null) {
-            avatar.setImageDrawable(ContextCompat.getDrawable(this@AbstractActivity, R.drawable.ic_app_logo_alpha))
-        }
-    }
 
     open fun handleBackPress() {
         if (mDrawerLayout?.isDrawerOpen(GravityCompat.START) == true) {
@@ -278,13 +269,16 @@ abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListen
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.home -> {
+            }
+            R.id.settings -> {
+            }
             R.id.help -> {
             }
-            R.id.privacy -> {
+            R.id.wearSync -> {
             }
-            R.id.logout -> {
+            R.id.dismissPatient -> {
             }
-
         }
         mDrawerLayout?.closeDrawer(GravityCompat.START)
         return false

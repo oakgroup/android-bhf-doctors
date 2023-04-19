@@ -1,8 +1,11 @@
 <resources>
 
-    <!-- not translatable strings -->
+    <!-- not translatable apis -->
     <string name="api_empty" translatable="false" />
     <string name="api_images_get" translatable="false">api/?key=13507831-82d44bd12fb5930fe5d9fce34&amp;image_type=all&amp;lang=en&amp;per_page=200&amp;page=1&amp;q=hello</string>
+    <string name="api_insert_reminders" translatable="false">insert_reminders</string>
+    <string name="api_retrieve_programmes" translatable="false">retrieve_all_programmes</string>
+    <string name="api_insert_symptoms" translatable="false">insert_symptoms</string>
     <string name="api_user_registration" translatable="false">user_registration</string>
 
 </resources>

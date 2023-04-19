@@ -4,72 +4,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_drawer_top"
+    android:background="@drawable/bg_drawer_bottom"
     android:clickable="true"
     android:focusable="true"
     android:gravity="bottom"
     android:orientation="vertical"
-    android:paddingBottom="10dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <com.active.orbit.baseapp.design.widgets.BaseImageView
-        android:id="@+id/closeDrawer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="25dp"
-        android:src="@drawable/ic_close"
+    <FrameLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="0dp"
+        android:layout_height="130dp"
+        android:background="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <RelativeLayout
-        android:id="@+id/imageLayout"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/bg_avatar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:backgroundTint="@color/colorTransparent"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:visibility="visible"
-            app:cardCornerRadius="40dp"
-            tools:visibility="visible">
+        <com.active.orbit.baseapp.design.widgets.BaseImageView
+            android:id="@+id/toolbarLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center"
+            android:layout_marginStart="@dimen/margin_lateral_double"
+            android:clickable="false"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_full_logo_secondary"
+            tools:visibility="visible" />
 
-            <com.active.orbit.baseapp.design.widgets.BaseImageView
-                android:id="@+id/avatar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:background="@drawable/ic_app_logo_alpha"
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                android:visibility="visible"
-                tools:visibility="visible" />
+    </FrameLayout>
 
-        </androidx.cardview.widget.CardView>
-
-    </RelativeLayout>
-
-    <com.active.orbit.baseapp.design.widgets.BaseTextView
-        android:id="@+id/userFullNameText"
-        android:layout_width="match_parent"
+    <FrameLayout
+        android:id="@+id/closeFrame"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="25dp"
-        android:textColor="@color/textColorPrimary"
-        android:textSize="18dp"
+        android:layout_marginEnd="@dimen/margin_vertical"
+        android:background="@drawable/bg_drawer_close"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/headerLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/headerLayout">
+
+        <com.active.orbit.baseapp.design.widgets.BaseImageView
+            android:id="@+id/closeDrawer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back_white" />
+
+    </FrameLayout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/headerPatientLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:typeface="regular"
-        app:layout_constraintTop_toBottomOf="@id/imageLayout"
-        tools:text="George Stavrou" />
+        app:layout_constraintTop_toBottomOf="@id/headerLayout">
+
+        <com.active.orbit.baseapp.design.widgets.BaseTextView
+            android:id="@+id/patientId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_lateral"
+            android:textColor="@color/textColorPrimaryDark"
+            android:textSize="16sp"
+            app:typeface="semibold"
+            tools:text="@string/patient_id_value" />
+
+        <View
+            android:id="@+id/stroke"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/margin_lateral"
+            android:layout_marginEnd="@dimen/margin_lateral"
+            android:background="@color/white" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

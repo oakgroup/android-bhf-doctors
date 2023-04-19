@@ -10,7 +10,6 @@ import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.core.utils.Logger
 import com.active.orbit.baseapp.core.utils.TimeUtils
 import com.active.orbit.baseapp.core.utils.Utils
-import com.active.orbit.baseapp.demo.design.activities.DemoActivities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
 
@@ -35,7 +34,7 @@ class SplashActivity : BaseActivity() {
         Utils.delay(TimeUtils.ONE_SECOND_MILLIS.toLong()) {
             Router.getInstance()
                 .activityAnimation(ActivityAnimation.FADE)
-                .startBaseActivity(this, DemoActivities.DEMO)
+                .startBaseActivity(this, Activities.SPLASH)
         }
     }
 

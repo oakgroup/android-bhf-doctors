@@ -1,9 +1,11 @@
 <resources>
 
+    <dimen name="margin_lateral_double">32dp</dimen>
     <dimen name="margin_lateral">16dp</dimen>
     <dimen name="margin_lateral_half">8dp</dimen>
     <dimen name="margin_lateral_half_half">4dp</dimen>
 
+    <dimen name="margin_vertical_double">32dp</dimen>
     <dimen name="margin_vertical">16dp</dimen>
     <dimen name="margin_vertical_half">8dp</dimen>
     <dimen name="margin_vertical_half_half">4dp</dimen>
@@ -19,14 +21,35 @@
     <dimen name="icon_size_large">44dp</dimen>
     <dimen name="icon_size_big">50dp</dimen>
 
-    <dimen name="h0">19sp</dimen>
-    <dimen name="h1">17sp</dimen>
-    <dimen name="h2">15sp</dimen>
-    <dimen name="h3">13sp</dimen>
-    <dimen name="h4">11sp</dimen>
-    <dimen name="h5">10sp</dimen>
-    <dimen name="h6">9sp</dimen>
+    <dimen name="h0">42sp</dimen>
+    <dimen name="h1">38sp</dimen>
+    <dimen name="h2">28sp</dimen>
+    <dimen name="h3">24sp</dimen>
+    <dimen name="h4">20sp</dimen>
+    <dimen name="h5">16sp</dimen>
 
-    <dimen name="button_radius">5dp</dimen>
+
+    <dimen name="logo_dimension">@dimen/h0</dimen>
+    <dimen name="main_text_dimension">@dimen/h4</dimen>
+    <dimen name="description_text_dimension">@dimen/h4</dimen>
+    <dimen name="item_description_text_dimension">@dimen/h4</dimen>
+    <dimen name="item_title_text_dimension">@dimen/h3</dimen>
+    <dimen name="big_text_dimension">@dimen/h4</dimen>
+    <dimen name="button_primary_text_dimension">@dimen/h2</dimen>
+    <dimen name="button_secondary_text_dimension">@dimen/h2</dimen>
+    <dimen name="button_tertiary_text_dimension">@dimen/h3</dimen>
+    <dimen name="input_primary_text_dimension">@dimen/h3</dimen>
+
+    <dimen name="panel_radius">10dp</dimen>
+    <dimen name="button_radius">10dp</dimen>
+    <dimen name="button_height">60dp</dimen>
+    <dimen name="toolbar_height">72dp</dimen>
+    <dimen name="input_height">48dp</dimen>
+    <dimen name="dropdown_height">48dp</dimen>
+    <dimen name="progress_bar_height">10dp</dimen>
+    <dimen name="pin_entry_radius">2dp</dimen>
+
+
+
 
 </resources>

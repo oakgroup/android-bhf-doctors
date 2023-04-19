@@ -24,7 +24,7 @@
 
         <com.active.orbit.baseapp.design.widgets.BaseButton
             android:id="@+id/dialogVoteButtonCancel"
-            style="@style/ButtonLight"
+            style="@style/ButtonSecondary"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin_lateral_half"
@@ -36,7 +36,7 @@
 
         <com.active.orbit.baseapp.design.widgets.BaseButton
             android:id="@+id/dialogVoteButtonConfirm"
-            style="@style/ButtonDark"
+            style="@style/ButtonPrimary"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_lateral_half"

@@ -31,7 +31,7 @@
         android:layout_marginBottom="@dimen/margin_lateral_half"
         android:adjustViewBounds="true"
         android:clickable="false"
-        android:src="@drawable/ic_arrow_right_black"
+        android:src="@drawable/ic_arrow_right_white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/faqText"

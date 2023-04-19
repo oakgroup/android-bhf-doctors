@@ -1,0 +1,8 @@
+<resources>
+
+    <integer name="channel_default_identifier">7001</integer>
+    <string name="channel_default_id">default</string>
+    <string name="channel_default_name">Default notifications</string>
+    <string name="channel_default_description">Receive default notifications from this app</string>
+
+</resources>

@@ -11,6 +11,6 @@
         android:id="@+id/image"
         android:layout_width="21dp"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_menu_dark" />
+        app:srcCompat="@drawable/ic_menu" />
 
 </FrameLayout>

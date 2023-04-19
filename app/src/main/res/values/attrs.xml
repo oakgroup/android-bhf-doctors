@@ -5,8 +5,20 @@
         <attr name="typeface" format="enum">
             <enum name="regular" value="0" />
             <enum name="bold" value="1" />
-            <enum name="bold_italic" value="2" />
+            <enum name="semibold" value="2" />
+            <enum name="italic" value="3" />
+            <enum name="black" value="4" />
+            <enum name="light" value="5" />
+            <enum name="bolditalic" value="6" />
         </attr>
+    </declare-styleable>
+
+    <declare-styleable name="PinEntryView">
+        <attr name="maxLength" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="HelpComponent">
+        <attr name="helpTitle" format="string" />
     </declare-styleable>
 
 </resources>

@@ -22,7 +22,7 @@
 
     <com.active.orbit.baseapp.design.widgets.BaseButton
         android:id="@+id/demoVoteButton"
-        style="@style/ButtonDark"
+        style="@style/ButtonPrimary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_lateral"

@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
     <group>
         <item
+            android:id="@+id/home"
+            android:icon="@drawable/ic_menu_home"
+            android:title="@string/home" />
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/ic_settings"
+            android:title="@string/settings" />
+        <item
+            android:id="@+id/wearSync"
+            android:icon="@drawable/ic_wearable"
+            android:title="@string/sync_watch" />
+        <item
             android:id="@+id/help"
-            android:title="Help" />
+            android:icon="@drawable/ic_help"
+            android:title="@string/help" />
         <item
-            android:id="@+id/privacy"
-            android:title="Privacy Policy" />
-        <item
-            android:id="@+id/logout"
-            android:title="Logout" />
+            android:id="@+id/dismissPatient"
+            android:icon="@drawable/ic_menu_dismiss_patient"
+            android:title="@string/dismiss_patient" />
     </group>
-
-
 </menu>
