@@ -18,7 +18,10 @@ import com.active.orbit.baseapp.R
 import androidx.drawerlayout.widget.DrawerLayout
 import com.active.orbit.baseapp.core.broadcast.BaseBroadcast
 import com.active.orbit.baseapp.core.broadcast.BroadcastHost
+import com.active.orbit.baseapp.core.preferences.engine.Preferences
+import com.active.orbit.baseapp.core.routing.Router
 import com.active.orbit.baseapp.core.utils.Utils
+import com.active.orbit.baseapp.design.activities.MainActivity
 import com.active.orbit.baseapp.design.components.MenuComponent
 import com.active.orbit.baseapp.design.widgets.BaseImageButton
 import com.active.orbit.baseapp.design.widgets.BaseImageView
@@ -101,12 +104,16 @@ abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListen
             setSupportActionBar(mToolbar)
             val leftIcon = mToolbar?.findViewById<BaseImageButton>(R.id.toolbarLeftIcon)
             val menuComponent = mToolbar?.findViewById<MenuComponent>(R.id.toolbarMenuComponent)
+            val rightIcon = mToolbar?.findViewById<BaseImageButton>(R.id.toolbarRightIcon)
 
             leftIcon?.setOnClickListener {
                 onNavigateUp()
             }
             menuComponent?.setOnClickListener {
                 onMenu()
+            }
+            rightIcon?.setOnClickListener {
+                Router.getInstance().homepage(this)
             }
         }
 
@@ -209,8 +216,6 @@ abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListen
         mToolbar?.findViewById<BaseImageButton>(R.id.toolbarRightIcon)?.visibility = View.GONE
     }
 
-
-
     protected fun hideToolbar() {
         mToolbar?.visibility = View.GONE
     }
@@ -242,10 +247,21 @@ abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListen
     }
 
     private fun showNavigationViewData() {
+        val patientLayout = mNavigationView?.getHeaderView(0)?.findViewById<ViewGroup>(R.id.headerPatientLayout)
         val patientId = mNavigationView?.getHeaderView(0)?.findViewById<BaseTextView>(R.id.patientId)
-
-        patientId?.text = "Patient ID"
-
+        val syncWearMenuItem = mNavigationView?.menu?.findItem(R.id.wearSync)
+        val dismissPatientMenuItem = mNavigationView?.menu?.findItem(R.id.dismissPatient)
+        if (Preferences.user(this).isUserRegistered()) {
+            patientLayout?.visibility = View.VISIBLE
+            patientId?.text = getString(R.string.patient_id_value, Preferences.user(this).idPatient)
+            syncWearMenuItem?.isVisible = true
+            dismissPatientMenuItem?.isVisible = true
+        } else {
+            patientLayout?.visibility = View.GONE
+            patientId?.clear()
+            syncWearMenuItem?.isVisible = false
+            dismissPatientMenuItem?.isVisible = false
+        }
     }
 
 
@@ -283,8 +299,12 @@ abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListen
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.home -> {
+                if (this !is MainActivity) {
+                    Router.getInstance().homepage(this)
+                }
             }
             R.id.settings -> {
+
             }
             R.id.help -> {
             }
