@@ -1,2 +1,4 @@
-include ':app'
 rootProject.name = "Doctors"
+include ':app'
+include ':power_settings'
+project(':power_settings').projectDir = new File('android-brandPowerSettings/')
