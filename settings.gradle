@@ -1,4 +1,8 @@
 rootProject.name = "Doctors"
+
 include ':app'
+include ':tracker'
 include ':power_settings'
+
+project(':tracker').projectDir = new File('android-tracker/')
 project(':power_settings').projectDir = new File('android-brandPowerSettings/')
