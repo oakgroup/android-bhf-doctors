@@ -1,0 +1,3 @@
+[submodule "android-brandPowerSettings"]
+	path = android-brandPowerSettings
+	url = https://github.com/oakgroup/android-brandPowerSettings.git
