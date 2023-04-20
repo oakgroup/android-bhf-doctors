@@ -1,4 +1,4 @@
-package com.active.orbit.baseapp.design.recyclers.engine.models
+package com.active.orbit.baseapp.design.recyclers.models
 
 import com.active.orbit.baseapp.core.generics.BaseProtocol
 import com.active.orbit.baseapp.core.utils.Constants

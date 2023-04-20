@@ -1,14 +1,13 @@
-package com.active.orbit.baseapp.design.recyclers.engine.adapters
+package com.active.orbit.baseapp.design.recyclers.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.active.orbit.baseapp.R
+import com.active.orbit.baseapp.design.recyclers.adapters.holders.FaqViewHolder
 import com.active.orbit.baseapp.design.recyclers.engine.BaseRecyclerAdapter
 import com.active.orbit.baseapp.design.recyclers.engine.BaseRecyclerCell
-import com.active.orbit.baseapp.design.recyclers.engine.adapters.holders.FaqViewHolder
-import com.active.orbit.baseapp.design.recyclers.engine.models.FaqModel
-
+import com.active.orbit.baseapp.design.recyclers.models.FaqModel
 
 class FaqAdapter(private var context: Context, private val categories: Array<FaqModel>) : BaseRecyclerAdapter<FaqModel>() {
 

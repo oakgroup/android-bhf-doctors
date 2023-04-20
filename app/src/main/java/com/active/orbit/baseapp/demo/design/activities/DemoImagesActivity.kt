@@ -14,7 +14,7 @@ import com.active.orbit.baseapp.demo.core.database.models.DBDemo
 import com.active.orbit.baseapp.demo.core.deserialization.DemoImageMap
 import com.active.orbit.baseapp.demo.design.recyclers.adapters.DemoImageRecyclerAdapter
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
-import com.active.orbit.baseapp.design.recyclers.engine.managers.BaseGridLayoutManager
+import com.active.orbit.baseapp.design.recyclers.managers.BaseGridLayoutManager
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
 import com.google.gson.reflect.TypeToken

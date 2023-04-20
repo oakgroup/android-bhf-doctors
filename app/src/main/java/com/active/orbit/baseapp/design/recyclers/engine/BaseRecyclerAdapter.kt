@@ -9,8 +9,8 @@ import com.active.orbit.baseapp.core.generics.BaseProtocol
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.core.utils.ThreadHandler.backgroundThread
 import com.active.orbit.baseapp.core.utils.ThreadHandler.mainThread
-import com.active.orbit.baseapp.design.recyclers.engine.listeners.RefreshListener
-import com.active.orbit.baseapp.design.recyclers.engine.models.SortedModels
+import com.active.orbit.baseapp.design.recyclers.listeners.RefreshListener
+import com.active.orbit.baseapp.design.recyclers.models.SortedModels
 
 /**
  * Base recyclerview adapter that should be extended from all the adapters

@@ -98,6 +98,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging-ktx:23.1.2'
     implementation 'com.google.firebase:firebase-crashlytics-ktx:18.3.6'
 
+    implementation 'com.google.android.gms:play-services-location:21.0.1'
+
     // database
     implementation 'androidx.room:room-runtime:2.5.1'
     kapt 'androidx.room:room-compiler:2.5.1'

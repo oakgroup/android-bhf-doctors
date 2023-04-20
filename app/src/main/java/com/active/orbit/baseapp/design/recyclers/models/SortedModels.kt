@@ -1,4 +1,4 @@
-package com.active.orbit.baseapp.design.recyclers.engine.models
+package com.active.orbit.baseapp.design.recyclers.models
 
 import androidx.recyclerview.widget.SortedList
 import androidx.recyclerview.widget.SortedListAdapterCallback

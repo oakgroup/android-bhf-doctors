@@ -101,6 +101,14 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.FullScreen" />
+        <activity
+            android:name=".design.activities.DebugActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".design.activities.DetailedActivityActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait" />
 
         <!-- DEMO_CODE! -->
         <activity

@@ -1,4 +1,4 @@
-package com.active.orbit.baseapp.design.recyclers.engine.adapters.holders
+package com.active.orbit.baseapp.design.recyclers.adapters.holders
 
 import android.content.Context
 import android.os.Bundle
@@ -9,7 +9,7 @@ import com.active.orbit.baseapp.databinding.ItemFaqBinding
 import com.active.orbit.baseapp.design.activities.Activities
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
 import com.active.orbit.baseapp.design.recyclers.engine.BaseRecyclerCell
-import com.active.orbit.baseapp.design.recyclers.engine.models.FaqModel
+import com.active.orbit.baseapp.design.recyclers.models.FaqModel
 
 class FaqViewHolder(private var context: Context, itemView: View) : BaseRecyclerCell<FaqModel>(itemView) {
 

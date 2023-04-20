@@ -16,7 +16,7 @@ import com.active.orbit.baseapp.databinding.ActivityDemoBinding
 import com.active.orbit.baseapp.demo.design.recyclers.adapters.DemoRecyclerAdapter
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
-import com.active.orbit.baseapp.design.recyclers.engine.managers.BaseLinearLayoutManager
+import com.active.orbit.baseapp.design.recyclers.managers.BaseLinearLayoutManager
 
 class DemoActivity : BaseActivity() {
 

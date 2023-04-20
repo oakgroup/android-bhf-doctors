@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activityLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/margin_vertical"
+    android:layout_marginEnd="@dimen/margin_vertical"
+    android:elevation="10dp"
+    tools:ignore="UnusedAttribute">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/panel"
+        style="@style/ListItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.active.orbit.baseapp.design.widgets.BaseImageView
+            android:id="@+id/activityIcon"
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            android:layout_marginStart="@dimen/margin_lateral_half"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_walking" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/rightIconFrame"
+            app:layout_constraintStart_toEndOf="@id/activityIcon"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.active.orbit.baseapp.design.widgets.BaseTextView
+                android:id="@+id/activityName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textColorBlack"
+                android:textSize="@dimen/h2"
+                app:typeface="semibold"
+                tools:text="@string/walking" />
+
+            <com.active.orbit.baseapp.design.widgets.BaseTextView
+                android:id="@+id/activityTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_vertical_half_half"
+                android:textColor="@color/textColorBlack"
+                android:textSize="@dimen/h3"
+                app:typeface="regular"
+                tools:text="12:00 - 13:00" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <FrameLayout
+            android:id="@+id/rightIconFrame"
+            style="@style/ListItemIcon"
+            android:layout_width="48dp"
+            android:layout_height="0dp"
+            android:paddingStart="@dimen/margin_lateral_half_half"
+            android:paddingEnd="@dimen/margin_lateral_half_half"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.active.orbit.baseapp.design.widgets.BaseImageView
+                android:id="@+id/rightIcon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_map" />
+
+        </FrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/connectorOne"
+        android:layout_width="@dimen/margin_lateral_half"
+        android:layout_height="24dp"
+        android:layout_marginStart="@dimen/margin_lateral_double"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintStart_toStartOf="@id/panel"
+        app:layout_constraintTop_toBottomOf="@id/panel" />
+
+    <View
+        android:id="@+id/connectorTwo"
+        android:layout_width="@dimen/margin_lateral_half"
+        android:layout_height="24dp"
+        android:layout_marginEnd="@dimen/margin_lateral_double"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="@id/panel"
+        app:layout_constraintTop_toBottomOf="@id/panel" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

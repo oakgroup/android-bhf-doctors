@@ -1,7 +1,6 @@
 package com.active.orbit.baseapp.design.activities
 
 import android.os.Bundle
-import android.view.MenuItem
 import android.view.View
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.active.orbit.baseapp.R
@@ -10,9 +9,9 @@ import com.active.orbit.baseapp.core.routing.enums.Extra
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.databinding.ActivityFaqBinding
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
-import com.active.orbit.baseapp.design.recyclers.engine.adapters.FaqAdapter
-import com.active.orbit.baseapp.design.recyclers.engine.managers.BaseLinearLayoutManager
-import com.active.orbit.baseapp.design.recyclers.engine.models.FaqModel
+import com.active.orbit.baseapp.design.recyclers.adapters.FaqAdapter
+import com.active.orbit.baseapp.design.recyclers.managers.BaseLinearLayoutManager
+import com.active.orbit.baseapp.design.recyclers.models.FaqModel
 
 class FaqActivity : BaseActivity() {
 
@@ -38,7 +37,6 @@ class FaqActivity : BaseActivity() {
 
         prepare()
     }
-
 
 
     private fun prepare() {

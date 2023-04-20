@@ -13,11 +13,14 @@ import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.enums.Extra
 import com.active.orbit.baseapp.core.utils.BaseException
 import com.active.orbit.baseapp.core.utils.Constants
+import com.active.orbit.baseapp.core.utils.ThreadHandler.backgroundThread
+import com.active.orbit.baseapp.core.utils.ThreadHandler.mainThread
 import com.active.orbit.baseapp.core.utils.Utils
 import com.active.orbit.baseapp.design.activities.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
 import com.active.orbit.baseapp.design.protocols.ActivityProvider
+import com.active.orbit.tracker.TrackerManager
 import java.util.*
 
 /**
@@ -208,13 +211,17 @@ class Router {
         }
     }
 
-
-    fun logout(context: Context) {
-        BasePreferences.logout(context)
-        Database.getInstance(context).logout()
-        clearTop(true)
-        newTask(true)
-        activityAnimation(ActivityAnimation.FADE)
-        startBaseActivity(context, Activities.SPLASH)
+    fun logout(activity: AppCompatActivity) {
+        backgroundThread {
+            TrackerManager.getInstance(activity).logout(activity)
+            mainThread {
+                BasePreferences.logout(activity)
+                Database.getInstance(activity).logout()
+                clearTop(true)
+                newTask(true)
+                activityAnimation(ActivityAnimation.FADE)
+                startBaseActivity(activity, Activities.SPLASH)
+            }
+        }
     }
 }

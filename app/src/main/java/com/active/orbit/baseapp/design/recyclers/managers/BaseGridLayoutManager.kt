@@ -1,4 +1,4 @@
-package com.active.orbit.baseapp.design.recyclers.engine.managers
+package com.active.orbit.baseapp.design.recyclers.managers
 
 import android.content.Context
 import androidx.recyclerview.widget.GridLayoutManager

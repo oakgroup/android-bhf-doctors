@@ -5,7 +5,7 @@ import android.content.Context
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.core.utils.Logger
-import com.active.orbit.baseapp.design.recyclers.engine.models.FaqModel
+import com.active.orbit.baseapp.design.recyclers.models.FaqModel
 
 /**
  * Utility class that should be used to manage

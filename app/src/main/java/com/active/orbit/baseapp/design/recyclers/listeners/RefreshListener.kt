@@ -1,4 +1,4 @@
-package com.active.orbit.baseapp.design.recyclers.engine.listeners
+package com.active.orbit.baseapp.design.recyclers.listeners
 
 interface RefreshListener {
 

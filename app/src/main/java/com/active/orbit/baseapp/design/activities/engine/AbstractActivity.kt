@@ -11,11 +11,10 @@ import androidx.activity.OnBackPressedCallback
 import androidx.annotation.ColorInt
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
-import com.active.orbit.baseapp.R
 import androidx.drawerlayout.widget.DrawerLayout
+import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.broadcast.BaseBroadcast
 import com.active.orbit.baseapp.core.broadcast.BroadcastHost
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
@@ -222,6 +221,11 @@ abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListen
 
     protected fun showToolbar() {
         mToolbar?.visibility = View.VISIBLE
+    }
+
+    protected fun showLogoButton() {
+        mToolbar?.findViewById<BaseImageButton>(R.id.toolbarRightIcon)?.setImageResource(R.drawable.ic_logo_primary)
+        mToolbar?.findViewById<BaseImageButton>(R.id.toolbarRightIcon)?.visibility = View.VISIBLE
     }
 
     fun setToolbarBackgroundColour(@ColorInt colour: Int) {

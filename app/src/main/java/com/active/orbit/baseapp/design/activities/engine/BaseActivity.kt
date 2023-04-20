@@ -1,13 +1,14 @@
 package com.active.orbit.baseapp.design.activities.engine
 
-import android.content.pm.PackageManager
 import android.os.Bundle
 import com.active.orbit.baseapp.R
-import com.active.orbit.baseapp.core.permissions.Permissions
 import com.active.orbit.baseapp.core.routing.enums.Extra
 import com.active.orbit.baseapp.core.utils.Logger
-import com.active.orbit.baseapp.core.utils.Utils
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
+import com.active.orbit.tracker.MyViewModel
+import com.active.orbit.tracker.TrackerManager
+import com.active.orbit.tracker.retrieval.ComputeDayDataAsync
+import com.active.orbit.tracker.utils.Globals
 
 /**
  * Abstract activity that should be extended from all the other activities
@@ -21,8 +22,7 @@ abstract class BaseActivity : PermissionsActivity() {
 
     protected lateinit var thiss: BaseActivity
 
-    //TODO use this when tracker is ready
-//    val viewModel: MyViewModel by viewModels()
+    val viewModel: MyViewModel by viewModels()
 
     companion object {
         const val MESSAGE_PATH = "/message"
@@ -76,18 +76,15 @@ abstract class BaseActivity : PermissionsActivity() {
         return ActivityAnimation.getByValue(value)
     }
 
-    //TODO use this when tracker is ready
-//    /**
-//     * it computes the results and causes the refresh of the interface via the active data
-//     */
-//    protected fun computeResults() {
-//        val currentDateTime = TrackerManager.getInstance(this).currentDateTime
-//        val midnight = Utils.midnightinMsecs(currentDateTime)
-//        val context = this
-//        val endOfDay = midnight + Globals.MSECS_IN_A_DAY
-//        Logger.i("Computing results: viewModel? $viewModel")
-//        ComputeDayDataAsync(context, viewModel, midnight, endOfDay).computeResultsAsync(viewModel)
-//    }
-
-
+    /**
+     * it computes the results and causes the refresh of the interface via the active data
+     */
+    protected fun computeResults() {
+        val currentDateTime = TrackerManager.getInstance(this).currentDateTime
+        val midnight = com.active.orbit.tracker.utils.Utils.midnightinMsecs(currentDateTime)
+        val context = this
+        val endOfDay = midnight + Globals.MSECS_IN_A_DAY
+        Logger.i("Computing results: viewModel? $viewModel")
+        ComputeDayDataAsync(context, viewModel, midnight, endOfDay).computeResultsAsync(viewModel)
+    }
 }
