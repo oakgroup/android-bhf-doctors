@@ -1,3 +1,6 @@
 [submodule "android-brandPowerSettings"]
 	path = android-brandPowerSettings
 	url = https://github.com/oakgroup/android-brandPowerSettings.git
+[submodule "android-tracker"]
+	path = android-tracker
+	url = https://github.com/Active-Orbit/android-tracker.git
