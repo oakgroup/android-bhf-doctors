@@ -4,6 +4,7 @@ enum class ActivityAnimation(val value: Int) {
     FADE(1),
     LEFT_RIGHT(2),
     BOTTOM_TOP(3),
+    TOP_BOTTOM(4),
     DEFAULT(FADE.value);
 
     companion object {

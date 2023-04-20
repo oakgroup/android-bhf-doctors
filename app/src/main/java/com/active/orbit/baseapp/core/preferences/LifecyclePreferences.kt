@@ -1,5 +1,6 @@
 package com.active.orbit.baseapp.core.preferences
 
+import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.preferences.engine.BasePreferences
 import com.active.orbit.baseapp.core.preferences.engine.PreferencesKeys
 import com.active.orbit.baseapp.core.utils.Constants
@@ -15,7 +16,33 @@ class LifecyclePreferences : BasePreferences() {
             editor.apply()
         }
 
+    var welcomeShown: Boolean
+        get() = prefs.getBoolean(res.getString(R.string.preference_lifecycle_welcome_shown), false)
+        set(value) {
+            val editor = prefs.edit()
+            editor.putBoolean(res.getString(R.string.preference_lifecycle_welcome_shown), value)
+            editor.apply()
+        }
+
+    var onboardingshown: Boolean
+        get() = prefs.getBoolean(res.getString(R.string.preference_lifecycle_onboarding_shown), false)
+        set(value) {
+            val editor = prefs.edit()
+            editor.putBoolean(res.getString(R.string.preference_lifecycle_onboarding_shown), value)
+            editor.apply()
+        }
+
+    var isPrivacyPolicyAccepted: Boolean
+        get() = prefs.getBoolean(res.getString(R.string.preference_lifecycle_privacy_policy_accepted), false)
+        set(value) {
+            val editor = prefs.edit()
+            editor.putBoolean(res.getString(R.string.preference_lifecycle_privacy_policy_accepted), value)
+            editor.apply()
+        }
+
+
     override fun logout() {
         firstInstall = null
+        welcomeShown = false
     }
 }

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:paddingHorizontal="@dimen/margin_lateral"
+    tools:context=".design.activities.OnBoardingLocationActivity">
+
+    <com.active.orbit.baseapp.design.widgets.BaseTextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingVertical="@dimen/margin_vertical_double"
+        android:text="@string/location_services"
+        android:textColor="@color/textColorPrimaryDark"
+        android:textSize="@dimen/h1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:typeface="bold" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/margin_vertical_double"
+        android:background="@drawable/bg_panel"
+        app:layout_constraintBottom_toTopOf="@id/buttonsLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title">
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/margin_vertical">
+
+                <com.active.orbit.baseapp.design.widgets.BaseTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:lineSpacingExtra="1dp"
+                    android:text="@string/onboarding_location_1"
+                    android:textColor="@color/textColorPrimaryDark"
+                    android:textSize="@dimen/description_text_dimension"
+                    app:typeface="semibold" />
+
+                <com.active.orbit.baseapp.design.widgets.BaseImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:layout_marginTop="@dimen/margin_vertical"
+                    android:src="@drawable/permission_location_1" />
+
+                <com.active.orbit.baseapp.design.widgets.BaseImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="@dimen/margin_vertical"
+                    android:src="@drawable/permission_location_2" />
+
+                <com.active.orbit.baseapp.design.widgets.BaseImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="@dimen/margin_vertical"
+                    android:src="@drawable/permission_location_3" />
+
+                <com.active.orbit.baseapp.design.widgets.BaseTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_vertical"
+                    android:gravity="center"
+                    android:lineSpacingExtra="1dp"
+                    android:text="@string/onboarding_location_2"
+                    android:textColor="@color/textColorPrimaryDark"
+                    android:textSize="@dimen/description_text_dimension"
+                    app:typeface="semibold" />
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </ScrollView>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/buttonsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_vertical"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <com.active.orbit.baseapp.design.widgets.BaseButton
+            android:id="@+id/btnPermission"
+            style="@style/ButtonPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/showPermission"
+            android:textAllCaps="false" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,7 @@ package com.active.orbit.baseapp.core.preferences.engine
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.res.Resources
 import com.active.orbit.baseapp.core.utils.Logger
 
 /**
@@ -12,6 +13,7 @@ import com.active.orbit.baseapp.core.utils.Logger
  */
 abstract class BasePreferences {
 
+    protected lateinit var res: Resources
     protected lateinit var prefs: SharedPreferences
 
     companion object {
@@ -33,6 +35,7 @@ abstract class BasePreferences {
     }
 
     internal fun setupPreferences(context: Context) {
+        res = context.resources
         prefs = context.getSharedPreferences(filename, Context.MODE_PRIVATE)
     }
 

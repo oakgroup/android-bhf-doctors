@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_message_page"
+    android:paddingHorizontal="@dimen/margin_lateral"
+    tools:context=".design.activities.OnBoardingActivity">
+
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@id/buttons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <com.active.orbit.baseapp.design.widgets.BaseTextView
+                android:id="@+id/onboardingLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/onboarding"
+                android:textColor="@color/textColorPrimaryDark"
+                android:textSize="@dimen/h0"
+                app:typeface="bold" />
+
+            <com.active.orbit.baseapp.design.widgets.BaseImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_vertical_double"
+                app:srcCompat="@drawable/ic_settings" />
+
+            <com.active.orbit.baseapp.design.widgets.BaseTextView
+                android:id="@+id/onboardingDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_vertical_double"
+                android:gravity="center"
+                android:text="@string/onboarding_description"
+                android:textColor="@color/textColorPrimaryDark"
+                android:textSize="@dimen/description_text_dimension"
+                app:typeface="semibold" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </FrameLayout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingVertical="@dimen/margin_vertical_double"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.active.orbit.baseapp.design.widgets.BaseButton
+            android:id="@+id/onboardingButton"
+            style="@style/ButtonPrimary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/continue_btn"
+            app:typeface="semibold" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

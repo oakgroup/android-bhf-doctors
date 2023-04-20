@@ -4,6 +4,9 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
+import android.os.Build
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
@@ -13,24 +16,35 @@ import com.active.orbit.baseapp.design.activities.engine.BaseActivity
  *
  * @author omar.brugna
  */
-class Permissions(private val context: Context, private val group: Group) {
+class Permissions(val group: Group) {
 
     companion object {
-        const val REQUEST_ACCESS_FINE_LOCATION = 0
-        const val REQUEST_ACCESS_BACKGROUND_LOCATION = 1
-        const val REQUEST_ACCESS_EXTERNAL_STORAGE = 2
+        private const val REQUEST_ACCESS_FINE_LOCATION = 0
+        private const val REQUEST_ACCESS_BACKGROUND_LOCATION = 1
+        private const val REQUEST_ACCESS_EXTERNAL_STORAGE = 2
+        private const val REQUEST_ACCESS_ACTIVITY_RECOGNITION = 3
+        private const val REQUEST_ACCESS_CAMERA_FOR_SCAN = 4
+        private const val REQUEST_ACCESS_CAMERA_FOR_CAPTURE = 5
     }
 
-    fun check(): Boolean {
+    fun check(activity: AppCompatActivity): Boolean {
         for (permission in group.permissions) {
-            val status = ContextCompat.checkSelfPermission(context, permission)
+            val status = ActivityCompat.checkSelfPermission(activity, permission)
             if (status != PackageManager.PERMISSION_GRANTED)
                 return false
         }
         return true
     }
 
-    fun request(activity: BaseActivity) {
+    fun shouldShowExplanation(activity: AppCompatActivity): Boolean {
+        for (permission in group.permissions) {
+            val status = ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)
+            if (status) return true
+        }
+        return false
+    }
+
+    fun request(activity: AppCompatActivity) {
         ActivityCompat.requestPermissions(activity, group.permissions, group.requestCode)
     }
 
@@ -42,14 +56,28 @@ class Permissions(private val context: Context, private val group: Group) {
             ), REQUEST_ACCESS_FINE_LOCATION
         ),
 
-        @SuppressLint("InlinedApi")
+        @RequiresApi(Build.VERSION_CODES.Q)
         ACCESS_BACKGROUND_LOCATION(
             arrayOf(Manifest.permission.ACCESS_BACKGROUND_LOCATION),
             REQUEST_ACCESS_BACKGROUND_LOCATION
         ),
         ACCESS_EXTERNAL_STORAGE(
-            arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+            arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
             REQUEST_ACCESS_EXTERNAL_STORAGE
+        ),
+
+        @RequiresApi(Build.VERSION_CODES.Q)
+        ACCESS_ACTIVITY_RECOGNITION(
+            arrayOf(Manifest.permission.ACTIVITY_RECOGNITION),
+            REQUEST_ACCESS_ACTIVITY_RECOGNITION
+        ),
+        ACCESS_CAMERA_FOR_SCAN(
+            arrayOf(Manifest.permission.CAMERA),
+            REQUEST_ACCESS_CAMERA_FOR_SCAN
+        ),
+        ACCESS_CAMERA_FOR_CAPTURE(
+            arrayOf(Manifest.permission.CAMERA),
+            REQUEST_ACCESS_CAMERA_FOR_CAPTURE
         )
     }
 }

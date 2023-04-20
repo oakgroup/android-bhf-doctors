@@ -4,16 +4,21 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import androidx.appcompat.app.AppCompatActivity
+import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.database.engine.Database
 import com.active.orbit.baseapp.core.preferences.engine.BasePreferences
+import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.enums.Extra
 import com.active.orbit.baseapp.core.utils.BaseException
 import com.active.orbit.baseapp.core.utils.Constants
+import com.active.orbit.baseapp.core.utils.Utils
 import com.active.orbit.baseapp.design.activities.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
 import com.active.orbit.baseapp.design.protocols.ActivityProvider
+import java.util.*
 
 /**
  * Utility class used to manage transitions between activities
@@ -177,6 +182,32 @@ class Router {
         intent.data = Uri.parse(url)
         context.startActivity(intent)
     }
+
+    fun openPrivacyPolicy(context: Context) {
+        val url = when (Locale.getDefault().language) {
+            "en" -> context.resources.getString(R.string.privacy_policy_link_en)
+            else -> context.resources.getString(R.string.privacy_policy_link_default)
+        }
+        openUrl(context, url)
+    }
+
+    fun openSettings(context: Context) {
+        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+        val uri = Uri.fromParts("package", Utils.getPackageName(context), null)
+        intent.data = uri
+        context.startActivity(intent)
+    }
+
+    fun homepage(context: Context) {
+        clearTop(true)
+        newTask(true)
+        if (Preferences.user(context).isUserRegistered() && Preferences.user(context).programStarted) {
+            startBaseActivity(context, Activities.MAIN)
+        } else {
+            startBaseActivity(context, Activities.MAIN)
+        }
+    }
+
 
     fun logout(context: Context) {
         BasePreferences.logout(context)

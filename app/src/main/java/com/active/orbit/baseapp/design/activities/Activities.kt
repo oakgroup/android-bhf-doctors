@@ -7,7 +7,14 @@ enum class Activities(private val activity: Class<out BaseActivity>) : ActivityP
     ABOUT(AboutActivity::class.java),
     FAQ(FaqActivity::class.java),
     SPLASH(SplashActivity::class.java),
-    MAIN(MainActivity::class.java);
+    MAIN(MainActivity::class.java),
+    ON_BOARDING(OnBoardingActivity::class.java),
+    ON_BOARDING_BATTERY(OnBoardingBatteryActivity::class.java),
+    ON_BOARDING_LOCATION(OnBoardingLocationActivity::class.java),
+    ON_BOARDING_UNUSED_RESTRICTIONS(OnBoardingUnusedRestrictionsActivity::class.java),
+    PRIVACY_POLICY(PrivacyPolicyActivity::class.java),
+    SUCCESS_MESSAGE(SuccessMessageActivity::class.java),
+    WELCOME(WelcomeActivity::class.java);
 
 
     override fun getActivity(): Class<out BaseActivity> {
