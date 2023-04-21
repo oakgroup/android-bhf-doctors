@@ -110,20 +110,6 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
 
-        <!-- DEMO_CODE! -->
-        <activity
-            android:name=".demo.design.activities.DemoActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".demo.design.activities.DemoImagesActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".demo.design.activities.DemoVoteActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait" />
-        <!-- END DEMO_CODE! -->
 
     </application>
 
