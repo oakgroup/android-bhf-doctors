@@ -1,11 +1,11 @@
 package com.active.orbit.baseapp.core.serialization
 
 import android.text.TextUtils
-import com.active.orbit.baseapp.core.generics.BaseProtocol
+import com.active.orbit.baseapp.core.generics.BaseModel
 import com.active.orbit.baseapp.core.utils.Constants
 import com.google.gson.annotations.SerializedName
 
-class UserRegistrationRequest : BaseProtocol {
+class UserRegistrationRequest : BaseModel {
 
     @SerializedName("phone_model")
     var phoneModel: String? = null

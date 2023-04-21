@@ -1,6 +1,6 @@
 package com.active.orbit.baseapp.core.database.engine
 
-import com.active.orbit.baseapp.core.generics.BaseProtocol
+import com.active.orbit.baseapp.core.generics.BaseModel
 import com.active.orbit.baseapp.core.utils.BaseException
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.core.utils.Logger
@@ -8,7 +8,7 @@ import com.active.orbit.baseapp.core.utils.Logger
 /**
  * Base database model that should be extended from other database models
  */
-open class DBModel : BaseProtocol {
+open class DBModel : BaseModel {
 
     override fun isValid(): Boolean {
         throw BaseException("Is valid method must never be called on the base class")

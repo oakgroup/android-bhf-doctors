@@ -1,11 +1,11 @@
 package com.active.orbit.baseapp.core.deserialization
 
 import android.text.TextUtils
-import com.active.orbit.baseapp.core.generics.BaseProtocol
+import com.active.orbit.baseapp.core.generics.BaseModel
 import com.active.orbit.baseapp.core.utils.Constants
 import com.google.gson.annotations.SerializedName
 
-class UserRegistrationMap : BaseProtocol {
+class UserRegistrationMap : BaseModel {
 
     @SerializedName("_id")
     var id = Constants.EMPTY
