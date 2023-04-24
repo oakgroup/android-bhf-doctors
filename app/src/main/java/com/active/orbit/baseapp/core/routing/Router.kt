@@ -16,7 +16,7 @@ import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.core.utils.ThreadHandler.backgroundThread
 import com.active.orbit.baseapp.core.utils.ThreadHandler.mainThread
 import com.active.orbit.baseapp.core.utils.Utils
-import com.active.orbit.baseapp.design.activities.Activities
+import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
 import com.active.orbit.baseapp.design.protocols.ActivityProvider
@@ -186,6 +186,14 @@ class Router {
         context.startActivity(intent)
     }
 
+    fun openTermsAndConditions(context: Context) {
+        val url = when (Locale.getDefault().language) {
+            "en" -> context.resources.getString(R.string.terms_and_conditions_link_en)
+            else -> context.resources.getString(R.string.terms_and_conditions_link_default)
+        }
+        openUrl(context, url)
+    }
+
     fun openPrivacyPolicy(context: Context) {
         val url = when (Locale.getDefault().language) {
             "en" -> context.resources.getString(R.string.privacy_policy_link_en)
@@ -205,9 +213,9 @@ class Router {
         clearTop(true)
         newTask(true)
         if (Preferences.user(context).isUserRegistered() && Preferences.user(context).programStarted) {
-            startBaseActivity(context, Activities.MAIN)
+            startBaseActivity(context, Activities.PATIENT)
         } else {
-            startBaseActivity(context, Activities.MAIN)
+            startBaseActivity(context, Activities.DOCTOR)
         }
     }
 

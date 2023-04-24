@@ -11,7 +11,9 @@ import com.active.orbit.baseapp.core.utils.BaseException
  */
 enum class Api(private var apiUrl: Int) {
     EMPTY(R.string.api_empty),
-    IMAGES_GET(R.string.api_images_get), // DEMO_CODE!
+    INSERT_REMINDERS(R.string.api_insert_reminders),
+    INSERT_SYMPTOMS(R.string.api_insert_symptoms),
+    RETRIEVE_PROGRAMMES(R.string.api_retrieve_programmes),
     USER_REGISTRATION(R.string.api_user_registration);
 
     private var params = ArrayList<String>()

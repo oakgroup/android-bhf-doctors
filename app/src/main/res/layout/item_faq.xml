@@ -1,40 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/faqLayout"
+    style="@style/ListItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:minHeight="70dp">
+    android:layout_marginVertical="@dimen/margin_vertical_half"
+    android:elevation="10dp"
+    tools:ignore="UnusedAttribute">
+
 
     <com.active.orbit.baseapp.design.widgets.BaseTextView
         android:id="@+id/faqText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_lateral"
-        android:layout_marginTop="@dimen/margin_lateral"
-        android:layout_marginEnd="@dimen/margin_lateral"
-        android:layout_marginBottom="@dimen/margin_lateral"
-        android:text="@string/app_name"
-        android:textSize="@dimen/h2"
+        android:padding="@dimen/margin_vertical"
+        android:textColor="@color/textColorBlack"
+        android:textSize="@dimen/main_text_dimension"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/faqIcon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:typeface="bold" />
+        app:typeface="semibold"
+        tools:text="@string/medicine_name" />
 
-    <com.active.orbit.baseapp.design.widgets.BaseImageView
+    <FrameLayout
         android:id="@+id/faqIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_lateral"
-        android:layout_marginTop="@dimen/margin_lateral_half"
-        android:layout_marginEnd="@dimen/margin_lateral"
-        android:layout_marginBottom="@dimen/margin_lateral_half"
-        android:adjustViewBounds="true"
-        android:clickable="false"
-        android:src="@drawable/ic_arrow_right_white"
+        style="@style/ListItemIcon"
+        android:layout_width="40dp"
+        android:layout_height="0dp"
+        android:paddingStart="@dimen/margin_lateral_half_half"
+        android:paddingEnd="@dimen/margin_lateral_half_half"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/faqText"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.active.orbit.baseapp.design.widgets.BaseImageView
+            android:id="@+id/rightIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_arrow_right_white" />
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

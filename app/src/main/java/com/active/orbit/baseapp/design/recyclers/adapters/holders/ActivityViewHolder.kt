@@ -5,6 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import com.active.orbit.baseapp.R
+import com.active.orbit.baseapp.core.routing.Router
+import com.active.orbit.baseapp.design.activities.main.PatientActivity
+import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.recyclers.engine.BaseRecyclerCell
 import com.active.orbit.baseapp.design.recyclers.models.TripModel
@@ -73,12 +76,9 @@ class ActivityViewHolder(var activity: BaseActivity, itemView: View, private var
     }
 
     private fun onActivityClicked(model: TripModel) {
-        // TODO uncomment this when available
-        /*
         PatientActivity.currentTrip = model
         PatientActivity.currentTripPosition = model.position
         PatientActivity.displayedTripsList = tripModels
         Router.getInstance().startBaseActivity(activity, Activities.MAP)
-        */
     }
 }

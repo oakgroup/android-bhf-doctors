@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_message_page"
     android:paddingHorizontal="@dimen/margin_lateral"
-    tools:context=".design.activities.OnBoardingActivity">
+    tools:context=".design.activities.onboarding.OnBoardingActivity">
 
 
     <FrameLayout

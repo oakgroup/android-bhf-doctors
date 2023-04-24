@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:padding="@dimen/margin_vertical"
+    tools:ignore="UnusedAttribute">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_dialog_primary"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.active.orbit.baseapp.design.widgets.BaseTextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_dialog_primary_title"
+            android:gravity="center"
+            android:padding="@dimen/margin_lateral"
+            android:text="@string/phone_upload_dialog_title"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/h3"
+            app:typeface="semibold" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/layoutDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <com.active.orbit.baseapp.design.widgets.BaseTextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_vertical"
+                android:text="@string/phone_upload_dialog_description"
+                android:textColor="@color/textColorPrimaryDark"
+                android:textSize="@dimen/main_text_dimension"
+                app:typeface="semibold" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:orientation="vertical">
+
+            <com.active.orbit.baseapp.design.widgets.BaseButton
+                android:id="@+id/btnUploadNow"
+                style="@style/ButtonSecondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/upload_now" />
+
+            <com.active.orbit.baseapp.design.widgets.BaseButton
+                android:id="@+id/btnClose"
+                style="@style/ButtonPrimary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_weight="1"
+                android:text="@string/close" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,13 +1,13 @@
 package com.active.orbit.baseapp.design.recyclers.models
 
-import com.active.orbit.baseapp.core.generics.BaseProtocol
+import com.active.orbit.baseapp.core.generics.BaseModel
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.tracker.retrieval.data.MobilityElementData
 import com.active.orbit.tracker.retrieval.data.TripData
 import com.active.orbit.tracker.tracker.sensors.location_recognition.LocationData
 import com.active.orbit.tracker.utils.Utils
 
-class TripModel : BaseProtocol {
+class TripModel : BaseModel {
 
     var id = Constants.INVALID
     var startTime = Constants.INVALID

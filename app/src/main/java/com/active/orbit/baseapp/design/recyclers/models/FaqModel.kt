@@ -1,9 +1,9 @@
 package com.active.orbit.baseapp.design.recyclers.models
 
-import com.active.orbit.baseapp.core.generics.BaseProtocol
+import com.active.orbit.baseapp.core.generics.BaseModel
 import com.active.orbit.baseapp.core.utils.Constants
 
-class FaqModel : BaseProtocol {
+class FaqModel : BaseModel {
 
     var position = Constants.INVALID
     var category = Constants.EMPTY

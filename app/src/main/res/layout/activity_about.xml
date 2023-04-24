@@ -5,28 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    tools:context=".design.activities.SplashActivity">
+    tools:context=".design.activities.menu.AboutActivity">
 
     <com.active.orbit.baseapp.design.widgets.BaseImageView
         android:id="@+id/aboutAppLogo"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_marginTop="26dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:srcCompat="@drawable/ic_logo_primary"
+        app:srcCompat="@drawable/ic_full_logo_primary"
         tools:ignore="NotSibling" />
-
-    <com.active.orbit.baseapp.design.widgets.BaseImageView
-        android:id="@+id/aboutAppTitle"
-        android:layout_width="150dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="@dimen/margin_vertical_half"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/aboutAppLogo"
-        app:srcCompat="@drawable/ic_full_logo_primary" />
 
     <View
         android:id="@+id/aboutAppStroke"
@@ -35,10 +25,10 @@
         android:layout_marginStart="@dimen/margin_lateral"
         android:layout_marginTop="@dimen/margin_vertical_half"
         android:layout_marginEnd="@dimen/margin_lateral"
-        android:background="@color/gray"
+        android:background="@color/colorPrimaryLight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/aboutAppTitle" />
+        app:layout_constraintTop_toBottomOf="@id/aboutAppLogo" />
 
     <com.active.orbit.baseapp.design.widgets.BaseTextView
         android:id="@+id/aboutAppText"
@@ -48,6 +38,7 @@
         android:layout_marginTop="@dimen/margin_vertical"
         android:layout_marginEnd="@dimen/margin_lateral"
         android:text="@string/about_text"
+        android:gravity="center"
         android:textColor="@color/textColorBlack"
         android:textSize="@dimen/h2"
         app:layout_constraintEnd_toEndOf="parent"

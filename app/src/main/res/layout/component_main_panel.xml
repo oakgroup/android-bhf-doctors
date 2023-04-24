@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:clickable="true"
+    android:elevation="10dp"
+    android:focusable="true">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/panel"
+        style="@style/PanelMainScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/panelIcon"
+            style="@style/PanelIconMainScreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end">
+
+            <com.active.orbit.baseapp.design.widgets.BaseImageView
+                android:id="@+id/icon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                app:srcCompat="@drawable/ic_medicines" />
+
+        </FrameLayout>
+
+        <com.active.orbit.baseapp.design.widgets.BaseTextView
+            android:id="@+id/panelDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/margin_lateral"
+            android:layout_marginVertical="@dimen/margin_vertical_half"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/medicine_details"
+            android:textColor="@color/textColorPrimaryDark"
+            android:textSize="@dimen/description_text_dimension"
+            app:typeface="semibold" />
+
+        <com.active.orbit.baseapp.design.widgets.BaseTextView
+            android:id="@+id/panelButton"
+            style="@style/ButtonMainScreen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:layout_weight="0.1"
+            android:text="@string/my_prescriptions"
+            android:textSize="@dimen/h3" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</FrameLayout>

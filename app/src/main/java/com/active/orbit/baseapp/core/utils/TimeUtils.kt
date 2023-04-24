@@ -13,9 +13,9 @@ import java.util.*
 object TimeUtils {
 
     const val ONE_SECOND_MILLIS = 1000
-    private const val ONE_MINUTE_MILLIS = 60 * ONE_SECOND_MILLIS
-    private const val ONE_HOUR_MILLIS = 60 * ONE_MINUTE_MILLIS
-    private const val ONE_DAY_MILLIS = 24 * ONE_HOUR_MILLIS
+    const val ONE_MINUTE_MILLIS = 60 * ONE_SECOND_MILLIS
+    const val ONE_HOUR_MILLIS = 60 * ONE_MINUTE_MILLIS
+    const val ONE_DAY_MILLIS = 24 * ONE_HOUR_MILLIS
 
     private val utcTimezone = TimeZone.getTimeZone("UTC")
     private val defaultTimezone = TimeZone.getDefault()
@@ -26,6 +26,12 @@ object TimeUtils {
 
     fun getCurrent(): Calendar {
         return Calendar.getInstance()
+    }
+
+    fun getCurrent(timeInMillis: Long): Calendar {
+        val currentCalendar = getCurrent()
+        currentCalendar.timeInMillis = timeInMillis
+        return currentCalendar
     }
 
     fun fromUTC(date: String?): Calendar? {

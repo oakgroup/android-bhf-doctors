@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_welcome_screen"
     android:paddingHorizontal="@dimen/margin_lateral"
-    tools:context=".design.activities.WelcomeActivity">
+    tools:context=".design.activities.onboarding.WelcomeActivity">
 
     <com.active.orbit.baseapp.design.widgets.BaseImageView
         android:layout_width="100dp"

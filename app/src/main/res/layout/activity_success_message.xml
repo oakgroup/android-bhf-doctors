@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_message_page"
     android:paddingHorizontal="@dimen/margin_lateral_double"
-    tools:context=".design.activities.SuccessMessageActivity">
+    tools:context=".design.activities.messaging.SuccessMessageActivity">
 
 
     <FrameLayout

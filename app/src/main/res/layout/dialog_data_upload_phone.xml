@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:padding="@dimen/margin_vertical"
+    tools:ignore="UnusedAttribute">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_dialog_primary"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.active.orbit.baseapp.design.widgets.BaseTextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_dialog_primary_title"
+            android:gravity="center"
+            android:padding="@dimen/margin_lateral"
+            android:text="@string/upload_phone_data"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/h3"
+            app:typeface="semibold" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/layoutDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <com.active.orbit.baseapp.design.widgets.BaseTextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_vertical"
+                android:text="@string/upload_phone_data_dialog"
+                android:textColor="@color/textColorPrimaryDark"
+                android:textSize="@dimen/main_text_dimension"
+                app:typeface="semibold" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/uploadingDataLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginVertical="@dimen/margin_vertical"
+            android:layout_marginHorizontal="@dimen/margin_vertical"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ProgressBar
+                android:layout_width="@dimen/progress_size"
+                android:layout_height="@dimen/progress_size"
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/colorPrimaryDark" />
+
+            <com.active.orbit.baseapp.design.widgets.BaseTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin_lateral"
+                android:textAlignment="center"
+                android:text="@string/upload_phone_data_waiting_one"
+                android:textColor="@color/textColorPrimaryDark"
+                android:textSize="@dimen/h3" />
+
+            <com.active.orbit.baseapp.design.widgets.BaseTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin_lateral"
+                android:text="@string/upload_phone_data_waiting_two"
+                android:textAlignment="center"
+                android:textColor="@color/textColorPrimaryDark"
+                android:textSize="@dimen/h5" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:orientation="horizontal">
+
+            <com.active.orbit.baseapp.design.widgets.BaseButton
+                android:id="@+id/btnCancel"
+                style="@style/ButtonSecondary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:text="@string/cancel" />
+
+            <com.active.orbit.baseapp.design.widgets.BaseButton
+                android:id="@+id/btnUpload"
+                style="@style/ButtonPrimary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:text="@string/upload" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

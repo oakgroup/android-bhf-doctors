@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context=".design.activities.activity.ActivityActivity">
+
+    <com.active.orbit.baseapp.design.widgets.BaseTextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_lateral"
+        android:layout_marginTop="@dimen/margin_vertical"
+        android:layout_marginEnd="@dimen/margin_lateral"
+        android:gravity="start"
+        android:text="@string/activity"
+        android:textColor="@color/textColorPrimaryDark"
+        android:textSize="@dimen/h2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:typeface="bold"
+        tools:ignore="NotSibling" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/pullToRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fitsSystemWindows="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/margin_lateral"
+        app:layout_constraintBottom_toTopOf="@id/buttonsLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        tools:ignore="NotSibling">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingVertical="@dimen/margin_vertical">
+
+            <RelativeLayout
+                android:layout_width="220dp"
+                android:layout_height="220dp"
+                android:layout_gravity="center"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:padding="10dp">
+
+                <com.active.orbit.baseapp.design.widgets.CircularProgressBar
+                    android:id="@+id/walkingActivityProgress"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_centerInParent="true" />
+
+            </RelativeLayout>
+
+            <com.active.orbit.baseapp.design.widgets.BaseScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.active.orbit.baseapp.design.widgets.BaseTextView
+                        android:id="@+id/walkingProgressText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_vertical_half"
+                        android:gravity="center"
+                        android:lines="1"
+                        android:text="@string/active_minutes"
+                        android:textColor="@color/textColorPrimaryDark"
+                        android:textSize="@dimen/main_text_dimension"
+                        app:typeface="semibold" />
+
+                    <com.active.orbit.baseapp.design.widgets.BaseTextView
+                        android:id="@+id/stepsProgressText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_vertical_half"
+                        android:gravity="center"
+                        android:lines="1"
+                        android:text="@string/steps"
+                        android:textColor="@color/textColorPrimaryDark"
+                        android:textSize="@dimen/h5"
+                        app:typeface="semibold" />
+
+                    <com.active.orbit.baseapp.design.widgets.BaseTextView
+                        android:id="@+id/bicycleProgressText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_vertical_half"
+                        android:gravity="center"
+                        android:lines="1"
+                        android:text="@string/cycling"
+                        android:textColor="@color/textColorPrimaryDark"
+                        android:textSize="@dimen/h5"
+                        app:typeface="semibold" />
+
+                    <com.active.orbit.baseapp.design.widgets.BaseTextView
+                        android:id="@+id/vehicleProgressText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_vertical_half"
+                        android:gravity="center"
+                        android:lines="1"
+                        android:text="@string/vehicle"
+                        android:textColor="@color/textColorPrimaryDark"
+                        android:textSize="@dimen/h5"
+                        app:typeface="semibold" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </com.active.orbit.baseapp.design.widgets.BaseScrollView>
+
+            <RelativeLayout
+                android:id="@+id/rewardProgressBarContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_vertical_half">
+
+                <com.active.orbit.baseapp.design.widgets.HorizontalProgressBar
+                    android:id="@+id/heartActivityProgress"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp" />
+
+            </RelativeLayout>
+
+            <com.active.orbit.baseapp.design.widgets.BaseTextView
+                android:id="@+id/heartProgressText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_vertical_half"
+                android:gravity="center"
+                android:lines="1"
+                android:text="@string/heart_minutes"
+                android:textColor="@color/textColorPrimaryDark"
+                android:textSize="@dimen/main_text_dimension"
+                app:typeface="semibold" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/buttonsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/margin_lateral"
+        android:paddingTop="16dp"
+        android:paddingBottom="@dimen/margin_vertical_double"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.active.orbit.baseapp.design.widgets.BaseButton
+            android:id="@+id/btnDetailedActivity"
+            style="@style/ButtonPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/detailed_activity"
+            android:textAllCaps="false" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -40,9 +40,19 @@ class LifecyclePreferences : BasePreferences() {
             editor.apply()
         }
 
+    var userDetailsUploaded: Boolean
+        get() = prefs.getBoolean(res.getString(R.string.preference_lifecycle_user_details_uploaded), false)
+        set(value) {
+            val editor = prefs.edit()
+            editor.putBoolean(res.getString(R.string.preference_lifecycle_user_details_uploaded), value)
+            editor.apply()
+        }
+
+
 
     override fun logout() {
         firstInstall = null
         welcomeShown = false
+        userDetailsUploaded = false
     }
 }

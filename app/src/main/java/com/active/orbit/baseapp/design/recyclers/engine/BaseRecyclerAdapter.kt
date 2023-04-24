@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.annotation.CallSuper
 import androidx.annotation.WorkerThread
 import androidx.recyclerview.widget.RecyclerView
-import com.active.orbit.baseapp.core.generics.BaseProtocol
+import com.active.orbit.baseapp.core.generics.BaseModel
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.core.utils.ThreadHandler.backgroundThread
 import com.active.orbit.baseapp.core.utils.ThreadHandler.mainThread
@@ -17,7 +17,7 @@ import com.active.orbit.baseapp.design.recyclers.models.SortedModels
  *
  * @author omar.brugna
  */
-abstract class BaseRecyclerAdapter<T : BaseProtocol> : RecyclerView.Adapter<BaseRecyclerCell<T>>() {
+abstract class BaseRecyclerAdapter<T : BaseModel> : RecyclerView.Adapter<BaseRecyclerCell<T>>() {
 
     @Suppress("LeakingThis")
     var models = SortedModels(this)

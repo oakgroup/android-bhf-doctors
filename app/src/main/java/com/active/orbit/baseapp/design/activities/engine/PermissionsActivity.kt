@@ -17,7 +17,6 @@ import com.active.orbit.baseapp.core.permissions.Permissions
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.Router
 import com.active.orbit.baseapp.core.utils.Logger
-import com.active.orbit.baseapp.design.activities.Activities
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
 import com.active.orbit.baseapp.design.dialogs.PermissionsDialog
 import com.active.orbit.baseapp.design.dialogs.listeners.PermissionsDialogListener

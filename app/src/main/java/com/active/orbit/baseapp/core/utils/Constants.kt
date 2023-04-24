@@ -54,6 +54,10 @@ object Constants {
     const val ALPHA_DISABLED = 0.5f
     const val ALPHA_PRESSED = 0.5f
 
+    const val PROGRESS_ANIMATION_DURATION = 1000.0
+    const val PROGRESS_ANIMATION_INCREMENT = 15.0
+    const val NHS_WEEK_HEART_TARGET = 150
+
     const val ADMIN_PASSWORD = "123456"
 
     val IMAGE_DISK_STRATEGY_AUTOMATIC: DiskCacheStrategy = DiskCacheStrategy.AUTOMATIC

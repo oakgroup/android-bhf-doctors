@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
     android:paddingHorizontal="@dimen/margin_lateral"
-    tools:context=".design.activities.OnBoardingBatteryActivity">
+    tools:context=".design.activities.onboarding.OnBoardingBatteryActivity">
 
     <com.active.orbit.baseapp.design.widgets.BaseTextView
         android:id="@+id/title"

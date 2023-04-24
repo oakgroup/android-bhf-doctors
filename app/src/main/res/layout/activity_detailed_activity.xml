@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_activity_screen"
     android:focusableInTouchMode="true"
-    tools:context=".design.activities.DetailedActivityActivity">
+    tools:context=".design.activities.activity.DetailedActivityActivity">
 
     <com.active.orbit.baseapp.design.widgets.BaseTextView
         android:id="@+id/title"
