@@ -23,7 +23,6 @@ object UserManager {
         }
 
         val webService = WebService(activity, Api.USER_REGISTRATION)
-        webService.urlString = "https://dev-api.mobinmobility.org/${Api.USER_REGISTRATION.getUrl(activity)}"
         webService.params = Gson().toJson(request)
 
         Connection(webService, object : ConnectionListener {
