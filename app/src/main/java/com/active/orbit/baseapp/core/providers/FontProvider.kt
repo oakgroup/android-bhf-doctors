@@ -20,6 +20,8 @@ object FontProvider {
             Constants.TYPEFACE_BLACK_INDEX -> getBlack(context)
             Constants.TYPEFACE_LIGHT_INDEX -> getLight(context)
             Constants.TYPEFACE_BOLD_ITALIC_INDEX -> getBoldItalic(context)
+            Constants.TYPEFACE_MEDIUM_INDEX -> getBoldItalic(context)
+
             else -> getRegular(context)
         }
     }
@@ -50,5 +52,9 @@ object FontProvider {
 
     fun getBoldItalic(context: Context): Typeface {
         return Typeface.createFromAsset(context.assets, Constants.TYPEFACE_BOLD_ITALIC)
+    }
+
+    fun getMedium(context: Context): Typeface {
+        return Typeface.createFromAsset(context.assets, Constants.TYPEFACE_MEDIUM)
     }
 }

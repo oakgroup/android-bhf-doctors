@@ -41,6 +41,8 @@ object Constants {
     const val TYPEFACE_BLACK = "font/black.ttf"
     const val TYPEFACE_LIGHT = "font/light.ttf"
     const val TYPEFACE_BOLD_ITALIC = "font/bold-italic.ttf"
+    const val TYPEFACE_MEDIUM = "font/medium.ttf"
+
 
     const val TYPEFACE_REGULAR_INDEX = 0
     const val TYPEFACE_BOLD_INDEX = 1
@@ -49,6 +51,8 @@ object Constants {
     const val TYPEFACE_BLACK_INDEX = 4
     const val TYPEFACE_LIGHT_INDEX = 5
     const val TYPEFACE_BOLD_ITALIC_INDEX = 6
+    const val TYPEFACE_MEDIUM_INDEX = 7
+
 
     const val ALPHA_ENABLED = 1.0f
     const val ALPHA_DISABLED = 0.5f
