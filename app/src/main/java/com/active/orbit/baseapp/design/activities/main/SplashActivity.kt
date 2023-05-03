@@ -34,7 +34,6 @@ class SplashActivity : BaseActivity() {
 
         Utils.delay(TimeUtils.ONE_SECOND_MILLIS.toLong() * 2) {
 
-
             if (Preferences.lifecycle(this).welcomeShown) {
                 onboarded(object : ResultListener {
                     override fun onResult(success: Boolean) {

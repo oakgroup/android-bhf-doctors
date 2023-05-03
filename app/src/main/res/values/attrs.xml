@@ -10,6 +10,8 @@
             <enum name="black" value="4" />
             <enum name="light" value="5" />
             <enum name="bolditalic" value="6" />
+            <enum name="medium" value="7" />
+
         </attr>
     </declare-styleable>
 

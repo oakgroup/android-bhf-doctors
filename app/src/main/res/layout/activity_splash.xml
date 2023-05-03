@@ -4,45 +4,72 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_splash_screen"
-    android:paddingHorizontal="@dimen/margin_lateral"
+    android:background="@color/colorBackground"
     tools:context=".design.activities.main.SplashActivity">
 
     <com.active.orbit.baseapp.design.widgets.BaseImageView
-        android:layout_width="100dp"
+        android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_gravity="center"
         android:layout_marginTop="160dp"
-        android:src="@drawable/ic_logo_primary"
+        android:layout_marginHorizontal="@dimen/margin_vertical"
+        android:src="@drawable/ic_full_logo_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.active.orbit.baseapp.design.widgets.BaseTextView
-        android:id="@+id/splashAppName"
-        android:layout_width="0dp"
+    <com.active.orbit.baseapp.design.widgets.BaseImageView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/app_name"
-        android:textColor="@color/textColorPrimary"
-        android:textSize="@dimen/logo_dimension"
-        app:layout_constraintBottom_toTopOf="@id/splashCopyright"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:typeface="bold" />
-
-    <com.active.orbit.baseapp.design.widgets.BaseTextView
-        android:id="@+id/splashCopyright"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:gravity="center"
-        android:text="@string/copyright"
-        android:textColor="@color/textColorPrimary"
-        android:textSize="@dimen/main_text_dimension"
+        android:src="@drawable/bg_heartbeats"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:typeface="regular" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_splash_screen_bottom"
+        android:layout_marginEnd="-16dp"
+        android:layout_marginStart="-16dp"
+        android:layout_marginBottom="-32dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingVertical="64dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.active.orbit.baseapp.design.widgets.BaseTextView
+            android:id="@+id/splashAppName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/h1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:typeface="bold" />
+
+        <com.active.orbit.baseapp.design.widgets.BaseTextView
+            android:id="@+id/splashCopyright"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_vertical"
+            android:gravity="center"
+            android:text="@string/copyright"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/main_text_dimension"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/splashAppName"
+            app:typeface="regular" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

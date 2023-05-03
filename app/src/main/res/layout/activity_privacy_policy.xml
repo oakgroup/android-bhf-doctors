@@ -237,7 +237,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/privacy_policy"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorPrimary"
             android:textSize="@dimen/main_text_dimension" />
 
         <com.active.orbit.baseapp.design.widgets.BaseCheckBox
@@ -246,6 +246,7 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/margin_vertical"
             android:text="@string/accept_privacy"
+            android:textColor="@color/textColorPrimaryDark"
             android:textSize="@dimen/main_text_dimension"
             app:typeface="semibold" />
 

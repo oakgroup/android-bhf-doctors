@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- not translatable strings -->
-    <string name="app_name" translatable="false">Doctors-Dev</string>
+    <string name="app_name" translatable="false">Moving Health-Dev</string>
     <string name="base_url" translatable="false" tools:override="true">https://dev-api.mobinmobility.org</string>
 
 </resources>

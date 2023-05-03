@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_message_page"
+    android:background="@color/colorBackground"
     android:paddingHorizontal="@dimen/margin_lateral"
     tools:context=".design.activities.onboarding.OnBoardingActivity">
 

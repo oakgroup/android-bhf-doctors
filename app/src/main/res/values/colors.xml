@@ -2,25 +2,28 @@
 <resources>
 
     <color name="black">#000000</color>
-    <color name="colorAccent">#003087</color>
-    <color name="colorBackground">#F0F4F5</color>
+    <color name="colorAccent">#FF0030</color>
+    <color name="colorBackground">#E3E3E3</color>
+    <color name="colorBackgroundSecondary">#29282B</color>
     <color name="colorBackgroundPanel">@color/colorPrimaryLight</color>
     <color name="colorBackgroundMainScreenItems">#CCFEFCFF</color>
     <color name="colorBackgroundPrimaryEnd">#FFFFFF</color>
     <color name="colorBackgroundPrimaryStart">#9DCCEE</color>
     <color name="colorDialog">#96000000</color>
-    <color name="colorPrimary">#0072CE</color>
+    <color name="colorPrimary">#8C0033</color>
+    <color name="colorSecondary">#475CA6</color>
+    <color name="colorSecondaryAccent">#3DB08C</color>
     <color name="colorPrimaryDark">#021422</color>
-    <color name="colorPrimaryLight">#CCDBEA</color>
+    <color name="colorPrimaryLight">@color/white</color>
     <color name="colorProgress">#96000000</color>
     <color name="colorTransparent">#00000000</color>
     <color name="gray">#A7A7A7</color>
     <color name="textColorAccent">#003087</color>
     <color name="textColorBlack">#021422</color>
     <color name="textColorGray">@color/gray</color>
-    <color name="textColorPrimary">#FFFFFF</color>
-    <color name="textColorPrimaryDark">#021422</color>
-    <color name="textColorPrimaryLight">#869AAF</color>
+    <color name="textColorPrimary">@color/white</color>
+    <color name="textColorPrimaryDark">@color/black</color>
+    <color name="textColorPrimaryLight">@color/colorSecondary</color>
     <color name="textColorInputHint">@color/textColorPrimaryLight</color>
     <color name="textColorWhite">#FFFFFF</color>
     <color name="toolbarColorBackground">@color/colorTransparent</color>
