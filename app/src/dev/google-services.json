@@ -7,17 +7,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1022756254207:android:d7d08fbca381bf4cc537ca",
+        "mobilesdk_app_id": "1:1022756254207:android:08cc22ba23f0befcc537ca",
         "android_client_info": {
-          "package_name": "com.active.orbit.doctors.dev"
+          "package_name": "com.ao.moving.health.dev"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1022756254207-8v6rmtdbe2sufgbjo0qjlqt29pdrar6u.apps.googleusercontent.com",
+          "client_id": "1022756254207-ihh29ukntv5pul5du2vaq5j1uhi0thtm.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.active.orbit.doctors.dev",
+            "package_name": "com.ao.moving.health.dev",
             "certificate_hash": "229f9ba7181bead80ae502c19e7cea93def508e6"
           }
         },
