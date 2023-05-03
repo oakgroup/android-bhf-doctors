@@ -1,3 +1,3 @@
-# Android BHF Doctors app
+# Android Moving Health app
 
 Use as template
