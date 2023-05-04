@@ -37,9 +37,8 @@ class MainPanelComponent : FrameLayout, View.OnTouchListener{
     }
 
     fun disableClick() {
-        binding.layout.isClickable = false
         binding.panel.isClickable = false
-        binding.panelIcon.isClickable = false
+        binding.icon.isClickable = false
     }
 
 
@@ -48,6 +47,7 @@ class MainPanelComponent : FrameLayout, View.OnTouchListener{
         binding.panelButton.text = context.getString(panelType.buttonText)
         binding.icon.setImageResource(panelType.icon)
         binding.panelDescription.text = context.getString(panelType.description)
+        binding.image.setBackgroundResource(panelType.image)
 
         if (panelType == MainPanelType.START_PROGRAMME_WITH_NAME) {
             if (programmeName != null) binding.panelDescription.text = context.getString(panelType.description, programmeName)
@@ -64,7 +64,7 @@ class MainPanelComponent : FrameLayout, View.OnTouchListener{
                 MotionEvent.ACTION_DOWN -> {
                     when (v) {
                         binding.panel -> {
-                            binding.panelIcon.isPressed = true
+                            binding.icon.isPressed = true
                             binding.panelButton.isPressed = true
                         }
 

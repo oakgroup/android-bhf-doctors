@@ -1,65 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/layout"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/panel"
+    style="@style/PanelMainScreen"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_gravity="center"
+    android:layout_height="wrap_content"
     android:clickable="true"
     android:elevation="10dp"
     android:focusable="true">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/panel"
-        style="@style/PanelMainScreen"
+    <com.active.orbit.baseapp.design.widgets.RoundedView
+        android:id="@+id/image"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clickable="true"
-        android:focusable="true"
-        android:orientation="vertical">
+        android:layout_height="165dp"
+        android:layout_marginHorizontal="1dp"
+        android:layout_marginTop="1dp"
+        app:bottomLeftCornerRadius="0dp"
+        app:bottomRightCornerRadius="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:topLeftCornerRadius="9dp"
+        app:topRightCornerRadius="9dp">
+
+        <com.active.orbit.baseapp.design.widgets.BaseImageView
+            android:layout_width="match_parent"
+            android:layout_height="165dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/bg_panel_tour" />
 
         <FrameLayout
-            android:id="@+id/panelIcon"
-            style="@style/PanelIconMainScreen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end">
+            android:layout_width="match_parent"
+            android:layout_height="165dp"
+            android:background="@color/black25opacity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <com.active.orbit.baseapp.design.widgets.BaseImageView
-                android:id="@+id/icon"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_gravity="center"
-                android:layout_margin="8dp"
-                app:srcCompat="@drawable/ic_medicines" />
 
-        </FrameLayout>
+    </com.active.orbit.baseapp.design.widgets.RoundedView>
+
+    <com.active.orbit.baseapp.design.widgets.BaseImageView
+        android:id="@+id/icon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_gravity="end"
+        android:layout_margin="16dp"
+        android:elevation="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_logo_secondary" />
+
+
+    <com.active.orbit.baseapp.design.widgets.BaseImageView
+        android:id="@+id/heartBeats"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        app:srcCompat="@drawable/bg_heartbeats"
+        android:elevation="1dp"
+        android:layout_marginTop="-79dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:padding="@dimen/margin_vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/heartBeats">
 
         <com.active.orbit.baseapp.design.widgets.BaseTextView
             android:id="@+id/panelDescription"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="@dimen/margin_lateral"
-            android:layout_marginVertical="@dimen/margin_vertical_half"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/medicine_details"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginBottom="@dimen/margin_vertical"
+            android:text="@string/tour_description"
             android:textColor="@color/textColorPrimaryDark"
             android:textSize="@dimen/description_text_dimension"
-            app:typeface="semibold" />
+            app:typeface="regular" />
 
-        <com.active.orbit.baseapp.design.widgets.BaseTextView
+        <com.active.orbit.baseapp.design.widgets.BaseButton
             android:id="@+id/panelButton"
-            style="@style/ButtonMainScreen"
-            android:layout_width="match_parent"
+            style="@style/ButtonPrimary"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="end"
             android:clickable="false"
-            android:layout_weight="0.1"
-            android:text="@string/my_prescriptions"
-            android:textSize="@dimen/h3" />
+            android:text="@string/take_tour" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

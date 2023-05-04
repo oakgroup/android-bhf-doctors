@@ -579,7 +579,7 @@
     <string name="records">Records</string>
     <string name="refresh_medicines_on_wear">Notify Watch</string>
     <string name="register">Register</string>
-    <string name="register_patient">Register Patient</string>
+    <string name="register_patient">Register</string>
     <string name="regular_check_in" translatable="false">Regular checkin</string>
     <string name="regular_check_in_click_button" translatable="false">Please click the Checkin button below</string>
     <string name="regular_check_in_description" translatable="false">To help us keep track of the number of active app users we ask that you checkin. You will get a notification asking you to checkin approximately every 7 days</string>
