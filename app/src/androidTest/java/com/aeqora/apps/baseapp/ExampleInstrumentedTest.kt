@@ -17,6 +17,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.active.orbit.doctors", appContext.packageName)
+        assertEquals("com.ao.moving.health", appContext.packageName)
     }
 }

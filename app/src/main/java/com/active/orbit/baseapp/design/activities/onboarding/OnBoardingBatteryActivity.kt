@@ -51,7 +51,7 @@ class OnBoardingBatteryActivity : BaseActivity(), View.OnClickListener {
             binding.btnPermission -> {
                 if (!onboardedBattery() || fromMenu) {
                     val baseActivityUtils = BaseApplicationUtils()
-                    baseActivityUtils.requestBatteryPermission2(this, true, AppType.BHF)
+                    baseActivityUtils.requestBatteryPermission2(this, true, AppType.MOVING_HEALTH)
                 } else proceed()
             }
         }
