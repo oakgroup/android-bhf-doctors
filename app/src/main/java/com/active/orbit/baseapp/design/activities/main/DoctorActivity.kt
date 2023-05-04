@@ -45,29 +45,29 @@ class DoctorActivity : BaseActivity(), View.OnClickListener {
     @SuppressLint("ClickableViewAccessibility")
     private fun prepare() {
 
-        binding.topPanel.disableClick()
-        binding.bottomPanel.disableClick()
-        binding.topPanel.setOnClickListener(this)
-        binding.bottomPanel.setOnClickListener(this)
+        binding.tourPanel.disableClick()
+        binding.registerPanel.disableClick()
+        binding.tourPanel.setOnClickListener(this)
+        binding.registerPanel.setOnClickListener(this)
 
         if (Preferences.user(this).isUserRegistered()) {
-            binding.topPanel.setPanel(MainPanelType.PRESCRIPTIONS_DOCTOR)
+            binding.tourPanel.setPanel(MainPanelType.PRESCRIPTIONS_DOCTOR)
 
             backgroundThread {
                 val idProgram = Preferences.user(this).idProgram ?: Constants.EMPTY
                 val dbProgram = TablePrograms.getById(this, idProgram)
                 mainThread {
                     if (dbProgram?.isValid() == true) {
-                        binding.bottomPanel.setPanel(MainPanelType.START_PROGRAMME_WITH_NAME, dbProgram.name)
+                        binding.registerPanel.setPanel(MainPanelType.START_PROGRAMME_WITH_NAME, dbProgram.name)
                     } else {
                         Logger.e("Program with id $idProgram not found on database")
-                        binding.bottomPanel.setPanel(MainPanelType.START_PROGRAMME)
+                        binding.registerPanel.setPanel(MainPanelType.START_PROGRAMME)
                     }
                 }
             }
         } else {
-            binding.topPanel.setPanel(MainPanelType.TOUR)
-            binding.bottomPanel.setPanel(MainPanelType.REGISTER)
+            binding.tourPanel.setPanel(MainPanelType.TOUR)
+            binding.registerPanel.setPanel(MainPanelType.REGISTER)
         }
     }
 
@@ -90,7 +90,7 @@ class DoctorActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
 
         when (v) {
-            binding.bottomPanel -> {
+            binding.registerPanel -> {
                 if (Preferences.user(this).isUserRegistered()) {
                     val dialog = StartProgrammeDialog()
                     dialog.isCancelable = true
@@ -110,7 +110,7 @@ class DoctorActivity : BaseActivity(), View.OnClickListener {
                         .startBaseActivity(this, Activities.SELECT_PROGRAMME)
                 }
             }
-            binding.topPanel -> {
+            binding.tourPanel -> {
                 Router.getInstance()
                     .activityAnimation(ActivityAnimation.LEFT_RIGHT)
                     .startBaseActivity(this, Activities.TOUR)

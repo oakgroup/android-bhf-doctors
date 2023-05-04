@@ -47,7 +47,7 @@ class MainPanelComponent : FrameLayout, View.OnTouchListener{
         binding.panelButton.text = context.getString(panelType.buttonText)
         binding.icon.setImageResource(panelType.icon)
         binding.panelDescription.text = context.getString(panelType.description)
-        binding.image.setBackgroundResource(panelType.image)
+        binding.image.setImageResource(panelType.image)
 
         if (panelType == MainPanelType.START_PROGRAMME_WITH_NAME) {
             if (programmeName != null) binding.panelDescription.text = context.getString(panelType.description, programmeName)

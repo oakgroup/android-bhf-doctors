@@ -10,7 +10,7 @@
     android:focusable="true">
 
     <com.active.orbit.baseapp.design.widgets.RoundedView
-        android:id="@+id/image"
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="165dp"
         android:layout_marginHorizontal="1dp"
@@ -24,6 +24,7 @@
         app:topRightCornerRadius="9dp">
 
         <com.active.orbit.baseapp.design.widgets.BaseImageView
+            android:id="@+id/image"
             android:layout_width="match_parent"
             android:layout_height="165dp"
             android:scaleType="centerCrop"
@@ -32,7 +33,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/bg_panel_tour" />
 
-        <FrameLayout
+        <View
             android:layout_width="match_parent"
             android:layout_height="165dp"
             android:background="@color/black25opacity"
@@ -64,7 +65,7 @@
         android:layout_marginTop="-79dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/image"/>
+        app:layout_constraintTop_toBottomOf="@id/imageView"/>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"

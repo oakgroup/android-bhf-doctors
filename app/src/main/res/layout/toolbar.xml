@@ -26,13 +26,14 @@
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="RtlSymmetry"
             tools:visibility="visible" />
 
         <com.active.orbit.baseapp.design.widgets.BaseImageView
             android:id="@+id/toolbarLogo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
             android:clickable="false"
             android:contentDescription="@string/app_name"
             android:src="@drawable/ic_full_logo_primary"
@@ -40,6 +41,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:visibility="visible" />
 
         <com.active.orbit.baseapp.design.widgets.BaseTextView
@@ -64,8 +66,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_lateral"
             android:visibility="gone"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="RtlSymmetry"
             tools:visibility="visible" />
 
