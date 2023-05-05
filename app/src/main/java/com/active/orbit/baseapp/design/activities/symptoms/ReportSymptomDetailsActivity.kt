@@ -1,4 +1,4 @@
-package com.active.orbit.baseapp.design.activities
+package com.active.orbit.baseapp.design.activities.symptoms
 
 import android.os.Bundle
 import android.text.Editable

@@ -23,7 +23,6 @@ import com.active.orbit.baseapp.core.utils.ThreadHandler.backgroundThread
 import com.active.orbit.baseapp.core.utils.ThreadHandler.mainThread
 import com.active.orbit.baseapp.core.utils.TimeUtils
 import com.active.orbit.baseapp.databinding.ActivityReportSymptomTimeBinding
-import com.active.orbit.baseapp.design.activities.ReportSymptomDetailsActivity
 import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation

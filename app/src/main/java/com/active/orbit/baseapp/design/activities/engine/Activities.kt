@@ -1,6 +1,5 @@
 package com.active.orbit.baseapp.design.activities.engine
 
-import com.active.orbit.baseapp.design.activities.*
 import com.active.orbit.baseapp.design.activities.activity.ActivityActivity
 import com.active.orbit.baseapp.design.activities.activity.DebugActivity
 import com.active.orbit.baseapp.design.activities.activity.DetailedActivityActivity
@@ -16,6 +15,7 @@ import com.active.orbit.baseapp.design.activities.symptoms.ReportSymptomTimeActi
 import com.active.orbit.baseapp.design.activities.main.PatientActivity
 import com.active.orbit.baseapp.design.activities.main.SplashActivity
 import com.active.orbit.baseapp.design.activities.messaging.SuccessMessageActivity
+import com.active.orbit.baseapp.design.activities.symptoms.ReportSymptomDetailsActivity
 import com.active.orbit.baseapp.design.activities.tour.TourActivity
 import com.active.orbit.baseapp.design.protocols.ActivityProvider
 
