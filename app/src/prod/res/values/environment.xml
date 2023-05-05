@@ -3,5 +3,7 @@
     <!-- not translatable strings -->
     <string name="app_name" translatable="false">Moving Health</string>
     <string name="base_url" translatable="false" tools:override="true">https://api2.mobinmobility.org</string>
+    <!-- TODO update api key -->
+    <string name="google_api_key" translatable="false" tools:override="true">AIzaSyAbN7c4cU6YIObUPQapsSZs-GKEL5V5K5o</string>
 
 </resources>
