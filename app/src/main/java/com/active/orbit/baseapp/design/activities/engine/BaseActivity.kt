@@ -81,11 +81,10 @@ abstract class BaseActivity : PermissionsActivity() {
      * it computes the results and causes the refresh of the interface via the active data
      */
     protected fun computeResults() {
+        Logger.i("Computing results: viewModel? $viewModel")
         val currentDateTime = TrackerManager.getInstance(this).currentDateTime
         val midnight = com.active.orbit.tracker.utils.Utils.midnightinMsecs(currentDateTime)
-        val context = this
         val endOfDay = midnight + Globals.MSECS_IN_A_DAY
-        Logger.i("Computing results: viewModel? $viewModel")
-        ComputeDayDataAsync(context, viewModel, midnight, endOfDay).computeResultsAsync(viewModel)
+        ComputeDayDataAsync(this, viewModel, midnight, endOfDay).computeResultsAsync(viewModel)
     }
 }
