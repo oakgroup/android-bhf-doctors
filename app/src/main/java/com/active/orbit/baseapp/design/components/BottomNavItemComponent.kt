@@ -3,14 +3,16 @@ package com.active.orbit.baseapp.design.components
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.ViewGroup
+import android.view.View
 import android.widget.FrameLayout
 import com.active.orbit.baseapp.R
-import com.active.orbit.baseapp.databinding.ComponentMenuBinding
+import com.active.orbit.baseapp.core.enums.BottomNavItemType
+import com.active.orbit.baseapp.databinding.ComponentBottomNavItemBinding
+import com.active.orbit.baseapp.databinding.ComponentBottomNavigationBinding
 
-class MenuComponent : FrameLayout {
+class BottomNavItemComponent : FrameLayout {
 
-    internal lateinit var binding: ComponentMenuBinding
+    internal lateinit var binding: ComponentBottomNavItemBinding
 
     constructor(context: Context) : super(context) {
         prepare(null)
@@ -25,12 +27,12 @@ class MenuComponent : FrameLayout {
     }
 
     private fun prepare(attrs: AttributeSet?) {
-        binding = ComponentMenuBinding.inflate(LayoutInflater.from(context), this, true)
-        layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        binding = ComponentBottomNavItemBinding.inflate(LayoutInflater.from(context))
+        addView(binding.root)
 
     }
 
-    fun setIconLight() {
-        binding.image.setImageResource(R.drawable.ic_menu)
+    fun setImage(image: Int) {
+        binding.image.setImageResource(image)
     }
 }
