@@ -8,6 +8,7 @@ import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.recyclers.adapters.ActivitiesAdapter
 import com.active.orbit.baseapp.design.recyclers.models.TripModel
 import com.active.orbit.tracker.retrieval.data.TripData
+import com.google.android.gms.location.DetectedActivity
 
 class DetailedActivityActivity : BaseActivity() {
 
@@ -41,7 +42,8 @@ class DetailedActivityActivity : BaseActivity() {
     }
 
     private fun showActivities(tripsList: List<TripData>) {
-        val tripModels = tripsList.map { TripModel(it) }
+        var tripModels = tripsList.map { TripModel(it) }
+        tripModels = tripModels.filter { it.activityType != DetectedActivity.STILL }
         if (tripsList.isEmpty()) {
             binding.noActivities.visibility = View.VISIBLE
         } else {
