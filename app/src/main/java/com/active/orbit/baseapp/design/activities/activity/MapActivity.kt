@@ -5,18 +5,18 @@ import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
+import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.utils.Logger
 import com.active.orbit.baseapp.databinding.ActivityMapBinding
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
+import com.active.orbit.baseapp.design.activities.main.PatientActivity
+import com.active.orbit.baseapp.design.recyclers.models.TripModel
 import com.active.orbit.baseapp.design.utils.ActivityUtils
+import com.active.orbit.baseapp.design.utils.CadenceGraphDisplay
+import com.active.orbit.tracker.tracker.sensors.location_recognition.LocationData
 import com.google.android.gms.location.DetectedActivity
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.*
-import com.active.orbit.baseapp.R
-import com.active.orbit.baseapp.design.activities.main.PatientActivity
-import com.active.orbit.baseapp.design.recyclers.models.TripModel
-import com.active.orbit.baseapp.design.utils.CadenceGraphDisplay
-import com.active.orbit.tracker.tracker.sensors.location_recognition.LocationData
 
 
 class MapActivity : BaseActivity(), OnMapReadyCallback, View.OnClickListener {
@@ -52,7 +52,7 @@ class MapActivity : BaseActivity(), OnMapReadyCallback, View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        when(v){
+        when (v) {
             binding.floatingLeftArrow -> {
                 tripPosition--
                 currentTrip = displayedTripsList[tripPosition]
@@ -106,21 +106,31 @@ class MapActivity : BaseActivity(), OnMapReadyCallback, View.OnClickListener {
     }
 
     private fun decideOnFabsVisibility() {
-        binding.floatingLeftArrow.isClickable = true
-        binding.floatingLeftArrow.visibility = View.VISIBLE
-        binding.floatingRightArrow.isClickable = true
-        binding.floatingRightArrow.visibility = View.VISIBLE
-        when (tripPosition) {
-            0 -> {
-                binding.floatingLeftArrow.isClickable = false
-                binding.floatingLeftArrow.visibility = View.INVISIBLE
-            }
-            displayedTripsList.size - 1 -> {
-                binding.floatingRightArrow.isClickable = false
-                binding.floatingRightArrow.visibility = View.INVISIBLE
-            }
-            else -> {
-
+        if (displayedTripsList.size <= 1) {
+            binding.floatingLeftArrow.isClickable = false
+            binding.floatingLeftArrow.visibility = View.INVISIBLE
+            binding.floatingRightArrow.isClickable = false
+            binding.floatingRightArrow.visibility = View.INVISIBLE
+        } else {
+            when (tripPosition) {
+                0 -> {
+                    binding.floatingLeftArrow.isClickable = false
+                    binding.floatingLeftArrow.visibility = View.INVISIBLE
+                    binding.floatingRightArrow.isClickable = true
+                    binding.floatingRightArrow.visibility = View.VISIBLE
+                }
+                displayedTripsList.size - 1 -> {
+                    binding.floatingLeftArrow.isClickable = true
+                    binding.floatingLeftArrow.visibility = View.VISIBLE
+                    binding.floatingRightArrow.isClickable = false
+                    binding.floatingRightArrow.visibility = View.INVISIBLE
+                }
+                else -> {
+                    binding.floatingLeftArrow.isClickable = true
+                    binding.floatingLeftArrow.visibility = View.VISIBLE
+                    binding.floatingRightArrow.isClickable = true
+                    binding.floatingRightArrow.visibility = View.VISIBLE
+                }
             }
         }
     }
