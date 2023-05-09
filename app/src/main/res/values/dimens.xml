@@ -30,13 +30,13 @@
 
 
     <dimen name="logo_dimension">@dimen/h0</dimen>
-    <dimen name="main_text_dimension">@dimen/h4</dimen>
-    <dimen name="description_text_dimension">@dimen/h4</dimen>
-    <dimen name="item_description_text_dimension">@dimen/h4</dimen>
+    <dimen name="main_text_dimension">@dimen/h5</dimen>
+    <dimen name="description_text_dimension">@dimen/h5</dimen>
+    <dimen name="item_description_text_dimension">@dimen/h5</dimen>
     <dimen name="item_title_text_dimension">@dimen/h3</dimen>
     <dimen name="big_text_dimension">@dimen/h4</dimen>
-    <dimen name="button_primary_text_dimension">@dimen/h2</dimen>
-    <dimen name="button_secondary_text_dimension">@dimen/h2</dimen>
+    <dimen name="button_primary_text_dimension">@dimen/h3</dimen>
+    <dimen name="button_secondary_text_dimension">@dimen/h3</dimen>
     <dimen name="button_tertiary_text_dimension">@dimen/h3</dimen>
     <dimen name="input_primary_text_dimension">@dimen/h3</dimen>
 
