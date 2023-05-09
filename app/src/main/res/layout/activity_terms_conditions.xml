@@ -85,7 +85,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/terms_and_conditions"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorPrimary"
             android:textSize="@dimen/main_text_dimension" />
 
         <com.active.orbit.baseapp.design.widgets.BaseCheckBox
@@ -116,7 +116,7 @@
             android:layout_height="wrap_content"
             android:gravity="end"
             android:text="2/4"
-            android:textColor="@color/textColorPrimaryLight"
+            android:textColor="@color/colorSecondary"
             android:textSize="@dimen/h5"
             app:typeface="semibold"
             tools:ignore="HardcodedText" />

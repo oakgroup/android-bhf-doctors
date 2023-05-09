@@ -25,7 +25,7 @@
     <color name="textColorGray">@color/gray</color>
     <color name="textColorPrimary">@color/white</color>
     <color name="textColorPrimaryDark">@color/black</color>
-    <color name="textColorPrimaryLight">@color/colorSecondary</color>
+    <color name="textColorPrimaryLight">#B5E3EB</color>
     <color name="textColorInputHint">@color/textColorPrimaryLight</color>
     <color name="textColorWhite">#FFFFFF</color>
     <color name="toolbarColorBackground">@color/colorTransparent</color>
