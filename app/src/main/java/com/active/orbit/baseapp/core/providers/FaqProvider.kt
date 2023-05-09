@@ -104,7 +104,7 @@ class FaqProvider private constructor(private val context: Context) {
         category3.subCategories.add(category3sub1)
         category3.subCategories.add(category3sub2)
 
-        val root = FaqModel(context.getString(R.string.frequently_asked_questions))
+        val root = FaqModel(context.getString(R.string.faqs))
         root.position = 0
         root.subCategories.add(category1)
         root.subCategories.add(category2)

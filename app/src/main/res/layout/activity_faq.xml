@@ -4,44 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context=".design.activities.menu.FaqActivity">
+
+    <com.active.orbit.baseapp.design.widgets.BaseTextView
+        android:id="@+id/faqTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_lateral"
+        android:layout_marginTop="@dimen/margin_vertical"
+        android:gravity="start"
+        android:text="@string/frequently_asked_questions"
+        android:textColor="@color/textColorPrimaryDark"
+        android:textSize="@dimen/h2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:typeface="bold"
+        tools:ignore="NotSibling" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
+        android:layout_margin="@dimen/margin_vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintTop_toBottomOf="@id/faqTitle"
         tools:ignore="NotSibling">
-
-        <com.active.orbit.baseapp.design.widgets.BaseTextView
-            android:id="@+id/faqTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryLight"
-            android:paddingStart="@dimen/margin_lateral"
-            android:paddingTop="@dimen/margin_lateral"
-            android:paddingEnd="@dimen/margin_lateral"
-            android:paddingBottom="@dimen/margin_lateral"
-            android:text="@string/app_name"
-            android:textColor="@color/black"
-            android:textSize="@dimen/h0"
-            android:visibility="gone"
-            app:typeface="bold"
-            tools:visibility="visible" />
 
         <com.active.orbit.baseapp.design.recyclers.engine.BaseRecyclerView
             android:id="@+id/faqCategories"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/margin_lateral_half"
-            android:layout_marginEnd="@dimen/margin_lateral_half"
-            android:layout_marginBottom="@dimen/margin_lateral_half" />
+            android:background="@color/colorBackground"
+            android:clipToPadding="false" />
 
         <ScrollView
             android:id="@+id/questionAnswerContainer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:background="@drawable/bg_panel"
+            android:layout_height="wrap_content"
             android:visibility="gone"
             tools:visibility="visible">
 
@@ -50,8 +52,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autoLink="web|email"
-                android:padding="24dp"
-                android:textSize="@dimen/h2" />
+                android:textColor="@color/textColorPrimaryDark"
+                android:paddingHorizontal="@dimen/margin_lateral"
+                android:paddingVertical="@dimen/margin_vertical"
+                android:textSize="@dimen/main_text_dimension"
+                app:typeface="regular" />
 
         </ScrollView>
 

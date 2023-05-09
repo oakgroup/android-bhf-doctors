@@ -2,8 +2,6 @@ package com.active.orbit.baseapp.design.activities.menu
 
 import android.os.Bundle
 import android.view.View
-import androidx.recyclerview.widget.DividerItemDecoration
-import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.providers.FaqProvider
 import com.active.orbit.baseapp.core.routing.enums.Extra
 import com.active.orbit.baseapp.core.utils.Constants
@@ -22,14 +20,14 @@ class FaqActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityFaqBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setToolbarTitle(R.string.frequently_asked_questions)
         showBackButton()
+        showLogoButton()
 
-        val modelId = activityBundle.getInt(Extra.MODEL_ID.key)
+        val modelId = activityBundle.getInt(Extra.IDENTIFIER.key)
         if (modelId != Constants.INVALID) {
             faqModel = FaqProvider.getInstance(this).getById(modelId)
             if (faqModel!!.hasSubCategories()) {
-                setToolbarTitle(faqModel!!.category)
+                setFaqTitle(faqModel!!.category)
             }
         } else {
             faqModel = FaqProvider.getInstance(this).faqs.first()
@@ -38,18 +36,14 @@ class FaqActivity : BaseActivity() {
         prepare()
     }
 
-
     private fun prepare() {
         if (faqModel!!.hasSubCategories()) {
             val linearLayoutManager = BaseLinearLayoutManager(this)
             binding.faqCategories.layoutManager = linearLayoutManager
             val adapter = FaqAdapter(this, faqModel!!.subCategories.toTypedArray())
             binding.faqCategories.adapter = adapter
-            val dividerItemDecoration = DividerItemDecoration(this, linearLayoutManager.orientation)
-            binding.faqCategories.addItemDecoration(dividerItemDecoration)
         } else {
             showResponse()
-            setToolbarTitle(Constants.EMPTY)
         }
     }
 

@@ -52,6 +52,7 @@ class DoctorActivity : BaseActivity(), View.OnClickListener {
 
         if (Preferences.user(this).isUserRegistered()) {
             binding.tourPanel.setPanel(MainPanelType.PRESCRIPTIONS_DOCTOR)
+            binding.tourPanel.visibility = View.GONE
 
             backgroundThread {
                 val idProgram = Preferences.user(this).idProgram ?: Constants.EMPTY
