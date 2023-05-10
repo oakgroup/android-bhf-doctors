@@ -8,7 +8,7 @@
     <color name="colorBackground">#E3E3E3</color>
     <color name="colorBackgroundSecondary">#29282B</color>
     <color name="colorBackgroundPanel">@color/colorPrimaryLight</color>
-    <color name="colorBackgroundMainScreenItems">#CCFEFCFF</color>
+    <color name="colorBackgroundMainScreenItems">@color/white</color>
     <color name="colorBackgroundPrimaryEnd">#FFFFFF</color>
     <color name="colorBackgroundPrimaryStart">#9DCCEE</color>
     <color name="colorDialog">#96000000</color>

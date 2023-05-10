@@ -46,8 +46,8 @@ open class CircularProgressBar(context: Context, attrs: AttributeSet?, defStyleA
 
     private var mLineWidth = UiUtils.dp2px(resources, 20f)
     private var mTextColor = ContextCompat.getColor(context, R.color.textColorPrimaryDark)
-    private var mBackgroundLineColor = ContextCompat.getColor(context, R.color.colorPrimaryLight)
-    private var mProgressLineColor = ContextCompat.getColor(context, R.color.colorAccent)
+    private var mBackgroundLineColor = ContextCompat.getColor(context, R.color.gray)
+    private var mProgressLineColor = ContextCompat.getColor(context, R.color.colorPrimary)
 
     private val mPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private var animator: ValueAnimator? = null

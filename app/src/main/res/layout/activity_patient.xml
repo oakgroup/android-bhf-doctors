@@ -4,47 +4,65 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".design.activities.main.PatientActivity"
-    tools:openDrawer="start">
+    tools:context=".design.activities.main.PatientActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_main_screen">
+        android:background="@color/colorBackground">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginHorizontal="@dimen/margin_lateral"
-            android:layout_marginTop="@dimen/toolbar_height"
-            android:layout_marginBottom="@dimen/margin_vertical_double"
-            android:orientation="vertical"
+            android:scrollbars="none"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar"
             tools:ignore="NotSibling">
 
-            <com.active.orbit.baseapp.design.components.MainPanelComponent
-                android:id="@+id/panelSymptoms"
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="@dimen/margin_vertical"
-                android:visibility="gone"
-                android:layout_weight="1">
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/margin_vertical_double"
+                android:paddingBottom="100dp"
+                android:orientation="vertical">
 
-            </com.active.orbit.baseapp.design.components.MainPanelComponent>
+                <com.active.orbit.baseapp.design.components.SecondaryPanelComponent
+                    android:id="@+id/activityPanel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <com.active.orbit.baseapp.design.components.MainPanelComponent
-                android:id="@+id/panelActivity"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="@dimen/margin_vertical"
-                android:layout_weight="1">
+                </com.active.orbit.baseapp.design.components.SecondaryPanelComponent>
 
-            </com.active.orbit.baseapp.design.components.MainPanelComponent>
+                <com.active.orbit.baseapp.design.components.SecondaryPanelComponent
+                    android:id="@+id/mobilityPanel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_vertical_double">
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
+                </com.active.orbit.baseapp.design.components.SecondaryPanelComponent>
+
+                <com.active.orbit.baseapp.design.components.SecondaryPanelComponent
+                    android:id="@+id/physiologyPanel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_vertical_double">
+
+                </com.active.orbit.baseapp.design.components.SecondaryPanelComponent>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </ScrollView>
+
+        <com.active.orbit.baseapp.design.components.BottomNavigationComponent
+            android:id="@+id/bottomNav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
