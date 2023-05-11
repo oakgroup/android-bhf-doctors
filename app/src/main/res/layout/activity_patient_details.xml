@@ -182,7 +182,7 @@
             android:layout_height="wrap_content"
             android:gravity="end"
             android:text="3/4"
-            android:textColor="@color/colorSecondary"
+            android:textColor="@color/colorPrimary"
             android:textSize="@dimen/h5"
             app:typeface="semibold"
             android:visibility="gone"
