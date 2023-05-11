@@ -10,7 +10,7 @@ import com.active.orbit.baseapp.BuildConfig
  */
 object Logger {
 
-    private const val TAG = "Doctors"
+    private const val TAG = "MovingHealth"
 
     fun v(text: String) {
         v(TAG, text)

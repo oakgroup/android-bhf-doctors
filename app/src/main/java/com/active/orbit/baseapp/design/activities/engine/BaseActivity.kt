@@ -1,15 +1,13 @@
 package com.active.orbit.baseapp.design.activities.engine
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.routing.enums.Extra
 import com.active.orbit.baseapp.core.utils.Logger
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
-import com.active.orbit.tracker.MyViewModel
-import com.active.orbit.tracker.TrackerManager
-import com.active.orbit.tracker.retrieval.ComputeDayDataAsync
-import com.active.orbit.tracker.utils.Globals
+import com.active.orbit.tracker.core.computation.DailyComputation
+import com.active.orbit.tracker.core.tracker.TrackerManager
+import com.active.orbit.tracker.core.utils.TimeUtils
 
 /**
  * Abstract activity that should be extended from all the other activities
@@ -22,8 +20,6 @@ abstract class BaseActivity : PermissionsActivity() {
     private var isFromOnCreate = true
 
     protected lateinit var thiss: BaseActivity
-
-    val viewModel: MyViewModel by viewModels()
 
     companion object {
         const val MESSAGE_PATH = "/message"
@@ -78,13 +74,12 @@ abstract class BaseActivity : PermissionsActivity() {
     }
 
     /**
-     * it computes the results and causes the refresh of the interface via the active data
+     * This computes the results and causes the refresh of the interface via the active data
      */
     protected fun computeResults() {
-        Logger.i("Computing results: viewModel? $viewModel")
         val currentDateTime = TrackerManager.getInstance(this).currentDateTime
-        val midnight = com.active.orbit.tracker.utils.Utils.midnightinMsecs(currentDateTime)
-        val endOfDay = midnight + Globals.MSECS_IN_A_DAY
-        ComputeDayDataAsync(this, viewModel, midnight, endOfDay).computeResultsAsync(viewModel)
+        val midnight = TimeUtils.midnightInMsecs(currentDateTime)
+        val endOfDay = midnight + TimeUtils.ONE_DAY_MILLIS
+        DailyComputation(this, midnight, endOfDay).computeResultsAsync()
     }
 }

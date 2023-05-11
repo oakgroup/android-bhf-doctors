@@ -11,7 +11,6 @@ import com.active.orbit.baseapp.databinding.ActivityActivityBinding
 import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
-import kotlin.math.roundToInt
 
 class ActivityActivity : BaseActivity() {
 
@@ -59,9 +58,12 @@ class ActivityActivity : BaseActivity() {
     }
 
     /**
-     * it initialises the view model and the methods used to retrieve the live data for the interface
+     * This initialises the view model and the methods used to retrieve the live data for the interface
      */
     private fun initObservers() {
+
+        // TODO tracker rework
+        /*
         viewModel.mobilityChart?.observe(this) { mobilityChart ->
             var minutesWalking = 0L
             var distanceWalking = 0
@@ -105,10 +107,13 @@ class ActivityActivity : BaseActivity() {
 
             binding.pullToRefresh.isRefreshing = false
         }
+        */
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        viewModel.mobilityChart?.removeObservers(this)
+
+        // TODO tracker rework
+        // viewModel.mobilityChart?.removeObservers(this)
     }
 }

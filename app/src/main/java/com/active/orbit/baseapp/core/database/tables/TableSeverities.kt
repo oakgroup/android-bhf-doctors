@@ -14,7 +14,7 @@ object TableSeverities {
             return Database.getInstance(context).getSeverities().getAllForSymptom(idSymptom)
         } catch (e: Exception) {
             e.printStackTrace()
-            Logger.e("Error on getting all options for symptom $idSymptom from database ${e.message}")
+            Logger.e("Error on getting all options for symptom $idSymptom from database ${e.localizedMessage}")
         }
         return arrayListOf()
     }
@@ -25,7 +25,7 @@ object TableSeverities {
             return Database.getInstance(context).getSeverities().getByIdForSymptom(idSymptom, idSeverity)
         } catch (e: Exception) {
             e.printStackTrace()
-            Logger.e("Error on getting option by id $idSeverity for symptom $idSymptom from database ${e.message}")
+            Logger.e("Error on getting option by id $idSeverity for symptom $idSymptom from database ${e.localizedMessage}")
         }
         return null
     }
@@ -41,7 +41,7 @@ object TableSeverities {
             Database.getInstance(context).getSeverities().upsert(models)
         } catch (e: Exception) {
             e.printStackTrace()
-            Logger.e("Error on upsert options to database ${e.message}")
+            Logger.e("Error on upsert options to database ${e.localizedMessage}")
         }
     }
 
@@ -51,7 +51,7 @@ object TableSeverities {
             Database.getInstance(context).getSeverities().delete(idSeverity)
         } catch (e: Exception) {
             e.printStackTrace()
-            Logger.e("Error on delete option with id $idSeverity from database ${e.message}")
+            Logger.e("Error on delete option with id $idSeverity from database ${e.localizedMessage}")
         }
     }
 
@@ -61,7 +61,7 @@ object TableSeverities {
             Database.getInstance(context).getSeverities().truncate()
         } catch (e: Exception) {
             e.printStackTrace()
-            Logger.e("Error on truncate options from database ${e.message}")
+            Logger.e("Error on truncate options from database ${e.localizedMessage}")
         }
     }
 }

@@ -15,7 +15,7 @@ class BaseGridLayoutManager(context: Context?, spanCount: Int) : GridLayoutManag
         try {
             super.onLayoutChildren(recycler, state)
         } catch (e: Exception) {
-            Logger.e("Exception on recycler grid layout manager: ${e.message}")
+            Logger.e("Exception on recycler grid layout manager: ${e.localizedMessage}")
         }
     }
 }

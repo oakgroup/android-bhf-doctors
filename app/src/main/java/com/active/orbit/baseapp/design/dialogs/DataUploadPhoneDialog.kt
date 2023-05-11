@@ -14,8 +14,8 @@ import com.active.orbit.baseapp.core.utils.ThreadHandler.mainThread
 import com.active.orbit.baseapp.core.utils.TimeUtils
 import com.active.orbit.baseapp.core.utils.Utils
 import com.active.orbit.baseapp.design.dialogs.listeners.DataUploadPhoneDialogListener
-import com.active.orbit.tracker.listeners.ResultListener
-import com.active.orbit.tracker.restarter.TrackerRestarter
+import com.active.orbit.tracker.core.listeners.ResultListener
+import com.active.orbit.tracker.core.restarter.TrackerRestarter
 
 class DataUploadPhoneDialog : DialogFragment() {
 

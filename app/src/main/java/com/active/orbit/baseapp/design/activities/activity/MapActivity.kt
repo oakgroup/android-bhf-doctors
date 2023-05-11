@@ -13,7 +13,7 @@ import com.active.orbit.baseapp.design.activities.main.PatientActivity
 import com.active.orbit.baseapp.design.recyclers.models.TripModel
 import com.active.orbit.baseapp.design.utils.ActivityUtils
 import com.active.orbit.baseapp.design.utils.CadenceGraphDisplay
-import com.active.orbit.tracker.tracker.sensors.location_recognition.LocationData
+import com.active.orbit.tracker.core.database.models.DBLocation
 import com.google.android.gms.location.DetectedActivity
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.*
@@ -87,7 +87,7 @@ class MapActivity : BaseActivity(), OnMapReadyCallback, View.OnClickListener {
     }
 
     /**
-     * it shows the cadence graph for relevant activities
+     * This shows the cadence graph for relevant activities
      *
      */
     private fun showCadenceIfRelevant() {
@@ -158,7 +158,7 @@ class MapActivity : BaseActivity(), OnMapReadyCallback, View.OnClickListener {
     }
 
     /**
-     * it displays the trip onto the map
+     * This displays the trip onto the map
      * @param trip
      */
 
@@ -197,7 +197,7 @@ class MapActivity : BaseActivity(), OnMapReadyCallback, View.OnClickListener {
         } //if <= 1 it will crash so add the same location twice - otherwise it will not focus
         when (locations.size) {
             1 -> locations.add(locations[0])
-            0 -> locations.add(LocationData(trip.chart[trip.startTime].timeInMSecs, 0.0, 0.0, 0.0, 0.0))
+            0 -> locations.add(DBLocation(trip.chart[trip.startTime].timeInMSecs, 0.0, 0.0, 0.0, 0.0))
             else -> addStartEndTags(locations)
 
         }
@@ -217,11 +217,11 @@ class MapActivity : BaseActivity(), OnMapReadyCallback, View.OnClickListener {
     }
 
     /**
-     * it add a green and red start to movements trips
+     * This add a green and red start to movements trips
      *
      * @param locations
      */
-    private fun addStartEndTags(locations: MutableList<LocationData>) {
+    private fun addStartEndTags(locations: MutableList<DBLocation>) {
         if (currentTrip?.activityType != DetectedActivity.STILL) {
             map!!.addMarker(createMarker(locations[0], BitmapDescriptorFactory.HUE_GREEN))
             map!!.addMarker(createMarker(locations[locations.size - 1], BitmapDescriptorFactory.HUE_ORANGE))
@@ -231,12 +231,12 @@ class MapActivity : BaseActivity(), OnMapReadyCallback, View.OnClickListener {
     /**
      * used to create the start and end circles for a moving trajectory
      *
-     * @param locationData
+     * @param DBLocation
      * @param color
      * @return
      */
-    private fun createMarker(locationData: LocationData, strokeColor: Float): MarkerOptions {
-        val currMarker = LatLng(locationData.latitude, locationData.longitude)
+    private fun createMarker(location: DBLocation, strokeColor: Float): MarkerOptions {
+        val currMarker = LatLng(location.latitude, location.longitude)
         return MarkerOptions()
             .position(currMarker)
             .icon(BitmapDescriptorFactory.defaultMarker(strokeColor))

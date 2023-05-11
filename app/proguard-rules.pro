@@ -84,10 +84,8 @@
 
 ## Begin | proguard configuration for project serialization models
 -keep class com.active.orbit.baseapp.core.serialization.** { *; }
--keep class com.active.orbit.baseapp.demo.core.serialization.** { *; }
 ## End | proguard configuration for project serialization models
 
 ## Begin | proguard configuration for project deserialization models
 -keep class com.active.orbit.baseapp.core.deserialization.** { *; }
--keep class com.active.orbit.baseapp.demo.core.deserialization.** { *; }
 ## End | proguard configuration for project deserialization models

@@ -6,11 +6,11 @@ import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.utils.Logger
 import com.active.orbit.baseapp.databinding.ActivityDebugBinding
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
-import com.active.orbit.tracker.retrieval.data.MobilityElementData
-import com.active.orbit.tracker.tracker.sensors.activity_recognition.ActivityData
-import com.active.orbit.tracker.tracker.sensors.location_recognition.LocationData
-import com.active.orbit.tracker.tracker.sensors.step_counting.StepsData
-import com.active.orbit.tracker.utils.Utils
+import com.active.orbit.tracker.core.computation.data.MobilityData
+import com.active.orbit.tracker.core.database.models.DBActivity
+import com.active.orbit.tracker.core.database.models.DBLocation
+import com.active.orbit.tracker.core.database.models.DBStep
+import com.active.orbit.tracker.core.utils.TimeUtils
 
 class DebugActivity : BaseActivity() {
 
@@ -29,7 +29,7 @@ class DebugActivity : BaseActivity() {
         // TODO wear synchronisation
         /*
         binding.wearSync.setOnClickListener {
-            Logger.i("requesting wear sync")
+            Logger.i("Requesting wear sync")
             val intent = Intent(this, WearSync::class.java)
             startActivity(intent)
         }
@@ -37,28 +37,29 @@ class DebugActivity : BaseActivity() {
     }
 
     /**
-     * it initialises the view model and the methods used to retrieve the live data for the interface
+     * This initialises the view model and the methods used to retrieve the live data for the interface
      */
     private fun initObservers() {
-        Logger.i("registering Observers: ViewModel? ${viewModel}")
-
+        // TODO tracker rework
+        /*
         // changes to the UI when the data changes
         viewModel.stepsDataList.observe(this) { stepsList ->
-            Logger.i("inserting steps")
+            Logger.i("Inserting steps")
             refreshStepsData(stepsList)
         }
         viewModel.activitiesDataList.observe(this) { activityList ->
-            Logger.i("inserting activities")
+            Logger.i("Inserting activities")
             refreshActivitiesData(activityList)
         }
         viewModel.locationsDataList.observe(this) { locationsList ->
-            Logger.i("inserting locations")
+            Logger.i("Inserting locations")
             refreshLocationsData(locationsList)
         }
         viewModel.mobilityChart?.observe(this) { mobilityChart ->
-            Logger.i("inserting chart")
+            Logger.i("Inserting chart")
             refreshMobilityChart(mobilityChart.chart)
         }
+        */
     }
 
     /**
@@ -66,7 +67,7 @@ class DebugActivity : BaseActivity() {
      * @param mobilityChart the  mobility chart received
      */
     @SuppressLint("SetTextI18n")
-    private fun refreshMobilityChart(mobilityChart: List<MobilityElementData>?) {
+    private fun refreshMobilityChart(mobilityChart: List<MobilityData>?) {
         val textField = binding.mobilityChart
         if (mobilityChart != null && mobilityChart.isNotEmpty()) {
             var concatenatedString = ""
@@ -83,7 +84,7 @@ class DebugActivity : BaseActivity() {
      * @param stepsList teh steplist received
      */
     @SuppressLint("SetTextI18n")
-    private fun refreshStepsData(stepsList: List<StepsData>) {
+    private fun refreshStepsData(stepsList: List<DBStep>) {
         val textField = binding.steps
         var numberOfSteps = 0
         var concatenatedString = ""
@@ -93,7 +94,7 @@ class DebugActivity : BaseActivity() {
         for (stepData in stepsList) {
             stepData.let {
                 numberOfSteps += it.steps - previoussteps
-                concatenatedString += "\n" + Utils.millisecondsToString(it.timeInMsecs, "HH:mm:ss") + " " + (it.steps - previoussteps)
+                concatenatedString += "\n" + TimeUtils.formatMillis(it.timeInMillis, "HH:mm:ss") + " " + (it.steps - previoussteps)
                 previoussteps = it.steps
             }
         }
@@ -105,7 +106,7 @@ class DebugActivity : BaseActivity() {
      * @param activityList teh list of activities received
      */
     @SuppressLint("SetTextI18n")
-    private fun refreshActivitiesData(activityList: List<ActivityData>) {
+    private fun refreshActivitiesData(activityList: List<DBActivity>) {
         val textField = binding.activities
         var activitiesString = ""
         for (activityData in activityList)
@@ -119,17 +120,17 @@ class DebugActivity : BaseActivity() {
      * @param locationsList the list of locations
      */
     @SuppressLint("SetTextI18n")
-    private fun refreshLocationsData(locationsList: List<LocationData?>) {
+    private fun refreshLocationsData(locationsList: List<DBLocation?>) {
         val textField = binding.locations
         var locationsString = ""
-        for (locationData in locationsList)
-            locationsString += "\n   $locationData"
+        for (location in locationsList)
+            locationsString += "\n   $location"
         textField.text = "Locations: " + locationsList.size + locationsString
     }
 
 
     /**
-     * it refreshes the content of the interface     *
+     * This refreshes the content of the interface     *
      * @param binding the binding of the interface
      */
     private fun resetInterface() {
@@ -148,9 +149,13 @@ class DebugActivity : BaseActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
+
+        // TODO tracker rework
+        /*
         viewModel.stepsDataList.removeObservers(this)
         viewModel.activitiesDataList.removeObservers(this)
         viewModel.locationsDataList.removeObservers(this)
         viewModel.mobilityChart?.removeObservers(this)
+        */
     }
 }

@@ -3,6 +3,7 @@ package com.active.orbit.baseapp.core.preferences.engine
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.Resources
+import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.utils.Logger
 
 /**
@@ -18,8 +19,6 @@ abstract class BasePreferences {
 
     companion object {
 
-        private const val filename = PreferencesKeys.filename
-
         fun logout(context: Context) {
             Preferences.backend(context).logout()
             Preferences.lifecycle(context).logout()
@@ -27,7 +26,7 @@ abstract class BasePreferences {
         }
 
         fun printAll(context: Context) {
-            val prefs = context.getSharedPreferences(filename, Context.MODE_PRIVATE)
+            val prefs = context.getSharedPreferences(context.getString(R.string.preference_filename_key), Context.MODE_PRIVATE)
             Logger.d("Stored Preferences")
             for ((key, value) in prefs.all)
                 Logger.d("$key - $value")
@@ -36,7 +35,7 @@ abstract class BasePreferences {
 
     internal fun setupPreferences(context: Context) {
         res = context.resources
-        prefs = context.getSharedPreferences(filename, Context.MODE_PRIVATE)
+        prefs = context.getSharedPreferences(context.getString(R.string.preference_filename_key), Context.MODE_PRIVATE)
     }
 
     abstract fun logout()

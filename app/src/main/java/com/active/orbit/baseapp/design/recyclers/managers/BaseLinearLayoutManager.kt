@@ -15,7 +15,7 @@ class BaseLinearLayoutManager(context: Context?) : LinearLayoutManager(context) 
         try {
             super.onLayoutChildren(recycler, state)
         } catch (e: Exception) {
-            Logger.e("Exception on recycler linear layout manager: ${e.message}")
+            Logger.e("Exception on recycler linear layout manager: ${e.localizedMessage}")
         }
     }
 }

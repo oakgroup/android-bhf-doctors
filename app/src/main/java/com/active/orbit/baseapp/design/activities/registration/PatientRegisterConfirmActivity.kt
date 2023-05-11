@@ -26,7 +26,7 @@ import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnim
 import com.active.orbit.baseapp.design.dialogs.ConfirmRegistrationDialog
 import com.active.orbit.baseapp.design.dialogs.listeners.ConfirmRegistrationDialogListener
 import com.active.orbit.baseapp.design.utils.UiUtils
-import com.active.orbit.tracker.TrackerManager
+import com.active.orbit.tracker.core.tracker.TrackerManager
 
 class PatientRegisterConfirmActivity : BaseActivity(), View.OnClickListener {
 

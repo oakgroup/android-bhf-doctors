@@ -20,7 +20,7 @@ import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
 import com.active.orbit.baseapp.design.protocols.ActivityProvider
-import com.active.orbit.tracker.TrackerManager
+import com.active.orbit.tracker.core.tracker.TrackerManager
 import java.util.*
 
 /**

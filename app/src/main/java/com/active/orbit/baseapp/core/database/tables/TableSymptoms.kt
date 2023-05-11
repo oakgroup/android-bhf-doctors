@@ -14,7 +14,7 @@ object TableSymptoms {
             return Database.getInstance(context).getSymptoms().getAllForProgram(idProgram)
         } catch (e: Exception) {
             e.printStackTrace()
-            Logger.e("Error on getting all symptoms for program $idProgram from database ${e.message}")
+            Logger.e("Error on getting all symptoms for program $idProgram from database ${e.localizedMessage}")
         }
         return arrayListOf()
     }
@@ -25,7 +25,7 @@ object TableSymptoms {
             return Database.getInstance(context).getSymptoms().getByIdForProgram(idProgram, idSymptom)
         } catch (e: Exception) {
             e.printStackTrace()
-            Logger.e("Error on getting symptom by id $idSymptom for program $idProgram from database ${e.message}")
+            Logger.e("Error on getting symptom by id $idSymptom for program $idProgram from database ${e.localizedMessage}")
         }
         return null
     }
@@ -41,7 +41,7 @@ object TableSymptoms {
             Database.getInstance(context).getSymptoms().upsert(models)
         } catch (e: Exception) {
             e.printStackTrace()
-            Logger.e("Error on upsert symptoms to database ${e.message}")
+            Logger.e("Error on upsert symptoms to database ${e.localizedMessage}")
         }
     }
 
@@ -51,7 +51,7 @@ object TableSymptoms {
             Database.getInstance(context).getSymptoms().delete(idSymptom)
         } catch (e: Exception) {
             e.printStackTrace()
-            Logger.e("Error on delete symptom with id $idSymptom from database ${e.message}")
+            Logger.e("Error on delete symptom with id $idSymptom from database ${e.localizedMessage}")
         }
     }
 
@@ -61,7 +61,7 @@ object TableSymptoms {
             Database.getInstance(context).getSymptoms().truncate()
         } catch (e: Exception) {
             e.printStackTrace()
-            Logger.e("Error on truncate symptoms from database ${e.message}")
+            Logger.e("Error on truncate symptoms from database ${e.localizedMessage}")
         }
     }
 }

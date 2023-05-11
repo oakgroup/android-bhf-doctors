@@ -37,8 +37,10 @@ class DoctorActivity : BaseActivity(), View.OnClickListener {
 
         ProgrammesManager.downloadProgrammes(thiss)
 
-        if (!Preferences.lifecycle(this).userDetailsUploaded) {
-            FirestoreProvider.getInstance().updateUserDetails(this)
+        if (Preferences.user(this).isUserRegistered()) {
+            if (!Preferences.lifecycle(this).userDetailsUploaded) {
+                FirestoreProvider.getInstance().updateUserDetails(this)
+            }
         }
     }
 

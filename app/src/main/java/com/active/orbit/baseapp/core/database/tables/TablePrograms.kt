@@ -14,7 +14,7 @@ object TablePrograms {
             return Database.getInstance(context).getPrograms().getAll()
         } catch (e: Exception) {
             e.printStackTrace()
-            Logger.e("Error on getting all programs from database ${e.message}")
+            Logger.e("Error on getting all programs from database ${e.localizedMessage}")
         }
         return arrayListOf()
     }
@@ -25,7 +25,7 @@ object TablePrograms {
             return Database.getInstance(context).getPrograms().getById(idProgram)
         } catch (e: Exception) {
             e.printStackTrace()
-            Logger.e("Error on getting program by id $idProgram from database ${e.message}")
+            Logger.e("Error on getting program by id $idProgram from database ${e.localizedMessage}")
         }
         return null
     }
@@ -41,7 +41,7 @@ object TablePrograms {
             Database.getInstance(context).getPrograms().upsert(models)
         } catch (e: Exception) {
             e.printStackTrace()
-            Logger.e("Error on upsert programs to database ${e.message}")
+            Logger.e("Error on upsert programs to database ${e.localizedMessage}")
         }
     }
 
@@ -51,7 +51,7 @@ object TablePrograms {
             Database.getInstance(context).getPrograms().delete(idProgram)
         } catch (e: Exception) {
             e.printStackTrace()
-            Logger.e("Error on delete program with id $idProgram from database ${e.message}")
+            Logger.e("Error on delete program with id $idProgram from database ${e.localizedMessage}")
         }
     }
 
@@ -61,7 +61,7 @@ object TablePrograms {
             Database.getInstance(context).getPrograms().truncate()
         } catch (e: Exception) {
             e.printStackTrace()
-            Logger.e("Error on truncate programs from database ${e.message}")
+            Logger.e("Error on truncate programs from database ${e.localizedMessage}")
         }
     }
 }

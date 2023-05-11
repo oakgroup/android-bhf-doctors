@@ -14,8 +14,9 @@ import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
 import com.active.orbit.baseapp.design.recyclers.models.TripModel
-import com.active.orbit.tracker.TrackerManager
-import com.active.orbit.tracker.utils.Utils
+import com.active.orbit.tracker.core.tracker.TrackerConfig
+import com.active.orbit.tracker.core.tracker.TrackerManager
+import com.active.orbit.tracker.core.utils.TimeUtils
 
 class PatientActivity : BaseActivity(), View.OnClickListener {
 
@@ -37,14 +38,18 @@ class PatientActivity : BaseActivity(), View.OnClickListener {
 
         prepare()
 
-        TrackerManager.getInstance(this).askForPermissionAndStartTracker(
-            useStepCounter = true,
-            useActivityRecognition = true,
-            useLocationTracking = true,
-            useBodySensors = false,
-            useMobilityModelling = true,
-            sendData = true
-        )
+        val config = TrackerConfig()
+        config.useStepCounter = true
+        config.useActivityRecognition = true
+        config.useLocationTracking = true
+        config.useHeartRateMonitor = true
+        config.useMobilityModelling = true
+        config.useBatteryMonitor = true
+        config.useStayPoints = true
+        config.compactLocations = true
+        config.uploadData = true
+
+        TrackerManager.getInstance(this).askForPermissionAndStartTracker(config)
     }
 
     override fun onResume() {
@@ -59,13 +64,12 @@ class PatientActivity : BaseActivity(), View.OnClickListener {
                         .startBaseActivity(this@PatientActivity, Activities.SPLASH)
                     finish()
                 } else {
-                    TrackerManager.getInstance(this@PatientActivity).onResume(viewModel)
+                    TrackerManager.getInstance(this@PatientActivity).onResume()
 
                     val currentTime = System.currentTimeMillis()
                     if (currentTime - lastTimeClosed > 180000)
-                        TrackerManager.getInstance(this@PatientActivity).currentDateTime = Utils.midnightinMsecs(currentTime)
-                    Logger.i("MainActivity - onResume - Computing results")
-                    Logger.i("computing results")
+                        TrackerManager.getInstance(this@PatientActivity).currentDateTime = TimeUtils.midnightInMsecs(currentTime)
+                    Logger.i("Computing results")
                     computeResults()
                 }
             }
@@ -74,7 +78,7 @@ class PatientActivity : BaseActivity(), View.OnClickListener {
 
     override fun onPause() {
         super.onPause()
-        TrackerManager.getInstance(this).onPause(viewModel)
+        TrackerManager.getInstance(this).onPause()
         lastTimeClosed = System.currentTimeMillis()
     }
 

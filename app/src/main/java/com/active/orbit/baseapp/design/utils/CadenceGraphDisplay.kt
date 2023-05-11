@@ -1,10 +1,10 @@
 package com.active.orbit.baseapp.design.utils
 
 import android.graphics.Color
-import android.util.Log
+import com.active.orbit.baseapp.core.utils.Logger
 import com.active.orbit.baseapp.design.recyclers.models.TripModel
-import com.active.orbit.tracker.retrieval.data.MobilityElementData.Companion.INVALID_VALUE
-import com.active.orbit.tracker.utils.Utils
+import com.active.orbit.tracker.core.computation.data.MobilityData.Companion.INVALID_VALUE
+import com.active.orbit.tracker.core.utils.TimeUtils
 import com.github.mikephil.charting.charts.CombinedChart
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.components.Legend
@@ -15,7 +15,6 @@ import com.google.android.gms.location.DetectedActivity
 
 class CadenceGraphDisplay(private var combinedChart: CombinedChart, private val currentTrip: TripModel) {
 
-    val TAG: String? = this::class.simpleName
     val xEntries: ArrayList<String?> = ArrayList()
 
     init {
@@ -32,16 +31,12 @@ class CadenceGraphDisplay(private var combinedChart: CombinedChart, private val 
         val base = currentTrip.startTime
         for (index in base..currentTrip.endTime) {
             if (currentTrip.chart[index].steps != INVALID_VALUE) {
-                val barEntry =
-                    BarEntry((index - base).toFloat(), currentTrip.chart[index].cadence.toFloat())
+                val barEntry = BarEntry((index - base).toFloat(), currentTrip.chart[index].cadence.toFloat())
                 yEntries.add(barEntry)
-                Log.i(TAG, "steps: ${currentTrip.chart[index].cadence}")
-                val lineEntry = Entry(
-                    (index - base).toFloat(),
-                    if (currentTrip.activityType == DetectedActivity.ON_BICYCLE) 40f else 100f
-                )
+                Logger.i("Steps: ${currentTrip.chart[index].cadence}")
+                val lineEntry = Entry((index - base).toFloat(), if (currentTrip.activityType == DetectedActivity.ON_BICYCLE) 40f else 100f)
                 lineEntries.add(lineEntry)
-                xEntries.add(Utils.millisecondsToString(currentTrip.chart[index].timeInMSecs, "HH:mm"))
+                xEntries.add(TimeUtils.formatMillis(currentTrip.chart[index].timeInMSecs, "HH:mm"))
             }
         }
 
@@ -131,7 +126,6 @@ class CadenceGraphDisplay(private var combinedChart: CombinedChart, private val 
         rightAxis.setDrawAxisLine(false)
         rightAxis.setDrawGridLines(false)
         rightAxis.setDrawLabels(false)
-
 
         val legend: Legend = combinedChart.legend
         //setting the shape of the legend form to line, default square shape

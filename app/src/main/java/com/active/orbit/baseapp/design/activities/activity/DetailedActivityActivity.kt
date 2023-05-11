@@ -7,7 +7,7 @@ import com.active.orbit.baseapp.databinding.ActivityDetailedActivityBinding
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.recyclers.adapters.ActivitiesAdapter
 import com.active.orbit.baseapp.design.recyclers.models.TripModel
-import com.active.orbit.tracker.retrieval.data.TripData
+import com.active.orbit.tracker.core.database.models.DBTrip
 import com.google.android.gms.location.DetectedActivity
 
 class DetailedActivityActivity : BaseActivity() {
@@ -36,12 +36,15 @@ class DetailedActivityActivity : BaseActivity() {
     }
 
     private fun initObservers() {
+        // TODO tracker rework
+        /*
         viewModel.tripsList?.observe(this) { tripsList ->
             showActivities(tripsList)
         }
+        */
     }
 
-    private fun showActivities(tripsList: List<TripData>) {
+    private fun showActivities(tripsList: List<DBTrip>) {
         var tripModels = tripsList.map { TripModel(it) }
         tripModels = tripModels.filter { it.activityType != DetectedActivity.STILL }
         if (tripsList.isEmpty()) {
@@ -55,6 +58,8 @@ class DetailedActivityActivity : BaseActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        viewModel.tripsList?.removeObservers(this)
+
+        // TODO tracker rework
+        // viewModel.tripsList?.removeObservers(this)
     }
 }
