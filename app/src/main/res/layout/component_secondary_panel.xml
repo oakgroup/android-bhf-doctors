@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/panel"
+    style="@style/PanelMainScreen"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:elevation="10dp"
+    android:focusable="true">
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/margin_vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.active.orbit.baseapp.design.widgets.BaseTextView
+            android:id="@+id/panelTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/daily_activity_title"
+            android:textColor="@color/textColorPrimaryDark"
+            android:textSize="@dimen/panel_title_dimension"
+            app:typeface="semibold" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="16dp"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/progressLayout"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:padding="10dp">
+
+                <com.active.orbit.baseapp.design.widgets.CircularProgressBar
+                    android:id="@+id/progress"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_centerInParent="true" />
+
+            </RelativeLayout>
+
+            <com.active.orbit.baseapp.design.widgets.RoundedView
+                android:id="@+id/imageLayout"
+                android:layout_width="0dp"
+                android:layout_height="165dp"
+                android:layout_marginHorizontal="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1"
+                android:visibility="gone"
+                app:bottomLeftCornerRadius="10dp"
+                app:bottomRightCornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:topLeftCornerRadius="10dp"
+                app:topRightCornerRadius="9dp">
+
+                <com.active.orbit.baseapp.design.widgets.BaseImageView
+                    android:id="@+id/image"
+                    android:layout_width="match_parent"
+                    android:layout_height="165dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/bg_mobility" />
+
+            </com.active.orbit.baseapp.design.widgets.RoundedView>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <com.active.orbit.baseapp.design.widgets.BaseTextView
+                    android:id="@+id/detailsOne"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_gravity="start"
+                    android:layout_weight="1"
+                    android:clickable="false"
+                    android:text="@string/active_minutes"
+                    android:textColor="@color/textColorPrimaryDark"
+                    android:textSize="@dimen/main_text_dimension"
+                    app:typeface="regular" />
+
+                <com.active.orbit.baseapp.design.widgets.BaseTextView
+                    android:id="@+id/detailsTwo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_gravity="start"
+                    android:layout_weight="1"
+                    android:clickable="false"
+                    android:text="@string/active_minutes"
+                    android:textColor="@color/textColorPrimaryDark"
+                    android:textSize="@dimen/main_text_dimension"
+                    app:typeface="regular" />
+
+                <com.active.orbit.baseapp.design.widgets.BaseTextView
+                    android:id="@+id/detailsThree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_gravity="start"
+                    android:layout_weight="1"
+                    android:clickable="false"
+                    android:text="@string/active_minutes"
+                    android:textColor="@color/textColorPrimaryDark"
+                    android:textSize="@dimen/main_text_dimension"
+                    app:typeface="regular" />
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <com.active.orbit.baseapp.design.widgets.BaseTextView
+            android:id="@+id/panelButton"
+            style="@style/TextViewButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="@string/see_more"
+            app:typeface="bold" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

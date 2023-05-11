@@ -198,7 +198,10 @@
     <string name="credit_dialog_title">Credit to you!</string>
     <string name="cycling">Cycling</string>
     <string name="cycling_minutes">%1$s cycling minutes</string>
-    <string name="daily_activity">Daily activity</string>
+    <string name="daily_activity_details_two">Move Minutes: %1$s</string>
+    <string name="daily_activity_details_three">Heart Minutes: %1$s</string>
+    <string name="daily_activity_details_one">Distance Walked: %1$s km</string>
+    <string name="daily_activity_title">Daily activity</string>
     <string name="daily_target">Daily Target</string>
     <string name="daily_targets">Daily Targets</string>
     <string name="dashboard">Dashboard</string>
@@ -412,6 +415,9 @@
     <string name="minutes">Minutes</string>
     <string name="minutes_ago">%1$s minutes ago</string>
     <string name="missing_user_id">Using local user id, click on the phone app "Sync Id to watch" from the menu</string>
+    <string name="mobility_details_two">Motor Vehicle Trips: %1$s</string>
+    <string name="mobility_details_one">Away from home: %1$s h </string>
+    <string name="mobility_title">Mobility</string>
     <string name="mode_explanation">Set if you want to help the tracker identify your activities\nIt will also allow starting/stopping the tracker</string>
     <string name="mode_title">Assisted Mode</string>
     <string name="moments_ago">Moments ago</string>
@@ -514,6 +520,9 @@
     <string name="petrol">Petrol</string>
     <string name="phone_upload_dialog_description">This device has data to upload, if you want to upload this data please select the \"Upload Now\" button below else close to return to the dismiss patient screen.</string>
     <string name="phone_upload_dialog_title">Phone Data Upload</string>
+    <string name="physiology_details_two">Sleep Heart Rate: 90</string>
+    <string name="physiology_details_one">Awake Heart Rate: 90</string>
+    <string name="physiology_title">Physiology</string>
     <string name="pick_activity">Select your Next Activity</string>
     <string name="pick_correct_activity">Pick the Correct Activity</string>
     <string name="please_edit_details">Please edit your details</string>
@@ -615,6 +624,7 @@
     <string name="search_results_empty">No Results</string>
     <string name="search_results_error">Error Retrieving Results</string>
     <string name="see_details">Details</string>
+    <string name="see_more">See More</string>
     <string name="see_prescriptions">See your prescriptions and report a medicine as taken</string>
     <string name="select">Select</string>
     <string name="select_activity">Op Mode</string>

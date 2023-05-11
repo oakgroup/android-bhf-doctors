@@ -96,7 +96,7 @@
             android:layout_height="wrap_content"
             android:gravity="end"
             android:text="1/4"
-            android:textColor="@color/colorSecondary"
+            android:textColor="@color/colorPrimary"
             android:textSize="@dimen/h5"
             app:typeface="semibold"
             tools:ignore="HardcodedText" />

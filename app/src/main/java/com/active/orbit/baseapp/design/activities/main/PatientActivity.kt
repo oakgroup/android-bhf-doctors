@@ -5,7 +5,9 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.RequiresApi
+import com.active.orbit.baseapp.core.enums.BottomNavItemType
 import com.active.orbit.baseapp.core.enums.MainPanelType
+import com.active.orbit.baseapp.core.enums.SecondaryPanelType
 import com.active.orbit.baseapp.core.listeners.ResultListener
 import com.active.orbit.baseapp.core.routing.Router
 import com.active.orbit.baseapp.core.utils.Logger
@@ -36,6 +38,7 @@ class PatientActivity : BaseActivity(), View.OnClickListener {
         showMenuComponent()
         showLogo()
 
+
         prepare()
 
         val config = TrackerConfig()
@@ -54,6 +57,8 @@ class PatientActivity : BaseActivity(), View.OnClickListener {
 
     override fun onResume() {
         super.onResume()
+
+        binding.bottomNav.setSelected(BottomNavItemType.MAIN)
 
         onboarded(object : ResultListener {
             override fun onResult(success: Boolean) {
@@ -90,15 +95,20 @@ class PatientActivity : BaseActivity(), View.OnClickListener {
 
     @SuppressLint("ClickableViewAccessibility")
     private fun prepare() {
-        binding.panelSymptoms.setPanel(MainPanelType.SYMPTOMS_PATIENT)
-        binding.panelActivity.setPanel(MainPanelType.ACTIVITY_PATIENT)
-        binding.panelSymptoms.disableClick()
-        binding.panelActivity.disableClick()
-        binding.panelSymptoms.setOnClickListener(this)
-        binding.panelActivity.setOnClickListener(this)
+        binding.activityPanel.setPanel(SecondaryPanelType.ACTIVITY)
+        binding.mobilityPanel.setPanel(SecondaryPanelType.MOBILITY)
+        binding.physiologyPanel.setPanel(SecondaryPanelType.PHYSIOLOGY)
+
+        binding.activityPanel.disableClick()
+        binding.mobilityPanel.disableClick()
+        binding.physiologyPanel.disableClick()
+
+        binding.activityPanel.setOnClickListener(this)
+        binding.mobilityPanel.setOnClickListener(this)
+        binding.physiologyPanel.setOnClickListener(this)
 
         // TODO remove this used for debugging purposes
-        binding.panelActivity.setOnLongClickListener {
+        binding.activityPanel.setOnLongClickListener {
             Router.getInstance()
                 .activityAnimation(ActivityAnimation.LEFT_RIGHT)
                 .startBaseActivity(this, Activities.DEBUG)
@@ -109,13 +119,19 @@ class PatientActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
 
         when (v) {
-            binding.panelSymptoms -> {
+            binding.activityPanel -> {
                 Router.getInstance()
                     .activityAnimation(ActivityAnimation.LEFT_RIGHT)
-                    .startBaseActivity(this, Activities.REPORT_SYMPTOM_DETAILS)
+                    .startBaseActivity(this, Activities.ACTIVITY)
             }
 
-            binding.panelActivity -> {
+            binding.mobilityPanel -> {
+                Router.getInstance()
+                    .activityAnimation(ActivityAnimation.LEFT_RIGHT)
+                    .startBaseActivity(this, Activities.ACTIVITY)
+            }
+
+            binding.physiologyPanel -> {
                 Router.getInstance()
                     .activityAnimation(ActivityAnimation.LEFT_RIGHT)
                     .startBaseActivity(this, Activities.ACTIVITY)
