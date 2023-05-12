@@ -229,7 +229,7 @@ class MapActivity : BaseActivity(), OnMapReadyCallback, View.OnClickListener {
     }
 
     /**
-     * used to create the start and end circles for a moving trajectory
+     * Used to create the start and end circles for a moving trajectory
      *
      * @param DBLocation
      * @param color

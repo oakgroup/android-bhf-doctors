@@ -63,7 +63,7 @@ class DebugActivity : BaseActivity() {
     }
 
     /**
-     * called by the observer of viewModel.mobilityChart
+     * Called by the observer of viewModel.mobilityChart
      * @param mobilityChart the  mobility chart received
      */
     @SuppressLint("SetTextI18n")
@@ -80,8 +80,8 @@ class DebugActivity : BaseActivity() {
     }
 
     /**
-     * called by the observer of viewModel.stepsDataList
-     * @param stepsList teh steplist received
+     * Called by the observer of viewModel.stepsDataList
+     * @param stepsList teh step list received
      */
     @SuppressLint("SetTextI18n")
     private fun refreshStepsData(stepsList: List<DBStep>) {
@@ -102,7 +102,7 @@ class DebugActivity : BaseActivity() {
     }
 
     /**
-     * called by the observer of viewModel.activitiesDataList
+     * Called by the observer of viewModel.activitiesDataList
      * @param activityList teh list of activities received
      */
     @SuppressLint("SetTextI18n")
@@ -116,7 +116,7 @@ class DebugActivity : BaseActivity() {
 
 
     /**
-     * called by the observer of viewModel.localtionsList
+     * Called by the observer of viewModel.localtionsList
      * @param locationsList the list of locations
      */
     @SuppressLint("SetTextI18n")
