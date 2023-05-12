@@ -56,11 +56,11 @@ class UserPreferences : BasePreferences() {
         }
 
     var dateProgramStarted: Long?
-        get() = prefs.getLong(res.getString(R.string.preference_user_date_program_started), Constants.INVALID.toLong())
+        get() = prefs.getLong(res.getString(R.string.preference_user_date_program_started_key), Constants.INVALID.toLong())
         set(value) {
             val editor = prefs.edit()
-            if (value != null) editor.putLong(res.getString(R.string.preference_user_date_program_started), value)
-            else editor.remove(res.getString(R.string.preference_user_date_program_started))
+            if (value != null) editor.putLong(res.getString(R.string.preference_user_date_program_started_key), value)
+            else editor.remove(res.getString(R.string.preference_user_date_program_started_key))
             editor.apply()
         }
 
@@ -73,37 +73,37 @@ class UserPreferences : BasePreferences() {
         }
 
     var userSex: String?
-        get() = prefs.getString(res.getString(R.string.preference_user_sex), Constants.EMPTY)
+        get() = prefs.getString(res.getString(R.string.preference_user_sex_key), Constants.EMPTY)
         set(value) {
             val editor = prefs.edit()
-            editor.putString(res.getString(R.string.preference_user_sex), value)
+            editor.putString(res.getString(R.string.preference_user_sex_key), value)
             editor.apply()
         }
 
     var userAge: String?
-        get() = prefs.getString(res.getString(R.string.preference_user_age), Constants.EMPTY)
+        get() = prefs.getString(res.getString(R.string.preference_user_age_key), Constants.EMPTY)
         set(value) {
             val editor = prefs.edit()
-            if (value != null) editor.putString(res.getString(R.string.preference_user_age), value)
-            else editor.remove(res.getString(R.string.preference_user_age))
+            if (value != null) editor.putString(res.getString(R.string.preference_user_age_key), value)
+            else editor.remove(res.getString(R.string.preference_user_age_key))
             editor.apply()
         }
 
     var userWeight: String?
-        get() = prefs.getString(res.getString(R.string.preference_user_weight), Constants.EMPTY)
+        get() = prefs.getString(res.getString(R.string.preference_user_weight_key), Constants.EMPTY)
         set(value) {
             val editor = prefs.edit()
-            if (value != null) editor.putString(res.getString(R.string.preference_user_weight), value)
-            else editor.remove(res.getString(R.string.preference_user_weight))
+            if (value != null) editor.putString(res.getString(R.string.preference_user_weight_key), value)
+            else editor.remove(res.getString(R.string.preference_user_weight_key))
             editor.apply()
         }
 
     var userHeight: String?
-        get() = prefs.getString(res.getString(R.string.preference_user_height), Constants.EMPTY)
+        get() = prefs.getString(res.getString(R.string.preference_user_height_key), Constants.EMPTY)
         set(value) {
             val editor = prefs.edit()
-            if (value != null) editor.putString(res.getString(R.string.preference_user_height), value)
-            else editor.remove(res.getString(R.string.preference_user_height))
+            if (value != null) editor.putString(res.getString(R.string.preference_user_height_key), value)
+            else editor.remove(res.getString(R.string.preference_user_height_key))
             editor.apply()
         }
 
