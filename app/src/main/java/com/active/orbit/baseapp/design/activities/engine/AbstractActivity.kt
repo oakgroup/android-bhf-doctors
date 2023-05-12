@@ -267,11 +267,11 @@ abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListen
         val patientLayout = mNavigationView?.getHeaderView(0)?.findViewById<ViewGroup>(R.id.headerPatientLayout)
         val patientId = mNavigationView?.getHeaderView(0)?.findViewById<BaseTextView>(R.id.patientId)
         val syncWearMenuItem = mNavigationView?.menu?.findItem(R.id.wearSync)
-        val dismissPatientMenuItem = mNavigationView?.menu?.findItem(R.id.dismissPatient)
+        val dismissPatientMenuItem = mNavigationView?.menu?.findItem(R.id.finishStudy)
         if (Preferences.user(this).isUserRegistered()) {
             patientLayout?.visibility = View.VISIBLE
             patientId?.text = getString(R.string.patient_id_value, Preferences.user(this).idPatient)
-            syncWearMenuItem?.isVisible = true
+            syncWearMenuItem?.isVisible = false
             dismissPatientMenuItem?.isVisible = true
         } else {
             patientLayout?.visibility = View.GONE
@@ -328,8 +328,8 @@ abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListen
             R.id.wearSync -> {
                 showSyncWearDialog()
             }
-            R.id.dismissPatient -> {
-                showAdminAccessDialog()
+            R.id.finishStudy -> {
+                showDismissPatientDialog()
             }
         }
         mDrawerLayout?.closeDrawer(GravityCompat.START)
