@@ -301,6 +301,7 @@
     <string name="frequently_asked_questions">Frequently Asked Questions</string>
     <string name="friday">Friday</string>
     <string name="full_medicine_list_message">You have reached the maximum number of medicines</string>
+    <string name="full_symptoms_list_message">You have reached the maximum number of symptoms</string>
     <string name="funded_by_eu">\n\nInitially funded by the European Horizon 2020 programme, SETA EU project - www.setamobility.eu - under contract 820820.\n\n\n Currently partially funded by the Mobilise-D project - https://www.mobilise-d.eu . \n\nMobilise-D  has received funding from the Innovative Medicines Initiative 2 Joint Undertaking under grant agreement No 820820. This Joint Undertaking receives support from the European Union\’s Horizon 2020 research and innovation programme and EFPIA. \n\n\nWe ♥ Europe!</string>
     <string name="get_started">Get Started</string>
     <string name="gfit_first_paragraph">We have worked hard to improve your experience, so we\'re integrating with Google Fit to give you more accurate results and very low power consumption.</string>
@@ -675,6 +676,7 @@
     <string name="setup_account">We are setting up your account</string>
     <string name="setup_account_error">There was an error trying to setup your account, please check your internet connection and try again.</string>
     <string name="setup_your_account">Setup your account</string>
+    <string name="severity">Severity</string>
     <string name="seven_day_streak">7 days Streak!</string>
     <string name="severity_empty">Please select a valid severity</string>
     <string name="sex">Sex</string>
@@ -715,11 +717,15 @@
     <string name="summary_activity_title">Welcome back!</string>
     <string name="sunday">Sunday</string>
     <string name="symptom_date_time">Add Date &amp; Time</string>
-    <string name="symptom_details">Add Symptom Details</string>
+    <string name="symptom_details">Symptom Details</string>
+    <string name="symptom_details_add">Add Symptom Details</string>
     <string name="symptom_select">Please select symptom</string>
     <string name="symptom_select_something">Please select symptom and severity</string>
     <string name="symptom_select_time">Please select date and time</string>
+    <string name="symptom_show_error">There was an error showing the symptom details</string>
+    <string name="symptom">Symptom</string>
     <string name="symptoms">Symptoms</string>
+    <string name="symptoms_empty_patient">No symptoms added yet.\nUse the + button below.</string>
     <string name="symptoms_info_one_description">Patient can report a symptom and adding any details needed</string>
     <string name="symptoms_info_one_title">Report a Symptom</string>
     <string name="sync">Sync</string>

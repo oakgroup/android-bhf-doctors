@@ -1,0 +1,17 @@
+<resources>
+
+    <string-array name="symptoms_options">
+        <item>Short of Breath</item>
+        <item>Chest Discomfort</item>
+        <item>Tightness Pain</item>
+        <item>Pressure</item>
+    </string-array>
+
+    <string-array name="severities_options">
+        <item>Slightly</item>
+        <item>Moderately</item>
+        <item>Severely</item>
+        <item>Extreme</item>
+    </string-array>
+
+</resources>

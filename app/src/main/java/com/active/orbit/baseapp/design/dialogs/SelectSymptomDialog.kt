@@ -1,5 +1,6 @@
 package com.active.orbit.baseapp.design.dialogs
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.os.Bundle
 import android.view.View
@@ -13,13 +14,16 @@ import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.dialogs.listeners.SelectSymptomDialogListener
-import com.active.orbit.baseapp.design.recyclers.adapters.SymptomsAdapter
+import com.active.orbit.baseapp.design.recyclers.adapters.SeverityDialogAdapter
+import com.active.orbit.baseapp.design.recyclers.adapters.SymptomsDialogAdapter
 import com.active.orbit.baseapp.design.widgets.BaseTextView
 
 class SelectSymptomDialog : DialogFragment() {
 
-    private var adapter: SymptomsAdapter? = null
+    private var adapter: SymptomsDialogAdapter? = null
     var listener: SelectSymptomDialogListener? = null
+    private var symptoms = ArrayList<String>()
+
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         super.onCreateDialog(savedInstanceState)
@@ -33,19 +37,27 @@ class SelectSymptomDialog : DialogFragment() {
         return builder.create()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun setup(view: View) {
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
         val title = view.findViewById<BaseTextView>(R.id.title)
 
         title.text = getString(R.string.select_symptom)
 
+        val symptomsList: Array<String> = resources.getStringArray(R.array.symptoms_options)
+        for (symptom in symptomsList) {
+            symptoms.add(symptom)
+        }
+
         val linearLayoutManager = LinearLayoutManager(context)
         recyclerView.layoutManager = linearLayoutManager
 
-        adapter = SymptomsAdapter(requireActivity() as BaseActivity, listener)
+        adapter = SymptomsDialogAdapter(view.context)
         recyclerView.adapter = adapter
 
-        adapter?.refresh(requireActivity())
+        adapter?.listener = listener
+        adapter?.symptoms = ArrayList(symptoms)
+        adapter?.notifyDataSetChanged()
     }
 
     override fun onStart() {

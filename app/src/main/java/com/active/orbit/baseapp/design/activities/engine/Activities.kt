@@ -16,6 +16,7 @@ import com.active.orbit.baseapp.design.activities.main.PatientActivity
 import com.active.orbit.baseapp.design.activities.main.SplashActivity
 import com.active.orbit.baseapp.design.activities.messaging.SuccessMessageActivity
 import com.active.orbit.baseapp.design.activities.symptoms.ReportSymptomDetailsActivity
+import com.active.orbit.baseapp.design.activities.symptoms.SymptomsActivity
 import com.active.orbit.baseapp.design.activities.tour.TourActivity
 import com.active.orbit.baseapp.design.protocols.ActivityProvider
 
@@ -44,6 +45,7 @@ enum class Activities(private val activity: Class<out BaseActivity>) : ActivityP
     SETTINGS(SettingsActivity::class.java),
     SPLASH(SplashActivity::class.java),
     SUCCESS_MESSAGE(SuccessMessageActivity::class.java),
+    SYMPTOMS(SymptomsActivity::class.java),
     TERMS_AND_CONDITIONS(TermsAndConditionsActivity::class.java),
     TOUR(TourActivity::class.java),
     WELCOME(WelcomeActivity::class.java);

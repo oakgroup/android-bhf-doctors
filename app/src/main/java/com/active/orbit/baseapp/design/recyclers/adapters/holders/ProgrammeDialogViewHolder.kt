@@ -7,7 +7,7 @@ import com.active.orbit.baseapp.design.dialogs.listeners.SelectProgrammeDialogLi
 import com.active.orbit.baseapp.design.recyclers.engine.BaseRecyclerCell
 import com.active.orbit.baseapp.design.widgets.BaseTextView
 
-class ProgrammeViewHolder(itemView: View, var listener: SelectProgrammeDialogListener? = null) : BaseRecyclerCell<DBProgram>(itemView) {
+class ProgrammeDialogViewHolder(itemView: View, var listener: SelectProgrammeDialogListener? = null) : BaseRecyclerCell<DBProgram>(itemView) {
 
     private var programme: BaseTextView
 

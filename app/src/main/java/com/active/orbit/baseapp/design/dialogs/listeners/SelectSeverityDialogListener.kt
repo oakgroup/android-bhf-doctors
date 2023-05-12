@@ -4,5 +4,5 @@ import com.active.orbit.baseapp.core.database.models.DBSeverity
 
 interface SelectSeverityDialogListener {
 
-    fun onSeveritySelected(severity: DBSeverity)
+    fun onSeveritySelected(severity: String)
 }

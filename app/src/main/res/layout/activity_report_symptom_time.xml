@@ -24,51 +24,33 @@
         app:typeface="bold"
         tools:ignore="NotSibling" />
 
-    <com.active.orbit.baseapp.design.widgets.BaseTextView
-        android:id="@+id/symptom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_vertical_double"
-        android:layout_marginHorizontal="48dp"
-        android:paddingHorizontal="@dimen/margin_lateral"
-        android:paddingVertical="@dimen/margin_vertical"
-        android:background="@drawable/bg_details_panel"
-        android:gravity="center"
-        android:text="Symptom"
-        android:textColor="@color/textColorPrimaryDark"
-        android:textSize="@dimen/h3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title"
-        app:typeface="semibold" />
-
 
     <FrameLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginHorizontal="@dimen/margin_lateral"
-        android:layout_marginBottom="@dimen/margin_vertical_double"
-        android:layout_marginTop="-2dp"
+        android:layout_marginVertical="@dimen/margin_vertical_double"
         android:background="@drawable/bg_panel"
         android:orientation="vertical"
-        android:paddingHorizontal="@dimen/margin_lateral"
         app:layout_constraintBottom_toTopOf="@id/bottomLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/symptom">
+        app:layout_constraintTop_toBottomOf="@id/title">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="vertical"
             android:scrollIndicators="end"
             android:scrollbarThumbVertical="@color/colorAccent"
+            android:scrollbars="vertical"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/margin_lateral"
+                android:paddingVertical="@dimen/margin_vertical_double">
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/selectionsLayout"
@@ -80,7 +62,6 @@
                     <com.active.orbit.baseapp.design.widgets.BaseTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_vertical_double"
                         android:layout_marginBottom="@dimen/margin_vertical"
                         android:text="@string/select_symptom_date"
                         android:textColor="@color/textColorPrimaryDark"
@@ -147,7 +128,7 @@
             android:layout_height="wrap_content"
             android:gravity="end"
             android:text="2/2"
-            android:textColor="@color/textColorPrimaryLight"
+            android:textColor="@color/colorPrimary"
             android:textSize="@dimen/h5"
             app:typeface="semibold"
             tools:ignore="HardcodedText" />
