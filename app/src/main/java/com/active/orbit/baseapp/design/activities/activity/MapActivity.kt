@@ -196,8 +196,8 @@ class MapActivity : BaseActivity(), OnMapReadyCallback, View.OnClickListener {
             prevMarker = currMarker
         } //if <= 1 it will crash so add the same location twice - otherwise it will not focus
         when (locations.size) {
-            1 -> locations.add(locations[0])
             0 -> locations.add(DBLocation(trip.chart[trip.startTime].timeInMSecs, 0.0, 0.0, 0.0, 0.0))
+            1 -> locations.add(locations[0])
             else -> addStartEndTags(locations)
 
         }
@@ -208,11 +208,11 @@ class MapActivity : BaseActivity(), OnMapReadyCallback, View.OnClickListener {
         val latLngBounds = builder.build()
         // padding of the map around the trajectory in pixels
         try {
-            map!!.moveCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, width, height, padding.toInt()))
+            map!!.moveCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, width, height, padding))
             val zoom = map!!.cameraPosition.zoom
             if (zoom > 18.0f) map!!.animateCamera(CameraUpdateFactory.zoomTo(17.5f))
         } catch (e: Exception) {
-            e.message?.let { Logger.i(it) }
+            Logger.i("Exception trying to move the map camera " + e.localizedMessage)
         }
     }
 

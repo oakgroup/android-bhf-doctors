@@ -6,6 +6,8 @@ import com.active.orbit.baseapp.core.routing.enums.Extra
 import com.active.orbit.baseapp.core.utils.Logger
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
 import com.active.orbit.tracker.core.computation.DailyComputation
+import com.active.orbit.tracker.core.observers.TrackerObserver
+import com.active.orbit.tracker.core.observers.TrackerObserverType
 import com.active.orbit.tracker.core.tracker.TrackerManager
 import com.active.orbit.tracker.core.utils.TimeUtils
 
@@ -14,12 +16,14 @@ import com.active.orbit.tracker.core.utils.TimeUtils
  *
  * @author omar.brugna
  */
-abstract class BaseActivity : PermissionsActivity() {
+abstract class BaseActivity : PermissionsActivity(), TrackerObserver {
 
     protected lateinit var activityBundle: Bundle
     private var isFromOnCreate = true
 
     protected lateinit var thiss: BaseActivity
+
+    var dailyComputation: DailyComputation? = null
 
     companion object {
         const val MESSAGE_PATH = "/message"
@@ -68,6 +72,12 @@ abstract class BaseActivity : PermissionsActivity() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+
+        dailyComputation?.unregisterObserver()
+    }
+
     private fun getAnimationType(): ActivityAnimation {
         val value = activityBundle.getInt(Extra.ANIMATION.key)
         return ActivityAnimation.getByValue(value)
@@ -80,6 +90,12 @@ abstract class BaseActivity : PermissionsActivity() {
         val currentDateTime = TrackerManager.getInstance(this).currentDateTime
         val midnight = TimeUtils.midnightInMsecs(currentDateTime)
         val endOfDay = midnight + TimeUtils.ONE_DAY_MILLIS
-        DailyComputation(this, midnight, endOfDay).computeResultsAsync()
+        dailyComputation = DailyComputation(this, midnight, endOfDay)
+        dailyComputation?.registerObserver(this)
+        dailyComputation?.computeResultsAsync()
+    }
+
+    override fun onTrackerUpdate(type: TrackerObserverType, data: Any) {
+        Logger.d("Tracker observer update $type")
     }
 }

@@ -6,10 +6,12 @@ import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.utils.Logger
 import com.active.orbit.baseapp.databinding.ActivityDebugBinding
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
+import com.active.orbit.tracker.core.computation.MobilityComputation
 import com.active.orbit.tracker.core.computation.data.MobilityData
 import com.active.orbit.tracker.core.database.models.DBActivity
 import com.active.orbit.tracker.core.database.models.DBLocation
 import com.active.orbit.tracker.core.database.models.DBStep
+import com.active.orbit.tracker.core.observers.TrackerObserverType
 import com.active.orbit.tracker.core.utils.TimeUtils
 
 class DebugActivity : BaseActivity() {
@@ -24,7 +26,7 @@ class DebugActivity : BaseActivity() {
         setToolbarTitle(R.string.debug_view)
         setToolbarTitleColor(R.color.textColorWhite)
 
-        initObservers()
+        computeResults()
 
         // TODO wear synchronisation
         /*
@@ -36,30 +38,18 @@ class DebugActivity : BaseActivity() {
         */
     }
 
-    /**
-     * This initialises the view model and the methods used to retrieve the live data for the interface
-     */
-    private fun initObservers() {
-        // TODO tracker rework
-        /*
-        // changes to the UI when the data changes
-        viewModel.stepsDataList.observe(this) { stepsList ->
-            Logger.i("Inserting steps")
-            refreshStepsData(stepsList)
+    @Suppress("UNCHECKED_CAST")
+    override fun onTrackerUpdate(type: TrackerObserverType, data: Any) {
+        when (type) {
+            TrackerObserverType.ACTIVITIES -> refreshActivitiesData(data as List<DBActivity>)
+            TrackerObserverType.LOCATIONS -> refreshLocationsData(data as List<DBLocation>)
+            TrackerObserverType.STEPS -> refreshStepsData(data as List<DBStep>)
+            TrackerObserverType.MOBILITY -> {
+                val mobilityChart = data as MobilityComputation
+                refreshMobilityChart(mobilityChart.chart)
+            }
+            else -> super.onTrackerUpdate(type, data)
         }
-        viewModel.activitiesDataList.observe(this) { activityList ->
-            Logger.i("Inserting activities")
-            refreshActivitiesData(activityList)
-        }
-        viewModel.locationsDataList.observe(this) { locationsList ->
-            Logger.i("Inserting locations")
-            refreshLocationsData(locationsList)
-        }
-        viewModel.mobilityChart?.observe(this) { mobilityChart ->
-            Logger.i("Inserting chart")
-            refreshMobilityChart(mobilityChart.chart)
-        }
-        */
     }
 
     /**
@@ -145,17 +135,5 @@ class DebugActivity : BaseActivity() {
         binding.steps.text = ""
         binding.activities.text = ""
         binding.mobilityChart.text = ""
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-
-        // TODO tracker rework
-        /*
-        viewModel.stepsDataList.removeObservers(this)
-        viewModel.activitiesDataList.removeObservers(this)
-        viewModel.locationsDataList.removeObservers(this)
-        viewModel.mobilityChart?.removeObservers(this)
-        */
     }
 }

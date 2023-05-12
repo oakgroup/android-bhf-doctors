@@ -6,11 +6,13 @@ import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.routing.Router
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.core.utils.TimeUtils
-import com.active.orbit.baseapp.core.utils.Utils
 import com.active.orbit.baseapp.databinding.ActivityActivityBinding
 import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
+import com.active.orbit.tracker.core.computation.MobilityComputation
+import com.active.orbit.tracker.core.observers.TrackerObserverType
+import kotlin.math.roundToInt
 
 class ActivityActivity : BaseActivity() {
 
@@ -24,10 +26,6 @@ class ActivityActivity : BaseActivity() {
         showLogoButton()
 
         prepare()
-
-        Utils.delay(TimeUtils.ONE_SECOND_MILLIS.toLong() / 3) {
-            initObservers()
-        }
     }
 
     private fun prepare() {
@@ -52,68 +50,61 @@ class ActivityActivity : BaseActivity() {
         binding.heartActivityProgress.setLineWidth(40f)
         binding.heartActivityProgress.setMaxProgress(Constants.NHS_WEEK_HEART_TARGET.toFloat())
 
+        computeResults()
+
         binding.pullToRefresh.setOnRefreshListener {
             computeResults()
         }
     }
 
-    /**
-     * This initialises the view model and the methods used to retrieve the live data for the interface
-     */
-    private fun initObservers() {
+    override fun onTrackerUpdate(type: TrackerObserverType, data: Any) {
+        when (type) {
+            TrackerObserverType.MOBILITY -> {
+                val mobilityChart = data as MobilityComputation
 
-        // TODO tracker rework
-        /*
-        viewModel.mobilityChart?.observe(this) { mobilityChart ->
-            var minutesWalking = 0L
-            var distanceWalking = 0
-            var minutesHeart = 0L
-            var distanceHeart = 0
-            var minutesCycling = 0L
-            var distanceCycling = 0
-            var minutesVehicle = 0L
-            var distanceVehicle = 0
-            var steps = 0
-            if (mobilityChart.chart.isNotEmpty()) {
-                val summary = mobilityChart.summaryData
-                minutesWalking = summary.walkingMsecs / TimeUtils.ONE_MINUTE_MILLIS
-                distanceWalking = summary.walkingDistance.roundToInt()
-                minutesHeart = summary.runningMsecs / TimeUtils.ONE_MINUTE_MILLIS
-                distanceHeart = summary.runningDistance.roundToInt()
-                minutesCycling = summary.cyclingMsecs / TimeUtils.ONE_MINUTE_MILLIS
-                distanceCycling = summary.cyclingDistance.roundToInt()
-                minutesVehicle = summary.vehicleMsecs / TimeUtils.ONE_MINUTE_MILLIS
-                distanceVehicle = summary.vehicleDistance.roundToInt()
-                steps = summary.steps
+                var minutesWalking = 0L
+                var distanceWalking = 0
+                var minutesHeart = 0L
+                var distanceHeart = 0
+                var minutesCycling = 0L
+                var distanceCycling = 0
+                var minutesVehicle = 0L
+                var distanceVehicle = 0
+                var steps = 0
+                if (mobilityChart.chart.isNotEmpty()) {
+                    val summary = mobilityChart.summaryData
+                    minutesWalking = summary.walkingMsecs / TimeUtils.ONE_MINUTE_MILLIS
+                    distanceWalking = summary.walkingDistance.roundToInt()
+                    minutesHeart = summary.runningMsecs / TimeUtils.ONE_MINUTE_MILLIS
+                    distanceHeart = summary.runningDistance.roundToInt()
+                    minutesCycling = summary.cyclingMsecs / TimeUtils.ONE_MINUTE_MILLIS
+                    distanceCycling = summary.cyclingDistance.roundToInt()
+                    minutesVehicle = summary.vehicleMsecs / TimeUtils.ONE_MINUTE_MILLIS
+                    distanceVehicle = summary.vehicleDistance.roundToInt()
+                    steps = summary.steps
+                }
+
+                binding.heartActivityProgress.setProgress(minutesHeart.toFloat())
+                binding.walkingActivityProgress.setProgress(minutesWalking.toFloat())
+
+                if (minutesWalking == 1L) binding.walkingProgressText.text = getString(R.string.activity_distance_active_minute)
+                else binding.walkingProgressText.text = getString(R.string.activity_distance_active_minutes, minutesWalking.toString(), distanceWalking.toString())
+
+                if (minutesHeart == 1L) binding.heartProgressText.text = getString(R.string.activity_distance_heart_minute)
+                else binding.heartProgressText.text = getString(R.string.activity_distance_heart_minutes, minutesHeart.toString(), distanceHeart.toString())
+
+                if (minutesCycling == 1L) binding.bicycleProgressText.text = getString(R.string.activity_distance_cycling_minute)
+                else binding.bicycleProgressText.text = getString(R.string.activity_distance_cycling_minutes, minutesCycling.toString(), distanceCycling.toString())
+
+                if (minutesVehicle == 1L) binding.vehicleProgressText.text = getString(R.string.activity_distance_vehicle_minute)
+                else binding.vehicleProgressText.text = getString(R.string.activity_distance_vehicle_minutes, minutesVehicle.toString(), distanceVehicle.toString())
+
+                if (steps == 1) binding.stepsProgressText.text = getString(R.string.activity_step)
+                else binding.stepsProgressText.text = getString(R.string.activity_steps, steps.toString())
+
+                binding.pullToRefresh.isRefreshing = false
             }
-
-            binding.heartActivityProgress.setProgress(minutesHeart.toFloat())
-            binding.walkingActivityProgress.setProgress(minutesWalking.toFloat())
-
-            if (minutesWalking == 1L) binding.walkingProgressText.text = getString(R.string.activity_distance_active_minute)
-            else binding.walkingProgressText.text = getString(R.string.activity_distance_active_minutes, minutesWalking.toString(), distanceWalking.toString())
-
-            if (minutesHeart == 1L) binding.heartProgressText.text = getString(R.string.activity_distance_heart_minute)
-            else binding.heartProgressText.text = getString(R.string.activity_distance_heart_minutes, minutesHeart.toString(), distanceHeart.toString())
-
-            if (minutesCycling == 1L) binding.bicycleProgressText.text = getString(R.string.activity_distance_cycling_minute)
-            else binding.bicycleProgressText.text = getString(R.string.activity_distance_cycling_minutes, minutesCycling.toString(), distanceCycling.toString())
-
-            if (minutesVehicle == 1L) binding.vehicleProgressText.text = getString(R.string.activity_distance_vehicle_minute)
-            else binding.vehicleProgressText.text = getString(R.string.activity_distance_vehicle_minutes, minutesVehicle.toString(), distanceVehicle.toString())
-
-            if (steps == 1) binding.stepsProgressText.text = getString(R.string.activity_step)
-            else binding.stepsProgressText.text = getString(R.string.activity_steps, steps.toString())
-
-            binding.pullToRefresh.isRefreshing = false
+            else -> super.onTrackerUpdate(type, data)
         }
-        */
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-
-        // TODO tracker rework
-        // viewModel.mobilityChart?.removeObservers(this)
     }
 }

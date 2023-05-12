@@ -14,7 +14,7 @@ object TableReportedSymptoms {
             return Database.getInstance(context).getReportedSymptoms().getAll()
         } catch (e: Exception) {
             e.printStackTrace()
-            Logger.e("Error on getting all reported symptoms from database ${e.message}")
+            Logger.e("Error on getting all reported symptoms from database ${e.localizedMessage}")
         }
         return arrayListOf()
     }
@@ -25,7 +25,7 @@ object TableReportedSymptoms {
             return Database.getInstance(context).getReportedSymptoms().getById(idSymptom)
         } catch (e: Exception) {
             e.printStackTrace()
-            Logger.e("Error on getting reported symptom by id $idSymptom${e.message}")
+            Logger.e("Error on getting reported symptom by id $idSymptom${e.localizedMessage}")
         }
         return null
     }
@@ -41,7 +41,7 @@ object TableReportedSymptoms {
             Database.getInstance(context).getReportedSymptoms().upsert(models)
         } catch (e: Exception) {
             e.printStackTrace()
-            Logger.e("Error on upsert reported symptoms to database ${e.message}")
+            Logger.e("Error on upsert reported symptoms to database ${e.localizedMessage}")
         }
     }
 
@@ -51,7 +51,7 @@ object TableReportedSymptoms {
             Database.getInstance(context).getReportedSymptoms().delete(idSymptom)
         } catch (e: Exception) {
             e.printStackTrace()
-            Logger.e("Error on delete reported symptom with id $idSymptom from database ${e.message}")
+            Logger.e("Error on delete reported symptom with id $idSymptom from database ${e.localizedMessage}")
         }
     }
 
@@ -61,7 +61,7 @@ object TableReportedSymptoms {
             Database.getInstance(context).getReportedSymptoms().truncate()
         } catch (e: Exception) {
             e.printStackTrace()
-            Logger.e("Error on truncate reported symptoms from database ${e.message}")
+            Logger.e("Error on truncate reported symptoms from database ${e.localizedMessage}")
         }
     }
 }

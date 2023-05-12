@@ -7,7 +7,9 @@ import com.active.orbit.baseapp.databinding.ActivityDetailedActivityBinding
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.recyclers.adapters.ActivitiesAdapter
 import com.active.orbit.baseapp.design.recyclers.models.TripModel
+import com.active.orbit.tracker.core.computation.MobilityComputation
 import com.active.orbit.tracker.core.database.models.DBTrip
+import com.active.orbit.tracker.core.observers.TrackerObserverType
 import com.google.android.gms.location.DetectedActivity
 
 class DetailedActivityActivity : BaseActivity() {
@@ -32,34 +34,29 @@ class DetailedActivityActivity : BaseActivity() {
         adapter = ActivitiesAdapter(this)
         binding.activitiesRecyclerView.adapter = adapter
 
-        initObservers()
+        computeResults()
     }
 
-    private fun initObservers() {
-        // TODO tracker rework
-        /*
-        viewModel.tripsList?.observe(this) { tripsList ->
-            showActivities(tripsList)
+    @Suppress("UNCHECKED_CAST")
+    override fun onTrackerUpdate(type: TrackerObserverType, data: Any) {
+        when (type) {
+            TrackerObserverType.MOBILITY -> {
+                val mobilityChart = data as MobilityComputation
+                showActivities(mobilityChart.trips)
+            }
+            else -> super.onTrackerUpdate(type, data)
         }
-        */
     }
 
     private fun showActivities(tripsList: List<DBTrip>) {
         var tripModels = tripsList.map { TripModel(it) }
         tripModels = tripModels.filter { it.activityType != DetectedActivity.STILL }
-        if (tripsList.isEmpty()) {
+        if (tripModels.isEmpty()) {
             binding.noActivities.visibility = View.VISIBLE
         } else {
             binding.noActivities.visibility = View.GONE
         }
         adapter?.tripModels = ArrayList(tripModels)
         adapter?.replaceAll(ArrayList(tripModels))
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-
-        // TODO tracker rework
-        // viewModel.tripsList?.removeObservers(this)
     }
 }
