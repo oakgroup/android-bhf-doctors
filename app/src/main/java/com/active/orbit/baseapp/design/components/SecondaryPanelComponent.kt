@@ -12,12 +12,13 @@ import androidx.core.content.ContextCompat
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.enums.SecondaryPanelType
 import com.active.orbit.baseapp.core.utils.Constants
+import com.active.orbit.baseapp.core.utils.Logger
 import com.active.orbit.baseapp.databinding.ComponentSecondaryPanelBinding
+import com.active.orbit.baseapp.design.models.PanelModel
 
 class SecondaryPanelComponent : FrameLayout, View.OnTouchListener {
 
     private lateinit var binding: ComponentSecondaryPanelBinding
-    private var panelType = SecondaryPanelType.UNDEFINED
 
     constructor(context: Context) : super(context) {
         prepare()
@@ -46,13 +47,11 @@ class SecondaryPanelComponent : FrameLayout, View.OnTouchListener {
         binding.panelButton.isClickable = false
     }
 
-
     fun setPanel(type: SecondaryPanelType) {
-        panelType = type
 
-        binding.panelTitle.text = context.getString(panelType.title)
+        binding.panelTitle.text = context.getString(type.title)
 
-        if (panelType.isProgressView) {
+        if (type.isProgressView) {
             binding.progressLayout.visibility = VISIBLE
             binding.imageLayout.visibility = GONE
 
@@ -62,53 +61,62 @@ class SecondaryPanelComponent : FrameLayout, View.OnTouchListener {
             binding.progress.setLineWidth(40f)
             binding.progress.setMaxProgress(200.toFloat())
 
-
-            //TODO use observers from ActivityActivity
-            binding.progress.setProgress(20.toFloat())
         } else {
             binding.progressLayout.visibility = GONE
             binding.imageLayout.visibility = VISIBLE
 
-            binding.image.setImageResource(panelType.image)
+            binding.image.setImageResource(type.image)
         }
 
-
-        if (panelType.detailsOne != Constants.INVALID) {
+        if (type.detailsOne != Constants.INVALID) {
             binding.detailsOne.visibility = VISIBLE
-            binding.detailsOne.text = context.getString(panelType.detailsOne)
+        } else {
+            binding.detailsOne.visibility = INVISIBLE
         }
-        if (panelType.detailsTwo != Constants.INVALID) {
+
+        if (type.detailsTwo != Constants.INVALID) {
             binding.detailsTwo.visibility = VISIBLE
-            binding.detailsTwo.text = context.getString(panelType.detailsTwo)
+        } else {
+            binding.detailsTwo.visibility = INVISIBLE
         }
-        if (panelType.detailsThree != Constants.INVALID) {
+
+        if (type.detailsThree != Constants.INVALID) {
             binding.detailsThree.visibility = VISIBLE
-            binding.detailsThree.text = context.getString(panelType.detailsThree)
+        } else {
+            binding.detailsThree.visibility = INVISIBLE
         }
 
-
-        when(panelType) {
-            SecondaryPanelType.ACTIVITY -> {
-                //DetailsOne: Move minutes, DetailsTwo: Heart minutes, DetailsThree: Distance walked
-                binding.detailsOne.text = context.getString(panelType.detailsOne, 20)
-                binding.detailsTwo.text = context.getString(panelType.detailsTwo, 10)
-                binding.detailsThree.text = context.getString(panelType.detailsThree, 2)
-
-            }
-            SecondaryPanelType.MOBILITY -> {
-                //DetailsOne: Away from home, DetailsTwo: motor vehicle trips, DetailsThree: none
-                binding.detailsOne.text = context.getString(panelType.detailsOne, 2)
-                binding.detailsTwo.text = context.getString(panelType.detailsTwo, 4)
-            }
-            SecondaryPanelType.PHYSIOLOGY -> {
-                //DetailsOne: awake heart rate, DetailsTwo: sleeping heart rate, DetailsThree: none
-                binding.detailsOne.text = context.getString(panelType.detailsOne, 90)
-                binding.detailsTwo.text = context.getString(panelType.detailsTwo, 90)
-            }
-            SecondaryPanelType.UNDEFINED -> {}
-        }
+        updatePanel(type, PanelModel())
     }
 
+    fun updatePanel(type: SecondaryPanelType, model: PanelModel) {
+
+        if (type.isProgressView) {
+            binding.progress.setProgress(model.value1.toFloat())
+        }
+
+        when (type) {
+            SecondaryPanelType.ACTIVITY -> {
+                // DetailsOne: Move minutes, DetailsTwo: Heart minutes, DetailsThree: Distance walked
+                binding.detailsOne.text = context.getString(type.detailsOne, model.value1.toString())
+                binding.detailsTwo.text = context.getString(type.detailsTwo, model.value2.toString())
+                binding.detailsThree.text = context.getString(type.detailsThree, model.value3.toString())
+            }
+            SecondaryPanelType.MOBILITY -> {
+                // DetailsOne: Away from home, DetailsTwo: motor vehicle trips, DetailsThree: none
+                binding.detailsOne.text = context.getString(type.detailsOne, model.value1.toString())
+                binding.detailsTwo.text = context.getString(type.detailsTwo, model.value2.toString())
+            }
+            SecondaryPanelType.PHYSIOLOGY -> {
+                // DetailsOne: awake heart rate, DetailsTwo: sleeping heart rate, DetailsThree: none
+                binding.detailsOne.text = context.getString(type.detailsOne, model.value1.toString())
+                binding.detailsTwo.text = context.getString(type.detailsTwo, model.value2.toString())
+            }
+            SecondaryPanelType.UNDEFINED -> {
+                Logger.e("Undefined panel type")
+            }
+        }
+    }
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {
@@ -126,5 +134,4 @@ class SecondaryPanelComponent : FrameLayout, View.OnTouchListener {
         }
         return false
     }
-
 }

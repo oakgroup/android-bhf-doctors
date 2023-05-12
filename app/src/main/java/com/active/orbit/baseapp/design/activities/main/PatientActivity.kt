@@ -5,8 +5,8 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.RequiresApi
+import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.enums.BottomNavItemType
-import com.active.orbit.baseapp.core.enums.MainPanelType
 import com.active.orbit.baseapp.core.enums.SecondaryPanelType
 import com.active.orbit.baseapp.core.listeners.ResultListener
 import com.active.orbit.baseapp.core.routing.Router
@@ -15,10 +15,14 @@ import com.active.orbit.baseapp.databinding.ActivityPatientBinding
 import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
+import com.active.orbit.baseapp.design.models.PanelModel
 import com.active.orbit.baseapp.design.recyclers.models.TripModel
+import com.active.orbit.tracker.core.computation.MobilityComputation
+import com.active.orbit.tracker.core.observers.TrackerObserverType
 import com.active.orbit.tracker.core.tracker.TrackerConfig
 import com.active.orbit.tracker.core.tracker.TrackerManager
 import com.active.orbit.tracker.core.utils.TimeUtils
+import kotlin.math.roundToInt
 
 class PatientActivity : BaseActivity(), View.OnClickListener {
 
@@ -38,7 +42,6 @@ class PatientActivity : BaseActivity(), View.OnClickListener {
         showMenuComponent()
         showLogo()
 
-
         prepare()
 
         val config = TrackerConfig()
@@ -53,6 +56,8 @@ class PatientActivity : BaseActivity(), View.OnClickListener {
         config.uploadData = true
 
         TrackerManager.getInstance(this).askForPermissionAndStartTracker(config)
+
+        computeResults()
     }
 
     override fun onResume() {
@@ -85,6 +90,41 @@ class PatientActivity : BaseActivity(), View.OnClickListener {
         super.onPause()
         TrackerManager.getInstance(this).onPause()
         lastTimeClosed = System.currentTimeMillis()
+    }
+
+    override fun onTrackerUpdate(type: TrackerObserverType, data: Any) {
+        when (type) {
+            TrackerObserverType.MOBILITY -> {
+                val mobilityChart = data as MobilityComputation
+
+                var minutesWalking = 0L
+                var distanceWalking = 0
+                var minutesHeart = 0L
+                if (mobilityChart.chart.isNotEmpty()) {
+                    val summary = mobilityChart.summaryData
+                    minutesWalking = summary.walkingMsecs / TimeUtils.ONE_MINUTE_MILLIS
+                    distanceWalking = summary.walkingDistance.roundToInt()
+                    minutesHeart = summary.runningMsecs / TimeUtils.ONE_MINUTE_MILLIS
+                }
+
+                val modelActivity = PanelModel()
+                modelActivity.value1 = distanceWalking
+                modelActivity.value2 = minutesWalking.toInt()
+                modelActivity.value3 = minutesHeart.toInt()
+                binding.activityPanel.updatePanel(SecondaryPanelType.ACTIVITY, modelActivity)
+
+                val modelMobility = PanelModel()
+                modelMobility.value1 = 0 // TODO tracker data
+                modelMobility.value2 = 0 // TODO tracker data
+                binding.mobilityPanel.updatePanel(SecondaryPanelType.MOBILITY, modelMobility)
+
+                val modelPhysiology = PanelModel()
+                modelPhysiology.value1 = 0 // TODO tracker data
+                modelPhysiology.value2 = 0 // TODO tracker data
+                binding.physiologyPanel.updatePanel(SecondaryPanelType.PHYSIOLOGY, modelPhysiology)
+            }
+            else -> super.onTrackerUpdate(type, data)
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.Q)
