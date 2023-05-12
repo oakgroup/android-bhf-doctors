@@ -15,6 +15,7 @@ import com.active.orbit.baseapp.databinding.ActivitySplashBinding
 import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
+import com.active.orbit.tracker.core.tracker.TrackerManager
 
 class SplashActivity : BaseActivity() {
 
@@ -79,5 +80,7 @@ class SplashActivity : BaseActivity() {
         Logger.i("------------------------------------------")
 
         BasePreferences.printAll(this)
+
+        TrackerManager.printInformationLogs(this)
     }
 }
