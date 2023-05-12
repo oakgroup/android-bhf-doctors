@@ -1,5 +1,6 @@
 package com.active.orbit.baseapp.design.dialogs
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.os.Bundle
 import android.view.View
@@ -13,7 +14,7 @@ import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.dialogs.listeners.SelectSeverityDialogListener
-import com.active.orbit.baseapp.design.recyclers.adapters.SeverityAdapter
+import com.active.orbit.baseapp.design.recyclers.adapters.SeverityDialogAdapter
 import com.active.orbit.baseapp.design.widgets.BaseTextView
 
 class SelectSeverityDialog : DialogFragment() {
@@ -22,8 +23,10 @@ class SelectSeverityDialog : DialogFragment() {
         const val ARGUMENT_ID_SYMPTOM = "arg_id_symptom"
     }
 
-    private var adapter: SeverityAdapter? = null
+    private var adapter: SeverityDialogAdapter? = null
     var listener: SelectSeverityDialogListener? = null
+    private var severities = ArrayList<String>()
+
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         super.onCreateDialog(savedInstanceState)
@@ -37,19 +40,28 @@ class SelectSeverityDialog : DialogFragment() {
         return builder.create()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun setup(view: View, idSymptom: String) {
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
         val title = view.findViewById<BaseTextView>(R.id.title)
 
         title.text = getString(R.string.select_symptom_severity)
 
+        val severitiesList: Array<String> = resources.getStringArray(R.array.severities_options)
+        for (severity in severitiesList) {
+            severities.add(severity)
+        }
+
         val linearLayoutManager = LinearLayoutManager(context)
         recyclerView.layoutManager = linearLayoutManager
 
-        adapter = SeverityAdapter(requireActivity() as BaseActivity, idSymptom, listener)
+        adapter = SeverityDialogAdapter(view.context)
         recyclerView.adapter = adapter
 
-        adapter?.refresh(requireActivity())
+        adapter?.listener = listener
+        adapter?.severities = ArrayList(severities)
+        adapter?.notifyDataSetChanged()
+
     }
 
     override fun onStart() {

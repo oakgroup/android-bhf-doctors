@@ -13,12 +13,12 @@ import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.dialogs.listeners.SelectProgrammeDialogListener
-import com.active.orbit.baseapp.design.recyclers.adapters.ProgrammesAdapter
+import com.active.orbit.baseapp.design.recyclers.adapters.ProgrammesDialogAdapter
 import com.active.orbit.baseapp.design.widgets.BaseTextView
 
 class SelectProgrammeDialog : DialogFragment() {
 
-    private var adapter: ProgrammesAdapter? = null
+    private var adapter: ProgrammesDialogAdapter? = null
     var listener: SelectProgrammeDialogListener? = null
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -42,7 +42,7 @@ class SelectProgrammeDialog : DialogFragment() {
         val linearLayoutManager = LinearLayoutManager(context)
         recyclerView.layoutManager = linearLayoutManager
 
-        adapter = ProgrammesAdapter(requireActivity() as BaseActivity, listener)
+        adapter = ProgrammesDialogAdapter(requireActivity() as BaseActivity, listener)
         recyclerView.adapter = adapter
 
         adapter?.refresh(requireActivity())

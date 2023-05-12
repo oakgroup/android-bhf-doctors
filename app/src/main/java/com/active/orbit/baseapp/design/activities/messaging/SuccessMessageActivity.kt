@@ -63,9 +63,7 @@ class SuccessMessageActivity : BaseActivity(), View.OnClickListener {
                         finishAndRemoveTask()
                     }
                     SuccessMessageType.SYMPTOM_REPORTED -> {
-                        Router.getInstance()
-                            .activityAnimation(ActivityAnimation.TOP_BOTTOM)
-                            .homepage(thiss)
+                        finishAndRemoveTask()
                     }
                     SuccessMessageType.DISMISS_PATIENT -> {
                         Router.getInstance()

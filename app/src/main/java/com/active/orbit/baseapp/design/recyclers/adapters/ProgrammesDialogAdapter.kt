@@ -8,11 +8,11 @@ import com.active.orbit.baseapp.core.database.models.DBProgram
 import com.active.orbit.baseapp.core.database.tables.TablePrograms
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.dialogs.listeners.SelectProgrammeDialogListener
-import com.active.orbit.baseapp.design.recyclers.adapters.holders.ProgrammeViewHolder
+import com.active.orbit.baseapp.design.recyclers.adapters.holders.ProgrammeDialogViewHolder
 import com.active.orbit.baseapp.design.recyclers.engine.BaseRecyclerAdapter
 import com.active.orbit.baseapp.design.recyclers.engine.BaseRecyclerCell
 
-class ProgrammesAdapter(private var activity: BaseActivity, var listener: SelectProgrammeDialogListener? = null) : BaseRecyclerAdapter<DBProgram>() {
+class ProgrammesDialogAdapter(private var activity: BaseActivity, var listener: SelectProgrammeDialogListener? = null) : BaseRecyclerAdapter<DBProgram>() {
 
     override fun dataSource(context: Context): List<DBProgram> {
         return TablePrograms.getAll(activity).filter { it.name == "Newcastle" }
@@ -22,6 +22,6 @@ class ProgrammesAdapter(private var activity: BaseActivity, var listener: Select
 
     override fun getViewHolder(parent: ViewGroup, viewType: Int): BaseRecyclerCell<DBProgram> {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_selection_dialog, parent, false)
-        return ProgrammeViewHolder(view, listener)
+        return ProgrammeDialogViewHolder(view, listener)
     }
 }

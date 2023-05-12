@@ -4,5 +4,5 @@ import com.active.orbit.baseapp.core.database.models.DBSymptom
 
 interface SelectSymptomDialogListener {
 
-    fun onSymptomSelect(symptom: DBSymptom)
+    fun onSymptomSelect(symptom: String)
 }

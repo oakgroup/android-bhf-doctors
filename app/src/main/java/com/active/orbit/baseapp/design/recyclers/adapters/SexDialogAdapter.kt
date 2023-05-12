@@ -6,12 +6,12 @@ import android.view.ViewGroup
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.dialogs.listeners.SelectSexDialogListener
-import com.active.orbit.baseapp.design.recyclers.adapters.holders.SexViewHolder
+import com.active.orbit.baseapp.design.recyclers.adapters.holders.SexDialogViewHolder
 import com.active.orbit.baseapp.design.recyclers.engine.BaseRecyclerAdapter
 import com.active.orbit.baseapp.design.recyclers.engine.BaseRecyclerCell
 import com.active.orbit.baseapp.design.recyclers.models.SexModel
 
-class SexAdapter(private var activity: BaseActivity, var listener: SelectSexDialogListener? = null) : BaseRecyclerAdapter<SexModel>() {
+class SexDialogAdapter(private var activity: BaseActivity, var listener: SelectSexDialogListener? = null) : BaseRecyclerAdapter<SexModel>() {
 
     override fun dataSource(context: Context): List<SexModel> {
         val male = SexModel("Male")
@@ -23,6 +23,6 @@ class SexAdapter(private var activity: BaseActivity, var listener: SelectSexDial
 
     override fun getViewHolder(parent: ViewGroup, viewType: Int): BaseRecyclerCell<SexModel> {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_selection_dialog, parent, false)
-        return SexViewHolder(view, listener)
+        return SexDialogViewHolder(view, listener)
     }
 }

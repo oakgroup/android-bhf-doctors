@@ -14,12 +14,12 @@ import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.dialogs.listeners.SelectSexDialogListener
-import com.active.orbit.baseapp.design.recyclers.adapters.SexAdapter
+import com.active.orbit.baseapp.design.recyclers.adapters.SexDialogAdapter
 import com.active.orbit.baseapp.design.widgets.BaseTextView
 
 class SelectSexDialog : DialogFragment() {
 
-    private var adapter: SexAdapter? = null
+    private var adapter: SexDialogAdapter? = null
     var listener: SelectSexDialogListener? = null
 
     @SuppressLint("UseGetLayoutInflater")
@@ -44,7 +44,7 @@ class SelectSexDialog : DialogFragment() {
         val linearLayoutManager = LinearLayoutManager(context)
         recyclerView.layoutManager = linearLayoutManager
 
-        adapter = SexAdapter(requireActivity() as BaseActivity, listener)
+        adapter = SexDialogAdapter(requireActivity() as BaseActivity, listener)
         recyclerView.adapter = adapter
 
         adapter?.refresh(requireActivity())

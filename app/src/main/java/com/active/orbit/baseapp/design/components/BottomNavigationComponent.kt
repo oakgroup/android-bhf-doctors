@@ -70,7 +70,7 @@ class BottomNavigationComponent : FrameLayout, View.OnClickListener {
                 Router.getInstance()
                     .clearTop(true)
                     .activityAnimation(ActivityAnimation.FADE)
-                    .startBaseActivity(context, Activities.REPORT_SYMPTOM_DETAILS)
+                    .startBaseActivity(context, Activities.SYMPTOMS)
             }
             binding.navHealth -> {
                 setSelected(BottomNavItemType.HEALTH)

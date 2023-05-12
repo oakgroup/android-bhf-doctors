@@ -7,7 +7,7 @@ import com.active.orbit.baseapp.design.recyclers.engine.BaseRecyclerCell
 import com.active.orbit.baseapp.design.recyclers.models.SexModel
 import com.active.orbit.baseapp.design.widgets.BaseTextView
 
-class SexViewHolder(itemView: View, var listener: SelectSexDialogListener? = null) : BaseRecyclerCell<SexModel>(itemView) {
+class SexDialogViewHolder(itemView: View, var listener: SelectSexDialogListener? = null) : BaseRecyclerCell<SexModel>(itemView) {
 
     private var sex: BaseTextView
 

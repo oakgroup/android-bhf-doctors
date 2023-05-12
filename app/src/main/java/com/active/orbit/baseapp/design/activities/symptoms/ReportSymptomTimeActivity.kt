@@ -8,7 +8,9 @@ import android.view.View
 import android.widget.DatePicker
 import androidx.core.content.ContextCompat
 import com.active.orbit.baseapp.R
+import com.active.orbit.baseapp.core.database.models.DBReportSymptom
 import com.active.orbit.baseapp.core.database.models.DBSymptom
+import com.active.orbit.baseapp.core.database.tables.TableReportedSymptoms
 import com.active.orbit.baseapp.core.database.tables.TableSeverities
 import com.active.orbit.baseapp.core.database.tables.TableSymptoms
 import com.active.orbit.baseapp.core.enums.SuccessMessageType
@@ -34,10 +36,11 @@ class ReportSymptomTimeActivity : BaseActivity(), View.OnClickListener, DatePick
 
     private lateinit var binding: ActivityReportSymptomTimeBinding
     var symptom: DBSymptom? = null
+    var symptomToReport = DBReportSymptom()
     private var symptomDate: Calendar? = null
     private var symptomTime: Calendar? = null
-    private var symptomID: String? = null
-    private var severityID: String? = null
+    private var symptomName: String? = null
+    private var symptomSeverity: String? = null
     private var symptomDetails: String? = null
 
 
@@ -48,27 +51,23 @@ class ReportSymptomTimeActivity : BaseActivity(), View.OnClickListener, DatePick
         showBackButton()
         showLogoButton()
 
-        symptomID = activityBundle.getString(ReportSymptomDetailsActivity.EXTRA_SYMPTOM_ID)!!
-        severityID = activityBundle.getString(ReportSymptomDetailsActivity.EXTRA_SYMPTOM_SEVERITY)!!
+        symptomName = activityBundle.getString(ReportSymptomDetailsActivity.EXTRA_SYMPTOM_NAME)!!
+        symptomSeverity = activityBundle.getString(ReportSymptomDetailsActivity.EXTRA_SYMPTOM_SEVERITY)!!
         symptomDetails = activityBundle.getString(ReportSymptomDetailsActivity.EXTRA_SYMPTOM_DETAILS)!!
 
 
-        backgroundThread {
-            symptom = TableSymptoms.getById(this, Preferences.user(this).idProgram!!, symptomID!!)
-            val symptomSeverity = TableSeverities.getById(this, symptomID!!, severityID!!)
-            symptom?.severity = symptomSeverity
-            symptom?.symptomDetails = symptomDetails
+        symptomToReport.symptomName = symptomName
+        symptomToReport.symptomSeverity = symptomSeverity
+        symptomToReport.symptomDetails = symptomDetails.toString()
 
-            mainThread {
-                prepare()
-            }
-        }
+
+        prepare()
+
 
     }
 
     private fun prepare() {
 
-        binding.symptom.text = symptom?.question
         binding.btnNow.paintFlags = binding.btnNow.paintFlags or Paint.UNDERLINE_TEXT_FLAG
 
         binding.btnReport.setOnClickListener(this)
@@ -93,14 +92,14 @@ class ReportSymptomTimeActivity : BaseActivity(), View.OnClickListener, DatePick
         when (v) {
 
             binding.btnReport -> {
-                if (symptomDate != null && symptomTime != null && symptom != null) {
+                if (symptomDate != null && symptomTime != null) {
                     val symptomDateTime = TimeUtils.getZeroSeconds(TimeUtils.getCurrent())
                     symptomDateTime.set(Calendar.YEAR, symptomDate!!.get(Calendar.YEAR))
                     symptomDateTime.set(Calendar.MONTH, symptomDate!!.get(Calendar.MONTH))
                     symptomDateTime.set(Calendar.DAY_OF_MONTH, symptomDate!!.get(Calendar.DAY_OF_MONTH))
                     symptomDateTime.set(Calendar.MINUTE, symptomTime!!.get(Calendar.MINUTE))
                     symptomDateTime.set(Calendar.HOUR_OF_DAY, symptomTime!!.get(Calendar.HOUR_OF_DAY))
-                    symptom!!.symptomDateTime = symptomDateTime.timeInMillis
+                    symptomToReport.symptomDateTime = symptomDateTime.timeInMillis
                     sendData()
                 } else {
                     UiUtils.showShortToast(this, R.string.symptom_date_time)
@@ -165,22 +164,35 @@ class ReportSymptomTimeActivity : BaseActivity(), View.OnClickListener, DatePick
     private fun sendData() {
         showProgressView()
 
-        val symptomsToUpload = ArrayList<DBSymptom>()
-        symptomsToUpload.add(symptom!!)
-
-
-        SymptomsManager.uploadSymptoms(this, symptomsToUpload, object : ResultListener {
-            override fun onResult(success: Boolean) {
-                hideProgressView()
-                if (success) {
-                    val bundle = Bundle()
-                    bundle.putInt(Extra.SUCCESS_MESSAGE.key, SuccessMessageType.SYMPTOM_REPORTED.id)
-                    Router.getInstance().activityAnimation(ActivityAnimation.BOTTOM_TOP).startBaseActivity(thiss, Activities.SUCCESS_MESSAGE, bundle)
-                } else {
-                    UiUtils.showShortToast(this@ReportSymptomTimeActivity, R.string.error)
-                }
+        backgroundThread {
+            TableReportedSymptoms.upsert(this, symptomToReport)
+            mainThread {
+                UiUtils.showShortToast(this@ReportSymptomTimeActivity, getString(R.string.success_symptom_report))
+                setResult(SymptomsActivity.SYMPTOM_RESULT_CODE_UPDATED)
+                finish()
             }
-        })
+        }
+        hideProgressView()
+
+        //TODO
+//        val symptomsToUpload = ArrayList<DBSymptom>()
+//        symptomsToUpload.add(symptom!!)
+//
+//
+//        SymptomsManager.uploadSymptoms(this, symptomsToUpload, object : ResultListener {
+//            override fun onResult(success: Boolean) {
+//                hideProgressView()
+//                if (success) {
+//                    mainThread {
+//                        UiUtils.showShortToast(this@ReportSymptomTimeActivity, getString(R.string.success_symptom_report))
+//                        setResult(SymptomsActivity.SYMPTOM_RESULT_CODE_UPDATED)
+//                        finish()
+//                    }
+//                } else {
+//                    UiUtils.showShortToast(this@ReportSymptomTimeActivity, R.string.error)
+//                }
+//            }
+//        })
     }
 
 }

@@ -15,7 +15,7 @@
         android:layout_marginTop="@dimen/margin_vertical"
         android:layout_marginEnd="@dimen/margin_lateral"
         android:gravity="start"
-        android:text="@string/symptom_details"
+        android:text="@string/symptom_details_add"
         android:textColor="@color/textColorPrimaryDark"
         android:textSize="@dimen/h2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,7 +55,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/margin_vertical"
-                    android:text="@string/select_symptom"
+                    android:text="@string/symptom"
                     android:textColor="@color/textColorPrimaryDark"
                     android:textSize="@dimen/main_text_dimension"
                     app:typeface="semibold" />
@@ -72,7 +72,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_vertical_double"
                     android:layout_marginBottom="@dimen/margin_vertical"
-                    android:text="@string/select_symptom_severity"
+                    android:text="@string/severity"
                     android:textColor="@color/textColorPrimaryDark"
                     android:textSize="@dimen/main_text_dimension"
                     app:typeface="semibold" />
@@ -118,14 +118,50 @@
                         android:isScrollContainer="true"
                         android:maxLength="2000"
                         android:maxLines="30"
+                        android:layout_marginBottom="@dimen/margin_vertical_double"
                         android:paddingStart="@dimen/margin_lateral"
                         android:paddingTop="@dimen/margin_vertical"
                         android:paddingEnd="@dimen/margin_lateral"
                         android:paddingBottom="@dimen/margin_vertical"
                         android:textColor="@color/textColorPrimaryDark"
-                        android:textColorHint="@color/textColorPrimaryLight"
+                        android:textColorHint="@color/textColorGray"
                         android:textSize="@dimen/description_text_dimension"
                         app:typeface="regular" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/dateTimeLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <com.active.orbit.baseapp.design.widgets.BaseTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/margin_vertical"
+                            android:text="@string/date_time"
+                            android:textColor="@color/textColorPrimaryDark"
+                            android:textSize="@dimen/main_text_dimension"
+                            app:typeface="semibold" />
+
+                        <com.active.orbit.baseapp.design.components.ButtonComponent
+                            android:id="@+id/btnDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true" />
+
+                        <com.active.orbit.baseapp.design.components.ButtonComponent
+                            android:id="@+id/btnTime"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/margin_vertical"
+                            android:clickable="true"
+                            android:focusable="true" />
+
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -154,12 +190,13 @@
             android:layout_height="wrap_content"
             android:gravity="end"
             android:text="1/2"
-            android:textColor="@color/textColorPrimaryLight"
+            android:textColor="@color/colorPrimary"
             android:textSize="@dimen/h5"
             app:typeface="semibold"
             tools:ignore="HardcodedText" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/steps"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_vertical_half_half"
@@ -193,14 +230,25 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_vertical_double"
             android:gravity="center"
+            android:visibility="visible"
             android:orientation="horizontal">
 
+            <com.active.orbit.baseapp.design.widgets.BaseButton
+                android:id="@+id/btnBack"
+                style="@style/ButtonSecondary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/back"
+                app:typeface="semibold" />
 
             <com.active.orbit.baseapp.design.widgets.BaseButton
                 android:id="@+id/btnNext"
                 style="@style/ButtonPrimary"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_lateral"
                 android:layout_weight="2"
                 android:gravity="center"
                 android:text="@string/next"
