@@ -25,7 +25,7 @@ object TableReportedSymptoms {
             return Database.getInstance(context).getReportedSymptoms().getById(idSymptom)
         } catch (e: Exception) {
             e.printStackTrace()
-            Logger.e("Error on getting symptom by id $idSymptom${e.message}")
+            Logger.e("Error on getting reported symptom by id $idSymptom${e.message}")
         }
         return null
     }
