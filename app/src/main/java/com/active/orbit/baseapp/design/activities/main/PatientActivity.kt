@@ -5,10 +5,10 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.RequiresApi
-import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.enums.BottomNavItemType
 import com.active.orbit.baseapp.core.enums.SecondaryPanelType
 import com.active.orbit.baseapp.core.listeners.ResultListener
+import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.Router
 import com.active.orbit.baseapp.core.utils.Logger
 import com.active.orbit.baseapp.databinding.ActivityPatientBinding
@@ -45,6 +45,7 @@ class PatientActivity : BaseActivity(), View.OnClickListener {
         prepare()
 
         val config = TrackerConfig()
+        config.baseUrl = Preferences.backend(this).baseUrl
         config.useStepCounter = true
         config.useActivityRecognition = true
         config.useLocationTracking = true
