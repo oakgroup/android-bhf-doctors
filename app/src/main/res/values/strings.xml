@@ -707,11 +707,11 @@
     <string name="success">Success!!!</string>
     <string name="success_battery_settings">You have successfully set up the battery settings</string>
     <string name="success_disable_restrictions">You have successfully disabled the permissions restrictions</string>
-    <string name="success_dismiss_patient">You have successfully dismissed your patient</string>
+    <string name="success_dismiss_patient">You have successfully finished your study</string>
     <string name="success_location_permissions">You have successfully set up the location settings</string>
     <string name="success_medicine_reported">You have successfully reported a medicine</string>
     <string name="success_on_boarding">You have successfully configured your device. You are ready to use the application</string>
-    <string name="success_registration">You have successfully registered the patient</string>
+    <string name="success_registration">You have successfully registered to participate to the BHF study</string>
     <string name="success_symptom_report">You have successfully reported a symptom</string>
     <string name="summary">Summary</string>
     <string name="summary_activity_title">Welcome back!</string>

@@ -41,6 +41,16 @@
             app:typeface="regular"
             tools:text="@string/severity_empty" />
 
+        <com.active.orbit.baseapp.design.widgets.BaseTextView
+            android:id="@+id/timestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_vertical_half"
+            android:textColor="@color/gray"
+            android:textSize="12dp"
+            app:typeface="italic"
+            tools:text="Reported at " />
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <FrameLayout
