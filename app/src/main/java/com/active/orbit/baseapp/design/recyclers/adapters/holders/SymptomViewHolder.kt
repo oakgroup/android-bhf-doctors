@@ -10,6 +10,7 @@ import com.active.orbit.baseapp.core.database.models.DBReportSymptom
 import com.active.orbit.baseapp.core.database.models.DBSymptom
 import com.active.orbit.baseapp.core.routing.Router
 import com.active.orbit.baseapp.core.utils.Constants
+import com.active.orbit.baseapp.core.utils.TimeUtils
 import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
@@ -22,17 +23,21 @@ class SymptomViewHolder(var activity: BaseActivity, itemView: View) : BaseRecycl
 
     private var symptomName: BaseTextView
     private var symptomSeverity: BaseTextView
+    private var symptomTimestamp: BaseTextView
+
     private var rightIconFrame: FrameLayout
 
     init {
         symptomName = itemView.findViewById(R.id.name)
         symptomSeverity = itemView.findViewById(R.id.severity)
+        symptomTimestamp = itemView.findViewById(R.id.timestamp)
         rightIconFrame = itemView.findViewById(R.id.rightIconFrame)
     }
 
     override fun bind(model: DBReportSymptom) {
         symptomName.text = model.symptomName
         symptomSeverity.text = model.symptomSeverity
+        symptomTimestamp.text = TimeUtils.format(TimeUtils.getCurrent(model.symptomTimestamp), Constants.DATE_FORMAT_YEAR_MONTH_DAY_HOUR_MINUTE_SECOND)
 
         itemView.setOnClickListener {
             onSymptomClicked(model)

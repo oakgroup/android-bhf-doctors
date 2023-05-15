@@ -2,6 +2,7 @@ package com.active.orbit.baseapp.core.generics
 
 import android.text.TextUtils
 import com.active.orbit.baseapp.core.database.models.DBProgram
+import com.active.orbit.baseapp.core.database.models.DBReportSymptom
 import com.active.orbit.baseapp.core.database.models.DBSeverity
 import com.active.orbit.baseapp.core.database.models.DBSymptom
 import com.active.orbit.baseapp.core.utils.Constants
@@ -54,6 +55,11 @@ interface BaseModel : Comparable<BaseModel?> {
                 val value = startTime
                 val otherValue = other.startTime
                 return value.compareTo(otherValue)
+            }
+            this is DBReportSymptom && other is DBReportSymptom -> {
+                val value = symptomTimestamp
+                val otherValue = other.symptomTimestamp
+                return otherValue.compareTo(value)
             }
         }
         return Constants.PRIORITY_ZERO

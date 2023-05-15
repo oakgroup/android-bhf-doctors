@@ -137,6 +137,7 @@ class ReportSymptomDetailsActivity : BaseActivity(), View.OnClickListener {
 
         binding.btnSymptoms.setText(reportedSymptom!!.symptomName)
         binding.btnSeverity.setText(reportedSymptom!!.symptomSeverity)
+        binding.edtMoreDetails.setText(reportedSymptom!!.symptomDetails)
 
 
         if(reportedSymptom!!.symptomDateTime != 0L) {
@@ -153,7 +154,8 @@ class ReportSymptomDetailsActivity : BaseActivity(), View.OnClickListener {
         binding.btnSymptoms.isEnabled = false
         binding.btnSeverity.isEnabled = false
         binding.btnDate.isEnabled = false
-        binding.btnSymptoms.isEnabled = false
+        binding.btnTime.isEnabled = false
+        binding.edtMoreDetails.isEnabled = false
 
 
     }
@@ -169,9 +171,6 @@ class ReportSymptomDetailsActivity : BaseActivity(), View.OnClickListener {
             binding.btnNext -> {
                 hideKeyboard()
                 if (isSelectionValid()) {
-                    if (symptomDetails == null) {
-                        symptomDetails = Constants.EMPTY
-                    }
                     val bundle = Bundle()
                     bundle.putString(EXTRA_SYMPTOM_NAME, symptomName)
                     bundle.putString(EXTRA_SYMPTOM_SEVERITY, symptomSeverity)

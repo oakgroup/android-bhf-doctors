@@ -13,13 +13,12 @@ import com.active.orbit.baseapp.core.utils.Constants
 class DBReportSymptom : BaseModel {
 
     @PrimaryKey
-    var symptomId: Long = 0
+    var symptomId: Long = 0L
     var symptomName: String? = null
     var symptomSeverity: String? = null
     var symptomDateTime = 0L
-
-    @Ignore
-    var symptomDetails: String = Constants.EMPTY
+    var symptomTimestamp= 0L
+    var symptomDetails: String? = null
 
 
     override fun identifier(): String {
@@ -27,13 +26,14 @@ class DBReportSymptom : BaseModel {
     }
 
     fun description(): String {
-        return "[$symptomId - $symptomName - $symptomSeverity]"
+        return "[$symptomId - $symptomName - $symptomSeverity -$symptomTimestamp]"
     }
 
     override fun isValid(): Boolean {
         return !TextUtils.isEmpty(symptomName)
                 && !TextUtils.isEmpty(symptomSeverity)
                 && symptomDateTime > 0L
+                && symptomTimestamp > 0L
     }
 
     fun severitySelected(): Boolean {

@@ -11,24 +11,17 @@ import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.database.models.DBReportSymptom
 import com.active.orbit.baseapp.core.database.models.DBSymptom
 import com.active.orbit.baseapp.core.database.tables.TableReportedSymptoms
-import com.active.orbit.baseapp.core.database.tables.TableSeverities
-import com.active.orbit.baseapp.core.database.tables.TableSymptoms
-import com.active.orbit.baseapp.core.enums.SuccessMessageType
-import com.active.orbit.baseapp.core.listeners.ResultListener
-import com.active.orbit.baseapp.core.managers.SymptomsManager
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
-import com.active.orbit.baseapp.core.routing.Router
-import com.active.orbit.baseapp.core.routing.enums.Extra
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.core.utils.Logger
 import com.active.orbit.baseapp.core.utils.ThreadHandler.backgroundThread
 import com.active.orbit.baseapp.core.utils.ThreadHandler.mainThread
 import com.active.orbit.baseapp.core.utils.TimeUtils
 import com.active.orbit.baseapp.databinding.ActivityReportSymptomTimeBinding
-import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
-import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
+
 import com.active.orbit.baseapp.design.utils.UiUtils
+import java.sql.Timestamp
 import java.util.*
 
 class ReportSymptomTimeActivity : BaseActivity(), View.OnClickListener, DatePickerDialog.OnDateSetListener {
@@ -58,7 +51,7 @@ class ReportSymptomTimeActivity : BaseActivity(), View.OnClickListener, DatePick
 
         symptomToReport.symptomName = symptomName
         symptomToReport.symptomSeverity = symptomSeverity
-        symptomToReport.symptomDetails = symptomDetails.toString()
+        symptomToReport.symptomDetails = symptomDetails
 
 
         prepare()
@@ -93,6 +86,7 @@ class ReportSymptomTimeActivity : BaseActivity(), View.OnClickListener, DatePick
 
             binding.btnReport -> {
                 if (symptomDate != null && symptomTime != null) {
+                    symptomToReport.symptomId = TimeUtils.getCurrent().timeInMillis
                     val symptomDateTime = TimeUtils.getZeroSeconds(TimeUtils.getCurrent())
                     symptomDateTime.set(Calendar.YEAR, symptomDate!!.get(Calendar.YEAR))
                     symptomDateTime.set(Calendar.MONTH, symptomDate!!.get(Calendar.MONTH))
@@ -100,6 +94,7 @@ class ReportSymptomTimeActivity : BaseActivity(), View.OnClickListener, DatePick
                     symptomDateTime.set(Calendar.MINUTE, symptomTime!!.get(Calendar.MINUTE))
                     symptomDateTime.set(Calendar.HOUR_OF_DAY, symptomTime!!.get(Calendar.HOUR_OF_DAY))
                     symptomToReport.symptomDateTime = symptomDateTime.timeInMillis
+                    symptomToReport.symptomTimestamp = TimeUtils.getCurrent().timeInMillis
                     sendData()
                 } else {
                     UiUtils.showShortToast(this, R.string.symptom_date_time)
