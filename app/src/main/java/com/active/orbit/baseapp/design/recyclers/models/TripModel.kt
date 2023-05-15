@@ -3,8 +3,8 @@ package com.active.orbit.baseapp.design.recyclers.models
 import com.active.orbit.baseapp.core.generics.BaseModel
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.tracker.core.computation.data.MobilityData
-import com.active.orbit.tracker.core.database.models.DBLocation
-import com.active.orbit.tracker.core.database.models.DBTrip
+import com.active.orbit.tracker.core.database.models.TrackerDBLocation
+import com.active.orbit.tracker.core.database.models.TrackerDBTrip
 import com.active.orbit.tracker.core.utils.TimeUtils
 
 class TripModel : BaseModel {
@@ -18,8 +18,8 @@ class TripModel : BaseModel {
     var steps: Int = 0
     var reliable: Boolean = true
     var distanceInMeters: Int = 0
-    var locations: MutableList<DBLocation> = mutableListOf()
-    var subTrips: MutableList<DBTrip> = mutableListOf()
+    var locations: MutableList<TrackerDBLocation> = mutableListOf()
+    var subTrips: MutableList<TrackerDBTrip> = mutableListOf()
     var duration: Long = 0
     var uploaded: Boolean = false
 
@@ -27,7 +27,7 @@ class TripModel : BaseModel {
     var position = Constants.INVALID
 
     @Suppress("ConvertSecondaryConstructorToPrimary")
-    constructor(dbTrip: DBTrip) {
+    constructor(dbTrip: TrackerDBTrip) {
         this.id = dbTrip.idTrip
         this.startTime = dbTrip.startTime
         this.endTime = dbTrip.endTime

@@ -15,7 +15,7 @@ import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnim
 import com.active.orbit.baseapp.design.dialogs.DataUploadPhoneDialog
 import com.active.orbit.baseapp.design.dialogs.listeners.DataUploadPhoneDialogListener
 import com.active.orbit.baseapp.design.utils.UiUtils
-import com.active.orbit.tracker.core.upload.UploadUtils
+import com.active.orbit.tracker.core.upload.TrackerUploadUtils
 
 class HelpActivity : BaseActivity(), View.OnClickListener {
 
@@ -73,7 +73,7 @@ class HelpActivity : BaseActivity(), View.OnClickListener {
                 if (Preferences.user(this).isUserRegistered()) {
                     backgroundThread {
                         val limitMillis = System.currentTimeMillis() - TimeUtils.ONE_MINUTE_MILLIS
-                        val unsentPhoneDataCount = UploadUtils(this).dataToSend(limitMillis)
+                        val unsentPhoneDataCount = TrackerUploadUtils(this).dataToSend(limitMillis)
                         mainThread {
                             if (unsentPhoneDataCount > 0) {
                                 val dataUploadPhoneDialog = DataUploadPhoneDialog()

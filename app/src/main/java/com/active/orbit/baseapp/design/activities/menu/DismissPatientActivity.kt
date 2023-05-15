@@ -23,7 +23,7 @@ import com.active.orbit.baseapp.design.dialogs.DataUploadPhoneDialog
 import com.active.orbit.baseapp.design.dialogs.listeners.DataCheckPhoneDialogListener
 import com.active.orbit.baseapp.design.dialogs.listeners.DataUploadPhoneDialogListener
 import com.active.orbit.baseapp.design.utils.UiUtils
-import com.active.orbit.tracker.core.upload.UploadUtils
+import com.active.orbit.tracker.core.upload.TrackerUploadUtils
 import com.google.android.gms.wearable.MessageClient
 import com.google.android.gms.wearable.MessageEvent
 import com.google.android.gms.wearable.Wearable
@@ -156,7 +156,7 @@ class DismissPatientActivity : BaseActivity(), View.OnClickListener, MessageClie
                 backgroundThread {
 
                     val limitMillis = System.currentTimeMillis() - TimeUtils.ONE_MINUTE_MILLIS
-                    val unsentPhoneDataCount = UploadUtils(this).dataToSend(limitMillis)
+                    val unsentPhoneDataCount = TrackerUploadUtils(this).dataToSend(limitMillis)
 
                     if (unsentPhoneDataCount > 0) {
                         phoneDataUploaded = false

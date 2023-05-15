@@ -8,7 +8,7 @@ import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.recyclers.adapters.ActivitiesAdapter
 import com.active.orbit.baseapp.design.recyclers.models.TripModel
 import com.active.orbit.tracker.core.computation.MobilityComputation
-import com.active.orbit.tracker.core.database.models.DBTrip
+import com.active.orbit.tracker.core.database.models.TrackerDBTrip
 import com.active.orbit.tracker.core.observers.TrackerObserverType
 import com.google.android.gms.location.DetectedActivity
 
@@ -48,7 +48,7 @@ class DetailedActivityActivity : BaseActivity() {
         }
     }
 
-    private fun showActivities(tripsList: List<DBTrip>) {
+    private fun showActivities(tripsList: List<TrackerDBTrip>) {
         var tripModels = tripsList.map { TripModel(it) }
         tripModels = tripModels.filter { it.activityType != DetectedActivity.STILL }
         if (tripModels.isEmpty()) {

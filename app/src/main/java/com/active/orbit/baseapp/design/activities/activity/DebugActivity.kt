@@ -8,9 +8,9 @@ import com.active.orbit.baseapp.databinding.ActivityDebugBinding
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.tracker.core.computation.MobilityComputation
 import com.active.orbit.tracker.core.computation.data.MobilityData
-import com.active.orbit.tracker.core.database.models.DBActivity
-import com.active.orbit.tracker.core.database.models.DBLocation
-import com.active.orbit.tracker.core.database.models.DBStep
+import com.active.orbit.tracker.core.database.models.TrackerDBActivity
+import com.active.orbit.tracker.core.database.models.TrackerDBLocation
+import com.active.orbit.tracker.core.database.models.TrackerDBStep
 import com.active.orbit.tracker.core.observers.TrackerObserverType
 import com.active.orbit.tracker.core.utils.TimeUtils
 
@@ -41,9 +41,9 @@ class DebugActivity : BaseActivity() {
     @Suppress("UNCHECKED_CAST")
     override fun onTrackerUpdate(type: TrackerObserverType, data: Any) {
         when (type) {
-            TrackerObserverType.ACTIVITIES -> refreshActivitiesData(data as List<DBActivity>)
-            TrackerObserverType.LOCATIONS -> refreshLocationsData(data as List<DBLocation>)
-            TrackerObserverType.STEPS -> refreshStepsData(data as List<DBStep>)
+            TrackerObserverType.ACTIVITIES -> refreshActivitiesData(data as List<TrackerDBActivity>)
+            TrackerObserverType.LOCATIONS -> refreshLocationsData(data as List<TrackerDBLocation>)
+            TrackerObserverType.STEPS -> refreshStepsData(data as List<TrackerDBStep>)
             TrackerObserverType.MOBILITY -> {
                 val mobilityChart = data as MobilityComputation
                 refreshMobilityChart(mobilityChart.chart)
@@ -74,7 +74,7 @@ class DebugActivity : BaseActivity() {
      * @param stepsList teh step list received
      */
     @SuppressLint("SetTextI18n")
-    private fun refreshStepsData(stepsList: List<DBStep>) {
+    private fun refreshStepsData(stepsList: List<TrackerDBStep>) {
         val textField = binding.steps
         var numberOfSteps = 0
         var concatenatedString = ""
@@ -96,7 +96,7 @@ class DebugActivity : BaseActivity() {
      * @param activityList teh list of activities received
      */
     @SuppressLint("SetTextI18n")
-    private fun refreshActivitiesData(activityList: List<DBActivity>) {
+    private fun refreshActivitiesData(activityList: List<TrackerDBActivity>) {
         val textField = binding.activities
         var activitiesString = ""
         for (activityData in activityList)
@@ -110,7 +110,7 @@ class DebugActivity : BaseActivity() {
      * @param locationsList the list of locations
      */
     @SuppressLint("SetTextI18n")
-    private fun refreshLocationsData(locationsList: List<DBLocation?>) {
+    private fun refreshLocationsData(locationsList: List<TrackerDBLocation?>) {
         val textField = binding.locations
         var locationsString = ""
         for (location in locationsList)

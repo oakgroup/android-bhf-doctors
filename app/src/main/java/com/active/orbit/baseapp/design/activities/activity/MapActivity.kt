@@ -13,7 +13,7 @@ import com.active.orbit.baseapp.design.activities.main.PatientActivity
 import com.active.orbit.baseapp.design.recyclers.models.TripModel
 import com.active.orbit.baseapp.design.utils.ActivityUtils
 import com.active.orbit.baseapp.design.utils.CadenceGraphDisplay
-import com.active.orbit.tracker.core.database.models.DBLocation
+import com.active.orbit.tracker.core.database.models.TrackerDBLocation
 import com.google.android.gms.location.DetectedActivity
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.*
@@ -196,7 +196,7 @@ class MapActivity : BaseActivity(), OnMapReadyCallback, View.OnClickListener {
             prevMarker = currMarker
         } //if <= 1 it will crash so add the same location twice - otherwise it will not focus
         when (locations.size) {
-            0 -> locations.add(DBLocation(trip.chart[trip.startTime].timeInMSecs, 0.0, 0.0, 0.0, 0.0))
+            0 -> locations.add(TrackerDBLocation(trip.chart[trip.startTime].timeInMSecs, 0.0, 0.0, 0.0, 0.0))
             1 -> locations.add(locations[0])
             else -> addStartEndTags(locations)
 
@@ -221,7 +221,7 @@ class MapActivity : BaseActivity(), OnMapReadyCallback, View.OnClickListener {
      *
      * @param locations
      */
-    private fun addStartEndTags(locations: MutableList<DBLocation>) {
+    private fun addStartEndTags(locations: MutableList<TrackerDBLocation>) {
         if (currentTrip?.activityType != DetectedActivity.STILL) {
             map!!.addMarker(createMarker(locations[0], BitmapDescriptorFactory.HUE_GREEN))
             map!!.addMarker(createMarker(locations[locations.size - 1], BitmapDescriptorFactory.HUE_ORANGE))
@@ -235,7 +235,7 @@ class MapActivity : BaseActivity(), OnMapReadyCallback, View.OnClickListener {
      * @param color
      * @return
      */
-    private fun createMarker(location: DBLocation, strokeColor: Float): MarkerOptions {
+    private fun createMarker(location: TrackerDBLocation, strokeColor: Float): MarkerOptions {
         val currMarker = LatLng(location.latitude, location.longitude)
         return MarkerOptions()
             .position(currMarker)
