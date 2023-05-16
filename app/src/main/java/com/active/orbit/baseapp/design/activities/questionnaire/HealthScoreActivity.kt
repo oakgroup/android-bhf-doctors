@@ -8,6 +8,7 @@ import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.database.models.DBHealth
 import com.active.orbit.baseapp.core.database.tables.TableHealth
 import com.active.orbit.baseapp.core.enums.HealthType
+import com.active.orbit.baseapp.core.routing.Router
 import com.active.orbit.baseapp.core.routing.enums.Extra
 import com.active.orbit.baseapp.core.routing.enums.ResultCode
 import com.active.orbit.baseapp.core.utils.Constants
@@ -16,6 +17,7 @@ import com.active.orbit.baseapp.core.utils.ThreadHandler.backgroundThread
 import com.active.orbit.baseapp.core.utils.ThreadHandler.mainThread
 import com.active.orbit.baseapp.core.utils.TimeUtils
 import com.active.orbit.baseapp.databinding.ActivityHealthScoreBinding
+import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.utils.UiUtils
 
@@ -126,7 +128,9 @@ class HealthScoreActivity : BaseActivity(), View.OnClickListener {
             mainThread {
                 UiUtils.showShortToast(this, getString(R.string.success_symptom_report))
                 setResult(ResultCode.RESULT_OK.value)
-                finish()
+                Router.getInstance()
+                    .clearTop(true)
+                    .startBaseActivity(this, Activities.HEALTH)
             }
         }
         hideProgressView()
