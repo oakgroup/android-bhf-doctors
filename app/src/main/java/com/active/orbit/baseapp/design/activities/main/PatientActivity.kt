@@ -52,8 +52,8 @@ class PatientActivity : BaseActivity(), View.OnClickListener {
         config.useHeartRateMonitor = true
         config.useMobilityModelling = true
         config.useBatteryMonitor = true
-        config.useStayPoints = true
-        config.compactLocations = true
+        config.useStayPoints = false
+        config.compactLocations = false
         config.uploadData = true
 
         TrackerManager.getInstance(this).askForPermissionAndStartTracker(config)
