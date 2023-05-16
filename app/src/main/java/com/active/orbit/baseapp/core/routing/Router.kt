@@ -213,8 +213,10 @@ class Router {
         clearTop(true)
         newTask(true)
         if (Preferences.user(context).isUserRegistered() && Preferences.user(context).programStarted) {
+            activityAnimation(ActivityAnimation.FADE)
             startBaseActivity(context, Activities.PATIENT)
         } else {
+            activityAnimation(ActivityAnimation.FADE)
             startBaseActivity(context, Activities.DOCTOR)
         }
     }

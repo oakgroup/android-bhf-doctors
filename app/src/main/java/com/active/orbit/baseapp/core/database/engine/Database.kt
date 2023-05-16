@@ -5,14 +5,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.database.engine.encryption.DatabaseKeystore
-import com.active.orbit.baseapp.core.database.models.DBProgram
-import com.active.orbit.baseapp.core.database.models.DBReportSymptom
-import com.active.orbit.baseapp.core.database.models.DBSeverity
-import com.active.orbit.baseapp.core.database.models.DBSymptom
-import com.active.orbit.baseapp.core.database.queries.Programs
-import com.active.orbit.baseapp.core.database.queries.Severities
-import com.active.orbit.baseapp.core.database.queries.Symptoms
-import com.active.orbit.baseapp.core.database.queries.SymptomsReported
+import com.active.orbit.baseapp.core.database.models.*
+import com.active.orbit.baseapp.core.database.queries.*
 import com.active.orbit.baseapp.core.utils.ThreadHandler.backgroundThread
 import net.sqlcipher.database.SQLiteDatabase
 import net.sqlcipher.database.SupportFactory
@@ -22,7 +16,7 @@ import net.sqlcipher.database.SupportFactory
  *
  * @author omar.brugna
  */
-@androidx.room.Database(entities = [DBProgram::class, DBSeverity::class, DBSymptom::class, DBReportSymptom::class], version = 1, exportSchema = false)
+@androidx.room.Database(entities = [DBProgram::class, DBSeverity::class, DBSymptom::class, DBReportSymptom::class, DBHealth::class], version = 1, exportSchema = false)
 internal abstract class Database : RoomDatabase() {
 
     companion object {
@@ -70,5 +64,8 @@ internal abstract class Database : RoomDatabase() {
     abstract fun getSeverities(): Severities
 
     abstract fun getReportedSymptoms(): SymptomsReported
+
+    abstract fun getHealth(): Health
+
 
 }

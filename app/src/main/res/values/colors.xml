@@ -15,6 +15,7 @@
     <color name="colorPrimary">#8C0033</color>
     <color name="colorSecondary">#475CA6</color>
     <color name="colorSecondaryAccent">#3DB08C</color>
+    <color name="colorSecondaryLight">#66475CA6</color>
     <color name="colorPrimaryDark">#021422</color>
     <color name="colorPrimaryLight">@color/white</color>
     <color name="colorProgress">#96000000</color>

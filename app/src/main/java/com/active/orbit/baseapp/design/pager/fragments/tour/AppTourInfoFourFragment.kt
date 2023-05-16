@@ -1,4 +1,4 @@
-package com.active.orbit.baseapp.design.pager.fragments
+package com.active.orbit.baseapp.design.pager.fragments.tour
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.design.fragments.engine.BaseFragment
 
-class AppTourInfoThreeFragment : BaseFragment(), View.OnClickListener {
+class AppTourInfoFourFragment : BaseFragment(), View.OnClickListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_app_tour_info_three, container, false)
+        return inflater.inflate(R.layout.fragment_app_tour_info_four, container, false)
     }
 
     override fun prepare() {

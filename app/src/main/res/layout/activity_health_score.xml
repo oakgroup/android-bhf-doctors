@@ -1,0 +1,201 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context=".design.activities.questionnaire.HealthScoreActivity">
+
+
+    <com.active.orbit.baseapp.design.widgets.BaseTextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_lateral"
+        android:layout_marginTop="@dimen/margin_vertical"
+        android:layout_marginEnd="@dimen/margin_lateral"
+        android:gravity="start"
+        android:text="@string/health_score"
+        android:textColor="@color/textColorPrimaryDark"
+        android:textSize="@dimen/h2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:typeface="bold"
+        tools:ignore="NotSibling" />
+
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/margin_lateral"
+        android:layout_marginVertical="@dimen/margin_vertical_double"
+        android:background="@drawable/bg_panel"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/bottomLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollIndicators="end"
+            android:scrollbarThumbVertical="@color/colorAccent"
+            android:scrollbars="vertical">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/margin_lateral"
+                android:paddingVertical="@dimen/margin_vertical_double">
+
+                <com.active.orbit.baseapp.design.widgets.BaseTextView
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_vertical"
+                    android:text="@string/health_score_description"
+                    android:textColor="@color/textColorPrimaryDark"
+                    android:textSize="@dimen/main_text_dimension"
+                    app:typeface="medium" />
+
+                <com.active.orbit.baseapp.design.widgets.BaseEditText
+                    android:id="@+id/healthScore"
+                    style="@style/EditTextPrimary"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/margin_vertical_double"
+                    android:hint="0 - 100"
+                    android:imeOptions="actionDone"
+                    android:inputType="number"
+                    android:textAlignment="center"
+                    app:typeface="regular"/>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </FrameLayout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/bottomLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/margin_lateral"
+        android:paddingBottom="@dimen/margin_vertical_double"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.active.orbit.baseapp.design.widgets.BaseTextView
+            android:id="@+id/progressText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="6/6"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/h5"
+            app:typeface="semibold"
+            tools:ignore="HardcodedText" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/steps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_vertical_half_half"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title">
+
+            <View
+                android:id="@+id/stepOne"
+                android:layout_width="0dp"
+                android:layout_height="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_step_selected" />
+
+            <View
+                android:id="@+id/stepTwo"
+                android:layout_width="0dp"
+                android:layout_height="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_step_selected" />
+
+            <View
+                android:id="@+id/stepThree"
+                android:layout_width="0dp"
+                android:layout_height="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_step_selected" />
+
+
+            <View
+                android:id="@+id/stepFour"
+                android:layout_width="0dp"
+                android:layout_height="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_step_selected" />
+
+
+            <View
+                android:id="@+id/stepFive"
+                android:layout_width="0dp"
+                android:layout_height="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_step_selected" />
+
+            <View
+                android:id="@+id/stepSix"
+                android:layout_width="0dp"
+                android:layout_height="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_step_selected" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_vertical_double"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <com.active.orbit.baseapp.design.widgets.BaseButton
+                android:id="@+id/btnBack"
+                style="@style/ButtonSecondary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/back"
+                app:typeface="semibold" />
+
+            <com.active.orbit.baseapp.design.widgets.BaseButton
+                android:id="@+id/btnNext"
+                style="@style/ButtonPrimary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_lateral"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="@string/next"
+                app:typeface="semibold" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
