@@ -15,6 +15,7 @@ import com.active.orbit.baseapp.design.activities.symptoms.ReportSymptomTimeActi
 import com.active.orbit.baseapp.design.activities.main.PatientActivity
 import com.active.orbit.baseapp.design.activities.main.SplashActivity
 import com.active.orbit.baseapp.design.activities.messaging.SuccessMessageActivity
+import com.active.orbit.baseapp.design.activities.questionnaire.*
 import com.active.orbit.baseapp.design.activities.symptoms.ReportSymptomDetailsActivity
 import com.active.orbit.baseapp.design.activities.symptoms.SymptomsActivity
 import com.active.orbit.baseapp.design.activities.tour.TourActivity
@@ -29,6 +30,13 @@ enum class Activities(private val activity: Class<out BaseActivity>) : ActivityP
     DISMISS_PATIENT(DismissPatientActivity::class.java),
     DOCTOR(DoctorActivity::class.java),
     FAQ(FaqActivity::class.java),
+    HEALTH(HealthActivity::class.java),
+    HEALTH_MOBILITY(HealthMobilityActivity::class.java),
+    HEALTH_SELFCARE(HealthSelfCareActivity::class.java),
+    HEALTH_USUAL_ACTIVITIES(HealthUsualActivitiesActivity::class.java),
+    HEALTH_PAIN(HealthPainActivity::class.java),
+    HEALTH_ANXIETY(HealthAnxietyActivity::class.java),
+    HEALTH_SCORE(HealthScoreActivity::class.java),
     HELP(HelpActivity::class.java),
     MAP(MapActivity::class.java),
     ON_BOARDING(OnBoardingActivity::class.java),

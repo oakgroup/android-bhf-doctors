@@ -13,5 +13,10 @@ enum class Extra(var key: String) {
     USER_WEIGHT("patient_weight"),
     USER_HEIGHT("patient_height"),
     FROM_MENU("from_menu"),
-    MODEL_ID("model_id_extra");
+    MODEL_ID("model_id_extra"),
+    HEALTH_MOBILITY("mobility_response"),
+    HEALTH_SELF_CARE("selfcare_response"),
+    HEALTH_ACTIVITY("activity_response"),
+    HEALTH_ANXIETY("anxiety_response"),
+    HEALTH_PAIN("pain_response");
 }

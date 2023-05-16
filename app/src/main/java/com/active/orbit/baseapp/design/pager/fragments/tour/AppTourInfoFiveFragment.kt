@@ -1,4 +1,4 @@
-package com.active.orbit.baseapp.design.pager.fragments
+package com.active.orbit.baseapp.design.pager.fragments.tour
 
 import android.os.Bundle
 import android.view.LayoutInflater

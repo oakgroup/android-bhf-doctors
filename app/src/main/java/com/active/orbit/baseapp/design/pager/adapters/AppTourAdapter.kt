@@ -4,7 +4,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.active.orbit.baseapp.core.utils.BaseException
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
-import com.active.orbit.baseapp.design.pager.fragments.*
+import com.active.orbit.baseapp.design.pager.fragments.tour.AppTourInfoFiveFragment
+import com.active.orbit.baseapp.design.pager.fragments.tour.AppTourInfoOneFragment
+import com.active.orbit.baseapp.design.pager.fragments.tour.AppTourInfoSixFragment
+import com.active.orbit.baseapp.design.pager.fragments.tour.AppTourInfoThreeFragment
 
 class AppTourAdapter(activity: BaseActivity, fragmentManager: FragmentManager) : BasePagerAdapter(fragmentManager) {
 

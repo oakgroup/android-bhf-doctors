@@ -60,7 +60,8 @@ object Constants {
 
     const val PROGRESS_ANIMATION_DURATION = 1000.0
     const val PROGRESS_ANIMATION_INCREMENT = 15.0
-    const val NHS_WEEK_HEART_TARGET = 150
+    const val NHS_WEEK_HEART_TARGET = 10
+    const val HEALTH_MAX_PROGRESS = 100
 
     const val ADMIN_PASSWORD = "123456"
 

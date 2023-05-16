@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".design.activities.questionnaire.HealthActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground">
+
+        <com.active.orbit.baseapp.design.widgets.BaseTextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/margin_vertical"
+            android:layout_marginStart="@dimen/margin_lateral"
+            android:layout_marginEnd="@dimen/margin_lateral"
+            android:gravity="start"
+            android:text="@string/health"
+            android:textColor="@color/textColorPrimaryDark"
+            android:textSize="@dimen/h2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:typeface="bold"
+            tools:ignore="NotSibling" />
+
+        <com.active.orbit.baseapp.design.recyclers.engine.BaseRecyclerView
+            android:id="@+id/healthRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:paddingTop="@dimen/margin_vertical"
+            android:paddingBottom="80dp"
+            android:scrollIndicators="end"
+            android:scrollbarThumbVertical="@color/colorAccent"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            tools:ignore="NotSibling" />
+
+        <com.active.orbit.baseapp.design.widgets.BaseTextView
+            android:id="@+id/noHealth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            android:lineSpacingExtra="5dp"
+            android:text="@string/health_empty_patient"
+            android:textAlignment="center"
+            android:textSize="@dimen/h3"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            tools:ignore="NotSibling" />
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnFillQuestionnaire"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_lateral"
+            android:layout_marginBottom="@dimen/margin_vertical"
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_register"
+            app:layout_constraintBottom_toTopOf="@id/bottomNav"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="ContentDescription">
+
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+
+        <com.active.orbit.baseapp.design.components.BottomNavigationComponent
+            android:id="@+id/bottomNav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include layout="@layout/navigation_view" />
+
+</androidx.drawerlayout.widget.DrawerLayout>
