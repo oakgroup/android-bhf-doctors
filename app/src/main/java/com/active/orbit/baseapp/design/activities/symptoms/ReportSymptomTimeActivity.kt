@@ -12,6 +12,7 @@ import com.active.orbit.baseapp.core.database.models.DBReportSymptom
 import com.active.orbit.baseapp.core.database.models.DBSymptom
 import com.active.orbit.baseapp.core.database.tables.TableReportedSymptoms
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
+import com.active.orbit.baseapp.core.routing.enums.ResultCode
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.core.utils.Logger
 import com.active.orbit.baseapp.core.utils.ThreadHandler.backgroundThread
@@ -19,9 +20,7 @@ import com.active.orbit.baseapp.core.utils.ThreadHandler.mainThread
 import com.active.orbit.baseapp.core.utils.TimeUtils
 import com.active.orbit.baseapp.databinding.ActivityReportSymptomTimeBinding
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
-
 import com.active.orbit.baseapp.design.utils.UiUtils
-import java.sql.Timestamp
 import java.util.*
 
 class ReportSymptomTimeActivity : BaseActivity(), View.OnClickListener, DatePickerDialog.OnDateSetListener {
@@ -163,7 +162,7 @@ class ReportSymptomTimeActivity : BaseActivity(), View.OnClickListener, DatePick
             TableReportedSymptoms.upsert(this, symptomToReport)
             mainThread {
                 UiUtils.showShortToast(this@ReportSymptomTimeActivity, getString(R.string.success_symptom_report))
-                setResult(SymptomsActivity.SYMPTOM_RESULT_CODE_UPDATED)
+                setResult(ResultCode.RESULT_OK.value)
                 finish()
             }
         }

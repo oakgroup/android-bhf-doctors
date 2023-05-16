@@ -18,7 +18,6 @@ class SymptomsActivity : BaseActivity() {
 
     companion object {
         const val SYMPTOM_REQUEST_CODE = 912
-        const val SYMPTOM_RESULT_CODE_UPDATED = 913
         private const val SYMPTOMS_MAX = 20
     }
 
@@ -32,7 +31,6 @@ class SymptomsActivity : BaseActivity() {
         showMenuComponent()
         showLogo()
         binding.bottomNav.setSelected(BottomNavItemType.SYMPTOMS)
-
 
         prepare()
     }
@@ -51,8 +49,6 @@ class SymptomsActivity : BaseActivity() {
         adapter = SymptomsAdapter(this)
         binding.symptomsRecyclerView.adapter = adapter
 
-
-
         binding.noSymptoms.text = getString(R.string.symptoms_empty_patient)
         binding.btnAddSymptom.visibility = View.VISIBLE
         binding.btnAddSymptom.setOnClickListener {
@@ -64,8 +60,6 @@ class SymptomsActivity : BaseActivity() {
                 UiUtils.showLongToast(this, getString(R.string.full_symptoms_list_message))
             }
         }
-
-
     }
 
     private fun showSymptoms() {

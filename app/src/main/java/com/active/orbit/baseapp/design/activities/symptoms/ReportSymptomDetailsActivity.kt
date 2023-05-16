@@ -1,5 +1,6 @@
 package com.active.orbit.baseapp.design.activities.symptoms
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -8,12 +9,9 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.database.models.DBReportSymptom
-import com.active.orbit.baseapp.core.database.models.DBSeverity
-import com.active.orbit.baseapp.core.database.models.DBSymptom
 import com.active.orbit.baseapp.core.database.tables.TableReportedSymptoms
-import com.active.orbit.baseapp.core.database.tables.TableSymptoms
-import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.Router
+import com.active.orbit.baseapp.core.routing.enums.ResultCode
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.core.utils.Logger
 import com.active.orbit.baseapp.core.utils.ThreadHandler.backgroundThread
@@ -53,7 +51,6 @@ class ReportSymptomDetailsActivity : BaseActivity(), View.OnClickListener {
         showBackButton()
         showLogoButton()
 
-
         backgroundThread {
             val modelId = activityBundle.getString(EXTRA_SYMPTOM_ID, Constants.EMPTY)
             if (modelId != Constants.EMPTY) {
@@ -79,6 +76,15 @@ class ReportSymptomDetailsActivity : BaseActivity(), View.OnClickListener {
         prepare()
     }
 
+    // TODO manage deprecation
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == SymptomsActivity.SYMPTOM_REQUEST_CODE && resultCode == ResultCode.RESULT_OK.value) {
+            finish()
+        }
+    }
+
     private fun prepare() {
 
         binding.btnSymptoms.setIcon(R.drawable.ic_dropdown)
@@ -97,11 +103,9 @@ class ReportSymptomDetailsActivity : BaseActivity(), View.OnClickListener {
         } else {
             showViewSymptomLayout()
         }
-
-
     }
 
-    private fun showAddSymptomLayout(){
+    private fun showAddSymptomLayout() {
         binding.title.text = getString(R.string.symptom_details_add)
         binding.dateTimeLayout.visibility = GONE
         binding.progressText.visibility = VISIBLE
@@ -125,7 +129,7 @@ class ReportSymptomDetailsActivity : BaseActivity(), View.OnClickListener {
         })
     }
 
-    private fun showViewSymptomLayout(){
+    private fun showViewSymptomLayout() {
         binding.title.text = getString(R.string.symptom_details)
         binding.dateTimeLayout.visibility = VISIBLE
         binding.progressText.visibility = GONE
@@ -134,13 +138,11 @@ class ReportSymptomDetailsActivity : BaseActivity(), View.OnClickListener {
         binding.btnNext.visibility = GONE
         binding.btnBack.setOnClickListener(this)
 
-
         binding.btnSymptoms.setText(reportedSymptom!!.symptomName)
         binding.btnSeverity.setText(reportedSymptom!!.symptomSeverity)
         binding.edtMoreDetails.setText(reportedSymptom!!.symptomDetails)
 
-
-        if(reportedSymptom!!.symptomDateTime != 0L) {
+        if (reportedSymptom!!.symptomDateTime != 0L) {
             val date = TimeUtils.format(TimeUtils.getCurrent(reportedSymptom!!.symptomDateTime), Constants.DATE_FORMAT_YEAR_MONTH_DAY)
             binding.btnDate.setText(date)
             val time = TimeUtils.format(TimeUtils.getCurrent(reportedSymptom!!.symptomDateTime), Constants.DATE_FORMAT_HOUR_MINUTE)
@@ -156,10 +158,7 @@ class ReportSymptomDetailsActivity : BaseActivity(), View.OnClickListener {
         binding.btnDate.isEnabled = false
         binding.btnTime.isEnabled = false
         binding.edtMoreDetails.isEnabled = false
-
-
     }
-
 
     override fun onClick(v: View?) {
         when (v) {
@@ -181,7 +180,6 @@ class ReportSymptomDetailsActivity : BaseActivity(), View.OnClickListener {
                     UiUtils.showShortToast(this, R.string.symptom_select_something)
                 }
             }
-
 
             binding.btnSymptoms -> {
                 Utils.hideKeyboard(binding.edtMoreDetails)
@@ -217,12 +215,10 @@ class ReportSymptomDetailsActivity : BaseActivity(), View.OnClickListener {
                     UiUtils.showShortToast(this, R.string.symptom_select)
                 }
             }
-
         }
     }
 
     private fun isSelectionValid(): Boolean {
-        return (symptomName!= Constants.EMPTY && symptomSeverity!= Constants.EMPTY)
-
+        return (symptomName != Constants.EMPTY && symptomSeverity != Constants.EMPTY)
     }
 }
