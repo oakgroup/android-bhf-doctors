@@ -70,7 +70,7 @@ class PatientRegisterConfirmActivity : BaseActivity(), View.OnClickListener {
                 binding.patientHeight.text = getString(R.string.height_value, patientHeight)
 
                 if (program?.isValid() == true) {
-                    binding.patientProgramme.text = getString(R.string.patient_programme, program.name)
+                    binding.patientProgramme.text = getString(R.string.patient_programme, "BHF")
 
                     binding.btnConfirm.setOnClickListener(this)
                 } else {
