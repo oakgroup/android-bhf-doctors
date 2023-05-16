@@ -80,17 +80,17 @@ class MapActivity : BaseActivity(), OnMapReadyCallback, View.OnClickListener {
             binding.itemActivity.activityName.text = ActivityUtils.getName(this, currentTrip!!.activityType).replaceFirstChar { it.uppercase() }
             binding.itemActivity.activityTime.text = currentTrip!!.activityTime
             if (currentTrip!!.activityType in listOf(DetectedActivity.WALKING, DetectedActivity.RUNNING, DetectedActivity.ON_FOOT)) {
-                binding.itemActivity.activitySteps.visibility = View.VISIBLE
-                binding.itemActivity.activitySteps.text = getString(R.string.activity_steps, currentTrip!!.steps.toString())
+                binding.itemActivity.activityDetails.visibility = View.VISIBLE
+                binding.itemActivity.activityDetails.text = getString(R.string.activity_details, currentTrip!!.steps.toString(), currentTrip!!.speedInMetersPerSeconds.toString())
             } else {
-                binding.itemActivity.activitySteps.visibility = View.GONE
+                binding.itemActivity.activityDetails.visibility = View.GONE
             }
         } else {
             Logger.e("Current trip is null on ${javaClass.name}")
             binding.itemActivity.activityIcon.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_walking))
             binding.itemActivity.activityName.clear()
             binding.itemActivity.activityTime.clear()
-            binding.itemActivity.activitySteps.clear()
+            binding.itemActivity.activityDetails.clear()
         }
     }
 

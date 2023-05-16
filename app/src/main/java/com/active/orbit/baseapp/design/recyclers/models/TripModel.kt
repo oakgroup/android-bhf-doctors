@@ -18,6 +18,7 @@ class TripModel : BaseModel {
     var steps: Int = 0
     var reliable: Boolean = true
     var distanceInMeters: Int = 0
+    var speedInMetersPerSeconds: Long = 0
     var locations: MutableList<TrackerDBLocation> = mutableListOf()
     var subTrips: MutableList<TrackerDBTrip> = mutableListOf()
     var duration: Long = 0
@@ -37,6 +38,7 @@ class TripModel : BaseModel {
         this.steps = dbTrip.steps
         this.reliable = dbTrip.reliable
         this.distanceInMeters = dbTrip.distanceInMeters
+        this.speedInMetersPerSeconds = dbTrip.getSpeedInMPerSecs()
         this.locations = dbTrip.locations
         this.subTrips = dbTrip.subTrips
         this.duration = dbTrip.getDuration(chart)

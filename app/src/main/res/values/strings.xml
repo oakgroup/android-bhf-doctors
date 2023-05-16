@@ -27,6 +27,7 @@
     <string name="activity_active_minutes">%1$s Move Minutes</string>
     <string name="activity_cycling_minute">1 Cycling Minute</string>
     <string name="activity_cycling_minutes">%1$s Cycling Minutes</string>
+    <string name="activity_details">%1$s Steps (%2$s M/S)</string>
     <string name="activity_distance_active_minute">1 Move Minute (0 km)</string>
     <string name="activity_distance_active_minutes">%1$s Move Minutes (%2$s km)</string>
     <string name="activity_distance_cycling_minute">1 Cycling Minute (0 km)</string>

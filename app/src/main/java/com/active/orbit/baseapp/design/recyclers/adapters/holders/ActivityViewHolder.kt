@@ -23,7 +23,7 @@ class ActivityViewHolder(var activity: BaseActivity, itemView: View, private var
     private var activityIcon: BaseImageView
     private var activityName: BaseTextView
     private var activityTime: BaseTextView
-    private var activitySteps: BaseTextView
+    private var activityDetails: BaseTextView
     private var rightIconFrame: FrameLayout
     private var connectorOne: View
     private var connectorTwo: View
@@ -33,7 +33,7 @@ class ActivityViewHolder(var activity: BaseActivity, itemView: View, private var
         activityIcon = itemView.findViewById(R.id.activityIcon)
         activityName = itemView.findViewById(R.id.activityName)
         activityTime = itemView.findViewById(R.id.activityTime)
-        activitySteps = itemView.findViewById(R.id.activitySteps)
+        activityDetails = itemView.findViewById(R.id.activityDetails)
         rightIconFrame = itemView.findViewById(R.id.rightIconFrame)
         connectorOne = itemView.findViewById(R.id.connectorOne)
         connectorTwo = itemView.findViewById(R.id.connectorTwo)
@@ -49,10 +49,10 @@ class ActivityViewHolder(var activity: BaseActivity, itemView: View, private var
         activityTime.text = model.activityTime
 
         if (model.activityType in listOf(DetectedActivity.WALKING, DetectedActivity.RUNNING, DetectedActivity.ON_FOOT)) {
-            activitySteps.visibility = View.VISIBLE
-            activitySteps.text = activity.getString(R.string.activity_steps, model.steps.toString())
+            activityDetails.visibility = View.VISIBLE
+            activityDetails.text = activity.getString(R.string.activity_details, model.steps.toString(), model.speedInMetersPerSeconds.toString())
         } else {
-            activitySteps.visibility = View.GONE
+            activityDetails.visibility = View.GONE
         }
 
         if (model.position == tripModels.size - 1) {
