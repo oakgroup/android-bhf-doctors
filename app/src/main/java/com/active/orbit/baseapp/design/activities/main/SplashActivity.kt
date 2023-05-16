@@ -1,5 +1,6 @@
 package com.active.orbit.baseapp.design.activities.main
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import com.active.orbit.baseapp.BuildConfig
 import com.active.orbit.baseapp.R
@@ -17,6 +18,7 @@ import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
 import com.active.orbit.tracker.core.tracker.TrackerManager
 
+@SuppressLint("CustomSplashScreen")
 class SplashActivity : BaseActivity() {
 
     private lateinit var binding: ActivitySplashBinding

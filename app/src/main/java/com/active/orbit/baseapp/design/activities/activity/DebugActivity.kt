@@ -12,6 +12,7 @@ import com.active.orbit.tracker.core.database.models.TrackerDBActivity
 import com.active.orbit.tracker.core.database.models.TrackerDBLocation
 import com.active.orbit.tracker.core.database.models.TrackerDBStep
 import com.active.orbit.tracker.core.observers.TrackerObserverType
+import com.active.orbit.tracker.core.utils.Constants
 import com.active.orbit.tracker.core.utils.TimeUtils
 
 class DebugActivity : BaseActivity() {
@@ -84,7 +85,7 @@ class DebugActivity : BaseActivity() {
         for (stepData in stepsList) {
             stepData.let {
                 numberOfSteps += it.steps - previoussteps
-                concatenatedString += "\n" + TimeUtils.formatMillis(it.timeInMillis, "HH:mm:ss") + " " + (it.steps - previoussteps)
+                concatenatedString += "\n" + TimeUtils.formatMillis(it.timeInMillis, Constants.DATE_FORMAT_HOUR_MINUTE_SECONDS) + " " + (it.steps - previoussteps)
                 previoussteps = it.steps
             }
         }

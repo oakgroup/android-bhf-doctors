@@ -121,6 +121,7 @@
     <string name="category">Category</string>
     <string name="change_time">Change time if wrong</string>
     <string name="changing">Corrections</string>
+    <string name="chart_not_available_for_type">Chart not available for this activity type</string>
     <string name="charts">Charts</string>
     <string name="check_activity">Check your daily activity</string>
     <string name="check_data_on_server">Check Server Status</string>
@@ -453,6 +454,8 @@
     <string name="not_assigned">Not Assigned</string>
     <string name="not_available">Not Available</string>
     <string name="not_big_birmingham_member">Big Birmingham Member - not set</string>
+    <string name="not_enough_steps_to_show_chart">Not enough steps to show the chart</string>
+    <string name="not_enough_distance_to_show_chart">Not enough distance to show the chart</string>
     <string name="not_now">Not Now!</string>
     <string name="not_set">Not set</string>
     <string name="not_valid_qr">This does not look like a valid Beacon QR code</string>
@@ -774,6 +777,7 @@
     <string name="tuesday">Tuesday</string>
     <string name="type">Type</string>
     <string name="type_a_note">Type any note here</string>
+    <string name="unknown">Unknown</string>
     <string name="update">Update</string>
     <string name="update_data_watch">Update Progress in Watch App</string>
     <string name="update_details">Update Details</string>

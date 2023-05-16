@@ -16,8 +16,8 @@
         android:layout_marginStart="@dimen/margin_lateral_half_half"
         android:layout_marginTop="@dimen/margin_vertical_half_half"
         android:layout_marginEnd="@dimen/margin_lateral_half_half"
-        android:paddingHorizontal="@dimen/margin_lateral"
         android:layout_marginBottom="@dimen/margin_vertical_half_half"
+        android:paddingHorizontal="@dimen/margin_lateral"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
@@ -89,14 +89,13 @@
         app:srcCompat="@drawable/ic_arrow_right_primary"
         app:tint="@android:color/white" />
 
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/graphContainer"
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:layout_marginStart="@dimen/margin_lateral_half_half"
         android:layout_marginEnd="@dimen/margin_lateral_half_half"
         android:layout_marginBottom="@dimen/margin_vertical_half_half"
-        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintRight_toLeftOf="parent">
@@ -109,6 +108,18 @@
             android:paddingEnd="4dp"
             android:paddingBottom="4dp" />
 
-    </LinearLayout>
+        <com.active.orbit.baseapp.design.widgets.BaseTextView
+            android:id="@+id/chartNotAvailable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/textColorBlack"
+            android:textSize="@dimen/h5"
+            android:visibility="gone"
+            app:typeface="regular"
+            tools:text="@string/not_assigned"
+            tools:visibility="visible" />
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

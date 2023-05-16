@@ -42,7 +42,7 @@ class TripModel : BaseModel {
         this.duration = dbTrip.getDuration(chart)
         this.uploaded = dbTrip.uploaded
 
-        this.activityTime = TimeUtils.formatMillis(dbTrip.getStartTime(chart), "HH:mm") + " - " + TimeUtils.formatMillis(dbTrip.getEndTime(chart), "HH:mm")
+        this.activityTime = TimeUtils.formatMillis(dbTrip.getStartTime(chart), Constants.DATE_FORMAT_HOUR_MINUTE) + " - " + TimeUtils.formatMillis(dbTrip.getEndTime(chart), "HH:mm")
     }
 
     override fun identifier(): String {

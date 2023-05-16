@@ -3,7 +3,6 @@ package com.active.orbit.baseapp.design.activities.activity
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
-import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.utils.Logger
@@ -13,7 +12,9 @@ import com.active.orbit.baseapp.design.activities.main.PatientActivity
 import com.active.orbit.baseapp.design.recyclers.models.TripModel
 import com.active.orbit.baseapp.design.utils.ActivityUtils
 import com.active.orbit.baseapp.design.utils.CadenceGraphDisplay
+import com.active.orbit.baseapp.design.widgets.BaseTextView
 import com.active.orbit.tracker.core.database.models.TrackerDBLocation
+import com.github.mikephil.charting.charts.CombinedChart
 import com.google.android.gms.location.DetectedActivity
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.*
@@ -78,11 +79,18 @@ class MapActivity : BaseActivity(), OnMapReadyCallback, View.OnClickListener {
             binding.itemActivity.activityIcon.setImageDrawable(ActivityUtils.getIcon(this, currentTrip!!.activityType))
             binding.itemActivity.activityName.text = ActivityUtils.getName(this, currentTrip!!.activityType).replaceFirstChar { it.uppercase() }
             binding.itemActivity.activityTime.text = currentTrip!!.activityTime
+            if (currentTrip!!.activityType in listOf(DetectedActivity.WALKING, DetectedActivity.RUNNING, DetectedActivity.ON_FOOT)) {
+                binding.itemActivity.activitySteps.visibility = View.VISIBLE
+                binding.itemActivity.activitySteps.text = getString(R.string.activity_steps, currentTrip!!.steps.toString())
+            } else {
+                binding.itemActivity.activitySteps.visibility = View.GONE
+            }
         } else {
             Logger.e("Current trip is null on ${javaClass.name}")
             binding.itemActivity.activityIcon.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_walking))
             binding.itemActivity.activityName.clear()
             binding.itemActivity.activityTime.clear()
+            binding.itemActivity.activitySteps.clear()
         }
     }
 
@@ -91,18 +99,29 @@ class MapActivity : BaseActivity(), OnMapReadyCallback, View.OnClickListener {
      *
      */
     private fun showCadenceIfRelevant() {
-        val container: LinearLayout = findViewById(R.id.graphContainer)
-        if (currentTrip!!.activityType in listOf(
-                DetectedActivity.ON_BICYCLE, DetectedActivity.WALKING,
-                DetectedActivity.RUNNING, DetectedActivity.ON_FOOT
-            )
-            && currentTrip!!.steps > 150
-            // display only for movements of at least 3 minutes
-            && currentTrip!!.duration > 180000
-        ) {
-            CadenceGraphDisplay(findViewById(R.id.chart_view), currentTrip!!)
-            container.visibility = View.VISIBLE
-        } else container.visibility = View.INVISIBLE
+        val chartView: CombinedChart = findViewById(R.id.chart_view)
+        val chartNotAvailable: BaseTextView = findViewById(R.id.chartNotAvailable)
+        if (currentTrip!!.activityType in listOf(DetectedActivity.ON_BICYCLE, DetectedActivity.WALKING, DetectedActivity.RUNNING, DetectedActivity.ON_FOOT)) {
+            if (currentTrip!!.steps > 150) { // display only for movements of at least 150 steps
+                if (currentTrip!!.duration > 180000) { // display only for movements of at least 3 minutes
+                    chartNotAvailable.visibility = View.GONE
+                    chartView.visibility = View.VISIBLE
+                    CadenceGraphDisplay(chartView, currentTrip!!)
+                } else {
+                    chartNotAvailable.visibility = View.VISIBLE
+                    chartNotAvailable.text = getString(R.string.not_enough_distance_to_show_chart)
+                    chartView.visibility = View.INVISIBLE
+                }
+            } else {
+                chartNotAvailable.visibility = View.VISIBLE
+                chartNotAvailable.text = getString(R.string.not_enough_steps_to_show_chart)
+                chartView.visibility = View.INVISIBLE
+            }
+        } else {
+            chartNotAvailable.visibility = View.VISIBLE
+            chartNotAvailable.text = getString(R.string.chart_not_available_for_type)
+            chartView.visibility = View.INVISIBLE
+        }
     }
 
     private fun decideOnFabsVisibility() {

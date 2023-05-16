@@ -1,19 +1,21 @@
 package com.active.orbit.baseapp.design.recyclers.adapters.holders
 
+import android.annotation.SuppressLint
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.routing.Router
-import com.active.orbit.baseapp.design.activities.main.PatientActivity
 import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
+import com.active.orbit.baseapp.design.activities.main.PatientActivity
 import com.active.orbit.baseapp.design.recyclers.engine.BaseRecyclerCell
 import com.active.orbit.baseapp.design.recyclers.models.TripModel
 import com.active.orbit.baseapp.design.utils.ActivityUtils
 import com.active.orbit.baseapp.design.widgets.BaseImageView
 import com.active.orbit.baseapp.design.widgets.BaseTextView
+import com.google.android.gms.location.DetectedActivity
 
 class ActivityViewHolder(var activity: BaseActivity, itemView: View, private var tripModels: ArrayList<TripModel>) : BaseRecyclerCell<TripModel>(itemView) {
 
@@ -21,6 +23,7 @@ class ActivityViewHolder(var activity: BaseActivity, itemView: View, private var
     private var activityIcon: BaseImageView
     private var activityName: BaseTextView
     private var activityTime: BaseTextView
+    private var activitySteps: BaseTextView
     private var rightIconFrame: FrameLayout
     private var connectorOne: View
     private var connectorTwo: View
@@ -30,12 +33,13 @@ class ActivityViewHolder(var activity: BaseActivity, itemView: View, private var
         activityIcon = itemView.findViewById(R.id.activityIcon)
         activityName = itemView.findViewById(R.id.activityName)
         activityTime = itemView.findViewById(R.id.activityTime)
+        activitySteps = itemView.findViewById(R.id.activitySteps)
         rightIconFrame = itemView.findViewById(R.id.rightIconFrame)
         connectorOne = itemView.findViewById(R.id.connectorOne)
         connectorTwo = itemView.findViewById(R.id.connectorTwo)
-
     }
 
+    @SuppressLint("SetTextI18n")
     override fun bind(model: TripModel) {
 
         rightIconFrame.isClickable = false
@@ -44,6 +48,12 @@ class ActivityViewHolder(var activity: BaseActivity, itemView: View, private var
         activityName.text = ActivityUtils.getName(activity, model.activityType).replaceFirstChar { it.uppercase() }
         activityTime.text = model.activityTime
 
+        if (model.activityType in listOf(DetectedActivity.WALKING, DetectedActivity.RUNNING, DetectedActivity.ON_FOOT)) {
+            activitySteps.visibility = View.VISIBLE
+            activitySteps.text = activity.getString(R.string.activity_steps, model.steps.toString())
+        } else {
+            activitySteps.visibility = View.GONE
+        }
 
         if (model.position == tripModels.size - 1) {
             connectorOne.visibility = View.GONE

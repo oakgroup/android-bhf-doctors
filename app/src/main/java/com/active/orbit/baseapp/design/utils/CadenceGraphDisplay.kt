@@ -1,6 +1,7 @@
 package com.active.orbit.baseapp.design.utils
 
 import android.graphics.Color
+import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.core.utils.Logger
 import com.active.orbit.baseapp.design.recyclers.models.TripModel
 import com.active.orbit.tracker.core.computation.data.MobilityData.Companion.INVALID_VALUE
@@ -36,7 +37,7 @@ class CadenceGraphDisplay(private var combinedChart: CombinedChart, private val 
                 Logger.i("Steps: ${currentTrip.chart[index].cadence}")
                 val lineEntry = Entry((index - base).toFloat(), if (currentTrip.activityType == DetectedActivity.ON_BICYCLE) 40f else 100f)
                 lineEntries.add(lineEntry)
-                xEntries.add(TimeUtils.formatMillis(currentTrip.chart[index].timeInMSecs, "HH:mm"))
+                xEntries.add(TimeUtils.formatMillis(currentTrip.chart[index].timeInMSecs, Constants.DATE_FORMAT_HOUR_MINUTE))
             }
         }
 

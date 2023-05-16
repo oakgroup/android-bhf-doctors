@@ -58,6 +58,18 @@
                 app:typeface="regular"
                 tools:text="12:00 - 13:00" />
 
+            <com.active.orbit.baseapp.design.widgets.BaseTextView
+                android:id="@+id/activitySteps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_vertical_half_half"
+                android:textColor="@color/textColorBlack"
+                android:textSize="@dimen/h5"
+                android:visibility="gone"
+                app:typeface="regular"
+                tools:text="12:00 - 13:00"
+                tools:visibility="visible" />
+
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <FrameLayout

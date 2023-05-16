@@ -27,7 +27,7 @@ object ActivityUtils {
             DetectedActivity.RUNNING -> context.getString(R.string.running)
             DetectedActivity.ON_BICYCLE -> context.getString(R.string.cycling)
             DetectedActivity.IN_VEHICLE -> context.getString(R.string.vehicle)
-            else -> context.getString(R.string.walking)
+            else -> context.getString(R.string.unknown)
         }
     }
 }
