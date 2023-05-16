@@ -4,33 +4,19 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.database.models.DBHealth
 import com.active.orbit.baseapp.core.database.tables.TableHealth
-import com.active.orbit.baseapp.core.database.tables.TableReportedSymptoms
 import com.active.orbit.baseapp.core.enums.HealthType
-import com.active.orbit.baseapp.core.routing.Router
 import com.active.orbit.baseapp.core.routing.enums.Extra
+import com.active.orbit.baseapp.core.routing.enums.ResultCode
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.core.utils.Logger
 import com.active.orbit.baseapp.core.utils.ThreadHandler.backgroundThread
 import com.active.orbit.baseapp.core.utils.ThreadHandler.mainThread
 import com.active.orbit.baseapp.core.utils.TimeUtils
-import com.active.orbit.baseapp.core.utils.Utils
-import com.active.orbit.baseapp.databinding.ActivityHealthAnxietyBinding
-import com.active.orbit.baseapp.databinding.ActivityHealthMobilityBinding
 import com.active.orbit.baseapp.databinding.ActivityHealthScoreBinding
-import com.active.orbit.baseapp.databinding.ActivityReportSymptomDetailsBinding
-import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
-import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
-import com.active.orbit.baseapp.design.activities.symptoms.SymptomsActivity
-import com.active.orbit.baseapp.design.dialogs.SelectSeverityDialog
-import com.active.orbit.baseapp.design.dialogs.SelectSymptomDialog
-import com.active.orbit.baseapp.design.dialogs.listeners.SelectSeverityDialogListener
-import com.active.orbit.baseapp.design.dialogs.listeners.SelectSymptomDialogListener
 import com.active.orbit.baseapp.design.utils.UiUtils
 
 class HealthScoreActivity : BaseActivity(), View.OnClickListener {
@@ -75,7 +61,7 @@ class HealthScoreActivity : BaseActivity(), View.OnClickListener {
         binding.description.text = healthType.getDescription(this)
 
         binding.btnBack.setOnClickListener(this)
-        binding.btnNext.setOnClickListener(this)
+        binding.btnFinish.setOnClickListener(this)
 
         binding.healthScore.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -95,7 +81,7 @@ class HealthScoreActivity : BaseActivity(), View.OnClickListener {
                 finish()
             }
 
-            binding.btnNext -> {
+            binding.btnFinish -> {
                 hideKeyboard()
                 if (isSelectionValid()) {
 
@@ -139,7 +125,7 @@ class HealthScoreActivity : BaseActivity(), View.OnClickListener {
             }
             mainThread {
                 UiUtils.showShortToast(this, getString(R.string.success_symptom_report))
-                setResult(HealthActivity.HEALTH_RESULT_CODE_UPDATED)
+                setResult(ResultCode.RESULT_OK.value)
                 finish()
             }
         }

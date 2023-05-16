@@ -1,11 +1,13 @@
 package com.active.orbit.baseapp.design.activities.questionnaire
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.enums.HealthType
 import com.active.orbit.baseapp.core.routing.Router
 import com.active.orbit.baseapp.core.routing.enums.Extra
+import com.active.orbit.baseapp.core.routing.enums.ResultCode
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.databinding.ActivityHealthPainBinding
 import com.active.orbit.baseapp.design.activities.engine.Activities
@@ -24,7 +26,6 @@ class HealthPainActivity : BaseActivity(), View.OnClickListener {
 
     var healthType: HealthType = HealthType.UNDEFINED
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHealthPainBinding.inflate(layoutInflater)
@@ -35,7 +36,6 @@ class HealthPainActivity : BaseActivity(), View.OnClickListener {
         mobilityResponse = activityBundle.getString(Extra.HEALTH_MOBILITY.key)!!
         selfCareResponse = activityBundle.getString(Extra.HEALTH_SELF_CARE.key)!!
         usualActivitiesResponse = activityBundle.getString(Extra.HEALTH_ACTIVITY.key)!!
-
 
         prepare()
     }
@@ -50,15 +50,21 @@ class HealthPainActivity : BaseActivity(), View.OnClickListener {
         binding.responseTwo.text = getString(healthType.responseTwo)
         binding.responseThree.text = getString(healthType.responseThree)
 
-
         binding.btnBack.setOnClickListener(this)
         binding.btnNext.setOnClickListener(this)
         binding.responseOne.setOnClickListener(this)
         binding.responseTwo.setOnClickListener(this)
         binding.responseThree.setOnClickListener(this)
-
     }
 
+    // TODO manage deprecation
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == HealthActivity.HEALTH_REQUEST_CODE && resultCode == ResultCode.RESULT_OK.value) {
+            finish()
+        }
+    }
 
     override fun onClick(v: View?) {
         when (v) {

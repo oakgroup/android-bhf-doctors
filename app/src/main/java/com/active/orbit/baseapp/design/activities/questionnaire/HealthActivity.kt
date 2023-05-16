@@ -18,7 +18,6 @@ class HealthActivity : BaseActivity(), View.OnClickListener {
 
     companion object {
         const val HEALTH_REQUEST_CODE = 312
-        const val HEALTH_RESULT_CODE_UPDATED = 313
         private const val HEALTH_RESPONSES_MAX = 20
     }
 
@@ -32,7 +31,6 @@ class HealthActivity : BaseActivity(), View.OnClickListener {
         showMenuComponent()
         showLogo()
         binding.bottomNav.setSelected(BottomNavItemType.HEALTH)
-
 
         prepare()
     }
@@ -83,11 +81,10 @@ class HealthActivity : BaseActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        when(v){
+        when (v) {
             binding.btnFillQuestionnaire -> {
                 Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).startBaseActivityForResult(this, Activities.HEALTH_MOBILITY, Bundle(), HEALTH_REQUEST_CODE)
             }
         }
-
     }
 }

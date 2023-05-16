@@ -1,12 +1,13 @@
 package com.active.orbit.baseapp.design.activities.questionnaire
 
+import android.content.Intent
 import android.os.Bundle
-
 import android.view.View
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.enums.HealthType
 import com.active.orbit.baseapp.core.routing.Router
 import com.active.orbit.baseapp.core.routing.enums.Extra
+import com.active.orbit.baseapp.core.routing.enums.ResultCode
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.databinding.ActivityHealthMobilityBinding
 import com.active.orbit.baseapp.design.activities.engine.Activities
@@ -53,6 +54,14 @@ class HealthMobilityActivity : BaseActivity(), View.OnClickListener {
 
     }
 
+    // TODO manage deprecation
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == HealthActivity.HEALTH_REQUEST_CODE && resultCode == ResultCode.RESULT_OK.value) {
+            finish()
+        }
+    }
 
     override fun onClick(v: View?) {
         when (v) {
