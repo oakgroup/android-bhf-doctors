@@ -17,6 +17,10 @@
     <string name="preference_user_age_key" translatable="false">base.app.user.age</string>
     <string name="preference_user_weight_key" translatable="false">base.app.user.weight</string>
     <string name="preference_user_height_key" translatable="false">base.app.user.height</string>
+    <string name="preference_user_date_of_birth_key" translatable="false">base.app.user.date.of.birth</string>
+    <string name="preference_user_first_name_key" translatable="false">base.app.user.first.name</string>
+    <string name="preference_user_last_name_key" translatable="false">base.app.user.last.name</string>
+
 
 
     <!-- lifecycle preferences -->

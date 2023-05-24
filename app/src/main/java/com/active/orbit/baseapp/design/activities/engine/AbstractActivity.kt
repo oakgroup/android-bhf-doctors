@@ -265,12 +265,12 @@ abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListen
 
     private fun showNavigationViewData() {
         val patientLayout = mNavigationView?.getHeaderView(0)?.findViewById<ViewGroup>(R.id.headerPatientLayout)
-        val patientId = mNavigationView?.getHeaderView(0)?.findViewById<BaseTextView>(R.id.patientId)
+        val patientId = mNavigationView?.getHeaderView(0)?.findViewById<BaseTextView>(R.id.userNhsNumber)
         val syncWearMenuItem = mNavigationView?.menu?.findItem(R.id.wearSync)
         val dismissPatientMenuItem = mNavigationView?.menu?.findItem(R.id.finishStudy)
         if (Preferences.user(this).isUserRegistered()) {
             patientLayout?.visibility = View.VISIBLE
-            patientId?.text = getString(R.string.patient_id_value, Preferences.user(this).idPatient)
+            patientId?.text = getString(R.string.patient_id_value, Preferences.user(this).userNhsNumber)
             syncWearMenuItem?.isVisible = false
             dismissPatientMenuItem?.isVisible = true
         } else {

@@ -79,7 +79,7 @@ class WearableManager {
         val wearableMessageModel = WearableMessageModel()
         wearableMessageModel.type = type.key
         wearableMessageModel.idUser = Preferences.user(context).idUser ?: Constants.EMPTY
-        wearableMessageModel.idPatient = Preferences.user(context).idPatient ?: Constants.EMPTY
+        wearableMessageModel.idPatient = Preferences.user(context).userNhsNumber ?: Constants.EMPTY
 
         when (type) {
             WearableMessageType.SYNC -> {

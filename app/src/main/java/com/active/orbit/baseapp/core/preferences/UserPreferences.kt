@@ -27,7 +27,7 @@ class UserPreferences : BasePreferences() {
             if (!TextUtils.isEmpty(value)) FirebaseCrashlytics.getInstance().setCustomKey("id_user", value!!)
         }
 
-    var idPatient: String?
+    var userNhsNumber: String?
         get() = prefs.getString(res.getString(R.string.preference_user_id_patient_key), Constants.EMPTY)
         set(value) {
             val editor = prefs.edit()
@@ -107,10 +107,37 @@ class UserPreferences : BasePreferences() {
             editor.apply()
         }
 
+    var userFirstName: String?
+        get() = prefs.getString(res.getString(R.string.preference_user_first_name_key), Constants.EMPTY)
+        set(value) {
+            val editor = prefs.edit()
+            if (value != null) editor.putString(res.getString(R.string.preference_user_first_name_key), value)
+            else editor.remove(res.getString(R.string.preference_user_first_name_key))
+            editor.apply()
+        }
+
+    var userLastName: String?
+        get() = prefs.getString(res.getString(R.string.preference_user_last_name_key), Constants.EMPTY)
+        set(value) {
+            val editor = prefs.edit()
+            if (value != null) editor.putString(res.getString(R.string.preference_user_last_name_key), value)
+            else editor.remove(res.getString(R.string.preference_user_last_name_key))
+            editor.apply()
+        }
+
+    var userDateOfBirth: Long?
+        get() = prefs.getLong(res.getString(R.string.preference_user_date_of_birth_key), Constants.INVALID.toLong())
+        set(value) {
+            val editor = prefs.edit()
+            if (value != null) editor.putLong(res.getString(R.string.preference_user_date_of_birth_key), value)
+            else editor.remove(res.getString(R.string.preference_user_date_of_birth_key))
+            editor.apply()
+        }
+
 
     override fun logout() {
         idUser = null
-        idPatient = null
+        userNhsNumber = null
         idProgram = null
         programStarted = false
         dateProgramStarted = null
@@ -118,5 +145,9 @@ class UserPreferences : BasePreferences() {
         userSex = null
         userHeight = null
         userWeight = null
+        userFirstName = null
+        userLastName = null
+        userDateOfBirth = null
+
     }
 }

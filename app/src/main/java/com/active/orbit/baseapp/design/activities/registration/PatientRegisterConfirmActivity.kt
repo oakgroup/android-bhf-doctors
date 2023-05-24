@@ -33,11 +33,10 @@ class PatientRegisterConfirmActivity : BaseActivity(), View.OnClickListener {
     private lateinit var binding: ActivityRegisterPatientConfirmBinding
 
     private var programID = Constants.EMPTY
-    private var patientID = Constants.EMPTY
-    private var patientSex = Constants.EMPTY
-    private var patientAge = Constants.EMPTY
-    private var patientWeight = Constants.EMPTY
-    private var patientHeight = Constants.EMPTY
+    private var userNhsNumber = Constants.EMPTY
+    private var userFirstName = Constants.EMPTY
+    private var userLastName = Constants.EMPTY
+    private var userDOB = Constants.INVALID.toLong()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,11 +46,10 @@ class PatientRegisterConfirmActivity : BaseActivity(), View.OnClickListener {
         showLogoButton()
 
         programID = activityBundle.getString(Extra.PROGRAM_ID.key)!!
-        patientID = activityBundle.getString(Extra.USER_PATIENT_ID.key)!!
-        patientSex = activityBundle.getString(Extra.USER_SEX.key)!!
-        patientAge = activityBundle.getString(Extra.USER_AGE.key)!!
-        patientWeight = activityBundle.getString(Extra.USER_WEIGHT.key)!!
-        patientHeight = activityBundle.getString(Extra.USER_HEIGHT.key)!!
+        userNhsNumber = activityBundle.getString(Extra.USER_NHS_NUMBER.key)!!
+        userFirstName = activityBundle.getString(Extra.USER_FIRST_NAME.key)!!
+        userLastName = activityBundle.getString(Extra.USER_LAST_NAME.key)!!
+        userDOB = activityBundle.getLong(Extra.USER_DOB.key)
 
         prepare()
     }
@@ -63,14 +61,12 @@ class PatientRegisterConfirmActivity : BaseActivity(), View.OnClickListener {
         backgroundThread {
             val program = TablePrograms.getById(this, programID)
             mainThread {
-                binding.patientId.text = getString(R.string.patient_id_value, patientID)
-                binding.patientSex.text = getString(R.string.sex_value, patientSex)
-                binding.patientAge.text = getString(R.string.age_value, patientAge)
-                binding.patientWeight.text = getString(R.string.weight_value, patientWeight)
-                binding.patientHeight.text = getString(R.string.height_value, patientHeight)
+                binding.userNhsNumber.text = getString(R.string.patient_id_value, userNhsNumber)
+                binding.userName.text = getString(R.string.name_value, userFirstName, userLastName)
+                binding.userDOB.text = getString(R.string.date_of_birth_value, TimeUtils.format(TimeUtils.getCurrent(userDOB), Constants.DATE_FORMAT_YEAR_MONTH_DAY))
 
                 if (program?.isValid() == true) {
-                    binding.patientProgramme.text = getString(R.string.patient_programme, "BHF")
+                    binding.programme.text = getString(R.string.patient_programme, "BHF")
 
                     binding.btnConfirm.setOnClickListener(this)
                 } else {
@@ -86,16 +82,14 @@ class PatientRegisterConfirmActivity : BaseActivity(), View.OnClickListener {
             binding.btnConfirm -> {
                 showProgressView()
 
+                //TODO add first/last name and dob
                 val request = UserRegistrationRequest()
                 request.phoneModel = Utils.getPhoneModel()
                 request.appVersion = Utils.getAppVersion(this)
                 request.androidVersion = Utils.getAndroidVersion()
                 request.idProgram = programID
-                request.idPatient = patientID
-                request.userSex = patientSex
-                request.userAge = patientAge
-                request.userWeight = patientWeight
-                request.userHeight = patientHeight
+                request.userNhsNumber = userNhsNumber
+
                 request.batteryLevel = Utils.getBatteryPercentage(this)
                 request.isCharging = Utils.isCharging(this)
                 request.registrationTimestamp = TimeUtils.getCurrent().timeInMillis
@@ -103,7 +97,7 @@ class PatientRegisterConfirmActivity : BaseActivity(), View.OnClickListener {
                 UserManager.registerUser(this, request, object : UserRegistrationListener {
                     override fun onSuccess(map: UserRegistrationMap) {
                         if (map.participantIdCounter > 1) {
-                            Logger.d("Already existing user with patient id $patientID, ask for confirmation")
+                            Logger.d("Already existing user with patient id $userNhsNumber, ask for confirmation")
                             val dialog = ConfirmRegistrationDialog()
                             dialog.isCancelable = false
                             dialog.listener = object : ConfirmRegistrationDialogListener {
@@ -136,11 +130,10 @@ class PatientRegisterConfirmActivity : BaseActivity(), View.OnClickListener {
     private fun completeRegistration(request: UserRegistrationRequest, map: UserRegistrationMap) {
         Logger.d("User successfully registered with id ${map.id}")
         Preferences.user(this).register(map.id, request.idProgram!!)
-        Preferences.user(this).idPatient = patientID
-        Preferences.user(this).userSex = patientSex
-        Preferences.user(this).userAge = patientAge
-        Preferences.user(this).userWeight = patientWeight
-        Preferences.user(this).userHeight = patientHeight
+        Preferences.user(this).userNhsNumber = userNhsNumber
+        Preferences.user(this).userFirstName = userFirstName
+        Preferences.user(this).userLastName = userLastName
+        Preferences.user(this).userDateOfBirth = userDOB
 
         Preferences.lifecycle(this).userDetailsUploaded = false
 

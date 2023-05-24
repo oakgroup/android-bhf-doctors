@@ -58,13 +58,14 @@
                     android:orientation="vertical">
 
                     <com.active.orbit.baseapp.design.widgets.BaseTextView
-                        android:id="@+id/patientIdTitle"
-                        android:layout_width="match_parent"
+                        android:id="@+id/nhsNumberTitle"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/patient_registration_insert_id"
                         android:textColor="@color/textColorPrimaryDark"
                         android:textSize="@dimen/main_text_dimension"
                         app:typeface="semibold" />
+
 
                     <com.active.orbit.baseapp.design.widgets.PinEntryView
                         android:id="@+id/insertIdEntryView"
@@ -75,85 +76,165 @@
                         android:background="@android:color/transparent"
                         android:minHeight="40dp"
                         app:maxLength="10" />
+
+                    <com.active.orbit.baseapp.design.widgets.BaseButton
+                        android:id="@+id/btnNhsUrl"
+                        style="@style/ButtonPrimary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="@dimen/margin_vertical_half"
+                        android:text="@string/patient_registration_nhs_url"
+                        android:textSize="@dimen/main_text_dimension"
+                        app:typeface="semibold" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/layoutPersonalDetails"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_vertical_double"
                     android:orientation="vertical">
 
+                    <com.active.orbit.baseapp.design.widgets.BaseTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_vertical_double"
+                        android:text="@string/first_name"
+                        android:textColor="@color/textColorPrimaryDark"
+                        android:textSize="@dimen/main_text_dimension"
+                        app:typeface="semibold" />
+
+                    <com.active.orbit.baseapp.design.widgets.BaseEditText
+                        android:id="@+id/firstName"
+                        style="@style/EditTextPrimary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_marginTop="@dimen/margin_vertical_half"
+                        android:hint="@string/first_name"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:padding="@dimen/margin_vertical_half" />
+
+                    <com.active.orbit.baseapp.design.widgets.BaseTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_vertical_double"
+                        android:text="@string/last_name"
+                        android:textColor="@color/textColorPrimaryDark"
+                        android:textSize="@dimen/main_text_dimension"
+                        app:typeface="semibold" />
+
+                    <com.active.orbit.baseapp.design.widgets.BaseEditText
+                        android:id="@+id/lastName"
+                        style="@style/EditTextPrimary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_marginTop="@dimen/margin_vertical_half"
+                        android:hint="@string/last_name"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:padding="@dimen/margin_vertical_half" />
+
+                    <com.active.orbit.baseapp.design.widgets.BaseTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_vertical_double"
+                        android:text="@string/date_of_birth"
+                        android:textColor="@color/textColorPrimaryDark"
+                        android:textSize="@dimen/main_text_dimension"
+                        app:typeface="semibold" />
+
                     <com.active.orbit.baseapp.design.components.ButtonComponent
-                        android:id="@+id/btnSexSelection"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_gravity="center"
-                        android:layout_weight="1" />
-
-                    <com.active.orbit.baseapp.design.widgets.BaseTextView
+                        android:id="@+id/btnDateBirth"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_vertical_double"
-                        android:text="@string/age"
-                        android:textColor="@color/textColorPrimaryDark"
-                        android:textSize="@dimen/main_text_dimension"
-                        app:typeface="semibold" />
-
-                    <com.active.orbit.baseapp.design.widgets.BaseEditText
-                        android:id="@+id/ageSelection"
-                        style="@style/EditTextPrimary"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="start"
                         android:layout_marginTop="@dimen/margin_vertical_half"
-                        android:hint="@string/age_hint"
-                        android:imeOptions="actionDone"
-                        android:inputType="number"
-                        android:padding="@dimen/margin_vertical_half" />
+                        android:clickable="true"
+                        android:focusable="true" />
 
-                    <com.active.orbit.baseapp.design.widgets.BaseTextView
+                    <!--                    Use if needed-->
+                    <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_vertical_double"
-                        android:text="@string/weight"
-                        android:textColor="@color/textColorPrimaryDark"
-                        android:textSize="@dimen/main_text_dimension"
-                        app:typeface="semibold" />
+                        android:orientation="vertical"
+                        android:visibility="gone">
 
-                    <com.active.orbit.baseapp.design.widgets.BaseEditText
-                        android:id="@+id/weightSelection"
-                        style="@style/EditTextPrimary"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="start"
-                        android:layout_marginTop="@dimen/margin_vertical_half"
-                        android:hint="@string/weight_hint"
-                        android:imeOptions="actionDone"
-                        android:inputType="number"
-                        android:padding="@dimen/margin_vertical_half" />
+                        <com.active.orbit.baseapp.design.components.ButtonComponent
+                            android:id="@+id/btnSexSelection"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="1" />
 
-                    <com.active.orbit.baseapp.design.widgets.BaseTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_vertical_double"
-                        android:text="@string/height"
-                        android:textColor="@color/textColorPrimaryDark"
-                        android:textSize="@dimen/main_text_dimension"
-                        app:typeface="semibold" />
+                        <com.active.orbit.baseapp.design.widgets.BaseTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_vertical_double"
+                            android:text="@string/age"
+                            android:textColor="@color/textColorPrimaryDark"
+                            android:textSize="@dimen/main_text_dimension"
+                            app:typeface="semibold" />
+
+                        <com.active.orbit.baseapp.design.widgets.BaseEditText
+                            android:id="@+id/ageSelection"
+                            style="@style/EditTextPrimary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_marginTop="@dimen/margin_vertical_half"
+                            android:hint="@string/age_hint"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:padding="@dimen/margin_vertical_half" />
+
+                        <com.active.orbit.baseapp.design.widgets.BaseTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_vertical_double"
+                            android:text="@string/weight"
+                            android:textColor="@color/textColorPrimaryDark"
+                            android:textSize="@dimen/main_text_dimension"
+                            app:typeface="semibold" />
+
+                        <com.active.orbit.baseapp.design.widgets.BaseEditText
+                            android:id="@+id/weightSelection"
+                            style="@style/EditTextPrimary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_marginTop="@dimen/margin_vertical_half"
+                            android:hint="@string/weight_hint"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:padding="@dimen/margin_vertical_half" />
+
+                        <com.active.orbit.baseapp.design.widgets.BaseTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_vertical_double"
+                            android:text="@string/height"
+                            android:textColor="@color/textColorPrimaryDark"
+                            android:textSize="@dimen/main_text_dimension"
+                            app:typeface="semibold" />
 
 
-                    <com.active.orbit.baseapp.design.widgets.BaseEditText
-                        android:id="@+id/heightSelection"
-                        style="@style/EditTextPrimary"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="start"
-                        android:layout_marginTop="@dimen/margin_vertical_half"
-                        android:hint="@string/height_hint"
-                        android:imeOptions="actionDone"
-                        android:inputType="number"
-                        android:padding="@dimen/margin_vertical_half" />
+                        <com.active.orbit.baseapp.design.widgets.BaseEditText
+                            android:id="@+id/heightSelection"
+                            style="@style/EditTextPrimary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_marginTop="@dimen/margin_vertical_half"
+                            android:hint="@string/height_hint"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:padding="@dimen/margin_vertical_half" />
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -184,8 +265,8 @@
             android:text="3/4"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/h5"
-            app:typeface="semibold"
             android:visibility="gone"
+            app:typeface="semibold"
             tools:ignore="HardcodedText" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -194,8 +275,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_vertical_half_half"
             android:gravity="center"
-            android:visibility="gone"
             android:orientation="horizontal"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title">
@@ -213,9 +294,9 @@
                 android:layout_width="0dp"
                 android:layout_height="10dp"
                 android:layout_marginEnd="@dimen/margin_lateral_half_half"
-                android:visibility="visible"
                 android:layout_weight="1"
-                android:background="@drawable/bg_step_selected" />
+                android:background="@drawable/bg_step_selected"
+                android:visibility="visible" />
 
 
             <View
@@ -243,8 +324,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_vertical_double"
             android:gravity="center"
-            android:visibility="gone"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <com.active.orbit.baseapp.design.widgets.BaseButton
                 android:id="@+id/btnBack"

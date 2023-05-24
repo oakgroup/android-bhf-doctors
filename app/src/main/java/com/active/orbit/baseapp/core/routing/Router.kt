@@ -209,6 +209,14 @@ class Router {
         context.startActivity(intent)
     }
 
+    fun openNHS(context: Context) {
+        val url = when (Locale.getDefault().language) {
+            "en" -> context.resources.getString(R.string.find_nhs_number_link_default)
+            else -> context.resources.getString(R.string.find_nhs_number_link_default)
+        }
+        openUrl(context, url)
+    }
+
     fun homepage(context: Context) {
         clearTop(true)
         newTask(true)

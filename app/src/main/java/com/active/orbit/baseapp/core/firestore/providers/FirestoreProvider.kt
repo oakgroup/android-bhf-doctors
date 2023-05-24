@@ -62,7 +62,7 @@ class FirestoreProvider {
         hashMap[Fields.USER_AGE.value] = Preferences.user(context).userAge ?: Constants.EMPTY
         hashMap[Fields.USER_WEIGHT.value] = Preferences.user(context).userWeight ?: Constants.EMPTY
         hashMap[Fields.USER_HEIGHT.value] = Preferences.user(context).userHeight ?: Constants.EMPTY
-        hashMap[Fields.PATIENT_ID.value] = Preferences.user(context).idPatient ?: Constants.EMPTY
+        hashMap[Fields.PATIENT_ID.value] = Preferences.user(context).userNhsNumber ?: Constants.EMPTY
         val level1 = database.collection(Collections.USERS.value)
         val level2 = level1.document(idUser)
         return level2.set(hashMap)

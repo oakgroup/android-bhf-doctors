@@ -20,7 +20,9 @@ class UserRegistrationRequest : BaseModel {
     var idProgram: String? = null
 
     @SerializedName("participantId")
-    var idPatient: String? = null
+    var userNhsNumber: String? = null
+
+    //TODO add first/last name and dob
 
     @SerializedName("userSex")
     var userSex: String? = null
@@ -52,11 +54,11 @@ class UserRegistrationRequest : BaseModel {
                 !TextUtils.isEmpty(appVersion) &&
                 !TextUtils.isEmpty(androidVersion) &&
                 !TextUtils.isEmpty(idProgram) &&
-                !TextUtils.isEmpty(idPatient) &&
-                !TextUtils.isEmpty(userSex) &&
-                !TextUtils.isEmpty(userAge) &&
-                !TextUtils.isEmpty(userWeight) &&
-                !TextUtils.isEmpty(userHeight) &&
+                !TextUtils.isEmpty(userNhsNumber) &&
+//                !TextUtils.isEmpty(userSex) &&
+//                !TextUtils.isEmpty(userAge) &&
+//                !TextUtils.isEmpty(userWeight) &&
+//                !TextUtils.isEmpty(userHeight) &&
                 batteryLevel != null &&
                 registrationTimestamp != null
     }

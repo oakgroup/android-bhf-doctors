@@ -214,6 +214,8 @@
     <string name="data_status">Data Status</string>
     <string name="data_to_be_sent">Data to upload: %1$s </string>
     <string name="date">Date</string>
+    <string name="date_of_birth">Date of Birth</string>
+    <string name="date_of_birth_value">Date of Birth: %1$s </string>
     <string name="date_time">Date &amp; Time</string>
     <string name="day_ago">1 day ago</string>
     <string name="days_ago">%1$s days ago</string>
@@ -299,6 +301,7 @@
     <string name="female">Female</string>
     <string name="filename_rule">Max. length: 8 </string>
     <string name="finish">Finish</string>
+    <string name="first_name">First Name</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="frequently_asked_questions">Frequently Asked Questions</string>
     <string name="friday">Friday</string>
@@ -368,6 +371,7 @@
     <string name="km">km</string>
     <string name="last_30_days">Day</string>
     <string name="last_location_sent">Locations</string>
+    <string name="last_name">Last Name</string>
     <string name="last_seven_days">Last 7 Days</string>
     <string name="last_steps_sent">Steps</string>
     <string name="last_trajectory_sent">Activities</string>
@@ -468,6 +472,7 @@
     <string name="my_prescriptions">My Prescriptions</string>
     <string name="my_targets">My Daily Targets</string>
     <string name="name">Full Name</string>
+    <string name="name_value">Name: %1$s %2$s</string>
     <string name="nav_activity_selection">Activity</string>
     <string name="nav_summary_selection">Summary</string>
     <string name="next">Next</string>
@@ -523,17 +528,18 @@
     <string name="password_new">New Password</string>
     <string name="patient">Patient</string>
     <string name="patient_admin">Patient Administration</string>
-    <string name="patient_details">Patient Details</string>
+    <string name="patient_details">Your Details</string>
     <string name="patient_duration">Duration: %1$s</string>
-    <string name="patient_id">Patient ID</string>
-    <string name="patient_id_value">Patient ID: %1$s</string>
+    <string name="patient_id">NHS number</string>
+    <string name="patient_id_value">NHS number: %1$s</string>
     <string name="patient_mng">Patient</string>
     <string name="patient_nhs_id">NHS Id: %1$s</string>
     <string name="patient_options">Patient Options</string>
     <string name="patient_programme">Programme: %1$s</string>
     <string name="patient_registered_intro">You are now registered as a patient</string>
     <string name="patient_registration">Registration</string>
-    <string name="patient_registration_insert_id">Please add the ID of your patient.</string>
+    <string name="patient_registration_insert_id">Please add your NHS number.</string>
+    <string name="patient_registration_nhs_url">Find NHS number</string>
     <string name="patient_registration_intro">Register so you can participate to the Moving Health study</string>
     <string name="patient_registration_select_program">Please select the programme that applies to your patient.</string>
     <string name="patient_start_programme">Start the programme using this button</string>

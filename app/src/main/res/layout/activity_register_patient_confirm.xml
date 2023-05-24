@@ -53,7 +53,7 @@
                 android:paddingVertical="@dimen/margin_vertical_double">
 
                 <com.active.orbit.baseapp.design.widgets.BaseTextView
-                    android:id="@+id/patientProgramme"
+                    android:id="@+id/programme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="start"
@@ -73,7 +73,7 @@
                     app:typeface="bold" />
 
                 <com.active.orbit.baseapp.design.widgets.BaseTextView
-                    android:id="@+id/patientId"
+                    android:id="@+id/userNhsNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_vertical"
@@ -84,63 +84,27 @@
                     app:typeface="semibold" />
 
                 <com.active.orbit.baseapp.design.widgets.BaseTextView
-                    android:id="@+id/patientSex"
+                    android:id="@+id/userName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_vertical"
                     android:gravity="start"
-                    android:text="@string/sex_value"
+                    android:text="@string/name_value"
                     android:textColor="@color/textColorPrimaryDark"
                     android:textSize="20sp"
                     app:typeface="semibold" />
 
                 <com.active.orbit.baseapp.design.widgets.BaseTextView
-                    android:id="@+id/patientAge"
+                    android:id="@+id/userDOB"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_vertical"
                     android:gravity="start"
-                    android:text="@string/age_value"
+                    android:text="@string/date_of_birth_value"
                     android:textColor="@color/textColorPrimaryDark"
                     android:textSize="20sp"
                     app:typeface="semibold" />
 
-                <com.active.orbit.baseapp.design.widgets.BaseTextView
-                    android:id="@+id/patientWeight"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_vertical"
-                    android:gravity="start"
-                    android:text="@string/weight_value"
-                    android:textColor="@color/textColorPrimaryDark"
-                    android:textSize="20sp"
-                    app:typeface="semibold" />
-
-                <com.active.orbit.baseapp.design.widgets.BaseTextView
-                    android:id="@+id/patientHeight"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_vertical"
-                    android:gravity="start"
-                    android:text="@string/height_value"
-                    android:textColor="@color/textColorPrimaryDark"
-                    android:textSize="20sp"
-                    app:typeface="semibold" />
-
-
-
-
-
-                <com.active.orbit.baseapp.design.widgets.BaseTextView
-                    android:id="@+id/patientDuration"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_vertical_half"
-                    android:text="@string/patient_duration"
-                    android:textColor="@color/textColorPrimaryDark"
-                    android:textSize="20sp"
-                    android:visibility="gone"
-                    app:typeface="semibold" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 

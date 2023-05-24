@@ -6,4 +6,8 @@
     <string name="terms_and_conditions_link_en" translatable="false">https://aeqora.weebly.com/terms-and-conditions.html</string>
     <string name="troubleshooting_link_default" translatable="false">@string/troubleshooting_link_en</string>
     <string name="troubleshooting_link_en" translatable="false">http://setamobility.weebly.com/troubleshooting_en.html</string>
+    <string name="find_nhs_number_link_default" translatable="false">https://www.nhs.uk/nhs-services/online-services/find-nhs-number/</string>
+
+
+
 </resources>
