@@ -134,6 +134,20 @@ class UserPreferences : BasePreferences() {
             editor.apply()
         }
 
+    var userDateOfConsent: Long?
+        get() = prefs.getLong(res.getString(R.string.preference_user_date_of_birth_key), Constants.INVALID.toLong())
+        set(value) {
+            val editor = prefs.edit()
+            if (value != null) editor.putLong(res.getString(R.string.preference_user_date_of_birth_key), value)
+            else editor.remove(res.getString(R.string.preference_user_date_of_birth_key))
+            editor.apply()
+        }
+
+    fun userFullName(): String {
+        return "$userFirstName $userLastName"
+    }
+
+
 
     override fun logout() {
         idUser = null

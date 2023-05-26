@@ -245,6 +245,7 @@
     <string name="dismiss_watch_wait_one">Waiting to Dismiss from Watch</string>
     <string name="dismiss_watch_wait_two">If not seeing the \"Dismiss\" option on the watch, please open the Moving Health wear app, press \"Dismiss\" again here and check the watch again.</string>
     <string name="done">Done</string>
+    <string name="download">Download</string>
     <string name="duration">Duration</string>
     <string name="edit">Edit</string>
     <string name="edit_avatar_dialog_title">Edit Avatar</string>
@@ -895,5 +896,5 @@
     <string name="you_have_changed_id">You have changed the User Id. Do you want to delete all the data of the previous user?</string>
     <string name="your_age">Your age</string>
     <string name="zero">0</string>
-
+    
 </resources>
