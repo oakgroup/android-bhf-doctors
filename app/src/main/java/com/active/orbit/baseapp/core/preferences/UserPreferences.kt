@@ -134,6 +134,15 @@ class UserPreferences : BasePreferences() {
             editor.apply()
         }
 
+    var userPostcode: String?
+        get() = prefs.getString(res.getString(R.string.preference_user_postcode_key), Constants.EMPTY)
+        set(value) {
+            val editor = prefs.edit()
+            if (value != null) editor.putString(res.getString(R.string.preference_user_postcode_key), value)
+            else editor.remove(res.getString(R.string.preference_user_postcode_key))
+            editor.apply()
+        }
+
     var userDateOfConsent: Long?
         get() = prefs.getLong(res.getString(R.string.preference_user_date_of_birth_key), Constants.INVALID.toLong())
         set(value) {

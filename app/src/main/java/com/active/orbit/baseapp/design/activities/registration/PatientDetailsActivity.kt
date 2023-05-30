@@ -7,6 +7,7 @@ import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.View
 import android.widget.DatePicker
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.firestore.providers.FirestoreProvider
@@ -16,6 +17,7 @@ import com.active.orbit.baseapp.core.routing.enums.Extra
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.core.utils.Logger
 import com.active.orbit.baseapp.core.utils.TimeUtils
+import com.active.orbit.baseapp.core.utils.Validator
 import com.active.orbit.baseapp.databinding.ActivityPatientDetailsBinding
 import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
@@ -88,6 +90,8 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
 
             binding.firstName.setText(Preferences.user(this).userFirstName)
             binding.lastName.setText(Preferences.user(this).userLastName)
+            binding.postcode.setText(Preferences.user(this).userPostcode)
+
 
             dateOfBirth = TimeUtils.getCurrent(Preferences.user(this).userDateOfBirth!!)
             binding.btnDateBirth.setText(TimeUtils.format(dateOfBirth!!, Constants.DATE_FORMAT_YEAR_MONTH_DAY))
@@ -197,6 +201,22 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
 
+        binding.postcode.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                if (!TextUtils.isEmpty(binding.postcode.textTrim)) {
+                    if (!Validator.validatePostcode(binding.postcode.textTrim)) {
+                        binding.postcode.error = getString(R.string.value_not_admissible_postcode)
+                    }
+                } else {
+                    binding.postcode.error = getString(R.string.value_not_set)
+                }
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+
 
     }
 
@@ -226,17 +246,25 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
         when (v) {
             binding.btnNext -> {
                 hideKeyboard()
-                if (binding.insertIdEntryView.isComplete() && !TextUtils.isEmpty(binding.firstName.textTrim) && !TextUtils.isEmpty(binding.lastName.textTrim) && dateOfBirth != null) {
-                    val bundle = Bundle()
-                    bundle.putString(Extra.PROGRAM_ID.key, programID)
-                    bundle.putString(Extra.USER_NHS_NUMBER.key, binding.insertIdEntryView.getPin())
-                    bundle.putString(Extra.USER_FIRST_NAME.key, binding.firstName.textTrim)
-                    bundle.putString(Extra.USER_LAST_NAME.key, binding.lastName.textTrim)
-                    bundle.putLong(Extra.USER_DOB.key, dateOfBirth!!.timeInMillis)
 
-                    Router.getInstance()
-                        .activityAnimation(ActivityAnimation.LEFT_RIGHT)
-                        .startBaseActivity(this, Activities.PATIENT_REGISTER, bundle)
+                if (binding.insertIdEntryView.isComplete() && !TextUtils.isEmpty(binding.firstName.textTrim) && !TextUtils.isEmpty(binding.lastName.textTrim) && dateOfBirth != null && sex != null && Validator.validatePostcode(binding.postcode.textTrim)) {
+                    if(!Validator.validateNhsNumber(binding.insertIdEntryView.getPin())) {
+                        UiUtils.showShortToast(this, "NHS number is not valid")
+                    } else {
+                        val bundle = Bundle()
+                        bundle.putString(Extra.PROGRAM_ID.key, programID)
+                        bundle.putString(Extra.USER_NHS_NUMBER.key, binding.insertIdEntryView.getPin())
+                        bundle.putString(Extra.USER_FIRST_NAME.key, binding.firstName.textTrim)
+                        bundle.putString(Extra.USER_LAST_NAME.key, binding.lastName.textTrim)
+                        bundle.putLong(Extra.USER_DOB.key, dateOfBirth!!.timeInMillis)
+                        bundle.putString(Extra.USER_SEX.key, sex!!.sex)
+                        bundle.putString(Extra.USER_POSTCODE.key, binding.postcode.textTrim)
+
+
+                        Router.getInstance()
+                            .activityAnimation(ActivityAnimation.LEFT_RIGHT)
+                            .startBaseActivity(this, Activities.PATIENT_REGISTER, bundle)
+                    }
                 } else {
                     UiUtils.showShortToast(this, R.string.error_patient_details)
                 }
@@ -262,10 +290,13 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
 
             binding.btnSave -> {
                 hideKeyboard()
-                if (!TextUtils.isEmpty(binding.firstName.textTrim) && !TextUtils.isEmpty(binding.lastName.textTrim) && dateOfBirth != null) {
+                if (!TextUtils.isEmpty(binding.firstName.textTrim) && !TextUtils.isEmpty(binding.lastName.textTrim) && dateOfBirth != null && sex != null && Validator.validatePostcode(binding.postcode.textTrim)) {
                     Preferences.user(this).userFirstName = binding.firstName.textTrim
                     Preferences.user(this).userLastName = binding.lastName.textTrim
                     Preferences.user(this).userDateOfBirth = dateOfBirth!!.timeInMillis
+                    Preferences.user(this).userSex = sex!!.sex
+                    Preferences.user(this).userPostcode = binding.postcode.textTrim
+
                     UiUtils.showShortToast(this, R.string.success)
 
                     Preferences.lifecycle(this).userDetailsUploaded = false

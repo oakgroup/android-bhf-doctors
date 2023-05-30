@@ -154,6 +154,46 @@
                         android:clickable="true"
                         android:focusable="true" />
 
+                    <com.active.orbit.baseapp.design.widgets.BaseTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_vertical_double"
+                        android:text="@string/sex"
+                        android:textColor="@color/textColorPrimaryDark"
+                        android:textSize="@dimen/main_text_dimension"
+                        app:typeface="semibold" />
+
+
+                    <com.active.orbit.baseapp.design.components.ButtonComponent
+                        android:id="@+id/btnSexSelection"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="@dimen/margin_vertical_half"
+                        android:layout_gravity="center"
+                        android:layout_weight="1" />
+
+                    <com.active.orbit.baseapp.design.widgets.BaseTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_vertical_double"
+                        android:text="@string/postcode"
+                        android:textColor="@color/textColorPrimaryDark"
+                        android:textSize="@dimen/main_text_dimension"
+                        app:typeface="semibold" />
+
+                    <com.active.orbit.baseapp.design.widgets.BaseEditText
+                        android:id="@+id/postcode"
+                        style="@style/EditTextPrimary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_marginTop="@dimen/margin_vertical_half"
+                        android:hint="@string/postcode"
+                        android:imeOptions="actionDone"
+                        android:textAllCaps="true"
+                        android:inputType="textPostalAddress"
+                        android:padding="@dimen/margin_vertical_half" />
+
                     <!--                    Use if needed-->
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
@@ -161,12 +201,6 @@
                         android:orientation="vertical"
                         android:visibility="gone">
 
-                        <com.active.orbit.baseapp.design.components.ButtonComponent
-                            android:id="@+id/btnSexSelection"
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_gravity="center"
-                            android:layout_weight="1" />
 
                         <com.active.orbit.baseapp.design.widgets.BaseTextView
                             android:layout_width="match_parent"

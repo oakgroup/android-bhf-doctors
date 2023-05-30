@@ -573,6 +573,7 @@
     <string name="please_select_values">Please select some values or write some notes</string>
     <string name="please_select_your_team">Earn points for your favorite teams!</string>
     <string name="plus">+</string>
+    <string name="postcode">Postcode</string>
     <string name="power_saving_damage">Remove any Power Saving Settings</string>
     <string name="power_settings">Settings</string>
     <string name="press">Press to Open Camera</string>
@@ -842,6 +843,7 @@
     <string name="value_not_admissible_active_minutes">Active minutes value not admissible</string>
     <string name="value_not_admissible_heart_minutes">Heart minutes value not admissible</string>
     <string name="value_not_admissible_height">Height value not admissible</string>
+    <string name="value_not_admissible_postcode">Postcode is not valid</string>
     <string name="value_not_admissible_weight">Weight value not admissible</string>
     <string name="value_not_set">Insert a valid value</string>
     <string name="value_not_set_active_minutes">Insert a valid value for active minutes</string>
