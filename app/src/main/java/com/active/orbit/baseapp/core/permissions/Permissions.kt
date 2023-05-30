@@ -25,6 +25,7 @@ class Permissions(val group: Group) {
         private const val REQUEST_ACCESS_ACTIVITY_RECOGNITION = 3
         private const val REQUEST_ACCESS_CAMERA_FOR_SCAN = 4
         private const val REQUEST_ACCESS_CAMERA_FOR_CAPTURE = 5
+        private const val REQUEST_DOWNLOAD_PD = 6
     }
 
     fun check(activity: AppCompatActivity): Boolean {
@@ -78,6 +79,13 @@ class Permissions(val group: Group) {
         ACCESS_CAMERA_FOR_CAPTURE(
             arrayOf(Manifest.permission.CAMERA),
             REQUEST_ACCESS_CAMERA_FOR_CAPTURE
+        ),
+        ACCESS_DOWNLOAD_PDF(
+            arrayOf(
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            ),
+            REQUEST_DOWNLOAD_PD
         )
     }
 }

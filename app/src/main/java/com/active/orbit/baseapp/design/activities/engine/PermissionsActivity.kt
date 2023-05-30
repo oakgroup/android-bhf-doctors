@@ -115,6 +115,11 @@ abstract class PermissionsActivity : AbstractActivity() {
         }
     }
 
+    protected fun hasDownloadPdfPermissionGranted(): Boolean {
+        val permission = Permissions(Permissions.Group.ACCESS_DOWNLOAD_PDF)
+        return permission.check(this)
+    }
+
     protected fun requestPermissionLocation() {
         val permission = Permissions(Permissions.Group.ACCESS_FINE_LOCATION)
         permission.request(this)
@@ -152,6 +157,11 @@ abstract class PermissionsActivity : AbstractActivity() {
         permission.request(this)
     }
 
+    protected fun requestPermissionDownloadPdf() {
+        val permission = Permissions(Permissions.Group.ACCESS_DOWNLOAD_PDF)
+        permission.request(this)
+    }
+
     @RequiresApi(Build.VERSION_CODES.Q)
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -181,6 +191,10 @@ abstract class PermissionsActivity : AbstractActivity() {
                     Logger.i("Access camera permission enabled")
                     onPermissionEnabled(requestCode)
                 }
+                Permissions.Group.ACCESS_DOWNLOAD_PDF.requestCode -> {
+                    Logger.i("Download pdf permission enabled")
+                    onPermissionEnabled(requestCode)
+                }
             }
         } else {
             when (requestCode) {
@@ -207,6 +221,10 @@ abstract class PermissionsActivity : AbstractActivity() {
                 Permissions.Group.ACCESS_CAMERA_FOR_CAPTURE.requestCode -> {
                     Logger.i("Access camera permission disabled")
                     showPermissionsDialog(Permissions(Permissions.Group.ACCESS_CAMERA_FOR_CAPTURE))
+                }
+                Permissions.Group.ACCESS_DOWNLOAD_PDF.requestCode -> {
+                    Logger.i("Access download pdf permission disabled")
+                    showPermissionsDialog(Permissions(Permissions.Group.ACCESS_DOWNLOAD_PDF))
                 }
             }
         }
@@ -260,6 +278,10 @@ abstract class PermissionsActivity : AbstractActivity() {
                         Permissions.Group.ACCESS_CAMERA_FOR_CAPTURE.requestCode -> {
                             if (deniedForever) Router.getInstance().openSettings(this@PermissionsActivity)
                             else requestPermissionCameraForCapture()
+                        }
+                        Permissions.Group.ACCESS_DOWNLOAD_PDF.requestCode -> {
+                            if (deniedForever) Router.getInstance().openSettings(this@PermissionsActivity)
+                            else requestPermissionDownloadPdf()
                         }
                     }
                 }

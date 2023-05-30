@@ -10,6 +10,8 @@ import android.view.View
 import android.widget.DatePicker
 import androidx.core.content.ContextCompat
 import com.active.orbit.baseapp.R
+import com.active.orbit.baseapp.core.download.Download
+import com.active.orbit.baseapp.core.permissions.Permissions
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.Router
 import com.active.orbit.baseapp.core.routing.enums.Extra
@@ -98,14 +100,12 @@ class TermsAndConditionsActivity : BaseActivity(), View.OnClickListener, DatePic
     override fun onPermissionEnabled(requestCode: Int) {
         super.onPermissionEnabled(requestCode)
         when (requestCode) {
-            // TODO George compilation error
-            /*
+
             Permissions.Group.ACCESS_DOWNLOAD_PDF.requestCode -> {
                 val downloader = Download(this)
                 //TODO replace with url for consent form
                 downloader.downloadFile("https://www.africau.edu/images/default/sample.pdf", "application/pdf", "consent_form.pdf")
             }
-            */
 
             else -> {
                 Logger.e("Undefined request code $requestCode on permission enabled ")
@@ -118,8 +118,7 @@ class TermsAndConditionsActivity : BaseActivity(), View.OnClickListener, DatePic
 
             binding.btnNext -> {
                 if (!TextUtils.isEmpty(binding.fullName.textTrim) && dateOfConsent != null) {
-                    // TODO George compilation error
-                    // Preferences.user(this).userDateOfConsent = dateOfConsent!!.timeInMillis
+                     Preferences.user(this).userDateOfConsent = dateOfConsent!!.timeInMillis
                     val bundle = Bundle()
                     bundle.putString(Extra.PROGRAM_ID.key, programID)
                     Router.getInstance()
@@ -127,9 +126,7 @@ class TermsAndConditionsActivity : BaseActivity(), View.OnClickListener, DatePic
                         .startBaseActivity(this, Activities.PATIENT_DETAILS, bundle)
                 } else {
                     UiUtils.showLongToast(this, R.string.accept_toc_please)
-
-                    // TODO George compilation error
-                    // binding.scrollView.scrollToBottom()
+                     binding.scrollView.scrollToBottom()
                 }
             }
 
@@ -148,8 +145,7 @@ class TermsAndConditionsActivity : BaseActivity(), View.OnClickListener, DatePic
             }
 
             binding.btnDownload -> {
-                // TODO George compilation error
-                /*
+
                 if (!hasDownloadPdfPermissionGranted()) {
                     requestPermissionDownloadPdf()
                 } else {
@@ -157,7 +153,7 @@ class TermsAndConditionsActivity : BaseActivity(), View.OnClickListener, DatePic
                     //TODO replace with url for consent form
                     downloader.downloadFile("https://www.africau.edu/images/default/sample.pdf", "application/pdf", "consent_form.pdf")
                 }
-                */
+
             }
 
 
