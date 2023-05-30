@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.DatePicker
 import androidx.core.content.ContextCompat
 import com.active.orbit.baseapp.R
+import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.Router
 import com.active.orbit.baseapp.core.routing.enums.Extra
 import com.active.orbit.baseapp.core.utils.Constants
@@ -57,11 +58,9 @@ class TermsAndConditionsActivity : BaseActivity(), View.OnClickListener, DatePic
         if (fromMenu) {
 
             binding.fullName.isEnabled = false
-            // TODO George compilation error
-            // binding.fullName.setText(Preferences.user(this).userFullName())
+            binding.fullName.setText(Preferences.user(this).userFullName())
 
-            // TODO George compilation error
-            // dateOfConsent = TimeUtils.getCurrent(Preferences.user(this).userDateOfConsent!!)
+            dateOfConsent = TimeUtils.getCurrent(Preferences.user(this).userDateOfConsent!!)
             binding.btnDate.setText(TimeUtils.format(dateOfConsent!!, Constants.DATE_FORMAT_YEAR_MONTH_DAY))
 
             binding.progressText.visibility = View.GONE
