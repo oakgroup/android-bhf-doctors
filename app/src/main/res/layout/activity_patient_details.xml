@@ -296,7 +296,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="end"
-            android:text="3/4"
+            android:text="1/2"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/h5"
             android:visibility="gone"
@@ -329,24 +329,9 @@
                 android:layout_height="10dp"
                 android:layout_marginEnd="@dimen/margin_lateral_half_half"
                 android:layout_weight="1"
-                android:background="@drawable/bg_step_selected"
+                android:background="@drawable/bg_step_idle"
                 android:visibility="visible" />
 
-
-            <View
-                android:id="@+id/stepThree"
-                android:layout_width="0dp"
-                android:layout_height="10dp"
-                android:layout_marginEnd="@dimen/margin_lateral_half_half"
-                android:layout_weight="1"
-                android:background="@drawable/bg_step_selected" />
-
-            <View
-                android:id="@+id/stepFour"
-                android:layout_width="0dp"
-                android:layout_height="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_step_idle" />
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>

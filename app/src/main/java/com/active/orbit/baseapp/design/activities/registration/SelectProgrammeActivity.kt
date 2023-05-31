@@ -73,7 +73,7 @@ class SelectProgrammeActivity : BaseActivity(), View.OnClickListener{
                     override fun onProgrammeSelect(programme: DBProgram) {
                         dialog.dismiss()
                         programSelected = programme
-                        binding.btnProgramme.setText("BHF")
+                        binding.btnProgramme.setText("Moving Health")
                     }
                 }
                 dialog.show(supportFragmentManager, SelectProgrammeDialog::javaClass.name)

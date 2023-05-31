@@ -10,27 +10,44 @@ import android.view.View
 import android.widget.DatePicker
 import androidx.core.content.ContextCompat
 import com.active.orbit.baseapp.R
+import com.active.orbit.baseapp.core.database.tables.TablePrograms
+import com.active.orbit.baseapp.core.deserialization.UserRegistrationMap
 import com.active.orbit.baseapp.core.download.Download
+import com.active.orbit.baseapp.core.enums.SuccessMessageType
+import com.active.orbit.baseapp.core.firestore.providers.FirestoreProvider
+import com.active.orbit.baseapp.core.listeners.UserRegistrationListener
+import com.active.orbit.baseapp.core.managers.UserManager
 import com.active.orbit.baseapp.core.permissions.Permissions
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.Router
 import com.active.orbit.baseapp.core.routing.enums.Extra
+import com.active.orbit.baseapp.core.serialization.UserRegistrationRequest
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.core.utils.Logger
+import com.active.orbit.baseapp.core.utils.ThreadHandler.backgroundThread
 import com.active.orbit.baseapp.core.utils.TimeUtils
+import com.active.orbit.baseapp.core.utils.Utils
 import com.active.orbit.baseapp.databinding.ActivityTermsConditionsBinding
 import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
+import com.active.orbit.baseapp.design.dialogs.ConfirmRegistrationDialog
+import com.active.orbit.baseapp.design.dialogs.listeners.ConfirmRegistrationDialogListener
 import com.active.orbit.baseapp.design.utils.UiUtils
+import com.active.orbit.tracker.core.tracker.TrackerManager
 import java.util.*
 
 class TermsAndConditionsActivity : BaseActivity(), View.OnClickListener, DatePickerDialog.OnDateSetListener {
 
     private lateinit var binding: ActivityTermsConditionsBinding
-    private var programID = Constants.EMPTY
     private var dateOfConsent: Calendar? = null
     private var fromMenu = false
+
+    private var programID = Constants.EMPTY
+    private var userNhsNumber = Constants.EMPTY
+    private var userFirstName = Constants.EMPTY
+    private var userLastName = Constants.EMPTY
+    private var userDOB = Constants.INVALID.toLong()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,8 +57,18 @@ class TermsAndConditionsActivity : BaseActivity(), View.OnClickListener, DatePic
         showBackButton()
         showLogoButton()
 
-        programID = activityBundle.getString(Extra.PROGRAM_ID.key)!!
         fromMenu = activityBundle.getBoolean(Extra.FROM_MENU.key)
+
+        backgroundThread{
+            //TODO need to remove when program is not needed
+            val program = TablePrograms.getAll(this).filter { it.name == "Newcastle" }
+            programID = program[0].idProgram
+        }
+
+        userNhsNumber = activityBundle.getString(Extra.USER_NHS_NUMBER.key)!!
+        userFirstName = activityBundle.getString(Extra.USER_FIRST_NAME.key)!!
+        userLastName = activityBundle.getString(Extra.USER_LAST_NAME.key)!!
+        userDOB = activityBundle.getLong(Extra.USER_DOB.key)
 
 
         prepare()
@@ -62,7 +89,7 @@ class TermsAndConditionsActivity : BaseActivity(), View.OnClickListener, DatePic
             binding.fullName.isEnabled = false
             binding.fullName.setText(Preferences.user(this).userFullName())
 
-            dateOfConsent = TimeUtils.getCurrent(Preferences.user(this).userDateOfConsent!!)
+            dateOfConsent = TimeUtils.getCurrent(Preferences.user(this).userConsentDate!!)
             binding.btnDate.setText(TimeUtils.format(dateOfConsent!!, Constants.DATE_FORMAT_YEAR_MONTH_DAY))
 
             binding.progressText.visibility = View.GONE
@@ -77,7 +104,7 @@ class TermsAndConditionsActivity : BaseActivity(), View.OnClickListener, DatePic
             binding.buttons.visibility = View.VISIBLE
             binding.btnDownload.visibility = View.GONE
 
-            binding.btnNext.setOnClickListener(this)
+            binding.btnConfirm.setOnClickListener(this)
             binding.btnBack.setOnClickListener(this)
             binding.btnDate.setOnClickListener(this)
 
@@ -116,17 +143,12 @@ class TermsAndConditionsActivity : BaseActivity(), View.OnClickListener, DatePic
     override fun onClick(v: View?) {
         when (v) {
 
-            binding.btnNext -> {
+            binding.btnConfirm -> {
                 if (!TextUtils.isEmpty(binding.fullName.textTrim) && dateOfConsent != null) {
-                     Preferences.user(this).userDateOfConsent = dateOfConsent!!.timeInMillis
-                    val bundle = Bundle()
-                    bundle.putString(Extra.PROGRAM_ID.key, programID)
-                    Router.getInstance()
-                        .activityAnimation(ActivityAnimation.LEFT_RIGHT)
-                        .startBaseActivity(this, Activities.PATIENT_DETAILS, bundle)
+                    register()
                 } else {
                     UiUtils.showLongToast(this, R.string.accept_toc_please)
-                     binding.scrollView.scrollToBottom()
+                    binding.scrollView.scrollToBottom()
                 }
             }
 
@@ -168,6 +190,71 @@ class TermsAndConditionsActivity : BaseActivity(), View.OnClickListener, DatePic
         dateOfConsent!!.set(Calendar.MONTH, month)
         dateOfConsent!!.set(Calendar.DAY_OF_MONTH, dayOfMonth)
         binding.btnDate.setText(TimeUtils.format(dateOfConsent!!, Constants.DATE_FORMAT_YEAR_MONTH_DAY))
+    }
+
+
+    private fun register() {
+        showProgressView()
+
+        //TODO add first name / last name / dob / sex / postcode / dateofconsent / nameofconsent
+        val request = UserRegistrationRequest()
+        request.phoneModel = Utils.getPhoneModel()
+        request.appVersion = Utils.getAppVersion(this)
+        request.androidVersion = Utils.getAndroidVersion()
+        request.idProgram = programID
+        request.userNhsNumber = userNhsNumber
+
+        request.batteryLevel = Utils.getBatteryPercentage(this)
+        request.isCharging = Utils.isCharging(this)
+        request.registrationTimestamp = TimeUtils.getCurrent().timeInMillis
+
+        UserManager.registerUser(this, request, object : UserRegistrationListener {
+            override fun onSuccess(map: UserRegistrationMap) {
+                if (map.participantIdCounter > 1) {
+                    Logger.d("Already existing user with patient id $userNhsNumber, ask for confirmation")
+                    val dialog = ConfirmRegistrationDialog()
+                    dialog.isCancelable = false
+                    dialog.listener = object : ConfirmRegistrationDialogListener {
+                        override fun onRegister() {
+                            completeRegistration(request, map)
+                        }
+
+                        override fun onCancel() {
+                            finish()
+                        }
+                    }
+                    dialog.show(supportFragmentManager, ConfirmRegistrationDialog::javaClass.name)
+                } else {
+                    completeRegistration(request, map)
+                }
+            }
+
+            override fun onError() {
+                UiUtils.showShortToast(this@TermsAndConditionsActivity, R.string.error)
+            }
+        })
+    }
+
+    private fun completeRegistration(request: UserRegistrationRequest, map: UserRegistrationMap) {
+        Logger.d("User successfully registered with id ${map.id}")
+        Preferences.user(this).register(map.id, request.idProgram!!)
+        Preferences.user(this).userNhsNumber = userNhsNumber
+        Preferences.user(this).userFirstName = userFirstName
+        Preferences.user(this).userLastName = userLastName
+        Preferences.user(this).userDateOfBirth = userDOB
+        Preferences.user(this).userConsentDate = dateOfConsent!!.timeInMillis
+        Preferences.user(this).userConsentName = binding.fullName.textTrim
+
+        Preferences.lifecycle(this).userDetailsUploaded = false
+
+        // check registration with the server
+        TrackerManager.getInstance(this).saveUserRegistrationId(map.id)
+        FirestoreProvider.getInstance().updateUserDetails(this)
+
+        val bundle = Bundle()
+        bundle.putInt(Extra.SUCCESS_MESSAGE.key, SuccessMessageType.REGISTRATION.id)
+        Router.getInstance().activityAnimation(ActivityAnimation.BOTTOM_TOP).startBaseActivity(thiss, Activities.SUCCESS_MESSAGE, bundle)
+        finish()
     }
 
 }

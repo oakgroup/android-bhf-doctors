@@ -753,7 +753,7 @@
     <string name="success_location_permissions">You have successfully set up the location settings</string>
     <string name="success_medicine_reported">You have successfully reported a medicine</string>
     <string name="success_on_boarding">You have successfully configured your device. You are ready to use the application</string>
-    <string name="success_registration">You have successfully registered to participate to the BHF study</string>
+    <string name="success_registration">You have successfully registered to participate to the Moving Health study</string>
     <string name="success_symptom_report">You have successfully reported a symptom</string>
     <string name="summary">Summary</string>
     <string name="summary_activity_title">Welcome back!</string>

@@ -159,7 +159,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="end"
-            android:text="2/4"
+            android:text="2/2"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/h5"
             app:typeface="semibold"
@@ -193,21 +193,6 @@
                 android:background="@drawable/bg_step_selected" />
 
 
-            <View
-                android:id="@+id/stepThree"
-                android:layout_width="0dp"
-                android:layout_height="10dp"
-                android:layout_marginEnd="@dimen/margin_lateral_half_half"
-                android:layout_weight="1"
-                android:background="@drawable/bg_step_idle" />
-
-            <View
-                android:id="@+id/stepFour"
-                android:layout_width="0dp"
-                android:layout_height="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_step_idle" />
-
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -230,14 +215,14 @@
                 app:typeface="semibold" />
 
             <com.active.orbit.baseapp.design.widgets.BaseButton
-                android:id="@+id/btnNext"
+                android:id="@+id/btnConfirm"
                 style="@style/ButtonPrimary"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_lateral"
                 android:layout_weight="2"
                 android:gravity="center"
-                android:text="@string/next"
+                android:text="@string/confirm"
                 app:typeface="semibold" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>

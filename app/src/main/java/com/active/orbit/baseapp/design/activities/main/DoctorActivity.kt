@@ -61,7 +61,7 @@ class DoctorActivity : BaseActivity(), View.OnClickListener {
                 val dbProgram = TablePrograms.getById(this, idProgram)
                 mainThread {
                     if (dbProgram?.isValid() == true) {
-                        binding.registerPanel.setPanel(MainPanelType.START_PROGRAMME_WITH_NAME, "BHF")
+                        binding.registerPanel.setPanel(MainPanelType.START_PROGRAMME_WITH_NAME, "Moving Health")
                     } else {
                         Logger.e("Program with id $idProgram not found on database")
                         binding.registerPanel.setPanel(MainPanelType.START_PROGRAMME)
@@ -110,7 +110,7 @@ class DoctorActivity : BaseActivity(), View.OnClickListener {
                 } else {
                     Router.getInstance()
                         .activityAnimation(ActivityAnimation.LEFT_RIGHT)
-                        .startBaseActivity(this, Activities.SELECT_PROGRAMME)
+                        .startBaseActivity(this, Activities.PATIENT_DETAILS)
                 }
             }
             binding.tourPanel -> {

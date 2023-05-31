@@ -16,7 +16,7 @@ class ProgrammeDialogViewHolder(itemView: View, var listener: SelectProgrammeDia
     }
 
     override fun bind(model: DBProgram) {
-        programme.text = "BHF"
+        programme.text = "Moving Health"
         itemView.setOnClickListener {
             listener?.onProgrammeSelect(model)
         }

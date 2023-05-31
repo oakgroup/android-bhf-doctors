@@ -17,7 +17,7 @@ class ProgrammesDialogAdapter(private var activity: BaseActivity, var listener: 
     override fun dataSource(context: Context): List<DBProgram> {
         return TablePrograms.getAll(activity).filter { it.name == "Newcastle" }
 //TODO use this
-//        return TablePrograms.getAll(activity).filter { it.name == "British Heart Foundation" }
+//        return TablePrograms.getAll(activity).filter { it.name == "Moving Health" }
     }
 
     override fun getViewHolder(parent: ViewGroup, viewType: Int): BaseRecyclerCell<DBProgram> {

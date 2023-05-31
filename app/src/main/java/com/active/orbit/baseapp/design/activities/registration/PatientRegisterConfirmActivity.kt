@@ -66,7 +66,7 @@ class PatientRegisterConfirmActivity : BaseActivity(), View.OnClickListener {
                 binding.userDOB.text = getString(R.string.date_of_birth_value, TimeUtils.format(TimeUtils.getCurrent(userDOB), Constants.DATE_FORMAT_YEAR_MONTH_DAY))
 
                 if (program?.isValid() == true) {
-                    binding.programme.text = getString(R.string.patient_programme, "BHF")
+                    binding.programme.text = getString(R.string.patient_programme, "Moving Health")
 
                     binding.btnConfirm.setOnClickListener(this)
                 } else {
