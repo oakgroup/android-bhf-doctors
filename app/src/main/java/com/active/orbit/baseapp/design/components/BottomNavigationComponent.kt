@@ -63,7 +63,6 @@ class BottomNavigationComponent : FrameLayout, View.OnClickListener {
 
     override fun onClick(v: View?) {
         
-        //TODO manage this
         when (v) {
             binding.navSymptoms -> {
                 setSelected(BottomNavItemType.SYMPTOMS)

@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="@dimen/margin_lateral"
-    android:layout_marginVertical="@dimen/margin_vertical_half"
+    android:layout_marginTop="@dimen/margin_vertical"
     android:elevation="10dp"
     tools:ignore="UnusedAttribute">
 

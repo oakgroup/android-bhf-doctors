@@ -51,6 +51,9 @@ class HealthActivity : BaseActivity(), View.OnClickListener {
         adapter = HealthAdapter(this)
         binding.healthRecyclerView.adapter = adapter
 
+        binding.healthRecyclerView.isVerticalScrollBarEnabled = false
+        binding.healthRecyclerView.isNestedScrollingEnabled = false
+
 
 
         binding.noHealth.text = getString(R.string.health_empty_patient)

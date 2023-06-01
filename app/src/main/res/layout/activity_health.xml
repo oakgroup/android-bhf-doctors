@@ -11,38 +11,58 @@
         android:layout_height="match_parent"
         android:background="@color/colorBackground">
 
-        <com.active.orbit.baseapp.design.widgets.BaseTextView
-            android:id="@+id/title"
+        <ScrollView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/margin_vertical"
-            android:layout_marginStart="@dimen/margin_lateral"
-            android:layout_marginEnd="@dimen/margin_lateral"
-            android:gravity="start"
-            android:text="@string/health"
-            android:textColor="@color/textColorPrimaryDark"
-            android:textSize="@dimen/h2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar"
-            app:typeface="bold"
-            tools:ignore="NotSibling" />
-
-        <com.active.orbit.baseapp.design.recyclers.engine.BaseRecyclerView
-            android:id="@+id/healthRecyclerView"
-            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:clipToPadding="false"
-            android:paddingTop="@dimen/margin_vertical"
-            android:paddingBottom="80dp"
-            android:scrollIndicators="end"
-            android:scrollbarThumbVertical="@color/colorAccent"
             android:scrollbars="none"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title"
-            tools:ignore="NotSibling" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="NotSibling">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="100dp">
+
+                <include layout="@layout/toolbar" />
+
+                <com.active.orbit.baseapp.design.widgets.BaseTextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/margin_vertical"
+                    android:layout_marginStart="@dimen/margin_lateral"
+                    android:layout_marginEnd="@dimen/margin_lateral"
+                    android:gravity="start"
+                    android:text="@string/health"
+                    android:textColor="@color/textColorPrimaryDark"
+                    android:textSize="@dimen/h2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/toolbar"
+                    app:typeface="bold"
+                    tools:ignore="NotSibling" />
+
+                <com.active.orbit.baseapp.design.recyclers.engine.BaseRecyclerView
+                    android:id="@+id/healthRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:scrollIndicators="end"
+                    android:scrollbarThumbVertical="@color/colorAccent"
+                    android:scrollbars="none"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/title"
+                    tools:ignore="NotSibling" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </ScrollView>
 
         <com.active.orbit.baseapp.design.widgets.BaseTextView
             android:id="@+id/noHealth"
@@ -50,17 +70,18 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:gravity="center"
+            android:layout_gravity="center"
             android:lineSpacingExtra="5dp"
             android:text="@string/health_empty_patient"
             android:textAlignment="center"
             android:textSize="@dimen/h3"
             android:textStyle="bold"
-            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="NotSibling" />
+
 
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton

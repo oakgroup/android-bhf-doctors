@@ -49,6 +49,9 @@ class SymptomsActivity : BaseActivity() {
         adapter = SymptomsAdapter(this)
         binding.symptomsRecyclerView.adapter = adapter
 
+        binding.symptomsRecyclerView.isVerticalScrollBarEnabled = false
+        binding.symptomsRecyclerView.isNestedScrollingEnabled = false
+
         binding.noSymptoms.text = getString(R.string.symptoms_empty_patient)
         binding.btnAddSymptom.visibility = View.VISIBLE
         binding.btnAddSymptom.setOnClickListener {
