@@ -47,6 +47,14 @@ class LifecyclePreferences : BasePreferences() {
             editor.apply()
         }
 
+    var notificationScheduled: Int
+        get() = prefs.getInt(res.getString(R.string.preference_lifecycle_notification_scheduled), Constants.INVALID)
+        set(value) {
+            val editor = prefs.edit()
+            editor.putInt(res.getString(R.string.preference_lifecycle_notification_scheduled), value)
+            editor.apply()
+        }
+
 
     override fun logout() {
         firstInstall = null

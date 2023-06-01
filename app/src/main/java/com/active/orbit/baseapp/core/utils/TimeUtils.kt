@@ -12,10 +12,10 @@ import java.util.*
 @Suppress("MemberVisibilityCanBePrivate")
 object TimeUtils {
 
-    const val ONE_SECOND_MILLIS = 1000
-    const val ONE_MINUTE_MILLIS = 60 * ONE_SECOND_MILLIS
-    const val ONE_HOUR_MILLIS = 60 * ONE_MINUTE_MILLIS
-    const val ONE_DAY_MILLIS = 24 * ONE_HOUR_MILLIS
+    const val ONE_SECOND_MILLIS = 1000L
+    const val ONE_MINUTE_MILLIS = 60L * ONE_SECOND_MILLIS
+    const val ONE_HOUR_MILLIS = 60L * ONE_MINUTE_MILLIS
+    const val ONE_DAY_MILLIS = 24L * ONE_HOUR_MILLIS
 
     private val utcTimezone = TimeZone.getTimeZone("UTC")
     private val defaultTimezone = TimeZone.getDefault()

@@ -8,9 +8,13 @@ import androidx.annotation.RequiresApi
 import com.active.orbit.baseapp.core.enums.BottomNavItemType
 import com.active.orbit.baseapp.core.enums.SecondaryPanelType
 import com.active.orbit.baseapp.core.listeners.ResultListener
+import com.active.orbit.baseapp.core.notifications.NotificationType
+import com.active.orbit.baseapp.core.notifications.NotificationsManager
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.Router
+import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.core.utils.Logger
+import com.active.orbit.baseapp.core.utils.ThreadHandler.backgroundThread
 import com.active.orbit.baseapp.databinding.ActivityPatientBinding
 import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
@@ -59,6 +63,7 @@ class PatientActivity : BaseActivity(), View.OnClickListener {
         TrackerManager.getInstance(this).askForPermissionAndStartTracker(config)
 
         computeResults()
+        scheduleNotification()
     }
 
     override fun onResume() {
@@ -176,6 +181,17 @@ class PatientActivity : BaseActivity(), View.OnClickListener {
                 Router.getInstance()
                     .activityAnimation(ActivityAnimation.LEFT_RIGHT)
                     .startBaseActivity(this, Activities.ACTIVITY)
+            }
+        }
+    }
+
+    private fun scheduleNotification() {
+        //schedule notification only if it has not been scheduled before
+        backgroundThread {
+            if (Preferences.lifecycle(this).notificationScheduled == Constants.INVALID) {
+                val notificationToSchedule = NotificationType.HEALTH
+                Preferences.lifecycle(this).notificationScheduled = notificationToSchedule.id
+                NotificationsManager.scheduleNotification(this, (com.active.orbit.baseapp.core.utils.TimeUtils.ONE_DAY_MILLIS * 30), notificationToSchedule)
             }
         }
     }

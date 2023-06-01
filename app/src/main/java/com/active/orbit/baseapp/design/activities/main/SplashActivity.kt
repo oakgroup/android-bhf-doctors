@@ -39,7 +39,7 @@ class SplashActivity : BaseActivity() {
     override fun onResume() {
         super.onResume()
 
-        Utils.delay(TimeUtils.ONE_SECOND_MILLIS.toLong() * 2) {
+        Utils.delay(TimeUtils.ONE_SECOND_MILLIS * 2) {
 
             if (Preferences.lifecycle(this).welcomeShown) {
                 onboarded(object : ResultListener {

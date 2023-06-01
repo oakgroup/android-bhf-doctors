@@ -8,6 +8,9 @@ import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.database.models.DBHealth
 import com.active.orbit.baseapp.core.database.tables.TableHealth
 import com.active.orbit.baseapp.core.enums.HealthType
+import com.active.orbit.baseapp.core.notifications.NotificationType
+import com.active.orbit.baseapp.core.notifications.NotificationsManager
+import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.Router
 import com.active.orbit.baseapp.core.routing.enums.Extra
 import com.active.orbit.baseapp.core.routing.enums.ResultCode
@@ -126,6 +129,7 @@ class HealthScoreActivity : BaseActivity(), View.OnClickListener {
 
             }
             mainThread {
+                scheduleNotification()
                 UiUtils.showShortToast(this, getString(R.string.success_symptom_report))
                 setResult(ResultCode.RESULT_OK.value)
                 Router.getInstance()
@@ -134,26 +138,20 @@ class HealthScoreActivity : BaseActivity(), View.OnClickListener {
             }
         }
         hideProgressView()
+    }
 
-        //TODO
-//        val symptomsToUpload = ArrayList<DBSymptom>()
-//        symptomsToUpload.add(symptom!!)
-//
-//
-//        SymptomsManager.uploadSymptoms(this, symptomsToUpload, object : ResultListener {
-//            override fun onResult(success: Boolean) {
-//                hideProgressView()
-//                if (success) {
-//                    mainThread {
-//                        UiUtils.showShortToast(this@ReportSymptomTimeActivity, getString(R.string.success_symptom_report))
-//                        setResult(SymptomsActivity.SYMPTOM_RESULT_CODE_UPDATED)
-//                        finish()
-//                    }
-//                } else {
-//                    UiUtils.showShortToast(this@ReportSymptomTimeActivity, R.string.error)
-//                }
-//            }
-//        })
+    private fun scheduleNotification() {
+        backgroundThread {
+            val scheduledNotification: NotificationType
+            if (Preferences.lifecycle(this).notificationScheduled != Constants.INVALID) {
+                scheduledNotification = NotificationType.getById(Preferences.lifecycle(this).notificationScheduled)
+                NotificationsManager.cancelNotification(this, scheduledNotification, true)
+            }
+            val notificationToSchedule = NotificationType.HEALTH
+            Preferences.lifecycle(this).notificationScheduled = notificationToSchedule.id
+            NotificationsManager.scheduleNotification(this, (TimeUtils.ONE_DAY_MILLIS * 30), notificationToSchedule)
+
+        }
     }
 
 }
