@@ -104,9 +104,12 @@ class TermsAndConditionsActivity : BaseActivity(), View.OnClickListener, DatePic
             binding.buttons.visibility = View.VISIBLE
             binding.btnDownload.visibility = View.GONE
 
+            dateOfConsent = TimeUtils.getCurrent()
+            binding.btnDate.setText(TimeUtils.format(dateOfConsent!!, Constants.DATE_FORMAT_YEAR_MONTH_DAY))
+
+
             binding.btnConfirm.setOnClickListener(this)
             binding.btnBack.setOnClickListener(this)
-            binding.btnDate.setOnClickListener(this)
 
             binding.fullName.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(s: Editable?) {
