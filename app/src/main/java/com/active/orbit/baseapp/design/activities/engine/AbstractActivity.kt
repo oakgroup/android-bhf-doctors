@@ -21,6 +21,7 @@ import com.active.orbit.baseapp.core.enums.WearableMessageType
 import com.active.orbit.baseapp.core.managers.WearableManager
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.Router
+import com.active.orbit.baseapp.core.routing.enums.Extra
 import com.active.orbit.baseapp.core.utils.ThreadHandler.backgroundThread
 import com.active.orbit.baseapp.core.utils.Utils
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
@@ -327,6 +328,11 @@ abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListen
             }
             R.id.wearSync -> {
                 showSyncWearDialog()
+            }
+            R.id.consentForm -> {
+                val bundle = Bundle()
+                bundle.putBoolean(Extra.FROM_MENU.key, true)
+                Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).startBaseActivity(this, Activities.CONSENT_FORM, bundle)
             }
             R.id.finishStudy -> {
                 showDismissPatientDialog()

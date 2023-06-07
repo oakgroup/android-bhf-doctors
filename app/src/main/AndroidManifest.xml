@@ -159,7 +159,7 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".design.activities.registration.TermsAndConditionsActivity"
+            android:name=".design.activities.registration.ConsentFormActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity

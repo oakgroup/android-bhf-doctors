@@ -66,6 +66,10 @@ class PermissionsDialog : BaseDialogFragment() {
             Permissions.Group.ACCESS_CAMERA_FOR_CAPTURE.requestCode -> {
                 description.text = getString(R.string.permissions_camera_capture_dialog_title)
             }
+            Permissions.Group.ACCESS_DOWNLOAD_PDF.requestCode -> {
+                description.text = getString(R.string.permissions_download_pdf_title)
+            }
+
         }
 
         btnPermission.setOnClickListener {

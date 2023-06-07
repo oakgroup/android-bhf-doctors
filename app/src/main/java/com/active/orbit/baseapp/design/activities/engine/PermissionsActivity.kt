@@ -225,6 +225,7 @@ abstract class PermissionsActivity : AbstractActivity() {
                 Permissions.Group.ACCESS_DOWNLOAD_PDF.requestCode -> {
                     Logger.i("Access download pdf permission disabled")
                     showPermissionsDialog(Permissions(Permissions.Group.ACCESS_DOWNLOAD_PDF))
+
                 }
             }
         }
@@ -288,10 +289,8 @@ abstract class PermissionsActivity : AbstractActivity() {
 
                 override fun onCancel() {
                     super.onCancel()
-
                     permissionsDialogShown = false
                     permissionsDialog = null
-                    finish()
                 }
             }
             permissionsDialog?.show(supportFragmentManager, PermissionsDialog::javaClass.name)

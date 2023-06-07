@@ -1,7 +1,6 @@
 package com.active.orbit.baseapp.design.activities.registration
 
 import android.app.DatePickerDialog
-import android.graphics.Paint
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
@@ -27,7 +26,7 @@ import com.active.orbit.baseapp.core.utils.Logger
 import com.active.orbit.baseapp.core.utils.ThreadHandler.backgroundThread
 import com.active.orbit.baseapp.core.utils.TimeUtils
 import com.active.orbit.baseapp.core.utils.Utils
-import com.active.orbit.baseapp.databinding.ActivityTermsConditionsBinding
+import com.active.orbit.baseapp.databinding.ActivityConsentFormBinding
 import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
@@ -37,9 +36,9 @@ import com.active.orbit.baseapp.design.utils.UiUtils
 import com.active.orbit.tracker.core.tracker.TrackerManager
 import java.util.*
 
-class TermsAndConditionsActivity : BaseActivity(), View.OnClickListener, DatePickerDialog.OnDateSetListener {
+class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDialog.OnDateSetListener {
 
-    private lateinit var binding: ActivityTermsConditionsBinding
+    private lateinit var binding: ActivityConsentFormBinding
     private var dateOfConsent: Calendar? = null
     private var fromMenu = false
 
@@ -52,7 +51,7 @@ class TermsAndConditionsActivity : BaseActivity(), View.OnClickListener, DatePic
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityTermsConditionsBinding.inflate(layoutInflater)
+        binding = ActivityConsentFormBinding.inflate(layoutInflater)
         setContentView(binding.root)
         showBackButton()
         showLogoButton()
@@ -65,11 +64,6 @@ class TermsAndConditionsActivity : BaseActivity(), View.OnClickListener, DatePic
             programID = program[0].idProgram
         }
 
-        userNhsNumber = activityBundle.getString(Extra.USER_NHS_NUMBER.key)!!
-        userFirstName = activityBundle.getString(Extra.USER_FIRST_NAME.key)!!
-        userLastName = activityBundle.getString(Extra.USER_LAST_NAME.key)!!
-        userDOB = activityBundle.getLong(Extra.USER_DOB.key)
-
 
         prepare()
 
@@ -81,8 +75,6 @@ class TermsAndConditionsActivity : BaseActivity(), View.OnClickListener, DatePic
         binding.btnDate.setIcon(R.drawable.ic_calendar)
         binding.btnDate.setText(getString(R.string.date))
         binding.btnDate.disableClick()
-        binding.termsLink.paintFlags = binding.termsLink.paintFlags or Paint.UNDERLINE_TEXT_FLAG
-
 
         if (fromMenu) {
 
@@ -99,6 +91,11 @@ class TermsAndConditionsActivity : BaseActivity(), View.OnClickListener, DatePic
             binding.btnDownload.setOnClickListener(this)
 
         } else {
+            userNhsNumber = activityBundle.getString(Extra.USER_NHS_NUMBER.key)!!
+            userFirstName = activityBundle.getString(Extra.USER_FIRST_NAME.key)!!
+            userLastName = activityBundle.getString(Extra.USER_LAST_NAME.key)!!
+            userDOB = activityBundle.getLong(Extra.USER_DOB.key)
+
             binding.progressText.visibility = View.VISIBLE
             binding.steps.visibility = View.VISIBLE
             binding.buttons.visibility = View.VISIBLE
@@ -156,8 +153,6 @@ class TermsAndConditionsActivity : BaseActivity(), View.OnClickListener, DatePic
             }
 
             binding.btnBack -> finish()
-
-            binding.termsLink -> Router.getInstance().openTermsAndConditions(this)
 
             binding.btnDate -> {
                 val cal = dateOfConsent ?: GregorianCalendar()
@@ -233,7 +228,7 @@ class TermsAndConditionsActivity : BaseActivity(), View.OnClickListener, DatePic
             }
 
             override fun onError() {
-                UiUtils.showShortToast(this@TermsAndConditionsActivity, R.string.error)
+                UiUtils.showShortToast(this@ConsentFormActivity, R.string.error)
             }
         })
     }

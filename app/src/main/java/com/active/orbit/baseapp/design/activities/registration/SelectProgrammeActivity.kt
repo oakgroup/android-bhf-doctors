@@ -55,7 +55,7 @@ class SelectProgrammeActivity : BaseActivity(), View.OnClickListener{
                         bundle.putString(Extra.PROGRAM_ID.key, dbProgram.identifier())
                         Router.getInstance()
                             .activityAnimation(ActivityAnimation.LEFT_RIGHT)
-                            .startBaseActivity(this, Activities.TERMS_AND_CONDITIONS, bundle)
+                            .startBaseActivity(this, Activities.CONSENT_FORM, bundle)
                     } else {
                         UiUtils.showLongToast(this, R.string.programme_empty)
                     }

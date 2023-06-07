@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    tools:context=".design.activities.registration.TermsAndConditionsActivity">
+    tools:context=".design.activities.registration.ConsentFormActivity">
 
 
     <com.active.orbit.baseapp.design.widgets.BaseTextView
@@ -16,7 +16,7 @@
         android:layout_marginTop="@dimen/margin_vertical"
         android:layout_marginEnd="@dimen/margin_lateral"
         android:gravity="start"
-        android:text="@string/terms_and_conditions"
+        android:text="@string/consent_form"
         android:textColor="@color/textColorPrimaryDark"
         android:textSize="@dimen/h2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,7 +62,7 @@
                 <com.active.orbit.baseapp.design.widgets.BaseTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/terms_and_conditions"
+                    android:text="@string/consent_form"
                     android:textColor="@color/textColorPrimaryDark"
                     android:textSize="@dimen/description_text_dimension"
                     app:typeface="regular" />
@@ -75,24 +75,13 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_panel"
                     android:orientation="vertical"
-
                     android:paddingHorizontal="@dimen/margin_lateral"
                     android:paddingVertical="@dimen/margin_vertical"
                     app:layout_constraintBottom_toTopOf="@id/bottomLayout">
 
                     <com.active.orbit.baseapp.design.widgets.BaseTextView
-                        android:id="@+id/termsLink"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/terms_and_conditions"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/main_text_dimension" />
-
-                    <com.active.orbit.baseapp.design.widgets.BaseTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_vertical_double"
                         android:text="@string/name"
                         android:textColor="@color/textColorPrimaryDark"
                         android:textSize="@dimen/main_text_dimension"

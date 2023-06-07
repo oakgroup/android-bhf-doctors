@@ -18,6 +18,10 @@
             android:icon="@drawable/ic_help"
             android:title="@string/help" />
         <item
+            android:id="@+id/consentForm"
+            android:icon="@drawable/ic_register"
+            android:title="@string/consent_form" />
+        <item
             android:id="@+id/finishStudy"
             android:icon="@drawable/ic_menu_dismiss_patient"
             android:title="@string/dismiss_patient" />

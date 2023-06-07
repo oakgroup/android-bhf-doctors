@@ -188,6 +188,7 @@
     <string name="connect_walking_aid">Connect Walking Aid</string>
     <string name="connected_ble">Connected via Bluetooth</string>
     <string name="connection_failed_message">Connection failed</string>
+    <string name="consent_form">Consent Form</string>
     <string name="contact_support">Contact Support</string>
     <string name="contact_us">Contact Us</string>
     <string name="contact_us_descritpion">You can email us at support@activeorbit.co.uk.</string>
@@ -561,6 +562,7 @@
     <string name="permissions_background_location_dialog_title">Please accept the Background Location permission, otherwise you will not be able to provide accurate results for your activities.</string>
     <string name="permissions_camera_capture_dialog_title">Please accept the CAMERA permission, otherwise you will not be able to capture an image for your avatar.</string>
     <string name="permissions_camera_dialog_title">Please accept the CAMERA permission, otherwise you will not be able to scan the product code.</string>
+    <string name="permissions_download_pdf_title">Please accept the permission, otherwise you will not be able to download the consent form on your device.</string>
     <string name="permissions_external_storage_dialog_title">Please accept the Storage permission, otherwise you will not be able to take upload an image.</string>
     <string name="permissions_location_dialog_title">Please accept the Location permission, otherwise you will not be able to provide accurate results for your activities.</string>
     <string name="permissions_must_be_reinstated"><![CDATA[In order to use the app, allow location tracking under Settings>Apps>Moving Health>Permissions]]></string>
