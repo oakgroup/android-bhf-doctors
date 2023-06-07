@@ -53,6 +53,12 @@ object Constants {
     const val TYPEFACE_BOLD_ITALIC_INDEX = 6
     const val TYPEFACE_MEDIUM_INDEX = 7
 
+    const val HEALTH_RESPONSE_ONE_ID = 1
+    const val HEALTH_RESPONSE_TWO_ID = 2
+    const val HEALTH_RESPONSE_THREE_ID = 3
+    const val HEALTH_RESPONSE_FOUR_ID = 4
+    const val HEALTH_RESPONSE_FIVE_ID = 5
+
 
     const val ALPHA_ENABLED = 1.0f
     const val ALPHA_DISABLED = 0.5f

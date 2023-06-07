@@ -55,20 +55,8 @@ class HealthActivity : BaseActivity(), View.OnClickListener {
         binding.healthRecyclerView.isNestedScrollingEnabled = false
 
 
-
         binding.noHealth.text = getString(R.string.health_empty_patient)
         binding.btnFillQuestionnaire.visibility = View.VISIBLE
-        binding.healthRecyclerView.setOnClickListener {
-            if ((adapter?.itemCount ?: 0) < HEALTH_RESPONSES_MAX) {
-                Router.getInstance()
-                    .activityAnimation(ActivityAnimation.LEFT_RIGHT)
-                    .startBaseActivityForResult(this, Activities.REPORT_SYMPTOM_DETAILS, Bundle(), HEALTH_REQUEST_CODE)
-            } else {
-                UiUtils.showLongToast(this, getString(R.string.full_health_list_message))
-            }
-        }
-
-
     }
 
     private fun showResponses() {
@@ -86,7 +74,11 @@ class HealthActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v) {
             binding.btnFillQuestionnaire -> {
-                Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).startBaseActivityForResult(this, Activities.HEALTH_MOBILITY, Bundle(), HEALTH_REQUEST_CODE)
+                if ((adapter?.itemCount ?: 0) < HEALTH_RESPONSES_MAX) {
+                    Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).startBaseActivityForResult(this, Activities.HEALTH_MOBILITY, Bundle(), HEALTH_REQUEST_CODE)
+                } else {
+                    UiUtils.showLongToast(this, getString(R.string.full_health_list_message))
+                }
             }
         }
     }

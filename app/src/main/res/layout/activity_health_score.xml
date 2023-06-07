@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:scrollIndicators="end"
             android:scrollbarThumbVertical="@color/colorAccent"
-            android:scrollbars="vertical">
+            android:scrollbars="none">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"

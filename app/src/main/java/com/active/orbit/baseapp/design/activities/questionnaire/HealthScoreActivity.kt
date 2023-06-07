@@ -29,13 +29,13 @@ class HealthScoreActivity : BaseActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityHealthScoreBinding
 
-    var mobilityResponse = Constants.EMPTY
-    var selfCareResponse = Constants.EMPTY
-    var usualActivitiesResponse = Constants.EMPTY
-    var painResponse = Constants.EMPTY
-    var anxietyResponse = Constants.EMPTY
+    var mobilityResponse = Constants.INVALID
+    var selfCareResponse = Constants.INVALID
+    var usualActivitiesResponse = Constants.INVALID
+    var painResponse = Constants.INVALID
+    var anxietyResponse = Constants.INVALID
 
-    var response = Constants.EMPTY
+    var response: String = Constants.EMPTY
 
     var healthType: HealthType = HealthType.UNDEFINED
 
@@ -48,11 +48,11 @@ class HealthScoreActivity : BaseActivity(), View.OnClickListener {
         showBackButton()
         showLogoButton()
 
-        mobilityResponse = activityBundle.getString(Extra.HEALTH_MOBILITY.key)!!
-        selfCareResponse = activityBundle.getString(Extra.HEALTH_SELF_CARE.key)!!
-        usualActivitiesResponse = activityBundle.getString(Extra.HEALTH_ACTIVITY.key)!!
-        painResponse = activityBundle.getString(Extra.HEALTH_PAIN.key)!!
-        anxietyResponse = activityBundle.getString(Extra.HEALTH_ANXIETY.key)!!
+        mobilityResponse = activityBundle.getInt(Extra.HEALTH_MOBILITY.key)
+        selfCareResponse = activityBundle.getInt(Extra.HEALTH_SELF_CARE.key)
+        usualActivitiesResponse = activityBundle.getInt(Extra.HEALTH_ACTIVITY.key)
+        painResponse = activityBundle.getInt(Extra.HEALTH_PAIN.key)
+        anxietyResponse = activityBundle.getInt(Extra.HEALTH_ANXIETY.key)
 
 
         prepare()
@@ -130,7 +130,7 @@ class HealthScoreActivity : BaseActivity(), View.OnClickListener {
             }
             mainThread {
                 scheduleNotification()
-                UiUtils.showShortToast(this, getString(R.string.success_symptom_report))
+                UiUtils.showShortToast(this, getString(R.string.success_health_report))
                 setResult(ResultCode.RESULT_OK.value)
                 Router.getInstance()
                     .clearTop(true)

@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:scrollIndicators="end"
             android:scrollbarThumbVertical="@color/colorAccent"
-            android:scrollbars="vertical">
+            android:scrollbars="none">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
@@ -81,6 +81,24 @@
 
                 <com.active.orbit.baseapp.design.widgets.BaseCheckBox
                     android:id="@+id/responseThree"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/margin_vertical"
+                    android:text="@string/health_mobility_response_three"
+                    android:textSize="@dimen/main_text_dimension"
+                    app:typeface="semibold" />
+
+                <com.active.orbit.baseapp.design.widgets.BaseCheckBox
+                    android:id="@+id/responseFour"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/margin_vertical"
+                    android:text="@string/health_mobility_response_three"
+                    android:textSize="@dimen/main_text_dimension"
+                    app:typeface="semibold" />
+
+                <com.active.orbit.baseapp.design.widgets.BaseCheckBox
+                    android:id="@+id/responseFive"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/margin_vertical"

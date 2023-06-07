@@ -11,11 +11,11 @@ class DBHealth : BaseModel {
 
     @PrimaryKey
     var healthID: Long = 0L
-    var healthMobility: String? = null
-    var healthSelfCare: String? = null
-    var healthActivities: String? = null
-    var healthAnxiety: String? = null
-    var healthPain: String? = null
+    var healthMobility: Int? = null
+    var healthSelfCare: Int? = null
+    var healthActivities: Int? = null
+    var healthAnxiety: Int? = null
+    var healthPain: Int? = null
     var healthScore: Int? = null
 
 
@@ -28,11 +28,11 @@ class DBHealth : BaseModel {
     }
 
     override fun isValid(): Boolean {
-        return !TextUtils.isEmpty(healthMobility)
-                && !TextUtils.isEmpty(healthSelfCare)
-                && !TextUtils.isEmpty(healthActivities)
-                && !TextUtils.isEmpty(healthAnxiety)
-                && !TextUtils.isEmpty(healthPain)
+        return healthMobility != null
+                && healthSelfCare != null
+                && healthActivities != null
+                && healthAnxiety != null
+                && healthPain != null
                 && healthScore != null
 
     }

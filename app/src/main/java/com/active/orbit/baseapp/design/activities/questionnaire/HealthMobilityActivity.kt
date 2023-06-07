@@ -19,7 +19,7 @@ class HealthMobilityActivity : BaseActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityHealthMobilityBinding
 
-    var response: String = Constants.EMPTY
+    var response: Int = Constants.INVALID
 
     var healthType: HealthType = HealthType.UNDEFINED
 
@@ -41,9 +41,11 @@ class HealthMobilityActivity : BaseActivity(), View.OnClickListener {
 
         binding.title.text = getString(healthType.title)
         binding.description.text = healthType.getDescription(this)
-        binding.responseOne.text = getString(healthType.responseOne)
-        binding.responseTwo.text = getString(healthType.responseTwo)
-        binding.responseThree.text = getString(healthType.responseThree)
+        binding.responseOne.text = healthType.getResponse(Constants.HEALTH_RESPONSE_ONE_ID, this)
+        binding.responseTwo.text = healthType.getResponse(Constants.HEALTH_RESPONSE_TWO_ID, this)
+        binding.responseThree.text = healthType.getResponse(Constants.HEALTH_RESPONSE_THREE_ID, this)
+        binding.responseFour.text = healthType.getResponse(Constants.HEALTH_RESPONSE_FOUR_ID, this)
+        binding.responseFive.text = healthType.getResponse(Constants.HEALTH_RESPONSE_FIVE_ID, this)
 
 
         binding.btnBack.setOnClickListener(this)
@@ -51,6 +53,9 @@ class HealthMobilityActivity : BaseActivity(), View.OnClickListener {
         binding.responseOne.setOnClickListener(this)
         binding.responseTwo.setOnClickListener(this)
         binding.responseThree.setOnClickListener(this)
+        binding.responseFour.setOnClickListener(this)
+        binding.responseFive.setOnClickListener(this)
+
 
     }
 
@@ -74,7 +79,7 @@ class HealthMobilityActivity : BaseActivity(), View.OnClickListener {
                 hideKeyboard()
                 if (isSelectionValid()) {
                     val bundle = Bundle()
-                    bundle.putString(Extra.HEALTH_MOBILITY.key, response)
+                    bundle.putInt(Extra.HEALTH_MOBILITY.key, response)
                     Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).startBaseActivityForResult(this, Activities.HEALTH_SELFCARE, bundle, HealthActivity.HEALTH_REQUEST_CODE)
                 } else {
                     UiUtils.showShortToast(this, R.string.health_select_something)
@@ -84,33 +89,58 @@ class HealthMobilityActivity : BaseActivity(), View.OnClickListener {
             binding.responseOne -> {
                 if (binding.responseOne.isChecked) {
                     if (binding.responseOne.isChecked) {
-                        response = getString(healthType.responseOne)
+                        response = Constants.HEALTH_RESPONSE_ONE_ID
                         binding.responseTwo.isChecked = false
                         binding.responseThree.isChecked = false
+                        binding.responseFour.isChecked = false
+                        binding.responseFive.isChecked = false
+
                     }
                 }
             }
             binding.responseTwo -> {
                 if (binding.responseTwo.isChecked) {
                     if (binding.responseTwo.isChecked) {
-                        response = getString(healthType.responseTwo)
+                        response = Constants.HEALTH_RESPONSE_TWO_ID
                         binding.responseOne.isChecked = false
                         binding.responseThree.isChecked = false
+                        binding.responseFour.isChecked = false
+                        binding.responseFive.isChecked = false
                     }
                 }
             }
             binding.responseThree -> {
                 if (binding.responseThree.isChecked) {
-                    response = getString(healthType.responseThree)
+                    response = Constants.HEALTH_RESPONSE_THREE_ID
                     binding.responseOne.isChecked = false
                     binding.responseTwo.isChecked = false
+                    binding.responseFour.isChecked = false
+                    binding.responseFive.isChecked = false
+                }
+            }
+            binding.responseFour -> {
+                if (binding.responseFour.isChecked) {
+                    response = Constants.HEALTH_RESPONSE_FOUR_ID
+                    binding.responseOne.isChecked = false
+                    binding.responseTwo.isChecked = false
+                    binding.responseThree.isChecked = false
+                    binding.responseFive.isChecked = false
+                }
+            }
+            binding.responseFive -> {
+                if (binding.responseFive.isChecked) {
+                    response = Constants.HEALTH_RESPONSE_FIVE_ID
+                    binding.responseOne.isChecked = false
+                    binding.responseTwo.isChecked = false
+                    binding.responseThree.isChecked = false
+                    binding.responseFour.isChecked = false
                 }
             }
         }
     }
 
     private fun isSelectionValid(): Boolean {
-        if ((binding.responseOne.isChecked || binding.responseTwo.isChecked || binding.responseThree.isChecked) && response != Constants.EMPTY) {
+        if ((binding.responseOne.isChecked || binding.responseTwo.isChecked || binding.responseThree.isChecked || binding.responseFour.isChecked || binding.responseFive.isChecked) && response != Constants.INVALID) {
             return true
         }
         return false
