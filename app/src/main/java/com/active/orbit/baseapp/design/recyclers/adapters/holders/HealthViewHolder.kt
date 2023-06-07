@@ -46,8 +46,8 @@ class HealthViewHolder(var activity: BaseActivity, itemView: View) : BaseRecycle
         healthScoreProgress.setBackgroundLineColorTwo(ContextCompat.getColor(activity, R.color.colorSecondaryLight))
         healthScoreProgress.setProgressLineColorOne(ContextCompat.getColor(activity, R.color.colorPrimary))
         healthScoreProgress.setProgressLineColorTwo(ContextCompat.getColor(activity, R.color.colorSecondary))
-        healthScoreProgress.setLineWidth(40f)
-        healthScoreProgress.setProgressIconResource(R.drawable.ic_activity)
+        healthScoreProgress.setLineWidth(20f)
+        healthScoreProgress.hideProgressIcon()
         healthScoreProgress.setMaxProgress(Constants.HEALTH_MAX_PROGRESS.toFloat())
         healthScoreProgress.setProgress(model.healthScore!!.toFloat())
 

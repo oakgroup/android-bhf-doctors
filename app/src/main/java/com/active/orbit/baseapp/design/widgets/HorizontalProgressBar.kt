@@ -38,6 +38,8 @@ open class HorizontalProgressBar(context: Context, attrs: AttributeSet?, defStyl
 
     private var lastProgressRatio = Constants.INVALID.toFloat()
 
+    private var hideProgressIcon = false
+
     constructor(context: Context) : this(context, null)
 
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
@@ -47,7 +49,8 @@ open class HorizontalProgressBar(context: Context, attrs: AttributeSet?, defStyl
         (parent as ViewGroup).removeView(progressIcon)
         drawBackground(canvas)
         if (mProgress > 0f) drawProgress(canvas)
-        addProgressIcon(mProgress > 0f)
+        if (!hideProgressIcon) addProgressIcon(mProgress > 0f)
+
     }
 
     private fun drawBackground(canvas: Canvas) {
@@ -93,6 +96,15 @@ open class HorizontalProgressBar(context: Context, attrs: AttributeSet?, defStyl
     fun setProgressIconResource(resourceId: Int, forceInvalidate: Boolean = false) {
         post {
             mProgressIconResource = resourceId
+            if (forceInvalidate) {
+                invalidate()
+            }
+        }
+    }
+
+    fun hideProgressIcon(forceInvalidate: Boolean = false) {
+        hideProgressIcon = true
+        post {
             if (forceInvalidate) {
                 invalidate()
             }
