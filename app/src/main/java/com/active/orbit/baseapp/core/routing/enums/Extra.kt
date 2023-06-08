@@ -22,5 +22,7 @@ enum class Extra(var key: String) {
     HEALTH_SELF_CARE("selfcare_response"),
     HEALTH_ACTIVITY("activity_response"),
     HEALTH_ANXIETY("anxiety_response"),
-    HEALTH_PAIN("pain_response");
+    HEALTH_PAIN("pain_response"),
+    WEB_VIEW_URL("web_view_url");
+
 }

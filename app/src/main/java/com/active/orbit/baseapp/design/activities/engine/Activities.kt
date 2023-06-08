@@ -1,5 +1,6 @@
 package com.active.orbit.baseapp.design.activities.engine
 
+import com.active.orbit.baseapp.design.activities.WebViewActivity
 import com.active.orbit.baseapp.design.activities.activity.ActivityActivity
 import com.active.orbit.baseapp.design.activities.activity.DebugActivity
 import com.active.orbit.baseapp.design.activities.activity.DetailedActivityActivity
@@ -57,6 +58,7 @@ enum class Activities(private val activity: Class<out BaseActivity>) : ActivityP
     SYMPTOMS(SymptomsActivity::class.java),
     CONSENT_FORM(ConsentFormActivity::class.java),
     TOUR(TourActivity::class.java),
+    WEB_VIEW(WebViewActivity::class.java),
     WELCOME(WelcomeActivity::class.java);
 
 

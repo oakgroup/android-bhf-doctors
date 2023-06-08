@@ -210,6 +210,10 @@
             android:name=".design.activities.questionnaire.HealthResponseActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".design.activities.WebViewActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait" />
 
 
         <receiver android:name=".core.download.DownloadCompletedReceiver" android:exported="true">

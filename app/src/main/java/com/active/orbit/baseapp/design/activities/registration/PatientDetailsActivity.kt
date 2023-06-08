@@ -1,5 +1,6 @@
 package com.active.orbit.baseapp.design.activities.registration
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.text.Editable
@@ -241,6 +242,7 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
     }
 
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onClick(v: View?) {
 
         when (v) {
@@ -248,7 +250,7 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
                 hideKeyboard()
 
                 if (binding.insertIdEntryView.isComplete() && !TextUtils.isEmpty(binding.firstName.textTrim) && !TextUtils.isEmpty(binding.lastName.textTrim) && dateOfBirth != null && sex != null && Validator.validatePostcode(binding.postcode.textTrim)) {
-                    if(!Validator.validateNhsNumber(binding.insertIdEntryView.getPin())) {
+                    if (!Validator.validateNhsNumber(binding.insertIdEntryView.getPin())) {
                         UiUtils.showShortToast(this, "NHS number is not valid")
                     } else {
                         val bundle = Bundle()
@@ -310,7 +312,9 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
             }
 
             binding.btnNhsUrl -> {
-                Router.getInstance().openNHS(this)
+                val bundle = Bundle()
+                bundle.putString(Extra.WEB_VIEW_URL.key, getString(R.string.find_nhs_number_link_default))
+                Router.getInstance().activityAnimation(ActivityAnimation.BOTTOM_TOP).startBaseActivity(this, Activities.WEB_VIEW, bundle)
             }
 
             binding.btnDateBirth -> {
