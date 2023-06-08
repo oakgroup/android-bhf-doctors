@@ -1,6 +1,7 @@
 package com.active.orbit.baseapp.design.recyclers.adapters.holders
 
 import android.annotation.SuppressLint
+import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
 import android.widget.FrameLayout
@@ -8,9 +9,13 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.database.models.DBHealth
+import com.active.orbit.baseapp.core.routing.Router
+import com.active.orbit.baseapp.core.routing.enums.Extra
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.core.utils.TimeUtils
+import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
+import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
 import com.active.orbit.baseapp.design.recyclers.engine.BaseRecyclerCell
 import com.active.orbit.baseapp.design.utils.UiUtils
 import com.active.orbit.baseapp.design.widgets.BaseTextView
@@ -53,14 +58,12 @@ class HealthViewHolder(var activity: BaseActivity, itemView: View) : BaseRecycle
 
     }
 
-    //TODO
     private fun onItemClicked(model: DBHealth) {
-        UiUtils.showToast(activity, "Not developed yet", Toast.LENGTH_LONG)
-//        val bundle = Bundle()
-//        bundle.putString(ReportSymptomDetailsActivity.EXTRA_SYMPTOM_ID, model.symptomId.toString())
-//        Router.getInstance()
-//            .activityAnimation(ActivityAnimation.LEFT_RIGHT)
-//            .startBaseActivityForResult(activity, Activities.REPORT_SYMPTOM_DETAILS, bundle, SymptomsActivity.SYMPTOM_REQUEST_CODE)
+        val bundle = Bundle()
+        bundle.putString(Extra.IDENTIFIER.key, model.healthID.toString())
+        Router.getInstance()
+            .activityAnimation(ActivityAnimation.LEFT_RIGHT)
+            .startBaseActivity(activity, Activities.HEALTH_RESPONSE, bundle)
     }
 
     @SuppressLint("ClickableViewAccessibility")

@@ -20,12 +20,12 @@ object TableHealth {
     }
 
     @WorkerThread
-    fun getById(context: Context, idSymptom: String): DBHealth? {
+    fun getById(context: Context, idHealth: String): DBHealth? {
         try {
-            return Database.getInstance(context).getHealth().getById(idSymptom)
+            return Database.getInstance(context).getHealth().getById(idHealth)
         } catch (e: Exception) {
             e.printStackTrace()
-            Logger.e("Error on getting reported symptom by id $idSymptom${e.localizedMessage}")
+            Logger.e("Error on getting reported health by id $idHealth${e.localizedMessage}")
         }
         return null
     }

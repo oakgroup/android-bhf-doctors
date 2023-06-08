@@ -37,6 +37,7 @@ enum class Activities(private val activity: Class<out BaseActivity>) : ActivityP
     HEALTH_PAIN(HealthPainActivity::class.java),
     HEALTH_ANXIETY(HealthAnxietyActivity::class.java),
     HEALTH_SCORE(HealthScoreActivity::class.java),
+    HEALTH_RESPONSE(HealthResponseActivity::class.java),
     HELP(HelpActivity::class.java),
     MAP(MapActivity::class.java),
     ON_BOARDING(OnBoardingActivity::class.java),
