@@ -12,6 +12,9 @@ interface Health {
     @Query("SELECT * FROM health WHERE healthID == :healthID LIMIT 1")
     fun getById(healthID: String): DBHealth?
 
+    @Query("SELECT * FROM health WHERE uploaded == :uploaded")
+    fun getNotUploaded(uploaded: Boolean): List<DBHealth>
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(models: List<DBHealth>)
 

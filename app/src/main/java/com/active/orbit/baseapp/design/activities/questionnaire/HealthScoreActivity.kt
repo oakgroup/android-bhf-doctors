@@ -8,6 +8,8 @@ import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.database.models.DBHealth
 import com.active.orbit.baseapp.core.database.tables.TableHealth
 import com.active.orbit.baseapp.core.enums.HealthType
+import com.active.orbit.baseapp.core.listeners.ResultListener
+import com.active.orbit.baseapp.core.managers.HealthManager
 import com.active.orbit.baseapp.core.notifications.NotificationType
 import com.active.orbit.baseapp.core.notifications.NotificationsManager
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
@@ -98,6 +100,7 @@ class HealthScoreActivity : BaseActivity(), View.OnClickListener {
                     healthModel!!.healthPain = painResponse
                     healthModel!!.healthAnxiety = anxietyResponse
                     healthModel!!.healthScore = response.toInt()
+                    healthModel!!.healthTimestamp = TimeUtils.getCurrent().timeInMillis
 
 
                     sendData()
@@ -124,20 +127,36 @@ class HealthScoreActivity : BaseActivity(), View.OnClickListener {
             if (healthModel!!.isValid()) {
                 TableHealth.upsert(this, healthModel!!)
 
+                mainThread {
+                    scheduleNotification()
+
+                    HealthManager.uploadHealth(this, healthModel!!, object : ResultListener {
+                        override fun onResult(success: Boolean) {
+                            hideProgressView()
+                            if (success) {
+                                mainThread {
+                                    UiUtils.showShortToast(this@HealthScoreActivity, getString(R.string.success_health_report))
+                                    setResult(ResultCode.RESULT_OK.value)
+                                    Router.getInstance()
+                                        .clearTop(true)
+                                        .startBaseActivity(this@HealthScoreActivity, Activities.HEALTH)
+                                }
+                            } else {
+                                UiUtils.showShortToast(this@HealthScoreActivity, R.string.error)
+                            }
+                        }
+                    })
+                }
+
             } else {
                 Logger.d("Model wrong:" + healthModel!!.description())
 
             }
-            mainThread {
-                scheduleNotification()
-                UiUtils.showShortToast(this, getString(R.string.success_health_report))
-                setResult(ResultCode.RESULT_OK.value)
-                Router.getInstance()
-                    .clearTop(true)
-                    .startBaseActivity(this, Activities.HEALTH)
-            }
+
         }
         hideProgressView()
+
+
     }
 
     private fun scheduleNotification() {

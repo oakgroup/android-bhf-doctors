@@ -5,6 +5,7 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.enums.BottomNavItemType
+import com.active.orbit.baseapp.core.managers.HealthManager
 import com.active.orbit.baseapp.core.routing.Router
 import com.active.orbit.baseapp.databinding.ActivityHealthBinding
 import com.active.orbit.baseapp.design.activities.engine.Activities
@@ -33,6 +34,10 @@ class HealthActivity : BaseActivity(), View.OnClickListener {
         binding.bottomNav.setSelected(BottomNavItemType.HEALTH)
 
         prepare()
+
+
+        HealthManager.checkForNotUploaded(this)
+
     }
 
     override fun onResume() {

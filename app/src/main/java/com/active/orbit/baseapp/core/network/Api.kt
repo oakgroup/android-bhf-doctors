@@ -13,6 +13,7 @@ enum class Api(private var apiUrl: Int) {
     EMPTY(R.string.api_empty),
     INSERT_REMINDERS(R.string.api_insert_reminders),
     INSERT_SYMPTOMS(R.string.api_insert_symptoms),
+    INSERT_HEALTH(R.string.api_insert_health),
     RETRIEVE_PROGRAMMES(R.string.api_retrieve_programmes),
     USER_REGISTRATION(R.string.api_user_registration);
 

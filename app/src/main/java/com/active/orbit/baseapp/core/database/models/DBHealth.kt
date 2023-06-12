@@ -1,6 +1,5 @@
 package com.active.orbit.baseapp.core.database.models
 
-import android.text.TextUtils
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.active.orbit.baseapp.core.generics.BaseModel
@@ -17,6 +16,9 @@ class DBHealth : BaseModel {
     var healthAnxiety: Int? = null
     var healthPain: Int? = null
     var healthScore: Int? = null
+    var healthTimestamp: Long = 0L
+
+    var uploaded = false
 
 
     override fun identifier(): String {
@@ -24,7 +26,7 @@ class DBHealth : BaseModel {
     }
 
     fun description(): String {
-        return "[$healthID - $healthMobility - $healthSelfCare -$healthActivities -$healthAnxiety -$healthPain -$healthScore]"
+        return "[$healthID - $healthMobility - $healthSelfCare -$healthActivities -$healthAnxiety -$healthPain -$healthScore -$healthTimestamp]"
     }
 
     override fun isValid(): Boolean {
@@ -34,7 +36,7 @@ class DBHealth : BaseModel {
                 && healthAnxiety != null
                 && healthPain != null
                 && healthScore != null
-
+                && healthTimestamp > 0L
     }
 
 }

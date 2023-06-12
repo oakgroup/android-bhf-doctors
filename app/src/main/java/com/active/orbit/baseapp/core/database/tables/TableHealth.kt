@@ -31,8 +31,25 @@ object TableHealth {
     }
 
     @WorkerThread
+    fun getNotUploaded(context: Context, uploaded: Boolean): List<DBHealth> {
+        try {
+            return Database.getInstance(context).getHealth().getNotUploaded(uploaded)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Logger.e("Error on getting reported health not uploaded ${e.localizedMessage}")
+        }
+        return arrayListOf()
+    }
+
+
+    @WorkerThread
     fun upsert(context: Context, model: DBHealth) {
         upsert(context, listOf(model))
+    }
+
+    @WorkerThread
+    fun update(context: Context, model: DBHealth) {
+        update(context, model)
     }
 
     @WorkerThread
