@@ -2,38 +2,43 @@ package com.active.orbit.baseapp.core.deserialization
 
 import android.text.TextUtils
 import com.active.orbit.baseapp.core.generics.BaseModel
+import com.active.orbit.baseapp.core.serialization.UploadHealthRequest
 import com.active.orbit.baseapp.core.utils.Constants
 import com.google.gson.annotations.SerializedName
 
 class UserRegistrationMap : BaseModel {
 
-    @SerializedName("_id")
-    var id = Constants.EMPTY
 
-    @SerializedName("phone_model")
-    var phoneModel = Constants.EMPTY
+    @SerializedName("Item")
+    var dataItem = DataItem()
 
-    @SerializedName("android_version")
-    var androidVersion = Constants.EMPTY
+    class DataItem() : BaseModel {
 
-    @SerializedName("app_version")
-    var appVersion = Constants.EMPTY
+        @SerializedName("userId")
+        var userId = UserId()
 
-    @SerializedName("participantId")
-    var participantId = Constants.EMPTY
+        class UserId() : BaseModel {
 
-    @SerializedName("participantIdCounter")
-    var participantIdCounter = Constants.INVALID
+            @SerializedName("S")
+            var id: String = Constants.EMPTY
+            override fun isValid(): Boolean {
+                return  !TextUtils.isEmpty(id)
+            }
+
+        }
+
+        override fun isValid(): Boolean {
+            return userId.isValid()
+        }
+
+    }
 
     override fun identifier(): String {
         return Constants.EMPTY
     }
 
+
     override fun isValid(): Boolean {
-        return !TextUtils.isEmpty(id) &&
-                !TextUtils.isEmpty(phoneModel) &&
-                !TextUtils.isEmpty(androidVersion) &&
-                !TextUtils.isEmpty(appVersion) &&
-                !TextUtils.isEmpty(participantId)
+        return dataItem.isValid()
     }
 }

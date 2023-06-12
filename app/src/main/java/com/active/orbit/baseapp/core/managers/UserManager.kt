@@ -23,6 +23,7 @@ object UserManager {
         }
 
         val webService = WebService(activity, Api.USER_REGISTRATION)
+        webService.urlString = "http://52.56.150.239/v2/user_registration"
         webService.params = Gson().toJson(request)
 
         Connection(webService, object : ConnectionListener {
@@ -32,7 +33,7 @@ object UserManager {
                     if (map.isValid()) {
                         listener?.onSuccess(map)
                     } else {
-                        Logger.d("Error registering user ${map.id}")
+                        Logger.d("Error registering user ${map.dataItem.userId.id}")
                         listener?.onError()
                     }
                 } catch (e: JsonSyntaxException) {

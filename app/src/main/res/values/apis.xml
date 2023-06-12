@@ -6,6 +6,7 @@
     <string name="api_insert_reminders" translatable="false">insert_reminders</string>
     <string name="api_retrieve_programmes" translatable="false">retrieve_all_programmes</string>
     <string name="api_insert_symptoms" translatable="false">insert_symptoms</string>
-    <string name="api_user_registration" translatable="false">user_registration</string>
+    <string name="api_insert_health" translatable="false">v2/user_health_questionnaire</string>
+    <string name="api_user_registration" translatable="false">v2/user_registration</string>
 
 </resources>

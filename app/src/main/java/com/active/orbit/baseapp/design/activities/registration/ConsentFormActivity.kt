@@ -42,11 +42,12 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
     private var dateOfConsent: Calendar? = null
     private var fromMenu = false
 
-    private var programID = Constants.EMPTY
     private var userNhsNumber = Constants.EMPTY
     private var userFirstName = Constants.EMPTY
     private var userLastName = Constants.EMPTY
     private var userDOB = Constants.INVALID.toLong()
+    private var userSex = Constants.EMPTY
+    private var userPostcode = Constants.EMPTY
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,12 +58,6 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
         showLogoButton()
 
         fromMenu = activityBundle.getBoolean(Extra.FROM_MENU.key)
-
-        backgroundThread{
-            //TODO need to remove when program is not needed
-            val program = TablePrograms.getAll(this).filter { it.name == "Newcastle" }
-            programID = program[0].idProgram
-        }
 
 
         prepare()
@@ -95,6 +90,8 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
             userFirstName = activityBundle.getString(Extra.USER_FIRST_NAME.key)!!
             userLastName = activityBundle.getString(Extra.USER_LAST_NAME.key)!!
             userDOB = activityBundle.getLong(Extra.USER_DOB.key)
+            userSex = activityBundle.getString(Extra.USER_SEX.key)!!
+            userPostcode = activityBundle.getString(Extra.USER_POSTCODE.key)!!
 
             binding.progressText.visibility = View.VISIBLE
             binding.steps.visibility = View.VISIBLE
@@ -194,27 +191,31 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
     private fun register() {
         showProgressView()
 
-        //TODO add first name / last name / dob / sex / postcode / dateofconsent / nameofconsent
         val request = UserRegistrationRequest()
         request.phoneModel = Utils.getPhoneModel()
         request.appVersion = Utils.getAppVersion(this)
         request.androidVersion = Utils.getAndroidVersion()
-        request.idProgram = programID
-        request.userNhsNumber = userNhsNumber
-
-        request.batteryLevel = Utils.getBatteryPercentage(this)
-        request.isCharging = Utils.isCharging(this)
+        request.userNhsNumber = userNhsNumber.toBigInteger()
+        request.userFirstName = userFirstName
+        request.userLastName = userLastName
+        request.userSex = userSex
+        request.userPostcode = userPostcode
+        request.userDob = userDOB
+        request.userIPAddress = Utils.getLocalIPAddress()
         request.registrationTimestamp = TimeUtils.getCurrent().timeInMillis
+        request.userConsentName = binding.fullName.textTrim
+        request.userConsentDate = dateOfConsent!!.timeInMillis
 
         UserManager.registerUser(this, request, object : UserRegistrationListener {
             override fun onSuccess(map: UserRegistrationMap) {
-                if (map.participantIdCounter > 1) {
+                //TODO tell Prassana to include participantIDCounter
+                if (false) {
                     Logger.d("Already existing user with patient id $userNhsNumber, ask for confirmation")
                     val dialog = ConfirmRegistrationDialog()
                     dialog.isCancelable = false
                     dialog.listener = object : ConfirmRegistrationDialogListener {
                         override fun onRegister() {
-                            completeRegistration(request, map)
+                            completeRegistration(map)
                         }
 
                         override fun onCancel() {
@@ -223,30 +224,33 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
                     }
                     dialog.show(supportFragmentManager, ConfirmRegistrationDialog::javaClass.name)
                 } else {
-                    completeRegistration(request, map)
+                    completeRegistration(map)
                 }
             }
 
             override fun onError() {
+                hideProgressView()
                 UiUtils.showShortToast(this@ConsentFormActivity, R.string.error)
             }
         })
     }
 
-    private fun completeRegistration(request: UserRegistrationRequest, map: UserRegistrationMap) {
-        Logger.d("User successfully registered with id ${map.id}")
-        Preferences.user(this).register(map.id, request.idProgram!!)
+    private fun completeRegistration(map: UserRegistrationMap) {
+        hideProgressView()
+        Logger.d("User successfully registered with id ${map.dataItem.userId.id}")
+        Preferences.user(this).idUser = map.dataItem.userId.id
         Preferences.user(this).userNhsNumber = userNhsNumber
         Preferences.user(this).userFirstName = userFirstName
         Preferences.user(this).userLastName = userLastName
         Preferences.user(this).userDateOfBirth = userDOB
+        Preferences.user(this).userSex = userSex
         Preferences.user(this).userConsentDate = dateOfConsent!!.timeInMillis
         Preferences.user(this).userConsentName = binding.fullName.textTrim
 
         Preferences.lifecycle(this).userDetailsUploaded = false
 
         // check registration with the server
-        TrackerManager.getInstance(this).saveUserRegistrationId(map.id)
+        TrackerManager.getInstance(this).saveUserRegistrationId(map.dataItem.userId.id)
         FirestoreProvider.getInstance().updateUserDetails(this)
 
         val bundle = Bundle()

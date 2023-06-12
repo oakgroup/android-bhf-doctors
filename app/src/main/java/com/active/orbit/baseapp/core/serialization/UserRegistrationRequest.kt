@@ -4,46 +4,48 @@ import android.text.TextUtils
 import com.active.orbit.baseapp.core.generics.BaseModel
 import com.active.orbit.baseapp.core.utils.Constants
 import com.google.gson.annotations.SerializedName
+import java.math.BigInteger
 
 class UserRegistrationRequest : BaseModel {
 
-    @SerializedName("phone_model")
+    @SerializedName("phoneModel")
     var phoneModel: String? = null
 
-    @SerializedName("app_version")
+    @SerializedName("appVersion")
     var appVersion: String? = null
 
-    @SerializedName("android_version")
+    @SerializedName("androidVersion")
     var androidVersion: String? = null
 
-    @SerializedName("id_program")
-    var idProgram: String? = null
+    @SerializedName("userNHSNumber")
+    var userNhsNumber: BigInteger? = null
 
-    @SerializedName("participantId")
-    var userNhsNumber: String? = null
+    @SerializedName("userFirstName")
+    var userFirstName: String? = null
 
-    //TODO add first/last name and dob
+    @SerializedName("userLastName")
+    var userLastName: String? = null
+
+    @SerializedName("userDateOfBirth")
+    var userDob: Long? = null
+
+    @SerializedName("userPostcode")
+    var userPostcode: String? = null
 
     @SerializedName("userSex")
     var userSex: String? = null
 
-    @SerializedName("userAge")
-    var userAge: String? = null
-
-    @SerializedName("userWeight")
-    var userWeight: String? = null
-
-    @SerializedName("userHeight")
-    var userHeight: String? = null
-
-    @SerializedName("batteryPercent")
-    var batteryLevel: Int? = null
-
-    @SerializedName("isCharging")
-    var isCharging = false
-
     @SerializedName("timeInMsecs")
     var registrationTimestamp: Long? = null
+
+    @SerializedName("userIPAddress")
+    var userIPAddress: String? = null
+
+    @SerializedName("userConsentDate")
+    var userConsentDate: Long? = null
+
+    @SerializedName("userConsentName")
+    var userConsentName: String? = null
 
     override fun identifier(): String {
         return Constants.EMPTY
@@ -53,13 +55,15 @@ class UserRegistrationRequest : BaseModel {
         return !TextUtils.isEmpty(phoneModel) &&
                 !TextUtils.isEmpty(appVersion) &&
                 !TextUtils.isEmpty(androidVersion) &&
-                !TextUtils.isEmpty(idProgram) &&
-                !TextUtils.isEmpty(userNhsNumber) &&
-//                !TextUtils.isEmpty(userSex) &&
-//                !TextUtils.isEmpty(userAge) &&
-//                !TextUtils.isEmpty(userWeight) &&
-//                !TextUtils.isEmpty(userHeight) &&
-                batteryLevel != null &&
+                userNhsNumber != null &&
+                !TextUtils.isEmpty(userSex) &&
+                !TextUtils.isEmpty(userFirstName) &&
+                !TextUtils.isEmpty(userLastName) &&
+                !TextUtils.isEmpty(userConsentName) &&
+                !TextUtils.isEmpty(userIPAddress) &&
+                !TextUtils.isEmpty(userPostcode) &&
+                userDob != null &&
+                userConsentDate != null &&
                 registrationTimestamp != null
     }
 }
