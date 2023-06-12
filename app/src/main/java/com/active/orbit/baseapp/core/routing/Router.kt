@@ -220,7 +220,7 @@ class Router {
     fun homepage(context: Context) {
         clearTop(true)
         newTask(true)
-        if (Preferences.user(context).isUserRegistered() && Preferences.user(context).programStarted) {
+        if (Preferences.user(context).isUserRegistered() && Preferences.user(context).studyStarted) {
             activityAnimation(ActivityAnimation.FADE)
             startBaseActivity(context, Activities.PATIENT)
         } else {

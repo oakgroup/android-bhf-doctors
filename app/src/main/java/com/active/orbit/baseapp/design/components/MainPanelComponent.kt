@@ -49,7 +49,7 @@ class MainPanelComponent : FrameLayout, View.OnTouchListener{
         binding.panelDescription.text = context.getString(panelType.description)
         binding.image.setImageResource(panelType.image)
 
-        if (panelType == MainPanelType.START_PROGRAMME_WITH_NAME) {
+        if (panelType == MainPanelType.START_STUDY_WITH_NAME) {
             if (programmeName != null) binding.panelDescription.text = context.getString(panelType.description, programmeName)
         } else {
             binding.panelDescription.text = context.getString(panelType.description)

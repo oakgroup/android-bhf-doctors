@@ -23,7 +23,7 @@
             android:background="@drawable/bg_dialog_primary_title"
             android:gravity="center"
             android:padding="@dimen/margin_lateral"
-            android:text="@string/start_programme"
+            android:text="@string/start_study"
             android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/h3"
             app:typeface="semibold" />
@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/margin_vertical"
-            android:text="@string/start_programme_confirm"
+            android:text="@string/start_study_confirm"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="@dimen/main_text_dimension"
             app:typeface="semibold" />

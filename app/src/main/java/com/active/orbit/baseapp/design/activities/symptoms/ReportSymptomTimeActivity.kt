@@ -108,7 +108,7 @@ class ReportSymptomTimeActivity : BaseActivity(), View.OnClickListener, DatePick
             binding.btnDate -> {
                 val cal = symptomDate ?: GregorianCalendar()
                 val dialog = DatePickerDialog(this, R.style.AppCompatAlertDialogStyle, this, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH))
-                dialog.datePicker.minDate = Preferences.user(this).dateProgramStarted!!
+                dialog.datePicker.minDate = Preferences.user(this).dateStudyStarted!!
                 dialog.show()
                 dialog.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(this, R.color.colorPrimaryDark))
                 dialog.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(this, R.color.colorPrimaryDark))

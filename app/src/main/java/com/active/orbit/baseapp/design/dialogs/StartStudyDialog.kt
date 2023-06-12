@@ -9,16 +9,16 @@ import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import com.active.orbit.baseapp.R
-import com.active.orbit.baseapp.design.dialogs.listeners.StartProgrammeDialogListener
+import com.active.orbit.baseapp.design.dialogs.listeners.StartStudyDialogListener
 
-class StartProgrammeDialog : DialogFragment() {
+class StartStudyDialog : DialogFragment() {
 
-    var listener: StartProgrammeDialogListener? = null
+    var listener: StartStudyDialogListener? = null
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         super.onCreateDialog(savedInstanceState)
 
-        val view = layoutInflater.inflate(R.layout.dialog_start_programme, view as ViewGroup?, false)
+        val view = layoutInflater.inflate(R.layout.dialog_start_study, view as ViewGroup?, false)
         setup(view)
 
         val builder = AlertDialog.Builder(requireContext())

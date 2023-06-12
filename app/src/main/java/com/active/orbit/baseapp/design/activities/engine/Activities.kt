@@ -9,8 +9,6 @@ import com.active.orbit.baseapp.design.activities.main.DoctorActivity
 import com.active.orbit.baseapp.design.activities.menu.*
 import com.active.orbit.baseapp.design.activities.onboarding.*
 import com.active.orbit.baseapp.design.activities.registration.PatientDetailsActivity
-import com.active.orbit.baseapp.design.activities.registration.PatientRegisterConfirmActivity
-import com.active.orbit.baseapp.design.activities.registration.SelectProgrammeActivity
 import com.active.orbit.baseapp.design.activities.registration.ConsentFormActivity
 import com.active.orbit.baseapp.design.activities.symptoms.ReportSymptomTimeActivity
 import com.active.orbit.baseapp.design.activities.main.PatientActivity
@@ -47,11 +45,9 @@ enum class Activities(private val activity: Class<out BaseActivity>) : ActivityP
     ON_BOARDING_UNUSED_RESTRICTIONS(OnBoardingUnusedRestrictionsActivity::class.java),
     PATIENT(PatientActivity::class.java),
     PATIENT_DETAILS(PatientDetailsActivity::class.java),
-    PATIENT_REGISTER(PatientRegisterConfirmActivity::class.java),
     PRIVACY_POLICY(PrivacyPolicyActivity::class.java),
     REPORT_SYMPTOM_DATE_TIME(ReportSymptomTimeActivity::class.java),
     REPORT_SYMPTOM_DETAILS(ReportSymptomDetailsActivity::class.java),
-    SELECT_PROGRAMME(SelectProgrammeActivity::class.java),
     SETTINGS(SettingsActivity::class.java),
     SPLASH(SplashActivity::class.java),
     SUCCESS_MESSAGE(SuccessMessageActivity::class.java),

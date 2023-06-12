@@ -554,8 +554,8 @@
     <string name="patient_registration_nhs_url">Find NHS number</string>
     <string name="patient_registration_intro">Register so you can participate to the Moving Health study</string>
     <string name="patient_registration_select_program">Please select the programme that applies to your patient.</string>
-    <string name="patient_start_programme">Start the programme using this button</string>
-    <string name="patient_start_programme_with_name">Start the programme \"%1$s\" using this button</string>
+    <string name="patient_start_study">Start the study using this button</string>
+    <string name="patient_start_study_with_name">Start the study \"%1$s\" using this button</string>
     <string name="pedalling_speed">Pedalling Speed</string>
     <string name="permission_dialog_title">Permission Needed</string>
     <string name="permission_google_fit_title">Please accept the Google Fit permission, otherwise you will not be able to check your activity data.</string>
@@ -748,8 +748,8 @@
     <string name="start">Start</string>
     <string name="start_always">Start Always</string>
     <string name="start_never">Start Never</string>
-    <string name="start_programme">Start Programme</string>
-    <string name="start_programme_confirm">Are you sure you want to start the programme?</string>
+    <string name="start_study">Start Study</string>
+    <string name="start_study_confirm">Are you sure you want to start the study?</string>
     <string name="start_time">Start Time</string>
     <string name="stats">Statistics</string>
     <string name="steps">steps</string>

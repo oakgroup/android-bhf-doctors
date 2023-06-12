@@ -8,7 +8,6 @@ import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.View
 import android.widget.DatePicker
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.firestore.providers.FirestoreProvider
@@ -37,15 +36,6 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
     private var sex: SexModel? = null
     private var dateOfBirth: Calendar? = null
     private var fromMenu = false
-
-    companion object {
-        private const val HEIGHT_MIN = 50
-        private const val HEIGHT_MAX = 250
-        private const val WEIGHT_MIN = 10
-        private const val WEIGHT_MAX = 400
-        private const val AGE_MIN = 18
-        private const val AGE_MAX = 120
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,9 +75,7 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
             val sexModel = SexModel(Preferences.user(this).userSex!!)
             this@PatientDetailsActivity.sex = sexModel
             binding.btnSexSelection.setText(Preferences.user(this).userSex)
-            binding.ageSelection.setText(Preferences.user(this).userAge)
-            binding.weightSelection.setText(Preferences.user(this).userWeight)
-            binding.heightSelection.setText(Preferences.user(this).userHeight)
+
 
             binding.firstName.setText(Preferences.user(this).userFirstName)
             binding.lastName.setText(Preferences.user(this).userLastName)
@@ -122,61 +110,6 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
         binding.btnSexSelection.setOnClickListener(this)
         binding.btnDateBirth.setOnClickListener(this)
 
-
-        binding.ageSelection.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                if (!TextUtils.isEmpty(binding.ageSelection.textTrim)) {
-                    val ageX = Integer.parseInt(binding.ageSelection.textTrim)
-                    when {
-                        ageX < AGE_MIN -> binding.ageSelection.error =
-                            getString(R.string.value_not_admissible)
-                        ageX > AGE_MAX -> binding.ageSelection.error =
-                            getString(R.string.value_not_admissible)
-                        else -> binding.ageSelection.error = null
-                    }
-                } else binding.ageSelection.error = getString(R.string.value_not_set)
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-        })
-
-        binding.weightSelection.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                if (!TextUtils.isEmpty(binding.weightSelection.textTrim)) {
-                    val weightX = Integer.parseInt(binding.weightSelection.textTrim)
-                    when {
-                        weightX < WEIGHT_MIN -> binding.weightSelection.error = getString(R.string.value_not_admissible)
-                        weightX > WEIGHT_MAX -> binding.weightSelection.error = getString(R.string.value_not_admissible)
-                        else -> binding.weightSelection.error = null
-                    }
-                } else binding.weightSelection.error = getString(R.string.value_not_set)
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-        })
-
-        binding.heightSelection.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                if (!TextUtils.isEmpty(binding.heightSelection.textTrim)) {
-                    val heightX = Integer.parseInt(binding.heightSelection.textTrim)
-                    when {
-                        heightX < HEIGHT_MIN -> binding.heightSelection.error =
-                            getString(R.string.value_not_admissible)
-                        heightX > HEIGHT_MAX -> binding.heightSelection.error =
-                            getString(R.string.value_not_admissible)
-                        else -> binding.heightSelection.error = null
-                    }
-                } else binding.heightSelection.error = getString(R.string.value_not_set)
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-        })
 
         binding.firstName.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
