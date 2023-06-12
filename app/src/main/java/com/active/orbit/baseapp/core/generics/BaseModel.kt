@@ -1,7 +1,6 @@
 package com.active.orbit.baseapp.core.generics
 
 import android.text.TextUtils
-import com.active.orbit.baseapp.core.database.models.DBProgram
 import com.active.orbit.baseapp.core.database.models.DBReportSymptom
 import com.active.orbit.baseapp.core.database.models.DBSeverity
 import com.active.orbit.baseapp.core.database.models.DBSymptom
@@ -36,11 +35,6 @@ interface BaseModel : Comparable<BaseModel?> {
 
     override fun compareTo(other: BaseModel?): Int {
         when {
-            this is DBProgram && other is DBProgram -> {
-                val value = position ?: 0
-                val otherValue = other.position ?: 0
-                return value.compareTo(otherValue)
-            }
             this is DBSymptom && other is DBSymptom -> {
                 val value = position ?: 0
                 val otherValue = other.position ?: 0

@@ -9,7 +9,6 @@ import android.view.View
 import android.widget.DatePicker
 import androidx.core.content.ContextCompat
 import com.active.orbit.baseapp.R
-import com.active.orbit.baseapp.core.database.tables.TablePrograms
 import com.active.orbit.baseapp.core.deserialization.UserRegistrationMap
 import com.active.orbit.baseapp.core.download.Download
 import com.active.orbit.baseapp.core.enums.SuccessMessageType
@@ -23,7 +22,6 @@ import com.active.orbit.baseapp.core.routing.enums.Extra
 import com.active.orbit.baseapp.core.serialization.UserRegistrationRequest
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.core.utils.Logger
-import com.active.orbit.baseapp.core.utils.ThreadHandler.backgroundThread
 import com.active.orbit.baseapp.core.utils.TimeUtils
 import com.active.orbit.baseapp.core.utils.Utils
 import com.active.orbit.baseapp.databinding.ActivityConsentFormBinding

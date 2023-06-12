@@ -16,7 +16,7 @@ import net.sqlcipher.database.SupportFactory
  *
  * @author omar.brugna
  */
-@androidx.room.Database(entities = [DBProgram::class, DBSeverity::class, DBSymptom::class, DBReportSymptom::class, DBHealth::class], version = 1, exportSchema = false)
+@androidx.room.Database(entities = [DBSeverity::class, DBSymptom::class, DBReportSymptom::class, DBHealth::class], version = 1, exportSchema = false)
 internal abstract class Database : RoomDatabase() {
 
     companion object {
@@ -56,9 +56,7 @@ internal abstract class Database : RoomDatabase() {
             clearAllTables()
         }
     }
-
-    abstract fun getPrograms(): Programs
-
+    
     abstract fun getSymptoms(): Symptoms
 
     abstract fun getSeverities(): Severities

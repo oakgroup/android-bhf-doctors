@@ -18,7 +18,6 @@
     <string name="achieved_days">%1$s/7</string>
     <string name="achieved_on">Achieved on</string>
     <string name="action_personal_settings">Personal Settings</string>
-    <string name="action_programme_settings">Programme Settings</string>
     <string name="active_minutes">Active Minutes</string>
     <string name="activities">Activities</string>
     <string name="activities_in_each_day">Activities in each day</string>
@@ -497,7 +496,6 @@
     <string name="no_medicines">No medicines</string>
     <string name="no_medicines_scheduled">No medicines\nscheduled</string>
     <string name="no_participant_city">No partner city</string>
-    <string name="no_participant_program">No programme</string>
     <string name="none">None</string>
     <string name="not_assigned">Not Assigned</string>
     <string name="not_available">Not Available</string>
@@ -547,13 +545,11 @@
     <string name="patient_mng">Patient</string>
     <string name="patient_nhs_id">NHS Id: %1$s</string>
     <string name="patient_options">Patient Options</string>
-    <string name="patient_programme">Programme: %1$s</string>
     <string name="patient_registered_intro">You are now registered as a patient</string>
     <string name="patient_registration">Registration</string>
     <string name="patient_registration_insert_id">Please add your NHS number.</string>
     <string name="patient_registration_nhs_url">Find NHS number</string>
     <string name="patient_registration_intro">Register so you can participate to the Moving Health study</string>
-    <string name="patient_registration_select_program">Please select the programme that applies to your patient.</string>
     <string name="patient_start_study">Start the study using this button</string>
     <string name="patient_start_study_with_name">Start the study \"%1$s\" using this button</string>
     <string name="pedalling_speed">Pedalling Speed</string>
@@ -610,11 +606,6 @@
     <string name="privacy_policy_7">The data will be accessed and analysed by researchers at The University of Sheffield and or other research institutions with a strict ethical code working with The University of Sheffield on specific programmes. We may use some companies or organisations to support us in the management of the data infrastructure. These companies or organisations will access the data for the sole purpose of maintaining the infrastructure and will not be allowed to use the data for any other reasons.\nNo personal data will be released in any form outside the University of Sheffield. Any external researcher accessing the data will have to do so from inside our firewall/premises and will not be allowed to export any data.</string>
     <string name="privacy_policy_8">Data Retention</string>
     <string name="privacy_policy_9">Data held on your phone is deleted when the app is uninstalled. Data held on our server are deleted on explicit request from the user, using the feedback menu of the app. If this is not requested, data will be kept for a maximum period of 20 years. This time period is required because we aim to model mobility phenomena over very long term and hence your data remain useful in the long term.</string>
-    <string name="program">Programme</string>
-    <string name="program_question">Are you part of one of our affiliated programmes?</string>
-    <string name="program_select">Select Programme</string>
-    <string name="programme_empty">Please select a valid program</string>
-    <string name="programme_settings">Programme Settings</string>
     <string name="progress_loading_progress_data">Updating your progress data</string>
     <string name="progress_retrieving_current_location">Retrieving current location</string>
     <string name="progress_updated">Progress Updated</string>
@@ -688,7 +679,6 @@
     <string name="select_symptom_date">Select the date and time you have experienced your symptom</string>
     <string name="select_symptom_severity">Select Severity of symptom</string>
     <string name="select_your_city">Select your city</string>
-    <string name="select_your_program">Select your programme</string>
     <string name="send_data">Send Data to Server</string>
     <string name="send_data_now">Send data now</string>
     <string name="send_id_to_watch">Sync Id to Watch</string>

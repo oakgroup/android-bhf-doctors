@@ -23,7 +23,7 @@
             android:gravity="center"
             android:paddingTop="@dimen/margin_vertical"
             android:paddingBottom="@dimen/margin_vertical"
-            android:text="@string/select_your_program"
+            android:text="@string/select"
             android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/h3"
             app:layout_constraintEnd_toEndOf="parent"
