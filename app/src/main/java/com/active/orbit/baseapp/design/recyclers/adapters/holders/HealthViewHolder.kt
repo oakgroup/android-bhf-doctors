@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
 import android.widget.FrameLayout
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.database.models.DBHealth
@@ -17,7 +16,6 @@ import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
 import com.active.orbit.baseapp.design.recyclers.engine.BaseRecyclerCell
-import com.active.orbit.baseapp.design.utils.UiUtils
 import com.active.orbit.baseapp.design.widgets.BaseTextView
 import com.active.orbit.baseapp.design.widgets.HorizontalProgressBar
 

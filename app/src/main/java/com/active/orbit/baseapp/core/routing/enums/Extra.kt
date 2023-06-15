@@ -6,7 +6,6 @@ enum class Extra(var key: String) {
     IDENTIFIER("identifier_extra"),
     IDENTIFIER_SUB("identifier_sub_extra"),
     SUCCESS_MESSAGE("success_message"),
-    PROGRAM_ID("program_id"),
     USER_NHS_NUMBER("user_nhs_number"),
     USER_SEX("user_sex"),
     USER_AGE("user_age"),

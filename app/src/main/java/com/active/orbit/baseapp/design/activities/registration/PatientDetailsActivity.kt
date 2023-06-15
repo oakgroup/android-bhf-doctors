@@ -32,7 +32,6 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
 
     private lateinit var binding: ActivityPatientDetailsBinding
 
-    private var programID = Constants.EMPTY
     private var sex: SexModel? = null
     private var dateOfBirth: Calendar? = null
     private var fromMenu = false
@@ -44,10 +43,6 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
         showBackButton()
         showLogoButton()
 
-
-        if (activityBundle.getString(Extra.PROGRAM_ID.key) != null) {
-            programID = activityBundle.getString(Extra.PROGRAM_ID.key)!!
-        }
 
         if (activityBundle.getBoolean(Extra.FROM_MENU.key) != null) {
             fromMenu = activityBundle.getBoolean(Extra.FROM_MENU.key)
@@ -187,7 +182,6 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
                         UiUtils.showShortToast(this, "NHS number is not valid")
                     } else {
                         val bundle = Bundle()
-                        bundle.putString(Extra.PROGRAM_ID.key, programID)
                         bundle.putString(Extra.USER_NHS_NUMBER.key, binding.insertIdEntryView.getPin())
                         bundle.putString(Extra.USER_FIRST_NAME.key, binding.firstName.textTrim)
                         bundle.putString(Extra.USER_LAST_NAME.key, binding.lastName.textTrim)

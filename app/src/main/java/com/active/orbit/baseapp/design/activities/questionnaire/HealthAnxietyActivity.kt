@@ -97,25 +97,20 @@ class HealthAnxietyActivity : BaseActivity(), View.OnClickListener {
 
             binding.responseOne -> {
                 if (binding.responseOne.isChecked) {
-                    if (binding.responseOne.isChecked) {
-                        response = Constants.HEALTH_RESPONSE_ONE_ID
-                        binding.responseTwo.isChecked = false
-                        binding.responseThree.isChecked = false
-                        binding.responseFour.isChecked = false
-                        binding.responseFive.isChecked = false
-
-                    }
+                    response = Constants.HEALTH_RESPONSE_ONE_ID
+                    binding.responseTwo.isChecked = false
+                    binding.responseThree.isChecked = false
+                    binding.responseFour.isChecked = false
+                    binding.responseFive.isChecked = false
                 }
             }
             binding.responseTwo -> {
                 if (binding.responseTwo.isChecked) {
-                    if (binding.responseTwo.isChecked) {
-                        response = Constants.HEALTH_RESPONSE_TWO_ID
-                        binding.responseOne.isChecked = false
-                        binding.responseThree.isChecked = false
-                        binding.responseFour.isChecked = false
-                        binding.responseFive.isChecked = false
-                    }
+                    response = Constants.HEALTH_RESPONSE_TWO_ID
+                    binding.responseOne.isChecked = false
+                    binding.responseThree.isChecked = false
+                    binding.responseFour.isChecked = false
+                    binding.responseFive.isChecked = false
                 }
             }
             binding.responseThree -> {

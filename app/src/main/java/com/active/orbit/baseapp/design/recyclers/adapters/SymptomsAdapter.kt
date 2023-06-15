@@ -5,10 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.database.models.DBReportSymptom
-import com.active.orbit.baseapp.core.database.models.DBSymptom
 import com.active.orbit.baseapp.core.database.tables.TableReportedSymptoms
-import com.active.orbit.baseapp.core.database.tables.TableSymptoms
-import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.recyclers.adapters.holders.SymptomViewHolder
 import com.active.orbit.baseapp.design.recyclers.engine.BaseRecyclerAdapter
