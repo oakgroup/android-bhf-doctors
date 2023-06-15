@@ -79,12 +79,31 @@
                     android:paddingVertical="@dimen/margin_vertical"
                     app:layout_constraintBottom_toTopOf="@id/bottomLayout">
 
+
+                    <com.active.orbit.baseapp.design.widgets.BaseTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/consent_screening_questions"
+                        android:textColor="@color/textColorPrimaryDark"
+                        android:textSize="@dimen/description_text_dimension"
+                        app:typeface="semibold" />
+
+                    <com.active.orbit.baseapp.design.recyclers.engine.BaseRecyclerView
+                        android:id="@+id/recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="vertical"
+                        android:layout_marginTop="@dimen/margin_vertical_half"
+                        android:scrollIndicators="none" />
+
+
                     <com.active.orbit.baseapp.design.widgets.BaseTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/name"
                         android:textColor="@color/textColorPrimaryDark"
                         android:textSize="@dimen/main_text_dimension"
+                        android:layout_marginTop="@dimen/margin_vertical"
                         app:typeface="semibold" />
 
                     <com.active.orbit.baseapp.design.widgets.BaseEditText

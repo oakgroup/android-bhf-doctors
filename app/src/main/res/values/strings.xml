@@ -11,7 +11,7 @@
     <string name="accept_privacy">I accept the privacy policy</string>
     <string name="accept_privacy_please">Please accept privacy policy</string>
     <string name="accept_toc">I accept the terms and conditions</string>
-    <string name="accept_toc_please">Please accept the terms and conditions</string>
+    <string name="accept_toc_please">Please give your consent</string>
     <string name="account_not_active">Your account is not currently active, please contact the support for more information or logout and login again.</string>
     <string name="account_settings">Account</string>
     <string name="achieved">Achieved</string>
@@ -188,6 +188,7 @@
     <string name="connected_ble">Connected via Bluetooth</string>
     <string name="connection_failed_message">Connection failed</string>
     <string name="consent_form">Consent Form</string>
+    <string name="consent_screening_questions">Consent Screening Questions</string>
     <string name="contact_support">Contact Support</string>
     <string name="contact_us">Contact Us</string>
     <string name="contact_us_descritpion">You can email us at support@activeorbit.co.uk.</string>
@@ -902,5 +903,4 @@
     <string name="your_age">Your age</string>
     <string name="my_health">My health</string>
     <string name="zero">0</string>
-    
 </resources>

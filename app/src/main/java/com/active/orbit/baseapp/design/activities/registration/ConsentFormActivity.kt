@@ -8,6 +8,7 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.DatePicker
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.deserialization.UserRegistrationMap
 import com.active.orbit.baseapp.core.download.Download
@@ -30,9 +31,12 @@ import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
 import com.active.orbit.baseapp.design.dialogs.ConfirmRegistrationDialog
 import com.active.orbit.baseapp.design.dialogs.listeners.ConfirmRegistrationDialogListener
+import com.active.orbit.baseapp.design.recyclers.adapters.ConsentQuestionsAdapter
+import com.active.orbit.baseapp.design.recyclers.listeners.ConsentQuestionListener
 import com.active.orbit.baseapp.design.utils.UiUtils
 import com.active.orbit.tracker.core.tracker.TrackerManager
 import java.util.*
+import kotlin.math.roundToInt
 
 class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDialog.OnDateSetListener {
 
@@ -47,6 +51,10 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
     private var userSex = Constants.EMPTY
     private var userPostcode = Constants.EMPTY
 
+    private var questionsAdapter: ConsentQuestionsAdapter? = null
+    private var questionListener: ConsentQuestionListener? = null
+
+    var questionsAcceptedCounter = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +68,28 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
 
         prepare()
 
+
+        val linearLayoutManager = LinearLayoutManager(this)
+        binding.recyclerView.layoutManager = linearLayoutManager
+
+        questionsAdapter = ConsentQuestionsAdapter(this, questionListener)
+        binding.recyclerView.adapter = questionsAdapter
+
+        binding.recyclerView.isVerticalScrollBarEnabled = false
+        binding.recyclerView.isNestedScrollingEnabled = false
+
+        questionsAdapter?.refresh(this)
+
+        questionsAdapter?.listener = object : ConsentQuestionListener {
+
+            override fun isAccepted(isAccepted: Boolean) {
+                if (isAccepted) {
+                    questionsAcceptedCounter+=1
+                } else {
+                    questionsAcceptedCounter-=1
+                }
+            }
+        }
     }
 
 
@@ -139,11 +169,12 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
         when (v) {
 
             binding.btnConfirm -> {
-                if (!TextUtils.isEmpty(binding.fullName.textTrim) && dateOfConsent != null) {
+                //TODO compare counter with the size of the
+                if (!TextUtils.isEmpty(binding.fullName.textTrim) && dateOfConsent != null && questionsAcceptedCounter == questionsAdapter!!.numberOfQuestions) {
                     register()
                 } else {
                     UiUtils.showLongToast(this, R.string.accept_toc_please)
-                    binding.scrollView.scrollToBottom()
+                    binding.scrollView.scrollTo(binding.termsLinkContainer.x.roundToInt(), binding.termsLinkContainer.y.roundToInt())
                 }
             }
 
@@ -168,7 +199,6 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
                     //TODO replace with url for consent form
                     downloader.downloadFile("https://www.africau.edu/images/default/sample.pdf", "application/pdf", "consent_form.pdf")
                 }
-
             }
 
 
