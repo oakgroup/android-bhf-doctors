@@ -237,7 +237,7 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
         UserManager.registerUser(this, request, object : UserRegistrationListener {
             override fun onSuccess(map: UserRegistrationMap) {
                 //TODO tell Prassana to include participantIDCounter
-                if (false) {
+                if (map.dataItem.participantIdCounter.counter > 1) {
                     Logger.d("Already existing user with patient id $userNhsNumber, ask for confirmation")
                     val dialog = ConfirmRegistrationDialog()
                     dialog.isCancelable = false

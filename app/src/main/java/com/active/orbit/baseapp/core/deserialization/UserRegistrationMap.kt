@@ -17,6 +17,9 @@ class UserRegistrationMap : BaseModel {
         @SerializedName("userId")
         var userId = UserId()
 
+        @SerializedName("participantIdCounter")
+        var participantIdCounter = ParticipantIdCounter()
+
         class UserId() : BaseModel {
 
             @SerializedName("S")
@@ -27,11 +30,22 @@ class UserRegistrationMap : BaseModel {
 
         }
 
+        class ParticipantIdCounter() : BaseModel {
+
+            @SerializedName("N")
+            var counter: Int = Constants.INVALID
+            override fun isValid(): Boolean {
+                return  counter != Constants.INVALID
+            }
+
+        }
+
         override fun isValid(): Boolean {
-            return userId.isValid()
+            return userId.isValid() && participantIdCounter.isValid()
         }
 
     }
+
 
     override fun identifier(): String {
         return Constants.EMPTY
