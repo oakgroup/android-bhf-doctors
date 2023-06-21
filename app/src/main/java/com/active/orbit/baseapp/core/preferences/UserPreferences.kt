@@ -123,6 +123,22 @@ class UserPreferences : BasePreferences() {
             editor.apply()
         }
 
+    var consentFormText: String
+        get() = prefs.getString(res.getString(R.string.preference_user_consent_form_text_key), Constants.EMPTY) ?: Constants.EMPTY
+        set(value) {
+            val editor = prefs.edit()
+            editor.putString(res.getString(R.string.preference_user_consent_form_text_key), value)
+            editor.apply()
+        }
+
+    var consentVersion: String
+        get() = prefs.getString(res.getString(R.string.preference_user_consent_form_version_key), Constants.EMPTY) ?: Constants.EMPTY
+        set(value) {
+            val editor = prefs.edit()
+            editor.putString(res.getString(R.string.preference_user_consent_form_version_key), value)
+            editor.apply()
+        }
+
     fun userFullName(): String {
         return "$userFirstName $userLastName"
     }

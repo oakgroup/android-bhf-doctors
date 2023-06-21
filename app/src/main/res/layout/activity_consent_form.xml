@@ -53,19 +53,20 @@
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@drawable/bg_panel"
                 android:layout_marginBottom="@dimen/margin_vertical"
                 android:padding="@dimen/margin_vertical"
                 android:orientation="vertical">
 
-                <com.active.orbit.baseapp.design.widgets.BaseTextView
+                <WebView
+                    android:id="@+id/consentWebview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/consent_form"
-                    android:textColor="@color/textColorPrimaryDark"
-                    android:textSize="@dimen/description_text_dimension"
-                    app:typeface="regular" />
+                    android:scrollbars="none">
+                </WebView>
+
+
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 

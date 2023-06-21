@@ -23,6 +23,8 @@
     <string name="preference_user_consent_date_key" translatable="false">base.app.user.consent.date</string>
     <string name="preference_user_postcode_key" translatable="false">base.app.user.postcode</string>
     <string name="preference_user_consent_name_key" translatable="false">base.app.user.consent.name</string>
+    <string name="preference_user_consent_form_text_key" translatable="false">base.app.user.consent.form.text</string>
+    <string name="preference_user_consent_form_version_key" translatable="false">base.app.user.consent.form.version</string>
 
 
 

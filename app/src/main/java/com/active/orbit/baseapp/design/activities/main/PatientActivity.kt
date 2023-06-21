@@ -8,6 +8,7 @@ import androidx.annotation.RequiresApi
 import com.active.orbit.baseapp.core.enums.BottomNavItemType
 import com.active.orbit.baseapp.core.enums.SecondaryPanelType
 import com.active.orbit.baseapp.core.listeners.ResultListener
+import com.active.orbit.baseapp.core.managers.ConsentFormManager
 import com.active.orbit.baseapp.core.notifications.NotificationType
 import com.active.orbit.baseapp.core.notifications.NotificationsManager
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
@@ -61,6 +62,8 @@ class PatientActivity : BaseActivity(), View.OnClickListener {
         config.uploadData = true
 
         TrackerManager.getInstance(this).askForPermissionAndStartTracker(config)
+
+        ConsentFormManager.retrieveConsentForm(thiss)
 
         computeResults()
         scheduleNotification()

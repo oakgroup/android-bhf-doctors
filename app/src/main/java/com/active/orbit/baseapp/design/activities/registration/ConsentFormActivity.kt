@@ -84,9 +84,9 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
 
             override fun isAccepted(isAccepted: Boolean) {
                 if (isAccepted) {
-                    questionsAcceptedCounter+=1
+                    questionsAcceptedCounter += 1
                 } else {
-                    questionsAcceptedCounter-=1
+                    questionsAcceptedCounter -= 1
                 }
             }
         }
@@ -98,6 +98,9 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
         binding.btnDate.setIcon(R.drawable.ic_calendar)
         binding.btnDate.setText(getString(R.string.date))
         binding.btnDate.disableClick()
+
+        binding.consentWebview.loadData(Preferences.user(this).consentFormText, "text/html; charset=utf-8", "UTF-8")
+
 
         if (fromMenu) {
 

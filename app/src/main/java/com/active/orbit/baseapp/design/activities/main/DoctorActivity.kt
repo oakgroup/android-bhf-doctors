@@ -7,6 +7,7 @@ import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.enums.MainPanelType
 import com.active.orbit.baseapp.core.firestore.providers.FirestoreProvider
 import com.active.orbit.baseapp.core.listeners.ResultListener
+import com.active.orbit.baseapp.core.managers.ConsentFormManager
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.Router
 import com.active.orbit.baseapp.core.utils.TimeUtils
@@ -35,6 +36,8 @@ class DoctorActivity : BaseActivity(), View.OnClickListener {
                 FirestoreProvider.getInstance().updateUserDetails(this)
             }
         }
+
+        ConsentFormManager.retrieveConsentForm(thiss)
     }
 
     @SuppressLint("ClickableViewAccessibility")
