@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginHorizontal="@dimen/margin_lateral"
-            android:text="@string/tour_info_three_title"
+            android:text="@string/tour_info_six_title"
             android:textAlignment="center"
             android:textColor="@color/textColorPrimaryDark"
             android:textSize="@dimen/h2"
@@ -43,7 +43,7 @@
                 android:layout_width="52dp"
                 android:layout_height="52dp"
                 android:layout_margin="@dimen/margin_vertical_double"
-                app:srcCompat="@drawable/ic_start_programme" />
+                app:srcCompat="@drawable/ic_activity" />
         </FrameLayout>
 
 
@@ -54,7 +54,7 @@
             android:layout_marginHorizontal="24dp"
             android:layout_marginBottom="@dimen/margin_vertical"
             android:lineSpacingExtra="2dp"
-            android:text="@string/tour_info_three_description"
+            android:text="@string/tour_info_six_description"
             android:textAlignment="center"
             android:textColor="@color/textColorPrimaryDark"
             android:textSize="@dimen/description_text_dimension"

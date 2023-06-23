@@ -3,7 +3,8 @@ package com.active.orbit.baseapp.design.activities.activity
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.active.orbit.baseapp.databinding.ActivityDetailedActivityBinding
+import com.active.orbit.baseapp.core.enums.BottomNavItemType
+import com.active.orbit.baseapp.databinding.ActivityTripsBinding
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.recyclers.adapters.ActivitiesAdapter
 import com.active.orbit.baseapp.design.recyclers.models.TripModel
@@ -13,17 +14,19 @@ import com.active.orbit.tracker.core.database.models.TrackerDBTrip
 import com.active.orbit.tracker.core.observers.TrackerObserverType
 import com.google.android.gms.location.DetectedActivity
 
-class DetailedActivityActivity : BaseActivity() {
+class TripsActivity : BaseActivity() {
 
-    private lateinit var binding: ActivityDetailedActivityBinding
+    private lateinit var binding: ActivityTripsBinding
     private var adapter: ActivitiesAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDetailedActivityBinding.inflate(layoutInflater)
+        binding = ActivityTripsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        showBackButton()
-        showLogoButton()
+        showMenuComponent()
+        showLogo()
+        binding.bottomNav.setSelected(BottomNavItemType.TRIPS)
+
 
         prepare()
     }
@@ -34,6 +37,9 @@ class DetailedActivityActivity : BaseActivity() {
 
         adapter = ActivitiesAdapter(this)
         binding.activitiesRecyclerView.adapter = adapter
+
+        binding.activitiesRecyclerView.isVerticalScrollBarEnabled = false
+        binding.activitiesRecyclerView.isNestedScrollingEnabled = false
 
         computeResults()
     }

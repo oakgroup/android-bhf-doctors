@@ -32,7 +32,7 @@ class BottomNavigationComponent : FrameLayout, View.OnClickListener {
         binding = ComponentBottomNavigationBinding.inflate(LayoutInflater.from(context))
         addView(binding.root)
 
-        binding.navSymptoms.setOnClickListener(this)
+        binding.navTrips.setOnClickListener(this)
         binding.navHealth.setOnClickListener(this)
         binding.navMain.setOnClickListener(this)
 
@@ -43,17 +43,17 @@ class BottomNavigationComponent : FrameLayout, View.OnClickListener {
     fun setSelected(navType: BottomNavItemType) {
         when(navType){
             BottomNavItemType.MAIN -> {
-                binding.navSymptoms.setImage(R.drawable.bottom_nav_symptoms_idle)
+                binding.navTrips.setImage(R.drawable.bottom_nav_trips_idle)
                 binding.navHealth.setImage(R.drawable.bottom_nav_health_idle)
                 binding.navMain.setImage(R.drawable.bottom_nav_main_selected)
             }
-            BottomNavItemType.SYMPTOMS -> {
-                binding.navSymptoms.setImage(R.drawable.bottom_nav_symptoms_selected)
+            BottomNavItemType.TRIPS -> {
+                binding.navTrips.setImage(R.drawable.bottom_nav_trips_selected)
                 binding.navHealth.setImage(R.drawable.bottom_nav_health_idle)
                 binding.navMain.setImage(R.drawable.bottom_nav_main_idle)
             }
             BottomNavItemType.HEALTH -> {
-                binding.navSymptoms.setImage(R.drawable.bottom_nav_symptoms_idle)
+                binding.navTrips.setImage(R.drawable.bottom_nav_trips_idle)
                 binding.navHealth.setImage(R.drawable.bottom_nav_health_selected)
                 binding.navMain.setImage(R.drawable.bottom_nav_main_idle)
             }
@@ -64,12 +64,12 @@ class BottomNavigationComponent : FrameLayout, View.OnClickListener {
     override fun onClick(v: View?) {
         
         when (v) {
-            binding.navSymptoms -> {
-                setSelected(BottomNavItemType.SYMPTOMS)
+            binding.navTrips -> {
+                setSelected(BottomNavItemType.TRIPS)
                 Router.getInstance()
                     .clearTop(true)
                     .activityAnimation(ActivityAnimation.FADE)
-                    .startBaseActivity(context, Activities.SYMPTOMS)
+                    .startBaseActivity(context, Activities.TRIPS)
             }
             binding.navHealth -> {
                 setSelected(BottomNavItemType.HEALTH)

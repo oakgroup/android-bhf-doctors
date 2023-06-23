@@ -30,7 +30,7 @@ class SymptomsActivity : BaseActivity() {
         setContentView(binding.root)
         showMenuComponent()
         showLogo()
-        binding.bottomNav.setSelected(BottomNavItemType.SYMPTOMS)
+        binding.bottomNav.setSelected(BottomNavItemType.TRIPS)
 
         prepare()
     }

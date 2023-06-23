@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.active.orbit.baseapp.design.components.BottomNavItemComponent
-            android:id="@+id/navSymptoms"
+            android:id="@+id/navTrips"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

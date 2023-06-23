@@ -33,7 +33,7 @@ class ActivityActivity : BaseActivity() {
         binding.btnDetailedActivity.setOnClickListener {
             Router.getInstance()
                 .activityAnimation(ActivityAnimation.LEFT_RIGHT)
-                .startBaseActivity(this, Activities.DETAILED_ACTIVITY)
+                .startBaseActivity(this, Activities.TRIPS)
         }
 
         binding.walkingActivityProgress.setBackgroundLineColor(ContextCompat.getColor(this, R.color.colorPrimaryLight))

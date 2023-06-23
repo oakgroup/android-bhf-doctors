@@ -14,19 +14,19 @@
         android:background="@color/colorTransparent"
         android:gravity="center"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.active.orbit.baseapp.design.widgets.BaseTextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textAlignment="center"
             android:layout_marginHorizontal="@dimen/margin_lateral"
-            android:text="@string/tour_info_two_tile"
+            android:text="@string/tour_info_three_title"
+            android:textAlignment="center"
             android:textColor="@color/textColorPrimaryDark"
             android:textSize="@dimen/h2"
             app:typeface="bold" />
@@ -43,7 +43,7 @@
                 android:layout_width="52dp"
                 android:layout_height="52dp"
                 android:layout_margin="@dimen/margin_vertical_double"
-                app:srcCompat="@drawable/ic_medicines" />
+                app:srcCompat="@drawable/ic_start_programme" />
         </FrameLayout>
 
 
@@ -54,7 +54,7 @@
             android:layout_marginHorizontal="24dp"
             android:layout_marginBottom="@dimen/margin_vertical"
             android:lineSpacingExtra="2dp"
-            android:text="@string/tour_info_two_description"
+            android:text="@string/tour_info_three_description"
             android:textAlignment="center"
             android:textColor="@color/textColorPrimaryDark"
             android:textSize="@dimen/description_text_dimension"

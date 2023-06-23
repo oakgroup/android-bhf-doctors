@@ -3,7 +3,7 @@ package com.active.orbit.baseapp.design.activities.engine
 import com.active.orbit.baseapp.design.activities.WebViewActivity
 import com.active.orbit.baseapp.design.activities.activity.ActivityActivity
 import com.active.orbit.baseapp.design.activities.activity.DebugActivity
-import com.active.orbit.baseapp.design.activities.activity.DetailedActivityActivity
+import com.active.orbit.baseapp.design.activities.activity.TripsActivity
 import com.active.orbit.baseapp.design.activities.activity.MapActivity
 import com.active.orbit.baseapp.design.activities.main.DoctorActivity
 import com.active.orbit.baseapp.design.activities.menu.*
@@ -25,7 +25,7 @@ enum class Activities(private val activity: Class<out BaseActivity>) : ActivityP
     ACTIVITY(ActivityActivity::class.java),
     CONTACT_US(ContactUsActivity::class.java),
     DEBUG(DebugActivity::class.java),
-    DETAILED_ACTIVITY(DetailedActivityActivity::class.java),
+    TRIPS(TripsActivity::class.java),
     DISMISS_PATIENT(DismissPatientActivity::class.java),
     DOCTOR(DoctorActivity::class.java),
     FAQ(FaqActivity::class.java),

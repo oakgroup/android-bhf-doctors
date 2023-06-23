@@ -67,8 +67,7 @@ class TourActivity : BaseActivity(), ViewPager.OnPageChangeListener, View.OnClic
                 when (binding.viewPager.currentItem) {
                     AppTourAdapter.POSITION_ONE -> binding.viewPager.currentItem = AppTourAdapter.POSITION_TWO
                     AppTourAdapter.POSITION_TWO -> binding.viewPager.currentItem = AppTourAdapter.POSITION_THREE
-                    AppTourAdapter.POSITION_THREE -> binding.viewPager.currentItem = AppTourAdapter.POSITION_FOUR
-                    AppTourAdapter.POSITION_FOUR -> finish()
+                    AppTourAdapter.POSITION_THREE -> finish()
                 }
             }
 
@@ -77,7 +76,6 @@ class TourActivity : BaseActivity(), ViewPager.OnPageChangeListener, View.OnClic
                     AppTourAdapter.POSITION_ONE -> binding.viewPager.currentItem = AppTourAdapter.POSITION_ONE
                     AppTourAdapter.POSITION_TWO -> binding.viewPager.currentItem = AppTourAdapter.POSITION_ONE
                     AppTourAdapter.POSITION_THREE -> binding.viewPager.currentItem = AppTourAdapter.POSITION_TWO
-                    AppTourAdapter.POSITION_FOUR -> binding.viewPager.currentItem = AppTourAdapter.POSITION_THREE
                 }
             }
 
@@ -99,18 +97,6 @@ class TourActivity : BaseActivity(), ViewPager.OnPageChangeListener, View.OnClic
                 binding.btnNext.visibility = View.VISIBLE
             }
             AppTourAdapter.POSITION_THREE -> {
-                binding.btnBack.visibility = View.VISIBLE
-                binding.btnNext.visibility = View.VISIBLE
-            }
-            AppTourAdapter.POSITION_FOUR -> {
-                binding.btnBack.visibility = View.VISIBLE
-                binding.btnNext.visibility = View.INVISIBLE
-            }
-            AppTourAdapter.POSITION_FIVE -> {
-                binding.btnBack.visibility = View.VISIBLE
-                binding.btnNext.visibility = View.VISIBLE
-            }
-            AppTourAdapter.POSITION_SIX -> {
                 binding.btnBack.visibility = View.VISIBLE
                 binding.btnNext.visibility = View.INVISIBLE
             }
