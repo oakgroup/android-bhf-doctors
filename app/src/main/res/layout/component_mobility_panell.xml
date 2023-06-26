@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/panelActivity"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_secondary_panel"
+    android:clickable="true"
+    android:focusable="true">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/margin_vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.active.orbit.baseapp.design.widgets.BaseTextView
+            android:id="@+id/panelTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:text="@string/mobility_title"
+            android:textColor="@color/textColorPrimaryDark"
+            android:textSize="@dimen/panel_title_dimension"
+            app:typeface="semibold" />
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingVertical="@dimen/margin_vertical_double">
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.active.orbit.baseapp.design.widgets.BaseTextView
+                    android:id="@+id/motorVehicleTrips"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:text="4"
+                    android:textColor="@color/textColorPrimaryDark"
+                    android:textSize="@dimen/h3"
+                    app:typeface="semibold" />
+
+                <com.active.orbit.baseapp.design.widgets.BaseTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:text="@string/vehicle_trips"
+                    android:textColor="@color/textColorPrimaryDark"
+                    android:textSize="@dimen/h5"
+                    app:typeface="semibold" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_vertical_double"
+                android:orientation="vertical">
+
+                <com.active.orbit.baseapp.design.widgets.BaseTextView
+                    android:id="@+id/motorVehicleDistance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:text="35"
+                    android:textColor="@color/textColorPrimaryDark"
+                    android:textSize="@dimen/h3"
+                    app:typeface="semibold" />
+
+                <com.active.orbit.baseapp.design.widgets.BaseTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:text="@string/activity_distance_vehicle"
+                    android:textColor="@color/textColorPrimaryDark"
+                    android:textSize="@dimen/h5"
+                    app:typeface="semibold" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_vertical_double"
+                android:orientation="vertical">
+
+                <com.active.orbit.baseapp.design.widgets.BaseTextView
+                    android:id="@+id/motorVehicleMinutes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:text="140"
+                    android:textColor="@color/textColorPrimaryDark"
+                    android:textSize="@dimen/h3"
+                    app:typeface="semibold" />
+
+                <com.active.orbit.baseapp.design.widgets.BaseTextView
+                    android:id="@+id/motorVehicleMinutesLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:text="@string/minutes"
+                    android:textColor="@color/textColorPrimaryDark"
+                    android:textSize="@dimen/h5"
+                    app:typeface="semibold" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

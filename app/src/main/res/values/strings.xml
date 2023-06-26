@@ -33,6 +33,7 @@
     <string name="activity_distance_cycling_minutes">%1$s Cycling Minutes (%2$s km)</string>
     <string name="activity_distance_heart_minute">1 ♥ Minute (0 km)</string>
     <string name="activity_distance_heart_minutes">%1$s ♥ Minutes (%2$s km)</string>
+    <string name="activity_distance_vehicle">km distance</string>
     <string name="activity_distance_vehicle_minute">1 Vehicle Minute (0 km)</string>
     <string name="activity_distance_vehicle_minutes">%1$s Vehicle Minutes (%2$s km)</string>
     <string name="activity_heart_minute">1 ♥ Minute</string>
@@ -460,13 +461,14 @@
     <string name="min">Min</string>
     <string name="mins">Mins</string>
     <string name="minus">-</string>
+    <string name="minute">Minute</string>
     <string name="minute_ago">1 minute ago</string>
     <string name="minutes">Minutes</string>
     <string name="minutes_ago">%1$s minutes ago</string>
     <string name="missing_user_id">Using local user id, click on the phone app "Sync Id to watch" from the menu</string>
     <string name="mobility_details_two">Motor Vehicle Trips: %1$s</string>
     <string name="mobility_details_one">Away from home: %1$s h </string>
-    <string name="mobility_title">Mobility</string>
+    <string name="mobility_title">Your Mobility</string>
     <string name="mode_explanation">Set if you want to help the tracker identify your activities\nIt will also allow starting/stopping the tracker</string>
     <string name="mode_title">Assisted Mode</string>
     <string name="moments_ago">Moments ago</string>
@@ -857,6 +859,7 @@
     <string name="value_not_set_walking_type">Insert a valid walking aid type</string>
     <string name="value_not_set_weight">Insert a valid weight value</string>
     <string name="vehicle">Vehicle</string>
+    <string name="vehicle_trips">Motor Vehicle Trips</string>
     <string name="view">View</string>
     <string name="view_all">View all</string>
     <string name="view_details">View\nDetails</string>

@@ -32,33 +32,20 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="@dimen/margin_lateral"
+                    android:layout_marginHorizontal="@dimen/margin_lateral"
+                    android:layout_marginTop="@dimen/margin_vertical"
                     android:orientation="vertical">
 
-                    <com.active.orbit.baseapp.design.components.SecondaryPanelComponent
+                    <com.active.orbit.baseapp.design.components.ActivityPanelComponent
                         android:id="@+id/activityPanel"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_vertical_double">
+                        android:layout_height="wrap_content" />
 
-                    </com.active.orbit.baseapp.design.components.SecondaryPanelComponent>
-
-                    <com.active.orbit.baseapp.design.components.SecondaryPanelComponent
+                    <com.active.orbit.baseapp.design.components.MobilityPanelComponent
                         android:id="@+id/mobilityPanel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_vertical_double">
-
-                    </com.active.orbit.baseapp.design.components.SecondaryPanelComponent>
-
-                    <com.active.orbit.baseapp.design.components.SecondaryPanelComponent
-                        android:id="@+id/physiologyPanel"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_vertical_double">
-
-                    </com.active.orbit.baseapp.design.components.SecondaryPanelComponent>
-
+                        android:layout_marginTop="@dimen/margin_vertical" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
