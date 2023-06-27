@@ -3,11 +3,8 @@ package com.active.orbit.baseapp.design.activities.main
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
-import android.view.View
 import androidx.annotation.RequiresApi
-import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.enums.BottomNavItemType
-import com.active.orbit.baseapp.core.enums.SecondaryPanelType
 import com.active.orbit.baseapp.core.listeners.ResultListener
 import com.active.orbit.baseapp.core.managers.ConsentFormManager
 import com.active.orbit.baseapp.core.notifications.NotificationType
@@ -20,17 +17,16 @@ import com.active.orbit.baseapp.core.utils.ThreadHandler.backgroundThread
 import com.active.orbit.baseapp.databinding.ActivityPatientBinding
 import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
-import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
-import com.active.orbit.baseapp.design.models.PanelModel
 import com.active.orbit.baseapp.design.recyclers.models.TripModel
 import com.active.orbit.tracker.core.computation.MobilityComputation
 import com.active.orbit.tracker.core.observers.TrackerObserverType
 import com.active.orbit.tracker.core.tracker.TrackerConfig
 import com.active.orbit.tracker.core.tracker.TrackerManager
 import com.active.orbit.tracker.core.utils.TimeUtils
+import com.google.android.gms.location.DetectedActivity
 import kotlin.math.roundToInt
 
-class PatientActivity : BaseActivity(){
+class PatientActivity : BaseActivity() {
 
     private lateinit var binding: ActivityPatientBinding
     private var lastTimeClosed: Long = 0
@@ -115,6 +111,7 @@ class PatientActivity : BaseActivity(){
                 var distanceCycling = 0
                 var minutesVehicle = 0L
                 var distanceVehicle = 0
+                var vehicleTrips = 0
                 var steps = 0
                 if (mobilityChart.chart.isNotEmpty()) {
                     val summary = mobilityChart.summaryData
@@ -126,13 +123,12 @@ class PatientActivity : BaseActivity(){
                     distanceCycling = summary.cyclingDistance.roundToInt()
                     minutesVehicle = summary.vehicleMsecs / com.active.orbit.baseapp.core.utils.TimeUtils.ONE_MINUTE_MILLIS
                     distanceVehicle = summary.vehicleDistance.roundToInt()
+                    vehicleTrips = mobilityChart.trips.filter { it.activityType == DetectedActivity.IN_VEHICLE }.count()
                     steps = summary.steps
                 }
 
-              binding.activityPanel.setProgress(minutesWalking, minutesHeart, minutesCycling, distanceWalking, distanceHeart, distanceCycling, steps)
-
-                //TODO Omar we need vehicle trips as the first parameter
-                binding.mobilityPanel.setProgress(4, distanceVehicle, minutesVehicle)
+                binding.activityPanel.setProgress(minutesWalking, minutesHeart, minutesCycling, distanceWalking, distanceHeart, distanceCycling, steps)
+                binding.mobilityPanel.setProgress(vehicleTrips, distanceVehicle, minutesVehicle)
             }
             else -> super.onTrackerUpdate(type, data)
         }
