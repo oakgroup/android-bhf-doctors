@@ -10,13 +10,15 @@
 
     <com.active.orbit.baseapp.design.widgets.BaseImageView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="200sp"
         android:layout_gravity="center"
-        android:layout_marginTop="160dp"
-        android:src="@drawable/ic_full_logo_primary"
+        android:layout_marginTop="120dp"
+        android:layout_marginHorizontal="@dimen/margin_vertical"
+        android:src="@drawable/ic_logo_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <com.active.orbit.baseapp.design.widgets.BaseTextView
         android:id="@+id/welcomeLabel"

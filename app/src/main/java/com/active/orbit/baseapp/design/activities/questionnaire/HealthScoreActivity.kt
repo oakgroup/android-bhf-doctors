@@ -48,7 +48,6 @@ class HealthScoreActivity : BaseActivity(), View.OnClickListener {
         binding = ActivityHealthScoreBinding.inflate(layoutInflater)
         setContentView(binding.root)
         showBackButton()
-        showLogoButton()
 
         mobilityResponse = activityBundle.getInt(Extra.HEALTH_MOBILITY.key)
         selfCareResponse = activityBundle.getInt(Extra.HEALTH_SELF_CARE.key)

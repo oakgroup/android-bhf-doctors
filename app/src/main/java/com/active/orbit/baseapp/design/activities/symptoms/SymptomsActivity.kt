@@ -29,7 +29,8 @@ class SymptomsActivity : BaseActivity() {
         binding = ActivitySymptomsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         showMenuComponent()
-        showLogo()
+        setToolbarTitle(getString(R.string.app_name))
+
         binding.bottomNav.setSelected(BottomNavItemType.TRIPS)
 
         prepare()

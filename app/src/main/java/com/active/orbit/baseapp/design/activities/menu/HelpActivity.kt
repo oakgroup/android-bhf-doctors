@@ -26,7 +26,6 @@ class HelpActivity : BaseActivity(), View.OnClickListener {
         binding = ActivityHelpBinding.inflate(layoutInflater)
         setContentView(binding.root)
         showBackButton()
-        showLogoButton()
 
         prepare()
     }

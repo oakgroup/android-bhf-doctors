@@ -46,7 +46,6 @@ class DismissPatientActivity : BaseActivity(), View.OnClickListener, MessageClie
         binding = ActivityDismissPatientBinding.inflate(layoutInflater)
         setContentView(binding.root)
         showBackButton()
-        showLogoButton()
 
 
         prepare()

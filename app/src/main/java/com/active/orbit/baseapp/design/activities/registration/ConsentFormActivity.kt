@@ -61,7 +61,6 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
         binding = ActivityConsentFormBinding.inflate(layoutInflater)
         setContentView(binding.root)
         showBackButton()
-        showLogoButton()
 
         fromMenu = activityBundle.getBoolean(Extra.FROM_MENU.key)
 

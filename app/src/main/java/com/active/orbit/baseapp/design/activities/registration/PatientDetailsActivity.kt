@@ -41,8 +41,6 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
         binding = ActivityPatientDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         showBackButton()
-        showLogoButton()
-
 
         if (activityBundle.getBoolean(Extra.FROM_MENU.key) != null) {
             fromMenu = activityBundle.getBoolean(Extra.FROM_MENU.key)

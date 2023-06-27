@@ -3,6 +3,7 @@ package com.active.orbit.baseapp.design.activities.activity
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.enums.BottomNavItemType
 import com.active.orbit.baseapp.databinding.ActivityTripsBinding
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
@@ -24,7 +25,7 @@ class TripsActivity : BaseActivity() {
         binding = ActivityTripsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         showMenuComponent()
-        showLogo()
+        setToolbarTitle(getString(R.string.app_name))
         binding.bottomNav.setSelected(BottomNavItemType.TRIPS)
 
 

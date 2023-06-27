@@ -19,7 +19,7 @@ class SettingsActivity : BaseActivity(), View.OnClickListener {
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         showBackButton()
-        showLogoButton()
+
 
         prepare()
     }

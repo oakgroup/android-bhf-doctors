@@ -46,7 +46,7 @@ class PatientActivity : BaseActivity(){
         binding = ActivityPatientBinding.inflate(layoutInflater)
         setContentView(binding.root)
         showMenuComponent()
-        showLogo()
+        setToolbarTitle(getString(R.string.app_name))
 
         prepare()
 

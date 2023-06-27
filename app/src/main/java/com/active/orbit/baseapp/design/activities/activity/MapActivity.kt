@@ -34,7 +34,6 @@ class MapActivity : BaseActivity(), OnMapReadyCallback, View.OnClickListener {
         binding = ActivityMapBinding.inflate(layoutInflater)
         setContentView(binding.root)
         showBackButton()
-        showLogoButton()
 
         prepare()
     }

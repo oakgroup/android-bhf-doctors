@@ -41,7 +41,6 @@ class ReportSymptomTimeActivity : BaseActivity(), View.OnClickListener, DatePick
         binding = ActivityReportSymptomTimeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         showBackButton()
-        showLogoButton()
 
         symptomName = activityBundle.getString(ReportSymptomDetailsActivity.EXTRA_SYMPTOM_NAME)!!
         symptomSeverity = activityBundle.getString(ReportSymptomDetailsActivity.EXTRA_SYMPTOM_SEVERITY)!!

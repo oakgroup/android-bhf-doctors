@@ -32,8 +32,6 @@ class HealthResponseActivity : BaseActivity(), View.OnClickListener {
         binding = ActivityHealthResponseDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         showBackButton()
-        showLogoButton()
-
 
         backgroundThread {
             val modelId = activityBundle.getString(Extra.IDENTIFIER.key, Constants.EMPTY)

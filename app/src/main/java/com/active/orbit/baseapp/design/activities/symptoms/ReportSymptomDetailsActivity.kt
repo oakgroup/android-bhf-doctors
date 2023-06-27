@@ -49,7 +49,6 @@ class ReportSymptomDetailsActivity : BaseActivity(), View.OnClickListener {
         binding = ActivityReportSymptomDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         showBackButton()
-        showLogoButton()
 
         backgroundThread {
             val modelId = activityBundle.getString(EXTRA_SYMPTOM_ID, Constants.EMPTY)

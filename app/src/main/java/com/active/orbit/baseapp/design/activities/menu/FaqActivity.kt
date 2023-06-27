@@ -21,7 +21,6 @@ class FaqActivity : BaseActivity() {
         binding = ActivityFaqBinding.inflate(layoutInflater)
         setContentView(binding.root)
         showBackButton()
-        showLogoButton()
 
         val modelId = activityBundle.getInt(Extra.IDENTIFIER.key)
         if (modelId != Constants.INVALID) {

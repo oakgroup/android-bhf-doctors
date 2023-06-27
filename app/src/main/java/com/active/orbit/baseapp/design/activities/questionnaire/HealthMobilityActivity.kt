@@ -29,8 +29,6 @@ class HealthMobilityActivity : BaseActivity(), View.OnClickListener {
         binding = ActivityHealthMobilityBinding.inflate(layoutInflater)
         setContentView(binding.root)
         showBackButton()
-        showLogoButton()
-
 
         prepare()
     }

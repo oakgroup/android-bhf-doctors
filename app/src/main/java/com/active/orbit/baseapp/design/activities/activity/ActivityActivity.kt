@@ -23,7 +23,6 @@ class ActivityActivity : BaseActivity() {
         binding = ActivityActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
         showBackButton()
-        showLogoButton()
 
         prepare()
     }

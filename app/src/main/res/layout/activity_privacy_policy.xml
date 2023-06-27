@@ -23,8 +23,8 @@
             <com.active.orbit.baseapp.design.widgets.BaseImageView
                 android:id="@+id/logo"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:padding="@dimen/margin_vertical_double"
+                android:layout_height="140dp"
+                android:padding="@dimen/margin_vertical"
                 android:src="@drawable/ic_full_logo_primary" />
 
             <androidx.appcompat.widget.LinearLayoutCompat

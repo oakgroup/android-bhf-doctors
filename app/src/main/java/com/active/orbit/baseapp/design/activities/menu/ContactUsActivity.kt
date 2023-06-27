@@ -13,7 +13,6 @@ class ContactUsActivity : BaseActivity() {
         binding = ActivityContactUsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         showBackButton()
-        showLogoButton()
 
     }
 }

@@ -29,7 +29,6 @@ class HealthSelfCareActivity : BaseActivity(), View.OnClickListener {
         binding = ActivityHealthSelfcareBinding.inflate(layoutInflater)
         setContentView(binding.root)
         showBackButton()
-        showLogoButton()
 
         mobilityResponse = activityBundle.getInt(Extra.HEALTH_MOBILITY.key)
 
