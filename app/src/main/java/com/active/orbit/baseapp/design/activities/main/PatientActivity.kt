@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import androidx.annotation.RequiresApi
+import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.enums.BottomNavItemType
 import com.active.orbit.baseapp.core.listeners.ResultListener
 import com.active.orbit.baseapp.core.managers.ConsentFormManager
