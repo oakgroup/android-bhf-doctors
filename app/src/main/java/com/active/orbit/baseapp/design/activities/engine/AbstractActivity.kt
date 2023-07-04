@@ -217,8 +217,16 @@ abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListen
         mToolbar?.findViewById<MenuComponent>(R.id.toolbarMenuComponent)?.visibility = View.INVISIBLE
     }
 
+    protected fun setMenuIconPrimary() {
+        mToolbar?.findViewById<MenuComponent>(R.id.toolbarMenuComponent)?.setIconPrimary()
+    }
+
     protected fun setMenuIconLight() {
         mToolbar?.findViewById<MenuComponent>(R.id.toolbarMenuComponent)?.setIconLight()
+    }
+
+    protected fun setMenuIconDark() {
+        mToolbar?.findViewById<MenuComponent>(R.id.toolbarMenuComponent)?.setIconDark()
     }
 
     protected fun showToolbarRightIcon() {

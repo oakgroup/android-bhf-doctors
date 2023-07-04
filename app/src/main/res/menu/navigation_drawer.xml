@@ -7,7 +7,7 @@
             android:title="@string/home" />
         <item
             android:id="@+id/settings"
-            android:icon="@drawable/ic_settings"
+            android:icon="@drawable/ic_menu_settings"
             android:title="@string/settings" />
         <item
             android:id="@+id/wearSync"
@@ -15,11 +15,11 @@
             android:title="@string/sync_watch" />
         <item
             android:id="@+id/help"
-            android:icon="@drawable/ic_help"
+            android:icon="@drawable/ic_menu_help"
             android:title="@string/help" />
         <item
             android:id="@+id/consentForm"
-            android:icon="@drawable/ic_register"
+            android:icon="@drawable/ic_menu_register"
             android:title="@string/consent_form" />
         <item
             android:id="@+id/finishStudy"

@@ -43,7 +43,7 @@
                 android:layout_width="52dp"
                 android:layout_height="52dp"
                 android:layout_margin="@dimen/margin_vertical_double"
-                app:srcCompat="@drawable/ic_start_programme" />
+                app:srcCompat="@drawable/ic_start_study" />
         </FrameLayout>
 
 

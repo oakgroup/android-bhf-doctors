@@ -31,6 +31,17 @@ class MenuComponent : FrameLayout {
     }
 
     fun setIconLight() {
-        binding.image.setImageResource(R.drawable.ic_menu)
+        binding.image.setImageResource(R.drawable.ic_menu_light)
     }
+
+    fun setIconDark() {
+        binding.image.setImageResource(R.drawable.ic_menu_dark)
+    }
+
+    fun setIconPrimary() {
+        binding.image.setImageResource(R.drawable.ic_menu_primary)
+    }
+
+
+
 }

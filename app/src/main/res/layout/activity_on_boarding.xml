@@ -39,7 +39,7 @@
                 android:layout_height="64dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/margin_vertical_double"
-                app:srcCompat="@drawable/ic_settings" />
+                app:srcCompat="@drawable/ic_menu_settings" />
 
             <com.active.orbit.baseapp.design.widgets.BaseTextView
                 android:id="@+id/onboardingDescription"
