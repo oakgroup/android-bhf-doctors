@@ -267,14 +267,18 @@ abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListen
         val patientLayout = mNavigationView?.getHeaderView(0)?.findViewById<ViewGroup>(R.id.headerPatientLayout)
         val patientId = mNavigationView?.getHeaderView(0)?.findViewById<BaseTextView>(R.id.userNhsNumber)
         val dismissPatientMenuItem = mNavigationView?.menu?.findItem(R.id.finishStudy)
+        val consentFormMenuItem = mNavigationView?.menu?.findItem(R.id.consentForm)
+
         if (Preferences.user(this).isUserRegistered()) {
             patientLayout?.visibility = View.VISIBLE
             patientId?.text = getString(R.string.patient_id_value, Preferences.user(this).userNhsNumber)
             dismissPatientMenuItem?.isVisible = true
+            consentFormMenuItem?.isVisible = true
         } else {
             patientLayout?.visibility = View.GONE
             patientId?.clear()
             dismissPatientMenuItem?.isVisible = false
+            consentFormMenuItem?.isVisible = false
         }
     }
 
