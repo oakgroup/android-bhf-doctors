@@ -53,14 +53,6 @@ class UserPreferences : BasePreferences() {
             editor.apply()
         }
 
-    var watchSynchronized: Boolean
-        get() = prefs.getBoolean(res.getString(R.string.preference_user_watch_synchronized_key), false)
-        set(value) {
-            val editor = prefs.edit()
-            editor.putBoolean(res.getString(R.string.preference_user_watch_synchronized_key), value)
-            editor.apply()
-        }
-
     var userSex: String?
         get() = prefs.getString(res.getString(R.string.preference_user_sex_key), Constants.EMPTY)
         set(value) {
@@ -150,7 +142,6 @@ class UserPreferences : BasePreferences() {
         userNhsNumber = null
         studyStarted = false
         dateStudyStarted = null
-        watchSynchronized = false
         userSex = null
         userFirstName = null
         userLastName = null

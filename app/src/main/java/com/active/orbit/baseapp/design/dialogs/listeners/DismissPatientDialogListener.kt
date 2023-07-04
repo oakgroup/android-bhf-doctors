@@ -4,5 +4,5 @@ interface DismissPatientDialogListener {
 
     fun onDismiss()
 
-    fun onCancel()
+    fun onCancel(){}
 }

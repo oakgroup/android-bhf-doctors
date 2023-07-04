@@ -87,10 +87,6 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".design.activities.menu.DismissPatientActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".design.activities.menu.HelpActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />

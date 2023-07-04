@@ -25,9 +25,6 @@ abstract class BaseActivity : PermissionsActivity(), TrackerObserver {
 
     var dailyComputation: DailyComputation? = null
 
-    companion object {
-        const val MESSAGE_PATH = "/message"
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

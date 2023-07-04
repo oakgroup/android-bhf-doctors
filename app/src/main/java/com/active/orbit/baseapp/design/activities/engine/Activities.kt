@@ -26,7 +26,6 @@ enum class Activities(private val activity: Class<out BaseActivity>) : ActivityP
     CONTACT_US(ContactUsActivity::class.java),
     DEBUG(DebugActivity::class.java),
     TRIPS(TripsActivity::class.java),
-    DISMISS_PATIENT(DismissPatientActivity::class.java),
     DOCTOR(DoctorActivity::class.java),
     FAQ(FaqActivity::class.java),
     HEALTH(HealthActivity::class.java),

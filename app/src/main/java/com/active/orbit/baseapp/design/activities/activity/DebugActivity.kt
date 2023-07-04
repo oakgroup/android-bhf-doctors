@@ -28,15 +28,6 @@ class DebugActivity : BaseActivity() {
         setToolbarTitleColor(R.color.textColorWhite)
 
         computeResults()
-
-        // TODO wear synchronisation
-        /*
-        binding.wearSync.setOnClickListener {
-            Logger.i("Requesting wear sync")
-            val intent = Intent(this, WearSync::class.java)
-            startActivity(intent)
-        }
-        */
     }
 
     @Suppress("UNCHECKED_CAST")

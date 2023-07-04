@@ -11,7 +11,6 @@
     <string name="preference_user_id_patient_key" translatable="false">base.app.user.id.patient</string>
     <string name="preference_user_id_program_key" translatable="false">base.app.user.id.program</string>
     <string name="preference_user_study_started_key" translatable="false">base.app.user.study.started</string>
-    <string name="preference_user_watch_synchronized_key" translatable="false">base.app.watch.synchronized</string>
     <string name="preference_user_date_study_started_key" translatable="false">base.app.user.date.study.started</string>
     <string name="preference_user_sex_key" translatable="false">base.app.user.sex</string>
     <string name="preference_user_age_key" translatable="false">base.app.user.age</string>

@@ -33,7 +33,6 @@ class DismissPatientDialog : DialogFragment() {
         val btnCancel = view.findViewById<Button>(R.id.btnCancel)
         val btnDismiss = view.findViewById<Button>(R.id.btnDismiss)
         val layoutDetails = view.findViewById<LinearLayoutCompat>(R.id.layoutDetails)
-        val waitingForWatchLayout = view.findViewById<LinearLayoutCompat>(R.id.waitingForWatchLayout)
 
         btnCancel.setOnClickListener {
             listener?.onCancel()
@@ -42,12 +41,7 @@ class DismissPatientDialog : DialogFragment() {
 
         btnDismiss.setOnClickListener {
             listener?.onDismiss()
-            if (Preferences.user(requireContext()).watchSynchronized) {
-                layoutDetails.visibility = View.GONE
-                waitingForWatchLayout.visibility = View.VISIBLE
-            } else {
-                dismiss()
-            }
+            dismiss()
         }
     }
 

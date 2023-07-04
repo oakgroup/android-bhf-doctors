@@ -17,25 +17,16 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.broadcast.BaseBroadcast
 import com.active.orbit.baseapp.core.broadcast.BroadcastHost
-import com.active.orbit.baseapp.core.enums.WearableMessageType
-import com.active.orbit.baseapp.core.managers.WearableManager
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.Router
 import com.active.orbit.baseapp.core.routing.enums.Extra
-import com.active.orbit.baseapp.core.utils.ThreadHandler.backgroundThread
 import com.active.orbit.baseapp.core.utils.Utils
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
 import com.active.orbit.baseapp.design.activities.main.DoctorActivity
 import com.active.orbit.baseapp.design.activities.main.PatientActivity
 import com.active.orbit.baseapp.design.components.MenuComponent
-import com.active.orbit.baseapp.design.dialogs.AdminAccessDialog
 import com.active.orbit.baseapp.design.dialogs.DismissPatientDialog
-import com.active.orbit.baseapp.design.dialogs.ForceDismissPatientDialog
-import com.active.orbit.baseapp.design.dialogs.SyncWearDialog
-import com.active.orbit.baseapp.design.dialogs.listeners.AdminAccessDialogListener
 import com.active.orbit.baseapp.design.dialogs.listeners.DismissPatientDialogListener
-import com.active.orbit.baseapp.design.dialogs.listeners.SyncWearDialogListener
-import com.active.orbit.baseapp.design.utils.UiUtils
 import com.active.orbit.baseapp.design.widgets.BaseImageButton
 import com.active.orbit.baseapp.design.widgets.BaseImageView
 import com.active.orbit.baseapp.design.widgets.BaseTextView
@@ -275,17 +266,14 @@ abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListen
     private fun showNavigationViewData() {
         val patientLayout = mNavigationView?.getHeaderView(0)?.findViewById<ViewGroup>(R.id.headerPatientLayout)
         val patientId = mNavigationView?.getHeaderView(0)?.findViewById<BaseTextView>(R.id.userNhsNumber)
-        val syncWearMenuItem = mNavigationView?.menu?.findItem(R.id.wearSync)
         val dismissPatientMenuItem = mNavigationView?.menu?.findItem(R.id.finishStudy)
         if (Preferences.user(this).isUserRegistered()) {
             patientLayout?.visibility = View.VISIBLE
             patientId?.text = getString(R.string.patient_id_value, Preferences.user(this).userNhsNumber)
-            syncWearMenuItem?.isVisible = false
             dismissPatientMenuItem?.isVisible = true
         } else {
             patientLayout?.visibility = View.GONE
             patientId?.clear()
-            syncWearMenuItem?.isVisible = false
             dismissPatientMenuItem?.isVisible = false
         }
     }
@@ -334,9 +322,6 @@ abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListen
             R.id.help -> {
                 Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).startBaseActivity(this, Activities.HELP)
             }
-            R.id.wearSync -> {
-                showSyncWearDialog()
-            }
             R.id.consentForm -> {
                 val bundle = Bundle()
                 bundle.putBoolean(Extra.FROM_MENU.key, true)
@@ -355,79 +340,10 @@ abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListen
         dialog.isCancelable = false
         dialog.listener = object : DismissPatientDialogListener {
             override fun onDismiss() {
-                if (Preferences.user(this@AbstractActivity).watchSynchronized) {
-                    backgroundThread {
-                        val wearableManager = WearableManager()
-                        wearableManager.syncWatch(this@AbstractActivity, WearableMessageType.DISMISS)
-                    }
-                } else {
-                    Router.getInstance().logout(this@AbstractActivity)
-                }
-            }
-
-            override fun onCancel() {
-                backgroundThread {
-                    val wearableManager = WearableManager()
-                    wearableManager.syncWatch(this@AbstractActivity, WearableMessageType.DISMISS_CANCEL)
-                }
+                Router.getInstance().logout(this@AbstractActivity)
             }
         }
         dialog.show(supportFragmentManager, DismissPatientDialog::javaClass.name)
-    }
-
-    fun showForceDismissPatientDialog() {
-        val dialog = ForceDismissPatientDialog()
-        dialog.isCancelable = false
-        dialog.listener = object : DismissPatientDialogListener {
-            override fun onDismiss() {
-                backgroundThread {
-                    val wearableManager = WearableManager()
-                    wearableManager.syncWatch(this@AbstractActivity, WearableMessageType.DISMISS)
-                }
-            }
-
-            override fun onCancel() {
-                backgroundThread {
-                    val wearableManager = WearableManager()
-                    wearableManager.syncWatch(this@AbstractActivity, WearableMessageType.DISMISS_CANCEL)
-                }
-            }
-        }
-        dialog.show(supportFragmentManager, ForceDismissPatientDialog::javaClass.name)
-    }
-
-    private fun showAdminAccessDialog() {
-        val dialog = AdminAccessDialog()
-        dialog.isCancelable = false
-        dialog.listener = object : AdminAccessDialogListener {
-            override fun onConfirm() {
-                if (Preferences.user(this@AbstractActivity).watchSynchronized) {
-                    Router.getInstance().startBaseActivity(this@AbstractActivity, Activities.DISMISS_PATIENT)
-                } else {
-                    showDismissPatientDialog()
-                }
-            }
-        }
-        dialog.show(supportFragmentManager, AdminAccessDialog::javaClass.name)
-    }
-
-    fun showSyncWearDialog() {
-        val dialog = SyncWearDialog()
-        dialog.isCancelable = false
-        dialog.listener = object : SyncWearDialogListener {
-            override fun onSync() {
-                backgroundThread {
-                    val wearableManager = WearableManager()
-                    wearableManager.syncWatch(this@AbstractActivity, WearableMessageType.SYNC)
-                }
-
-            }
-
-            override fun onWatchSynced() {
-                UiUtils.showLongToast(this@AbstractActivity, "Watch Synchronised")
-            }
-        }
-        dialog.show(supportFragmentManager, SyncWearDialog::javaClass.name)
     }
 
 

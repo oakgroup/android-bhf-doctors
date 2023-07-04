@@ -10,10 +10,6 @@
             android:icon="@drawable/ic_menu_settings"
             android:title="@string/settings" />
         <item
-            android:id="@+id/wearSync"
-            android:icon="@drawable/ic_wearable"
-            android:title="@string/sync_watch" />
-        <item
             android:id="@+id/help"
             android:icon="@drawable/ic_menu_help"
             android:title="@string/help" />
