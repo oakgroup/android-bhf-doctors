@@ -20,8 +20,8 @@ import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
 import com.active.orbit.baseapp.design.protocols.ActivityProvider
-import com.active.orbit.tracker.core.tracker.TrackerManager
-import java.util.*
+import uk.ac.shef.tracker.core.tracker.TrackerManager
+import java.util.Locale
 
 /**
  * Utility class used to manage transitions between activities

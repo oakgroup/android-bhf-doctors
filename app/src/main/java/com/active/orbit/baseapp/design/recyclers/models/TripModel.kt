@@ -2,10 +2,10 @@ package com.active.orbit.baseapp.design.recyclers.models
 
 import com.active.orbit.baseapp.core.generics.BaseModel
 import com.active.orbit.baseapp.core.utils.Constants
-import com.active.orbit.tracker.core.computation.data.MobilityData
-import com.active.orbit.tracker.core.database.models.TrackerDBLocation
-import com.active.orbit.tracker.core.database.models.TrackerDBTrip
-import com.active.orbit.tracker.core.utils.TimeUtils
+import uk.ac.shef.tracker.core.computation.data.MobilityData
+import uk.ac.shef.tracker.core.database.models.TrackerDBLocation
+import uk.ac.shef.tracker.core.database.models.TrackerDBTrip
+import uk.ac.shef.tracker.core.utils.TimeUtils
 
 class TripModel : BaseModel {
 

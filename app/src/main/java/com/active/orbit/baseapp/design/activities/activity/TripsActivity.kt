@@ -9,11 +9,11 @@ import com.active.orbit.baseapp.databinding.ActivityTripsBinding
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.recyclers.adapters.ActivitiesAdapter
 import com.active.orbit.baseapp.design.recyclers.models.TripModel
-import com.active.orbit.tracker.core.computation.MobilityComputation
-import com.active.orbit.tracker.core.computation.data.MobilityData
-import com.active.orbit.tracker.core.database.models.TrackerDBTrip
-import com.active.orbit.tracker.core.observers.TrackerObserverType
 import com.google.android.gms.location.DetectedActivity
+import uk.ac.shef.tracker.core.computation.MobilityComputation
+import uk.ac.shef.tracker.core.computation.data.MobilityData
+import uk.ac.shef.tracker.core.database.models.TrackerDBTrip
+import uk.ac.shef.tracker.core.observers.TrackerObserverType
 
 class TripsActivity : BaseActivity() {
 

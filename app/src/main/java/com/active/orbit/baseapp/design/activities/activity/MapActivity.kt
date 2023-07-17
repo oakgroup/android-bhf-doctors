@@ -13,11 +13,11 @@ import com.active.orbit.baseapp.design.recyclers.models.TripModel
 import com.active.orbit.baseapp.design.utils.ActivityUtils
 import com.active.orbit.baseapp.design.utils.CadenceGraphDisplay
 import com.active.orbit.baseapp.design.widgets.BaseTextView
-import com.active.orbit.tracker.core.database.models.TrackerDBLocation
 import com.github.mikephil.charting.charts.CombinedChart
 import com.google.android.gms.location.DetectedActivity
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.*
+import uk.ac.shef.tracker.core.database.models.TrackerDBLocation
 
 
 class MapActivity : BaseActivity(), OnMapReadyCallback, View.OnClickListener {

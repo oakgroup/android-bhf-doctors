@@ -15,7 +15,7 @@ import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnim
 import com.active.orbit.baseapp.design.dialogs.DataUploadPhoneDialog
 import com.active.orbit.baseapp.design.dialogs.listeners.DataUploadPhoneDialogListener
 import com.active.orbit.baseapp.design.utils.UiUtils
-import com.active.orbit.tracker.core.upload.TrackerUploadUtils
+import uk.ac.shef.tracker.core.upload.TrackerUploadUtils
 
 class HelpActivity : BaseActivity(), View.OnClickListener {
 

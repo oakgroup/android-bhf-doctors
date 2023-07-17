@@ -34,8 +34,9 @@ import com.active.orbit.baseapp.design.dialogs.listeners.ConfirmRegistrationDial
 import com.active.orbit.baseapp.design.recyclers.adapters.ConsentQuestionsAdapter
 import com.active.orbit.baseapp.design.recyclers.listeners.ConsentQuestionListener
 import com.active.orbit.baseapp.design.utils.UiUtils
-import com.active.orbit.tracker.core.tracker.TrackerManager
-import java.util.*
+import uk.ac.shef.tracker.core.tracker.TrackerManager
+import java.util.Calendar
+import java.util.GregorianCalendar
 import kotlin.math.roundToInt
 
 class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDialog.OnDateSetListener {

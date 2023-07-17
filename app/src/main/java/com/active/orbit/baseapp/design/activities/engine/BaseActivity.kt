@@ -5,11 +5,11 @@ import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.routing.enums.Extra
 import com.active.orbit.baseapp.core.utils.Logger
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
-import com.active.orbit.tracker.core.computation.DailyComputation
-import com.active.orbit.tracker.core.observers.TrackerObserver
-import com.active.orbit.tracker.core.observers.TrackerObserverType
-import com.active.orbit.tracker.core.tracker.TrackerManager
-import com.active.orbit.tracker.core.utils.TimeUtils
+import uk.ac.shef.tracker.core.computation.DailyComputation
+import uk.ac.shef.tracker.core.observers.TrackerObserver
+import uk.ac.shef.tracker.core.observers.TrackerObserverType
+import uk.ac.shef.tracker.core.tracker.TrackerManager
+import uk.ac.shef.tracker.core.utils.TimeUtils
 
 /**
  * Abstract activity that should be extended from all the other activities

@@ -10,8 +10,8 @@ import com.active.orbit.baseapp.databinding.ActivityActivityBinding
 import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
-import com.active.orbit.tracker.core.computation.MobilityComputation
-import com.active.orbit.tracker.core.observers.TrackerObserverType
+import uk.ac.shef.tracker.core.computation.MobilityComputation
+import uk.ac.shef.tracker.core.observers.TrackerObserverType
 import kotlin.math.roundToInt
 
 class ActivityActivity : BaseActivity() {

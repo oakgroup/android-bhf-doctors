@@ -6,14 +6,14 @@ import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.utils.Logger
 import com.active.orbit.baseapp.databinding.ActivityDebugBinding
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
-import com.active.orbit.tracker.core.computation.MobilityComputation
-import com.active.orbit.tracker.core.computation.data.MobilityData
-import com.active.orbit.tracker.core.database.models.TrackerDBActivity
-import com.active.orbit.tracker.core.database.models.TrackerDBLocation
-import com.active.orbit.tracker.core.database.models.TrackerDBStep
-import com.active.orbit.tracker.core.observers.TrackerObserverType
-import com.active.orbit.tracker.core.utils.Constants
-import com.active.orbit.tracker.core.utils.TimeUtils
+import uk.ac.shef.tracker.core.computation.MobilityComputation
+import uk.ac.shef.tracker.core.computation.data.MobilityData
+import uk.ac.shef.tracker.core.database.models.TrackerDBActivity
+import uk.ac.shef.tracker.core.database.models.TrackerDBLocation
+import uk.ac.shef.tracker.core.database.models.TrackerDBStep
+import uk.ac.shef.tracker.core.observers.TrackerObserverType
+import uk.ac.shef.tracker.core.utils.Constants
+import uk.ac.shef.tracker.core.utils.TimeUtils
 
 class DebugActivity : BaseActivity() {
 

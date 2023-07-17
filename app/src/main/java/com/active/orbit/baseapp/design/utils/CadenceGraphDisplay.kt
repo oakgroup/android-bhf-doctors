@@ -4,15 +4,21 @@ import android.graphics.Color
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.core.utils.Logger
 import com.active.orbit.baseapp.design.recyclers.models.TripModel
-import com.active.orbit.tracker.core.computation.data.MobilityData.Companion.INVALID_VALUE
-import com.active.orbit.tracker.core.utils.TimeUtils
 import com.github.mikephil.charting.charts.CombinedChart
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.XAxis
-import com.github.mikephil.charting.data.*
+import com.github.mikephil.charting.data.BarData
+import com.github.mikephil.charting.data.BarDataSet
+import com.github.mikephil.charting.data.BarEntry
+import com.github.mikephil.charting.data.CombinedData
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.google.android.gms.location.DetectedActivity
+import uk.ac.shef.tracker.core.computation.data.MobilityData.Companion.INVALID_VALUE
+import uk.ac.shef.tracker.core.utils.TimeUtils
 
 class CadenceGraphDisplay(private var combinedChart: CombinedChart, private val currentTrip: TripModel) {
 

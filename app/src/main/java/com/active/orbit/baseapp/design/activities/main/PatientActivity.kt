@@ -19,12 +19,12 @@ import com.active.orbit.baseapp.databinding.ActivityPatientBinding
 import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.recyclers.models.TripModel
-import com.active.orbit.tracker.core.computation.MobilityComputation
-import com.active.orbit.tracker.core.observers.TrackerObserverType
-import com.active.orbit.tracker.core.tracker.TrackerConfig
-import com.active.orbit.tracker.core.tracker.TrackerManager
-import com.active.orbit.tracker.core.utils.TimeUtils
 import com.google.android.gms.location.DetectedActivity
+import uk.ac.shef.tracker.core.computation.MobilityComputation
+import uk.ac.shef.tracker.core.observers.TrackerObserverType
+import uk.ac.shef.tracker.core.tracker.TrackerConfig
+import uk.ac.shef.tracker.core.tracker.TrackerManager
+import uk.ac.shef.tracker.core.utils.TimeUtils
 import kotlin.math.roundToInt
 
 class PatientActivity : BaseActivity() {
