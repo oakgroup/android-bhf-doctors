@@ -13,7 +13,7 @@ import com.active.orbit.baseapp.design.recyclers.engine.BaseRecyclerAdapter
 import com.active.orbit.baseapp.design.recyclers.engine.BaseRecyclerCell
 import com.active.orbit.baseapp.design.recyclers.listeners.ConsentQuestionListener
 
-class ConsentQuestionsAdapter(private var activity: BaseActivity, var listener: ConsentQuestionListener? = null) : BaseRecyclerAdapter<DBConsentQuestion>() {
+class ConsentQuestionsAdapter(private var activity: BaseActivity, var listener: ConsentQuestionListener? = null, var allAccepted: Boolean = false) : BaseRecyclerAdapter<DBConsentQuestion>() {
 
     var numberOfQuestions = 0
 
@@ -27,6 +27,6 @@ class ConsentQuestionsAdapter(private var activity: BaseActivity, var listener: 
 
     override fun getViewHolder(parent: ViewGroup, viewType: Int): BaseRecyclerCell<DBConsentQuestion> {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_consent_question, parent, false)
-        return ConsentQuestionViewHolder(view, listener)
+        return ConsentQuestionViewHolder(view, listener, allAccepted)
     }
 }

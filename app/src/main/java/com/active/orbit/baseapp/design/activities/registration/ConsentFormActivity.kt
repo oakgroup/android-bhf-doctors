@@ -69,29 +69,8 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
         prepare()
 
 
-        val linearLayoutManager = LinearLayoutManager(this)
-        binding.recyclerView.layoutManager = linearLayoutManager
 
-        questionsAdapter = ConsentQuestionsAdapter(this, questionListener)
-        binding.recyclerView.adapter = questionsAdapter
-
-        binding.recyclerView.isVerticalScrollBarEnabled = false
-        binding.recyclerView.isNestedScrollingEnabled = false
-
-        questionsAdapter?.refresh(this)
-
-        questionsAdapter?.listener = object : ConsentQuestionListener {
-
-            override fun isAccepted(isAccepted: Boolean) {
-                if (isAccepted) {
-                    questionsAcceptedCounter += 1
-                } else {
-                    questionsAcceptedCounter -= 1
-                }
-            }
-        }
     }
-
 
     private fun prepare() {
 
@@ -113,8 +92,9 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
             binding.progressText.visibility = View.GONE
             binding.steps.visibility = View.GONE
             binding.buttons.visibility = View.GONE
-            binding.btnDownload.visibility = View.VISIBLE
-            binding.btnDownload.setOnClickListener(this)
+            binding.btnDownload.visibility = View.GONE
+
+            prepareQuestions(true)
 
         } else {
             userNhsNumber = activityBundle.getString(Extra.USER_NHS_NUMBER.key)!!
@@ -128,6 +108,7 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
             binding.steps.visibility = View.VISIBLE
             binding.buttons.visibility = View.VISIBLE
             binding.btnDownload.visibility = View.GONE
+            binding.btnDownload.setOnClickListener(this)
 
             dateOfConsent = TimeUtils.getCurrent()
             binding.btnDate.setText(TimeUtils.format(dateOfConsent!!, Constants.DATE_FORMAT_YEAR_MONTH_DAY))
@@ -135,6 +116,8 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
 
             binding.btnConfirm.setOnClickListener(this)
             binding.btnBack.setOnClickListener(this)
+
+            prepareQuestions()
 
             binding.fullName.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(s: Editable?) {
@@ -148,8 +131,30 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             })
         }
+    }
 
+    private fun prepareQuestions(allAccepted: Boolean = false) {
+        val linearLayoutManager = LinearLayoutManager(this)
+        binding.recyclerView.layoutManager = linearLayoutManager
 
+        questionsAdapter = ConsentQuestionsAdapter(this, questionListener, allAccepted)
+        binding.recyclerView.adapter = questionsAdapter
+
+        binding.recyclerView.isVerticalScrollBarEnabled = false
+        binding.recyclerView.isNestedScrollingEnabled = false
+
+        questionsAdapter?.refresh(this)
+
+        questionsAdapter?.listener = object : ConsentQuestionListener {
+
+            override fun isAccepted(isAccepted: Boolean) {
+                if (isAccepted) {
+                    questionsAcceptedCounter += 1
+                } else {
+                    questionsAcceptedCounter -= 1
+                }
+            }
+        }
     }
 
     override fun onPermissionEnabled(requestCode: Int) {
