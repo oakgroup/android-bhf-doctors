@@ -280,9 +280,9 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
         Preferences.user(this).userLastName = userLastName
         Preferences.user(this).userDateOfBirth = userDOB
         Preferences.user(this).userSex = userSex
+        Preferences.user(this).userPostcode = userPostcode
         Preferences.user(this).userConsentDate = dateOfConsent!!.timeInMillis
         Preferences.user(this).userConsentName = binding.fullName.textTrim
-
         Preferences.lifecycle(this).userDetailsUploaded = false
 
         // check registration with the server

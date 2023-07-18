@@ -803,7 +803,7 @@
     <string name="tour_info_five_title">Symptoms Report</string>
     <string name="tour_info_four_description">Report a medicine as taken and the associated time</string>
     <string name="tour_info_four_title">Medicine Report</string>
-    <string name="tour_info_one_description">Register to the study by letting us retrieve your NHS ID</string>
+    <string name="tour_info_one_description">Register to the study with your NHS ID</string>
     <string name="tour_info_one_title">@string/patient_registration</string>
     <string name="tour_info_six_description">Daily Activity is available from walking to public transportation</string>
     <string name="tour_info_six_title">Daily Activity</string>

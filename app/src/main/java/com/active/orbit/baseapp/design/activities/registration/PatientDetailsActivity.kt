@@ -69,20 +69,21 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
             this@PatientDetailsActivity.sex = sexModel
             binding.btnSexSelection.setText(Preferences.user(this).userSex)
 
+            binding.firstName.isEnabled = false
+            binding.lastName.isEnabled = false
+            binding.postcode.isEnabled = false
 
             binding.firstName.setText(Preferences.user(this).userFirstName)
             binding.lastName.setText(Preferences.user(this).userLastName)
             binding.postcode.setText(Preferences.user(this).userPostcode)
 
-
             dateOfBirth = TimeUtils.getCurrent(Preferences.user(this).userDateOfBirth!!)
             binding.btnDateBirth.setText(TimeUtils.format(dateOfBirth!!, Constants.DATE_FORMAT_YEAR_MONTH_DAY))
-
 
             binding.progressText.visibility = View.GONE
             binding.stepsLayout.visibility = View.GONE
             binding.buttons.visibility = View.GONE
-            binding.btnSave.visibility = View.VISIBLE
+            binding.btnSave.visibility = View.GONE
             binding.btnSave.setOnClickListener(this)
 
             binding.btnNhsUrl.visibility = View.GONE
@@ -97,53 +98,51 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
             binding.btnNext.setOnClickListener(this)
             binding.btnBack.setOnClickListener(this)
             binding.btnNhsUrl.setOnClickListener(this)
+            binding.btnSexSelection.setOnClickListener(this)
+            binding.btnDateBirth.setOnClickListener(this)
+
+
+            binding.firstName.addTextChangedListener(object : TextWatcher {
+                override fun afterTextChanged(s: Editable?) {
+                    if (TextUtils.isEmpty(binding.firstName.textTrim)) {
+                        binding.firstName.error = getString(R.string.value_not_set)
+                    }
+                }
+
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            })
+
+            binding.lastName.addTextChangedListener(object : TextWatcher {
+                override fun afterTextChanged(s: Editable?) {
+                    if (TextUtils.isEmpty(binding.lastName.textTrim)) {
+                        binding.lastName.error = getString(R.string.value_not_set)
+                    }
+                }
+
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            })
+
+            binding.postcode.addTextChangedListener(object : TextWatcher {
+                override fun afterTextChanged(s: Editable?) {
+                    if (!TextUtils.isEmpty(binding.postcode.textTrim)) {
+                        if (!Validator.validatePostcode(binding.postcode.textTrim)) {
+                            binding.postcode.error = getString(R.string.value_not_admissible_postcode)
+                        }
+                    } else {
+                        binding.postcode.error = getString(R.string.value_not_set)
+                    }
+                }
+
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            })
 
         }
-
-        binding.btnSexSelection.setOnClickListener(this)
-        binding.btnDateBirth.setOnClickListener(this)
-
-
-        binding.firstName.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                if (TextUtils.isEmpty(binding.firstName.textTrim)) {
-                    binding.firstName.error = getString(R.string.value_not_set)
-                }
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-        })
-
-        binding.lastName.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                if (TextUtils.isEmpty(binding.lastName.textTrim)) {
-                    binding.lastName.error = getString(R.string.value_not_set)
-                }
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-        })
-
-        binding.postcode.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                if (!TextUtils.isEmpty(binding.postcode.textTrim)) {
-                    if (!Validator.validatePostcode(binding.postcode.textTrim)) {
-                        binding.postcode.error = getString(R.string.value_not_admissible_postcode)
-                    }
-                } else {
-                    binding.postcode.error = getString(R.string.value_not_set)
-                }
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-        })
-
 
     }
 
