@@ -1,31 +1,30 @@
 package com.active.orbit.baseapp.core.managers
 
-import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.database.models.DBHealth
 import com.active.orbit.baseapp.core.database.tables.TableHealth
 import com.active.orbit.baseapp.core.deserialization.UploadHealthMap
-import com.active.orbit.baseapp.core.deserialization.UploadSymptomsMap
 import com.active.orbit.baseapp.core.listeners.ResultListener
 import com.active.orbit.baseapp.core.network.Api
 import com.active.orbit.baseapp.core.network.Connection
 import com.active.orbit.baseapp.core.network.ConnectionListener
 import com.active.orbit.baseapp.core.network.WebService
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
-import com.active.orbit.baseapp.core.routing.Router
-import com.active.orbit.baseapp.core.routing.enums.ResultCode
 import com.active.orbit.baseapp.core.serialization.UploadHealthRequest
 import com.active.orbit.baseapp.core.utils.Logger
-import com.active.orbit.baseapp.core.utils.ThreadHandler.backgroundThread
-import com.active.orbit.baseapp.core.utils.ThreadHandler.mainThread
-import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
-import com.active.orbit.baseapp.design.utils.UiUtils
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
 import com.google.gson.reflect.TypeToken
-import kotlin.math.acos
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import uk.ac.shef.tracker.core.utils.background
+import uk.ac.shef.tracker.core.utils.main
+import kotlin.coroutines.CoroutineContext
 
-object HealthManager {
+object HealthManager: CoroutineScope {
+
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Default
 
     fun uploadHealth(activity: BaseActivity, health: DBHealth, listener: ResultListener? = null) {
 
@@ -94,16 +93,13 @@ object HealthManager {
 
     fun checkForNotUploaded(activity: BaseActivity) {
         var modelsNotUploaded: List<DBHealth>
-        backgroundThread{
-            modelsNotUploaded= TableHealth.getNotUploaded(activity, false)
-
-            mainThread{
+        background {
+            modelsNotUploaded = TableHealth.getNotUploaded(activity, false)
+            main {
                 for (model in modelsNotUploaded) {
                     uploadHealth(activity, model)
                 }
             }
         }
-
     }
-
 }

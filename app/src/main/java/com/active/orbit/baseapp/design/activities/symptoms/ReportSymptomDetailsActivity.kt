@@ -14,8 +14,6 @@ import com.active.orbit.baseapp.core.routing.Router
 import com.active.orbit.baseapp.core.routing.enums.ResultCode
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.core.utils.Logger
-import com.active.orbit.baseapp.core.utils.ThreadHandler.backgroundThread
-import com.active.orbit.baseapp.core.utils.ThreadHandler.mainThread
 import com.active.orbit.baseapp.core.utils.TimeUtils
 import com.active.orbit.baseapp.core.utils.Utils
 import com.active.orbit.baseapp.databinding.ActivityReportSymptomDetailsBinding
@@ -27,6 +25,8 @@ import com.active.orbit.baseapp.design.dialogs.SelectSymptomDialog
 import com.active.orbit.baseapp.design.dialogs.listeners.SelectSeverityDialogListener
 import com.active.orbit.baseapp.design.dialogs.listeners.SelectSymptomDialogListener
 import com.active.orbit.baseapp.design.utils.UiUtils
+import uk.ac.shef.tracker.core.utils.background
+import uk.ac.shef.tracker.core.utils.main
 
 class ReportSymptomDetailsActivity : BaseActivity(), View.OnClickListener {
 
@@ -50,23 +50,23 @@ class ReportSymptomDetailsActivity : BaseActivity(), View.OnClickListener {
         setContentView(binding.root)
         showBackButton()
 
-        backgroundThread {
+        background {
             val modelId = activityBundle.getString(EXTRA_SYMPTOM_ID, Constants.EMPTY)
             if (modelId != Constants.EMPTY) {
-                reportedSymptom = TableReportedSymptoms.getById(this, modelId)
+                reportedSymptom = TableReportedSymptoms.getById(this@ReportSymptomDetailsActivity, modelId)
                 if (reportedSymptom?.isValid() != true) {
-                    mainThread {
+                    main {
                         Logger.e("Model is not valid on on ${javaClass.name}")
-                        UiUtils.showShortToast(this, R.string.symptom_show_error)
+                        UiUtils.showShortToast(this@ReportSymptomDetailsActivity, R.string.symptom_show_error)
                         finish()
                     }
                 } else {
-                    mainThread {
+                    main {
                         prepare()
                     }
                 }
             } else {
-                mainThread {
+                main {
                     prepare()
                 }
             }

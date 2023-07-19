@@ -13,22 +13,28 @@ import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.enums.Extra
 import com.active.orbit.baseapp.core.utils.BaseException
 import com.active.orbit.baseapp.core.utils.Constants
-import com.active.orbit.baseapp.core.utils.ThreadHandler.backgroundThread
-import com.active.orbit.baseapp.core.utils.ThreadHandler.mainThread
 import com.active.orbit.baseapp.core.utils.Utils
 import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
 import com.active.orbit.baseapp.design.protocols.ActivityProvider
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import uk.ac.shef.tracker.core.tracker.TrackerManager
+import uk.ac.shef.tracker.core.utils.background
+import uk.ac.shef.tracker.core.utils.main
 import java.util.Locale
+import kotlin.coroutines.CoroutineContext
 
 /**
  * Utility class used to manage transitions between activities
  *
  * @author omar.brugna
  */
-class Router {
+class Router: CoroutineScope {
+
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Default
 
     @Volatile
     private var isRouting: Boolean = false
@@ -230,9 +236,9 @@ class Router {
     }
 
     fun logout(activity: AppCompatActivity) {
-        backgroundThread {
+        background {
             TrackerManager.getInstance(activity).logout(activity)
-            mainThread {
+            main {
                 BasePreferences.logout(activity)
                 Database.getInstance(activity).logout()
                 clearTop(true)

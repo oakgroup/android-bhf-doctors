@@ -10,14 +10,20 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.fragment.app.DialogFragment
 import com.active.orbit.baseapp.R
-import com.active.orbit.baseapp.core.utils.ThreadHandler.mainThread
 import com.active.orbit.baseapp.core.utils.TimeUtils
 import com.active.orbit.baseapp.core.utils.Utils
 import com.active.orbit.baseapp.design.dialogs.listeners.DataUploadPhoneDialogListener
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import uk.ac.shef.tracker.core.listeners.ResultListener
 import uk.ac.shef.tracker.core.restarter.TrackerRestarter
+import uk.ac.shef.tracker.core.utils.main
+import kotlin.coroutines.CoroutineContext
 
-class DataUploadPhoneDialog : DialogFragment() {
+class DataUploadPhoneDialog : DialogFragment(), CoroutineScope {
+
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Default
 
     var listener: DataUploadPhoneDialogListener? = null
 
@@ -58,7 +64,7 @@ class DataUploadPhoneDialog : DialogFragment() {
             val trackerRestarter = TrackerRestarter()
             trackerRestarter.startDataUploader(requireContext(), false, object : ResultListener {
                 override fun onResult(success: Boolean) {
-                    mainThread {
+                    main {
                         Utils.delay(TimeUtils.ONE_SECOND_MILLIS.toLong() * 1) {
                             listener?.onUploadCompleted()
                             dismiss()

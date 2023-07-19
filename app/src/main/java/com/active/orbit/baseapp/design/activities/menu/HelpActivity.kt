@@ -5,8 +5,6 @@ import android.view.View
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.Router
-import com.active.orbit.baseapp.core.utils.ThreadHandler.backgroundThread
-import com.active.orbit.baseapp.core.utils.ThreadHandler.mainThread
 import com.active.orbit.baseapp.core.utils.TimeUtils
 import com.active.orbit.baseapp.databinding.ActivityHelpBinding
 import com.active.orbit.baseapp.design.activities.engine.Activities
@@ -16,6 +14,8 @@ import com.active.orbit.baseapp.design.dialogs.DataUploadPhoneDialog
 import com.active.orbit.baseapp.design.dialogs.listeners.DataUploadPhoneDialogListener
 import com.active.orbit.baseapp.design.utils.UiUtils
 import uk.ac.shef.tracker.core.upload.TrackerUploadUtils
+import uk.ac.shef.tracker.core.utils.background
+import uk.ac.shef.tracker.core.utils.main
 
 class HelpActivity : BaseActivity(), View.OnClickListener {
 
@@ -70,10 +70,10 @@ class HelpActivity : BaseActivity(), View.OnClickListener {
             }
             binding.menuUploadData -> {
                 if (Preferences.user(this).isUserRegistered()) {
-                    backgroundThread {
+                    background {
                         val limitMillis = System.currentTimeMillis() - TimeUtils.ONE_MINUTE_MILLIS
-                        val unsentPhoneDataCount = TrackerUploadUtils(this).dataToSend(limitMillis)
-                        mainThread {
+                        val unsentPhoneDataCount = TrackerUploadUtils(this@HelpActivity).dataToSend(limitMillis)
+                        main {
                             if (unsentPhoneDataCount > 0) {
                                 val dataUploadPhoneDialog = DataUploadPhoneDialog()
                                 dataUploadPhoneDialog.listener = object : DataUploadPhoneDialogListener {

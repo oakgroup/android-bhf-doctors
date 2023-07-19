@@ -18,13 +18,13 @@ import com.active.orbit.baseapp.core.routing.enums.Extra
 import com.active.orbit.baseapp.core.routing.enums.ResultCode
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.core.utils.Logger
-import com.active.orbit.baseapp.core.utils.ThreadHandler.backgroundThread
-import com.active.orbit.baseapp.core.utils.ThreadHandler.mainThread
 import com.active.orbit.baseapp.core.utils.TimeUtils
 import com.active.orbit.baseapp.databinding.ActivityHealthScoreBinding
 import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.utils.UiUtils
+import uk.ac.shef.tracker.core.utils.background
+import uk.ac.shef.tracker.core.utils.main
 
 class HealthScoreActivity : BaseActivity(), View.OnClickListener {
 
@@ -122,18 +122,18 @@ class HealthScoreActivity : BaseActivity(), View.OnClickListener {
     private fun sendData() {
         showProgressView()
 
-        backgroundThread {
+        background {
             if (healthModel!!.isValid()) {
-                TableHealth.upsert(this, healthModel!!)
+                TableHealth.upsert(this@HealthScoreActivity, healthModel!!)
 
-                mainThread {
+                main {
                     scheduleNotification()
 
-                    HealthManager.uploadHealth(this, healthModel!!, object : ResultListener {
+                    HealthManager.uploadHealth(this@HealthScoreActivity, healthModel!!, object : ResultListener {
                         override fun onResult(success: Boolean) {
                             hideProgressView()
                             if (success) {
-                                mainThread {
+                                main {
                                     UiUtils.showShortToast(this@HealthScoreActivity, getString(R.string.success_health_report))
                                     setResult(ResultCode.RESULT_OK.value)
                                     Router.getInstance()
@@ -159,17 +159,15 @@ class HealthScoreActivity : BaseActivity(), View.OnClickListener {
     }
 
     private fun scheduleNotification() {
-        backgroundThread {
+        background {
             val scheduledNotification: NotificationType
-            if (Preferences.lifecycle(this).notificationScheduled != Constants.INVALID) {
-                scheduledNotification = NotificationType.getById(Preferences.lifecycle(this).notificationScheduled)
-                NotificationsManager.cancelNotification(this, scheduledNotification, true)
+            if (Preferences.lifecycle(this@HealthScoreActivity).notificationScheduled != Constants.INVALID) {
+                scheduledNotification = NotificationType.getById(Preferences.lifecycle(this@HealthScoreActivity).notificationScheduled)
+                NotificationsManager.cancelNotification(this@HealthScoreActivity, scheduledNotification, true)
             }
             val notificationToSchedule = NotificationType.HEALTH
-            Preferences.lifecycle(this).notificationScheduled = notificationToSchedule.id
-            NotificationsManager.scheduleNotification(this, (TimeUtils.ONE_DAY_MILLIS * 30), notificationToSchedule)
-
+            Preferences.lifecycle(this@HealthScoreActivity).notificationScheduled = notificationToSchedule.id
+            NotificationsManager.scheduleNotification(this@HealthScoreActivity, (TimeUtils.ONE_DAY_MILLIS * 30), notificationToSchedule)
         }
     }
-
 }

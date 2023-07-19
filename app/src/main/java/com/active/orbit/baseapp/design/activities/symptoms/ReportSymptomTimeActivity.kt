@@ -15,12 +15,12 @@ import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.enums.ResultCode
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.core.utils.Logger
-import com.active.orbit.baseapp.core.utils.ThreadHandler.backgroundThread
-import com.active.orbit.baseapp.core.utils.ThreadHandler.mainThread
 import com.active.orbit.baseapp.core.utils.TimeUtils
 import com.active.orbit.baseapp.databinding.ActivityReportSymptomTimeBinding
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.utils.UiUtils
+import uk.ac.shef.tracker.core.utils.background
+import uk.ac.shef.tracker.core.utils.main
 import java.util.*
 
 class ReportSymptomTimeActivity : BaseActivity(), View.OnClickListener, DatePickerDialog.OnDateSetListener {
@@ -157,9 +157,9 @@ class ReportSymptomTimeActivity : BaseActivity(), View.OnClickListener, DatePick
     private fun sendData() {
         showProgressView()
 
-        backgroundThread {
-            TableReportedSymptoms.upsert(this, symptomToReport)
-            mainThread {
+        background {
+            TableReportedSymptoms.upsert(this@ReportSymptomTimeActivity, symptomToReport)
+            main {
                 UiUtils.showShortToast(this@ReportSymptomTimeActivity, getString(R.string.success_symptom_report))
                 setResult(ResultCode.RESULT_OK.value)
                 finish()
@@ -176,7 +176,7 @@ class ReportSymptomTimeActivity : BaseActivity(), View.OnClickListener, DatePick
 //            override fun onResult(success: Boolean) {
 //                hideProgressView()
 //                if (success) {
-//                    mainThread {
+//                    main {
 //                        UiUtils.showShortToast(this@ReportSymptomTimeActivity, getString(R.string.success_symptom_report))
 //                        setResult(SymptomsActivity.SYMPTOM_RESULT_CODE_UPDATED)
 //                        finish()

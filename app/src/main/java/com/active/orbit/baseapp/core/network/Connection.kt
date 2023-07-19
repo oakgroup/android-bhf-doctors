@@ -5,17 +5,23 @@ import androidx.annotation.WorkerThread
 import com.active.orbit.baseapp.BuildConfig
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.core.utils.Logger
-import com.active.orbit.baseapp.core.utils.ThreadHandler.backgroundThread
-import com.active.orbit.baseapp.core.utils.ThreadHandler.mainThread
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import java.io.*
 import java.net.HttpURLConnection
+import uk.ac.shef.tracker.core.utils.background
+import uk.ac.shef.tracker.core.utils.main
+import kotlin.coroutines.CoroutineContext
 
 /**
  * Class used to build a connection using an instance of [WebService]
  *
  * @author omar.brugna
  */
-class Connection(private val webService: WebService, private val listener: ConnectionListener) {
+class Connection(private val webService: WebService, private val listener: ConnectionListener) : CoroutineScope {
+
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Default
 
     private var mInputStream: InputStream? = null
     private var mInputStreamReader: InputStreamReader? = null
@@ -30,14 +36,14 @@ class Connection(private val webService: WebService, private val listener: Conne
     }
 
     fun connect() {
-        backgroundThread {
+        background {
             initConnection()
         }
     }
 
     @WorkerThread
     private fun initConnection() {
-        mainThread {
+        main {
             listener.onConnectionStarted(tag)
         }
 
@@ -51,17 +57,17 @@ class Connection(private val webService: WebService, private val listener: Conne
 
         if (response != null) {
             Logger.i("Connection response [${webService.urlString}]: $response")
-            mainThread {
+            main {
                 listener.onConnectionSuccess(tag, response)
             }
         } else {
             Logger.w("Connection response [${webService.urlString}] is null")
-            mainThread {
+            main {
                 listener.onConnectionError(tag)
             }
         }
 
-        mainThread {
+        main {
             // always notify completed request
             listener.onConnectionCompleted(tag)
         }
@@ -133,6 +139,7 @@ class Connection(private val webService: WebService, private val listener: Conne
 
             // read the response
             mInputStream = BufferedInputStream(inputStream)
+            @Suppress("KotlinConstantConditions")
             if (mInputStream != null) {
                 mInputStreamReader = InputStreamReader(mInputStream!!, Network.ENCODING_UTF8)
                 mBufferedReader = BufferedReader(mInputStreamReader!!)

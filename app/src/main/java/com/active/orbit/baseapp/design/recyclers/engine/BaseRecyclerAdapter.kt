@@ -7,17 +7,23 @@ import androidx.annotation.WorkerThread
 import androidx.recyclerview.widget.RecyclerView
 import com.active.orbit.baseapp.core.generics.BaseModel
 import com.active.orbit.baseapp.core.utils.Constants
-import com.active.orbit.baseapp.core.utils.ThreadHandler.backgroundThread
-import com.active.orbit.baseapp.core.utils.ThreadHandler.mainThread
 import com.active.orbit.baseapp.design.recyclers.listeners.RefreshListener
 import com.active.orbit.baseapp.design.recyclers.models.SortedModels
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import uk.ac.shef.tracker.core.utils.background
+import uk.ac.shef.tracker.core.utils.main
+import kotlin.coroutines.CoroutineContext
 
 /**
  * Base recyclerview adapter that should be extended from all the adapters
  *
  * @author omar.brugna
  */
-abstract class BaseRecyclerAdapter<T : BaseModel> : RecyclerView.Adapter<BaseRecyclerCell<T>>() {
+abstract class BaseRecyclerAdapter<T : BaseModel> : RecyclerView.Adapter<BaseRecyclerCell<T>>(), CoroutineScope {
+
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Default
 
     @Suppress("LeakingThis")
     var models = SortedModels(this)
@@ -48,9 +54,9 @@ abstract class BaseRecyclerAdapter<T : BaseModel> : RecyclerView.Adapter<BaseRec
     }
 
     fun refresh(context: Context, listener: RefreshListener? = null) {
-        backgroundThread {
+        background {
             val sourceModels = dataSource(context)
-            mainThread {
+            main {
                 models.replaceAll(sourceModels)
                 listener?.onRefreshed(models.size())
             }

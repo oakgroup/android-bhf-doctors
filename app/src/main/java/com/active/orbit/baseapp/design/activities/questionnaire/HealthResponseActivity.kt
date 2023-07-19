@@ -10,12 +10,12 @@ import com.active.orbit.baseapp.core.enums.HealthType
 import com.active.orbit.baseapp.core.routing.enums.Extra
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.core.utils.Logger
-import com.active.orbit.baseapp.core.utils.ThreadHandler.backgroundThread
-import com.active.orbit.baseapp.core.utils.ThreadHandler.mainThread
 import com.active.orbit.baseapp.core.utils.TimeUtils
 import com.active.orbit.baseapp.databinding.ActivityHealthResponseDetailsBinding
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.utils.UiUtils
+import uk.ac.shef.tracker.core.utils.background
+import uk.ac.shef.tracker.core.utils.main
 
 class HealthResponseActivity : BaseActivity(), View.OnClickListener {
 
@@ -33,18 +33,18 @@ class HealthResponseActivity : BaseActivity(), View.OnClickListener {
         setContentView(binding.root)
         showBackButton()
 
-        backgroundThread {
+        background {
             val modelId = activityBundle.getString(Extra.IDENTIFIER.key, Constants.EMPTY)
             if (modelId != Constants.EMPTY) {
-                healthResponse = TableHealth.getById(this, modelId)
+                healthResponse = TableHealth.getById(this@HealthResponseActivity, modelId)
                 if (healthResponse?.isValid() != true) {
-                    mainThread {
+                    main {
                         Logger.e("Model is not valid on on ${javaClass.name}")
-                        UiUtils.showShortToast(this, R.string.health_show_error)
+                        UiUtils.showShortToast(this@HealthResponseActivity, R.string.health_show_error)
                         finish()
                     }
                 } else {
-                    mainThread {
+                    main {
                         prepare()
                     }
                 }
@@ -99,26 +99,30 @@ class HealthResponseActivity : BaseActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
 
-        when(v) {
+        when (v) {
             binding.mobilityResponse -> {
                 binding.mobilityResponse.isChecked = true
-                UiUtils.showShortToast(this,"Your answer cannot change")
+                UiUtils.showShortToast(this, "Your answer cannot change")
             }
+
             binding.selfcareResponse -> {
                 binding.selfcareResponse.isChecked = true
-                UiUtils.showShortToast(this,"Your answer cannot change")
+                UiUtils.showShortToast(this, "Your answer cannot change")
             }
+
             binding.usualActivitiesResponse -> {
                 binding.usualActivitiesResponse.isChecked = true
-                UiUtils.showShortToast(this,"Your answer cannot change")
+                UiUtils.showShortToast(this, "Your answer cannot change")
             }
+
             binding.painResponse -> {
                 binding.painResponse.isChecked = true
-                UiUtils.showShortToast(this,"Your answer cannot change")
+                UiUtils.showShortToast(this, "Your answer cannot change")
             }
+
             binding.anxietyResponse -> {
                 binding.anxietyResponse.isChecked = true
-                UiUtils.showShortToast(this,"Your answer cannot change")
+                UiUtils.showShortToast(this, "Your answer cannot change")
             }
         }
     }

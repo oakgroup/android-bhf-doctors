@@ -7,9 +7,12 @@ import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.database.engine.encryption.DatabaseKeystore
 import com.active.orbit.baseapp.core.database.models.*
 import com.active.orbit.baseapp.core.database.queries.*
-import com.active.orbit.baseapp.core.utils.ThreadHandler.backgroundThread
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import net.sqlcipher.database.SQLiteDatabase
 import net.sqlcipher.database.SupportFactory
+import uk.ac.shef.tracker.core.utils.background
+import kotlin.coroutines.CoroutineContext
 
 /**
  * Main database class
@@ -19,7 +22,10 @@ import net.sqlcipher.database.SupportFactory
 @androidx.room.Database(entities = [DBSeverity::class, DBSymptom::class, DBReportSymptom::class, DBHealth::class, DBConsentQuestion::class], version = 1, exportSchema = false)
 internal abstract class Database : RoomDatabase() {
 
-    companion object {
+    companion object : CoroutineScope {
+
+        override val coroutineContext: CoroutineContext
+            get() = Dispatchers.Default
 
         private const val encryptionEnabled = true
 
@@ -52,11 +58,11 @@ internal abstract class Database : RoomDatabase() {
     }
 
     fun logout() {
-        backgroundThread {
+        background {
             clearAllTables()
         }
     }
-    
+
     abstract fun getSymptoms(): Symptoms
 
     abstract fun getSeverities(): Severities
@@ -66,6 +72,4 @@ internal abstract class Database : RoomDatabase() {
     abstract fun getHealth(): Health
 
     abstract fun getConsentQuestions(): ConsentQuestions
-
-
 }

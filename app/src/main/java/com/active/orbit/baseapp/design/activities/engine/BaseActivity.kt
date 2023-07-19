@@ -5,18 +5,24 @@ import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.routing.enums.Extra
 import com.active.orbit.baseapp.core.utils.Logger
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import uk.ac.shef.tracker.core.computation.DailyComputation
 import uk.ac.shef.tracker.core.observers.TrackerObserver
 import uk.ac.shef.tracker.core.observers.TrackerObserverType
 import uk.ac.shef.tracker.core.tracker.TrackerManager
 import uk.ac.shef.tracker.core.utils.TimeUtils
+import kotlin.coroutines.CoroutineContext
 
 /**
  * Abstract activity that should be extended from all the other activities
  *
  * @author omar.brugna
  */
-abstract class BaseActivity : PermissionsActivity(), TrackerObserver {
+abstract class BaseActivity : PermissionsActivity(), CoroutineScope, TrackerObserver {
+
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Default
 
     protected lateinit var activityBundle: Bundle
     private var isFromOnCreate = true
