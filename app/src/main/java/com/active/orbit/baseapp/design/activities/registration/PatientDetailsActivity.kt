@@ -141,9 +141,7 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             })
-
         }
-
     }
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {

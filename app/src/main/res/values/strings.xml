@@ -518,7 +518,7 @@
     <string name="onboarding">Configuration</string>
     <string name="onboarding_description">This device is not correctly configured, please click on the continue button and follow the next steps to complete the configuration</string>
     <string name="onboarding_description_first_install">In order to use the %1$s app, some permissions and the privacy policy need to be accepted. Please click on the continue button and follow the next steps to complete the configuration</string>
-    <string name="onboarding_location_1">This app perform constant location tracking in order to model precisely your physical activity. \n\nPlease select the following options when they appear. Make sure to select \"Allow all the time\" otherwise the app precision will be reduced.</string>
+    <string name="onboarding_location_1">This app performs constant location tracking in order to model precisely your physical activity. \n\nPlease select the following options when they appear. Make sure to select \"Allow all the time\" otherwise the app precision will be reduced.</string>
     <string name="onboarding_location_2">Android may warn you that the App uses power in the background. That is correct. It is necessary in order to track 24/7. The message can be ignored.</string>
     <string name="only_for">Before continuing, make sure to read and accept the Terms and Conditions.\n\nThen, we\'ll ask you to switch on the phone\'s motion and fitness sensors and the location detection. \n \nIt will take just a few seconds and it will make sure the app provides you with the best possible experience.</string>
     <string name="open_permissions">Open Permissions</string>
@@ -552,7 +552,7 @@
     <string name="patient_registration">Registration</string>
     <string name="patient_registration_insert_id">Please add your NHS number.</string>
     <string name="patient_registration_nhs_url">Find NHS number</string>
-    <string name="patient_registration_intro">Register so you can participate to the Moving Health study</string>
+    <string name="patient_registration_intro">Register so you can participate in the Moving Health Study</string>
     <string name="patient_start_study">Start the study using this button</string>
     <string name="patient_start_study_with_name">Start the study \"%1$s\" using this button</string>
     <string name="pedalling_speed">Pedalling Speed</string>
@@ -759,7 +759,7 @@
     <string name="success_location_permissions">You have successfully set up the location settings</string>
     <string name="success_medicine_reported">You have successfully reported a medicine</string>
     <string name="success_on_boarding">You have successfully configured your device. You are ready to use the application</string>
-    <string name="success_registration">You have successfully registered to participate to the Moving Health study</string>
+    <string name="success_registration">You have successfully registered to participate in the Moving Health study</string>
     <string name="success_symptom_report">You have successfully reported a symptom</string>
     <string name="summary">Summary</string>
     <string name="summary_activity_title">Welcome back!</string>
@@ -803,11 +803,11 @@
     <string name="tour_info_five_title">Symptoms Report</string>
     <string name="tour_info_four_description">Report a medicine as taken and the associated time</string>
     <string name="tour_info_four_title">Medicine Report</string>
-    <string name="tour_info_one_description">Register to the study with your NHS ID</string>
+    <string name="tour_info_one_description">Register for the study using your NHS Number</string>
     <string name="tour_info_one_title">@string/patient_registration</string>
-    <string name="tour_info_six_description">Daily Activity is available from walking to public transportation</string>
+    <string name="tour_info_six_description">Daily activity is displayed from walking to public transportation</string>
     <string name="tour_info_six_title">Daily Activity</string>
-    <string name="tour_info_three_description">Participate to the study whenever you are ready</string>
+    <string name="tour_info_three_description">Participate in the study whenever you are ready</string>
     <string name="tour_info_three_title">Start Study</string>
     <string name="tour_info_two_description">Add prescriptions for your patient and reminders to according to the medicine intake time</string>
     <string name="tour_info_two_tile">Prescriptions</string>
