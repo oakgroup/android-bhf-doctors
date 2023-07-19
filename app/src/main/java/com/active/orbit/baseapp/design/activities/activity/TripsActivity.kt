@@ -39,13 +39,9 @@ class TripsActivity : BaseActivity() {
         adapter = ActivitiesAdapter(this)
         binding.activitiesRecyclerView.adapter = adapter
 
-        binding.activitiesRecyclerView.isVerticalScrollBarEnabled = false
-        binding.activitiesRecyclerView.isNestedScrollingEnabled = false
-
         computeResults()
     }
 
-    @Suppress("UNCHECKED_CAST")
     override fun onTrackerUpdate(type: TrackerObserverType, data: Any) {
         when (type) {
             TrackerObserverType.MOBILITY -> {

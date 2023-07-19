@@ -140,9 +140,6 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
         questionsAdapter = ConsentQuestionsAdapter(this, questionListener, allAccepted)
         binding.recyclerView.adapter = questionsAdapter
 
-        binding.recyclerView.isVerticalScrollBarEnabled = false
-        binding.recyclerView.isNestedScrollingEnabled = false
-
         questionsAdapter?.refresh(this)
 
         questionsAdapter?.listener = object : ConsentQuestionListener {

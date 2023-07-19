@@ -13,44 +13,24 @@
         android:layout_height="match_parent"
         android:background="@color/colorBackground">
 
-        <ScrollView
-            android:layout_width="0dp"
+        <com.active.orbit.baseapp.design.recyclers.engine.BaseRecyclerView
+            android:id="@+id/activitiesRecyclerView"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="@dimen/margin_vertical_double"
+            android:clipToPadding="false"
+            android:scrollIndicators="end"
+            android:scrollbarThumbVertical="@color/colorAccent"
             android:scrollbars="none"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/bottomNav"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="NotSibling">
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingBottom="100dp">
-
-                <include layout="@layout/toolbar" />
-
-                <com.active.orbit.baseapp.design.recyclers.engine.BaseRecyclerView
-                    android:id="@+id/activitiesRecyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_vertical_double"
-                    android:clipToPadding="false"
-                    android:scrollIndicators="end"
-                    android:scrollbarThumbVertical="@color/colorAccent"
-                    android:scrollbars="none"
-                    tools:ignore="NotSibling" />
-
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-        </ScrollView>
-
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            tools:ignore="NotSibling" />
 
         <com.active.orbit.baseapp.design.widgets.BaseTextView
             android:id="@+id/noActivities"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:gravity="center"

@@ -1,5 +1,6 @@
 package com.active.orbit.baseapp.design.activities.questionnaire
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -7,6 +8,7 @@ import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.enums.BottomNavItemType
 import com.active.orbit.baseapp.core.managers.HealthManager
 import com.active.orbit.baseapp.core.routing.Router
+import com.active.orbit.baseapp.core.utils.Logger
 import com.active.orbit.baseapp.databinding.ActivityHealthBinding
 import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
@@ -35,9 +37,7 @@ class HealthActivity : BaseActivity(), View.OnClickListener {
 
         prepare()
 
-
         HealthManager.checkForNotUploaded(this)
-
     }
 
     override fun onResume() {
@@ -55,10 +55,6 @@ class HealthActivity : BaseActivity(), View.OnClickListener {
 
         adapter = HealthAdapter(this)
         binding.healthRecyclerView.adapter = adapter
-
-        binding.healthRecyclerView.isVerticalScrollBarEnabled = false
-        binding.healthRecyclerView.isNestedScrollingEnabled = false
-
 
         binding.noHealth.text = getString(R.string.health_empty_patient)
         binding.btnFillQuestionnaire.visibility = View.VISIBLE
