@@ -14,6 +14,8 @@ import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnim
 
 class BottomNavigationComponent : FrameLayout, View.OnClickListener {
 
+    private var selectedType = BottomNavItemType.MAIN
+
     internal lateinit var binding: ComponentBottomNavigationBinding
 
     constructor(context: Context) : super(context) {
@@ -35,23 +37,23 @@ class BottomNavigationComponent : FrameLayout, View.OnClickListener {
         binding.navTrips.setOnClickListener(this)
         binding.navHealth.setOnClickListener(this)
         binding.navMain.setOnClickListener(this)
-
-        setSelected(BottomNavItemType.MAIN)
     }
 
-
     fun setSelected(navType: BottomNavItemType) {
-        when(navType){
+        selectedType = navType
+        when (navType) {
             BottomNavItemType.MAIN -> {
                 binding.navTrips.setImage(R.drawable.bottom_nav_trips_idle)
                 binding.navHealth.setImage(R.drawable.bottom_nav_health_idle)
                 binding.navMain.setImage(R.drawable.bottom_nav_main_selected)
             }
+
             BottomNavItemType.TRIPS -> {
                 binding.navTrips.setImage(R.drawable.bottom_nav_trips_selected)
                 binding.navHealth.setImage(R.drawable.bottom_nav_health_idle)
                 binding.navMain.setImage(R.drawable.bottom_nav_main_idle)
             }
+
             BottomNavItemType.HEALTH -> {
                 binding.navTrips.setImage(R.drawable.bottom_nav_trips_idle)
                 binding.navHealth.setImage(R.drawable.bottom_nav_health_selected)
@@ -62,29 +64,32 @@ class BottomNavigationComponent : FrameLayout, View.OnClickListener {
 
 
     override fun onClick(v: View?) {
-        
+
         when (v) {
             binding.navTrips -> {
-                setSelected(BottomNavItemType.TRIPS)
-                Router.getInstance()
-                    .clearTop(true)
-                    .activityAnimation(ActivityAnimation.FADE)
-                    .startBaseActivity(context, Activities.TRIPS)
+                if (selectedType != BottomNavItemType.TRIPS) {
+                    Router.getInstance()
+                        .clearTop(true)
+                        .activityAnimation(ActivityAnimation.FADE)
+                        .startBaseActivity(context, Activities.TRIPS)
+                }
             }
+
             binding.navHealth -> {
-                setSelected(BottomNavItemType.HEALTH)
-                Router.getInstance()
-                    .clearTop(true)
-                    .activityAnimation(ActivityAnimation.FADE)
-                    .startBaseActivity(context, Activities.HEALTH)
+                if (selectedType != BottomNavItemType.HEALTH) {
+                    Router.getInstance()
+                        // .clearTop(true)
+                        .activityAnimation(ActivityAnimation.FADE)
+                        .startBaseActivity(context, Activities.HEALTH)
+                }
             }
+
             binding.navMain -> {
-                setSelected(BottomNavItemType.MAIN)
-                Router.getInstance()
-                    .clearTop(true).homepage(context)
+                if (selectedType != BottomNavItemType.MAIN) {
+                    Router.getInstance()
+                        .clearTop(true).homepage(context)
+                }
             }
         }
     }
-
-
 }
