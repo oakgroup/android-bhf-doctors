@@ -35,7 +35,7 @@ class NotificationsManager : BroadcastReceiver() {
                 val notificationIntent = Intent(context, NotificationsManager::class.java)
                 notificationIntent.putExtra(EXTRA_NOTIFICATION_ID, notificationType.id)
                 val pendingIntent = PendingIntent.getBroadcast(context, notificationType.id, notificationIntent, PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
-                val futureInMillis = SystemClock.elapsedRealtime() + delay
+                val futureInMillis = TimeUtils.getCurrent().timeInMillis + delay
 
                 alarmManager.setAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent)
                 Logger.d("Notification with id ${notificationType.id} scheduled at " + TimeUtils.format(TimeUtils.getCurrent(futureInMillis), Constants.DATE_FORMAT_FULL))
