@@ -133,13 +133,11 @@ class HealthScoreActivity : BaseActivity(), View.OnClickListener {
                         override fun onResult(success: Boolean) {
                             hideProgressView()
                             if (success) {
-                                main {
-                                    UiUtils.showShortToast(this@HealthScoreActivity, getString(R.string.success_health_report))
-                                    setResult(ResultCode.RESULT_OK.value)
-                                    Router.getInstance()
-                                        .clearTop(true)
-                                        .startBaseActivity(this@HealthScoreActivity, Activities.HEALTH)
-                                }
+                                UiUtils.showShortToast(this@HealthScoreActivity, getString(R.string.success_health_report))
+                                setResult(ResultCode.RESULT_OK.value)
+                                Router.getInstance()
+                                    .clearTop(true)
+                                    .startBaseActivity(this@HealthScoreActivity, Activities.HEALTH)
                             } else {
                                 UiUtils.showShortToast(this@HealthScoreActivity, R.string.error)
                             }
