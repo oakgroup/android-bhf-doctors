@@ -14,7 +14,8 @@ import com.active.orbit.baseapp.design.recyclers.engine.BaseRecyclerCell
 class HealthAdapter(private var activity: BaseActivity) : BaseRecyclerAdapter<DBHealth>() {
 
     override fun dataSource(context: Context): List<DBHealth> {
-        return TableHealth.getAll(activity)
+        val healthResponses = TableHealth.getAll(activity)
+        return healthResponses.reversed()
     }
 
     override fun getViewHolder(parent: ViewGroup, viewType: Int): BaseRecyclerCell<DBHealth> {
