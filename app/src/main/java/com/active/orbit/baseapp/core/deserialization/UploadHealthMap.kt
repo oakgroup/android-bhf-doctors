@@ -7,14 +7,14 @@ import com.google.gson.annotations.SerializedName
 
 class UploadHealthMap : BaseModel {
 
-    @SerializedName("userId")
-    var userId: String? = null
+    @SerializedName("result")
+    var result: String? = null
 
     override fun identifier(): String {
         return Constants.EMPTY
     }
 
     override fun isValid(): Boolean {
-        return !TextUtils.isEmpty(userId)
+        return !TextUtils.isEmpty(result)
     }
 }

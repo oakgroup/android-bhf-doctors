@@ -9,6 +9,7 @@ import com.active.orbit.baseapp.core.network.Connection
 import com.active.orbit.baseapp.core.network.ConnectionListener
 import com.active.orbit.baseapp.core.network.WebService
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
+import com.active.orbit.baseapp.core.routing.enums.ResultCode
 import com.active.orbit.baseapp.core.serialization.UploadHealthRequest
 import com.active.orbit.baseapp.core.utils.Logger
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
@@ -67,14 +68,15 @@ object HealthManager: CoroutineScope {
                 }
 
                 if (map?.isValid() == true) {
-                    if (map.userId!! == Preferences.user(activity).idUser) {
-                        health.uploaded = true
-                        TableHealth.upsert(activity, health)
-
-                        Logger.d("Health uploaded to server for user id ${map.userId} success")
+                    if (map.result!! == "OK") {
+                        background {
+                            health.uploaded = true
+                            TableHealth.upsert(activity, health)
+                        }
+                        Logger.d("Health uploaded to server for user id ${Preferences.user(activity).idUser} success")
                         listener?.onResult(true)
                     } else {
-                        Logger.d("Health uploaded to server error for user id ${map.userId}")
+                        Logger.d("Health uploaded to server error for user id ${Preferences.user(activity).idUser}")
                         listener?.onResult(false)
                     }
                 } else {
@@ -98,6 +100,7 @@ object HealthManager: CoroutineScope {
             main {
                 for (model in modelsNotUploaded) {
                     uploadHealth(activity, model)
+                    Logger.d("Upload Health: ${model.description()}")
                 }
             }
         }
