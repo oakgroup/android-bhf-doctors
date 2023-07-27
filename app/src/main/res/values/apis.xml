@@ -6,6 +6,6 @@
     <string name="api_insert_symptoms" translatable="false">insert_symptoms</string>
     <string name="api_insert_health" translatable="false">v2/user_health_questionnaire</string>
     <string name="api_user_registration" translatable="false">v2/user_registration</string>
-    <string name="api_retrieve_consent_form" translatable="false">retrieve_consent_form</string>
+    <string name="api_retrieve_consent_form" translatable="false">v2/user_consent_form</string>
 
 </resources>

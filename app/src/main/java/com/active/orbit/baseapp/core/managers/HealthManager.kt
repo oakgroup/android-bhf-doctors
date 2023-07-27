@@ -50,9 +50,9 @@ object HealthManager: CoroutineScope {
         request.healthResponse = healthRequest
 
         val webService = WebService(activity, Api.INSERT_HEALTH)
-        webService.params = Gson().toJson(request)
-
+        // TODO remove when dev base url will work again
         webService.urlString = "http://52.56.150.239/v2/user_health_questionnaire"
+        webService.params = Gson().toJson(request)
 
         Connection(webService, object : ConnectionListener {
             override fun onConnectionSuccess(tag: Int, response: String) {
