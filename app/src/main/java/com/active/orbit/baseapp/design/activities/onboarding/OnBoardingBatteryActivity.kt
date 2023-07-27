@@ -32,6 +32,13 @@ class OnBoardingBatteryActivity : BaseActivity(), View.OnClickListener {
         fromMenu = activityBundle.getBoolean(Extra.FROM_MENU.key, false)
         binding.btnPermission.setOnClickListener(this)
 
+
+        if (fromMenu) {
+            showBackButton()
+        }else {
+            hideToolbar()
+        }
+
     }
 
     private fun proceed() {
@@ -56,10 +63,5 @@ class OnBoardingBatteryActivity : BaseActivity(), View.OnClickListener {
             }
         }
     }
-
-    override fun getToolbarResource(): Int? {
-        return null
-    }
-
 
 }
