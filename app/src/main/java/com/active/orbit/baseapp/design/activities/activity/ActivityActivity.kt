@@ -37,8 +37,8 @@ class ActivityActivity : BaseActivity() {
 
         binding.walkingActivityProgress.setBackgroundLineColor(ContextCompat.getColor(this, R.color.colorPrimaryLight))
         binding.walkingActivityProgress.setProgressLineColor(ContextCompat.getColor(this, R.color.colorAccent))
-        binding.walkingActivityProgress.setProgressIconResource(R.drawable.ic_activity)
-        binding.walkingActivityProgress.setLineWidth(40f)
+        binding.walkingActivityProgress.showProgressIcon(true)
+        binding.walkingActivityProgress.setLineWidth(30f)
         binding.walkingActivityProgress.setMaxProgress(200.toFloat())
 
         binding.heartActivityProgress.setBackgroundLineColorOne(ContextCompat.getColor(this, R.color.colorPrimaryLight))

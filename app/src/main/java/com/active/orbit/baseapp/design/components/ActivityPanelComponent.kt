@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
 import com.active.orbit.baseapp.R
@@ -34,8 +33,7 @@ class ActivityPanelComponent : FrameLayout {
 
         binding.walkingActivityProgress.setBackgroundLineColor(ContextCompat.getColor(context, R.color.colorPrimaryLight))
         binding.walkingActivityProgress.setProgressLineColor(ContextCompat.getColor(context, R.color.colorAccent))
-        binding.walkingActivityProgress.setProgressIconResource(R.drawable.ic_activity)
-        binding.walkingActivityProgress.setLineWidth(40f)
+        binding.walkingActivityProgress.setLineWidth(30f)
         binding.walkingActivityProgress.setMaxProgress(200.toFloat())
 
         binding.heartActivityProgress.setBackgroundLineColorOne(ContextCompat.getColor(context, R.color.colorPrimaryLight))
