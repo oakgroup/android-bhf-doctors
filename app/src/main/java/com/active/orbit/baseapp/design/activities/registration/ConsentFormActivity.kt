@@ -13,7 +13,6 @@ import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.deserialization.UserRegistrationMap
 import com.active.orbit.baseapp.core.download.Download
 import com.active.orbit.baseapp.core.enums.SuccessMessageType
-import com.active.orbit.baseapp.core.firestore.providers.FirestoreProvider
 import com.active.orbit.baseapp.core.listeners.UserRegistrationListener
 import com.active.orbit.baseapp.core.managers.UserManager
 import com.active.orbit.baseapp.core.permissions.Permissions
@@ -67,7 +66,6 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
 
 
         prepare()
-
 
 
     }
@@ -288,7 +286,9 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
 
         // check registration with the server
         TrackerManager.getInstance(this).saveUserRegistrationId(map.dataItem.userId.id)
-        FirestoreProvider.getInstance().updateUserDetails(this)
+
+        // do not upload data on firestore
+        // FirestoreProvider.getInstance().updateUserDetails(this)
 
         val bundle = Bundle()
         bundle.putInt(Extra.SUCCESS_MESSAGE.key, SuccessMessageType.REGISTRATION.id)

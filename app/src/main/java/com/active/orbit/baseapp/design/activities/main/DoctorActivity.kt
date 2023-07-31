@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.enums.MainPanelType
-import com.active.orbit.baseapp.core.firestore.providers.FirestoreProvider
 import com.active.orbit.baseapp.core.listeners.ResultListener
 import com.active.orbit.baseapp.core.managers.ConsentFormManager
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
@@ -31,11 +30,14 @@ class DoctorActivity : BaseActivity(), View.OnClickListener {
 
         prepare()
 
+        // do not upload data on firestore
+        /*
         if (Preferences.user(this).isUserRegistered()) {
             if (!Preferences.lifecycle(this).userDetailsUploaded) {
                 FirestoreProvider.getInstance().updateUserDetails(this)
             }
         }
+        */
 
         ConsentFormManager.retrieveConsentForm(thiss)
     }
@@ -99,6 +101,7 @@ class DoctorActivity : BaseActivity(), View.OnClickListener {
                         .startBaseActivity(this, Activities.PATIENT_DETAILS)
                 }
             }
+
             binding.tourPanel -> {
                 Router.getInstance()
                     .activityAnimation(ActivityAnimation.LEFT_RIGHT)
