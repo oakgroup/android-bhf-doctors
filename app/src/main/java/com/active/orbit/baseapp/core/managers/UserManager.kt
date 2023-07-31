@@ -23,8 +23,6 @@ object UserManager {
         }
 
         val webService = WebService(activity, Api.USER_REGISTRATION)
-        // TODO remove when dev base url will work again
-        webService.urlString = "http://52.56.150.239/v2/user_registration"
         webService.params = Gson().toJson(request)
 
         Connection(webService, object : ConnectionListener {
