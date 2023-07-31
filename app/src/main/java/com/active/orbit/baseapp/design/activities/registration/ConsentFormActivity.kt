@@ -282,6 +282,10 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
         Preferences.user(this).userConsentName = binding.fullName.textTrim
         Preferences.lifecycle(this).userDetailsUploaded = false
 
+        // automatically start the study
+        Preferences.user(thiss).studyStarted = true
+        Preferences.user(thiss).dateStudyStarted = TimeUtils.getCurrent().timeInMillis
+
         // check registration with the server
         TrackerManager.getInstance(this).saveUserRegistrationId(map.dataItem.userId.id)
         FirestoreProvider.getInstance().updateUserDetails(this)
