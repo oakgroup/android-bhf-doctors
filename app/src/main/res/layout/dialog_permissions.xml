@@ -42,31 +42,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title">
 
-            <com.active.orbit.baseapp.design.widgets.BaseButton
-                android:id="@+id/btnPermission"
-                style="@style/ButtonPrimary"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="@string/show_permission"
-                />
 
             <com.active.orbit.baseapp.design.widgets.BaseButton
                 android:id="@+id/btnCancel"
                 style="@style/ButtonSecondary"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_gravity="center"
-                android:layout_marginHorizontal="@dimen/margin_lateral_double"
-                android:layout_marginTop="@dimen/margin_vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_gravity="center"
                 android:textSize="16dp"
                 android:text="@string/cancel" />
+
+            <com.active.orbit.baseapp.design.widgets.BaseButton
+                android:id="@+id/btnPermission"
+                style="@style/ButtonPrimary"
+                android:layout_width="0dp"
+                android:layout_marginStart="@dimen/margin_lateral_half"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/show_permission"
+                />
+
 
 
 
