@@ -188,11 +188,11 @@
     <string name="connect_walking_aid">Connect Walking Aid</string>
     <string name="connected_ble">Connected via Bluetooth</string>
     <string name="connection_failed_message">Connection failed</string>
-    <string name="consent_form">Consent Form</string>
-    <string name="consent_screening_questions">Consent Screening Questions</string>
+    <string name="consent_form">Your Consent Form</string>
+    <string name="consent_screening_questions">Consent</string>
     <string name="contact_support">Contact Support</string>
     <string name="contact_us">Contact Us</string>
-    <string name="contact_us_descritpion">You can email us at something@gmail.com</string>
+    <string name="contact_us_descritpion">You can email us at movinghealth@sheffield.ac.uk</string>
     <string name="contact_us_title">How to contact us</string>
     <string name="continue_btn">Continue</string>
     <string name="continue_button">Continue</string>
@@ -240,7 +240,7 @@
     <string name="disable_restrictions_description">The app needs to continuously have the permissions granted to run in background to detect activities. The android operative system has some limitations that do not allow this. Please make sure that you disable the automatic removal of the permissions if the app is not used for a while, by clicking the button below. Then, click on Permissions and uncheck the "Remove permissions if app isn\'t used" checkbox</string>
     <string name="dismiss">Dismiss</string>
     <string name="dismiss_force"> Force Dismiss</string>
-    <string name="dismiss_patient">Finish Study</string>
+    <string name="dismiss_patient">Withdraw from Study</string>
     <string name="dismiss_patient_activity_description">Before you dismiss, we need to make sure that all the data has been uploaded. Please use the following actions to do this. For "Check Watch Data", please open the Moving Health wear app before taking the action.</string>
     <string name="dismiss_patient_dialog_description">Are you sure you want to finish your study?</string>
     <string name="dismiss_patient_dialog_description_force">Not all data has been uploaded, please see the previous screen for details. If you continue with dismissing this patient, any non-uploaded data will be lost. Select \"Dismiss\" to continue or \"Cancel\" to return to complete the data uploads.</string>
@@ -532,6 +532,7 @@
     <string name="paragraph_two_about_set_up">Your account and email address will not be shared with us.\n\nAll data collected will be completely anonymous.</string>
     <string name="paragraph_two_about_set_up_gfit">Don\’t worry, you won\'t lose any existing type data, and achievements you\’ve collected.</string>
     <string name="participating_city">Living in a partner city?</string>
+    <string name="participant_information">Participant Information</string>
     <string name="passive_gps_text">To save battery, we use passive location detection: the path drawn on the map may be imprecise or missing sometimes. This will not make the application imprecise.</string>
     <string name="passive_location_title">Passive Location</string>
     <string name="password">Password</string>
@@ -759,7 +760,7 @@
     <string name="success_location_permissions">You have successfully set up the location settings</string>
     <string name="success_medicine_reported">You have successfully reported a medicine</string>
     <string name="success_on_boarding">You have successfully configured your device. You are ready to use the application</string>
-    <string name="success_registration">You have successfully registered to participate in the Moving Health study</string>
+    <string name="success_registration">You have given consent to participate in this research study.\n\nFrequently asked questions and contact details are available in the Help section of the menu</string>
     <string name="success_symptom_report">You have successfully reported a symptom</string>
     <string name="summary">Summary</string>
     <string name="summary_activity_title">Welcome back!</string>
@@ -891,7 +892,7 @@
     <string name="weight_hint">10 – 400 kg</string>
     <string name="weight_value">Weight: %1$s kg</string>
     <string name="welcome">Welcome!</string>
-    <string name="welcome_text">Let\'s improve together the way we live</string>
+    <string name="welcome_text">A smartphone-study of activity and mobility in people with and without disease</string>
     <string name="welcome_to_seta">Welcome!</string>
     <string name="what_app_offers">What Moving Health offers</string>
     <string name="when_moving">When Active</string>

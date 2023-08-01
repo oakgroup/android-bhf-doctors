@@ -54,7 +54,7 @@
                     android:id="@+id/menuWhatWeOffer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:helpTitle="@string/what_app_offers" />
+                    app:helpTitle="@string/participant_information" />
 
                 <com.active.orbit.baseapp.design.components.HelpComponent
                     android:id="@+id/menuFaqs"
