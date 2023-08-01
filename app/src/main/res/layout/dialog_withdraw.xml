@@ -35,7 +35,15 @@
             android:visibility="visible">
 
             <com.active.orbit.baseapp.design.widgets.BaseTextView
-                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_vertical"
+                android:text="@string/dismiss_patient_dialog_information"
+                android:textColor="@color/textColorPrimaryDark"
+                android:textSize="@dimen/main_text_dimension"
+                app:typeface="regular" />
+
+            <com.active.orbit.baseapp.design.widgets.BaseTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/margin_vertical"
@@ -45,9 +53,6 @@
                 app:typeface="semibold" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -62,7 +67,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
-                android:text="@string/cancel" />
+                android:text="@string/cancel"
+                app:typeface="medium"/>
 
             <com.active.orbit.baseapp.design.widgets.BaseButton
                 android:id="@+id/btnDismiss"
@@ -71,7 +77,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
-                android:text="@string/finish" />
+                android:text="@string/withdraw"
+                app:typeface="medium"/>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 

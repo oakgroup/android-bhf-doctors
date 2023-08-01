@@ -242,8 +242,9 @@
     <string name="dismiss_force"> Force Dismiss</string>
     <string name="dismiss_patient">Withdraw from Study</string>
     <string name="dismiss_patient_activity_description">Before you dismiss, we need to make sure that all the data has been uploaded. Please use the following actions to do this. For "Check Watch Data", please open the Moving Health wear app before taking the action.</string>
-    <string name="dismiss_patient_dialog_description">Are you sure you want to finish your study?</string>
+    <string name="dismiss_patient_dialog_description">Are you sure you want to withdraw from the study?</string>
     <string name="dismiss_patient_dialog_description_force">Not all data has been uploaded, please see the previous screen for details. If you continue with dismissing this patient, any non-uploaded data will be lost. Select \"Dismiss\" to continue or \"Cancel\" to return to complete the data uploads.</string>
+    <string name="dismiss_patient_dialog_information">Withdrawing from the study means we will collect no further data in relation to your activity for this study but we may use the data that have been collected up until this point.</string>
     <string name="dismiss_watch_wait_one">Waiting to Dismiss from Watch</string>
     <string name="dismiss_watch_wait_two">If not seeing the \"Dismiss\" option on the watch, please open the Moving Health wear app, press \"Dismiss\" again here and check the watch again.</string>
     <string name="done">Done</string>
@@ -898,6 +899,7 @@
     <string name="when_moving">When Active</string>
     <string name="when_on_vehicle">In Vehicle</string>
     <string name="when_travelling">Travelling</string>
+    <string name="withdraw">Withdraw</string>
     <string name="year_ago">1 year ago</string>
     <string name="years_ago">%1$s years ago</string>
     <string name="yes">Yes</string>
