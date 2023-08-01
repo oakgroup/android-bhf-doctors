@@ -10,7 +10,6 @@ import android.view.View
 import android.widget.DatePicker
 import androidx.core.content.ContextCompat
 import com.active.orbit.baseapp.R
-import com.active.orbit.baseapp.core.firestore.providers.FirestoreProvider
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.Router
 import com.active.orbit.baseapp.core.routing.enums.Extra
@@ -223,8 +222,11 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
 
                     UiUtils.showShortToast(this, R.string.success)
 
+                    // do not upload data on firestore
+                    /*
                     Preferences.lifecycle(this).userDetailsUploaded = false
                     FirestoreProvider.getInstance().updateUserDetails(this)
+                    */
 
                     finish()
 

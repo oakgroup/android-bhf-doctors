@@ -1,6 +1,5 @@
 package com.active.orbit.baseapp.design.activities.main
 
-import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import androidx.annotation.RequiresApi
@@ -141,7 +140,6 @@ class PatientActivity : BaseActivity() {
         TrackerManager.getInstance(this).onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
-    @SuppressLint("ClickableViewAccessibility")
     private fun prepare() {
 
     }
