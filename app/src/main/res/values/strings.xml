@@ -189,7 +189,7 @@
     <string name="connected_ble">Connected via Bluetooth</string>
     <string name="connection_failed_message">Connection failed</string>
     <string name="consent_form">Your Consent Form</string>
-    <string name="consent_screening_questions">Consent</string>
+    <string name="consent_screening_questions">Eligibility and Consent</string>
     <string name="contact_support">Contact Support</string>
     <string name="contact_us">Contact Us</string>
     <string name="contact_us_descritpion">You can email us at movinghealth@sheffield.ac.uk</string>
@@ -328,7 +328,8 @@
     <string name="health_anxiety_response_three">I am moderately anxious or depressed</string>
     <string name="health_anxiety_response_two">I am slightly anxious or depressed</string>
     <string name="health_description">Please tick the ONE box that best describes your %1$s TODAY.</string>
-    <string name="health_empty_patient">A response has not been given for your health yet.\nPlease use the circle button below.</string>
+    <string name="health_empty_patient">A response has not been given for your health yet.</string>
+    <string name="health_list_description">Please complete the health questionnaire at least once a month. It has six questions and take less than three minutes.\nPress the button to start the questionnaire.</string>
     <string name="health_mobility_response_five">I am unable to walk about</string>
     <string name="health_mobility_response_four">I have severe problems in walking about</string>
     <string name="health_mobility_response_one">I have no problems in walking about</string>
@@ -533,7 +534,7 @@
     <string name="paragraph_two_about_set_up">Your account and email address will not be shared with us.\n\nAll data collected will be completely anonymous.</string>
     <string name="paragraph_two_about_set_up_gfit">Don\’t worry, you won\'t lose any existing type data, and achievements you\’ve collected.</string>
     <string name="participating_city">Living in a partner city?</string>
-    <string name="participant_information">Participant Information</string>
+    <string name="participant_information">Participant Information and Privacy Policy</string>
     <string name="passive_gps_text">To save battery, we use passive location detection: the path drawn on the map may be imprecise or missing sometimes. This will not make the application imprecise.</string>
     <string name="passive_location_title">Passive Location</string>
     <string name="password">Password</string>

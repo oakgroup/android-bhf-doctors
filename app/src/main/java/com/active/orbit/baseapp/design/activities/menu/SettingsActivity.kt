@@ -31,16 +31,16 @@ class SettingsActivity : BaseActivity(), View.OnClickListener {
             binding.patientDetails.visibility = View.GONE
         }
 
-        binding.settingsBattery.disableClick()
+        binding.locationServices.disableClick()
         binding.patientDetails.disableClick()
 
-        binding.settingsBattery.setOnClickListener(this)
+        binding.locationServices.setOnClickListener(this)
         binding.patientDetails.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
         when (v) {
-            binding.settingsBattery -> {
+            binding.locationServices -> {
                 val bundle = Bundle()
                 bundle.putBoolean(Extra.FROM_MENU.key, true)
                 Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).startBaseActivity(this, Activities.ON_BOARDING_BATTERY, bundle)
