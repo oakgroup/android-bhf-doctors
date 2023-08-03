@@ -43,7 +43,7 @@
     <string name="activity_info_two_description">See all of your daily activities and view them on a map</string>
     <string name="activity_info_two_title">Detailed Activity</string>
     <string name="activity_previous_usage">From previous app usage</string>
-    <string name="activity_rec_permissions_not_granted">You need to accept the activity recognition permissions to be able to use this application.</string>
+    <string name="activity_rec_permissions_not_granted">You need to accept the physical activity permission in order to continue</string>
     <string name="activity_rec_permissions_will_not_be_granted">As you have chosen not to allow activity recognition permission, the app will now close. Please uninstall it.</string>
     <string name="activity_step">1 Step</string>
     <string name="activity_steps">%1$s Steps</string>
@@ -404,6 +404,8 @@
     <string name="loading_medicine">Loading medicine…</string>
     <string name="loading_medicines">Loading medicines…</string>
     <string name="location_services">Location Services</string>
+    <string name="location_services_permission">I understand and agree that GPS data, provided by the location services on the mobile device, will be gathered by the Moving Health App and used to calculate measurements of mobility (average walking speed, distance walked each day, motor vehicle trips each day, time in motor vehicles each day).</string>
+    <string name="location_services_title">Physical Activity and Location Services (2.1)</string>
     <string name="locationservices_dialog_message">The app requires the use of Location Services in order to work properly. Please enable Location Services.</string>
     <string name="log_out">Log Out</string>
     <string name="logo">Logo</string>
@@ -526,8 +528,7 @@
     <string name="onboarding">Configuration</string>
     <string name="onboarding_description">This device is not correctly configured, please click on the continue button and follow the next steps to complete the configuration</string>
     <string name="onboarding_description_first_install">In order to use the %1$s app, some permissions and the privacy policy need to be accepted. Please click on the continue button and follow the next steps to complete the configuration</string>
-    <string name="onboarding_location_1">This app performs constant location tracking in order to model precisely your physical activity. \n\nPlease select the following options when they appear. Make sure to select \"Allow all the time\" otherwise the app precision will be reduced.</string>
-    <string name="onboarding_location_2">Android may warn you that the App uses power in the background. That is correct. It is necessary in order to track 24/7. The message can be ignored.</string>
+    <string name="onboarding_location_1"><![CDATA[In order to accurately record your activity the app needs to access the Physical Activity and Location data stored on your mobile device.<br>Please follow the instructions below when the permissions are shown.<br><br><b>Physical Activity</b><br><ol><li>Allow Moving Health to access your physical activity?</li><li>Click on Allow.</li></ol><br><br><b>Location Services</b><br><ol><li>Allow Moving Health to access this device’s location?</li><li>Click on <b>Precise</b> and <b>While using the app</b></li><li>Location Permission must be set to <b>Allow all the time</b></li></ol>]]></string>
     <string name="only_for">Before continuing, make sure to read and accept the Terms and Conditions.\n\nThen, we\'ll ask you to switch on the phone\'s motion and fitness sensors and the location detection. \n \nIt will take just a few seconds and it will make sure the app provides you with the best possible experience.</string>
     <string name="open_permissions">Open Permissions</string>
     <string name="opening_times">Opening Times</string>
@@ -541,6 +542,7 @@
     <string name="paragraph_two_about_set_up_gfit">Don\’t worry, you won\'t lose any existing type data, and achievements you\’ve collected.</string>
     <string name="participating_city">Living in a partner city?</string>
     <string name="participant_information">Participant Information and Privacy Policy</string>
+    <string name="participant_information_title">Participant Information and Privacy Policy (1)</string>
     <string name="passive_gps_text">To save battery, we use passive location detection: the path drawn on the map may be imprecise or missing sometimes. This will not make the application imprecise.</string>
     <string name="passive_location_title">Passive Location</string>
     <string name="password">Password</string>
@@ -567,7 +569,7 @@
     <string name="pedalling_speed">Pedalling Speed</string>
     <string name="permission_dialog_title">Permission Needed</string>
     <string name="permission_google_fit_title">Please accept the Google Fit permission, otherwise you will not be able to check your activity data.</string>
-    <string name="permissions_activity_recognition_dialog_title">Please accept the Physical Activity permission, otherwise you will not be able to provide accurate results for your activities.</string>
+    <string name="permissions_activity_recognition_dialog_title">Please accept the Physical Activity permission, otherwise you will not be to participate in this study.</string>
     <string name="permissions_background_location_dialog_title">Please accept the Background Location permission, otherwise you will not be able to provide accurate results for your activities.</string>
     <string name="permissions_camera_capture_dialog_title">Please accept the CAMERA permission, otherwise you will not be able to capture an image for your avatar.</string>
     <string name="permissions_camera_dialog_title">Please accept the CAMERA permission, otherwise you will not be able to scan the product code.</string>
@@ -584,6 +586,8 @@
     <string name="phone_number_hint">Phone Number</string>
     <string name="phone_upload_dialog_description">This device has data to upload, if you want to upload this data please select the \"Upload Now\" button below else close to return to the dismiss patient screen.</string>
     <string name="phone_upload_dialog_title">Phone Data Upload</string>
+    <string name="physical_activity">Physical Activity *</string>
+    <string name="physical_activity_permission">I agree to give access to my physical activity data. This does not includes any GPS data.</string>
     <string name="physiology_details_two">Sleep Heart Rate: %1$s</string>
     <string name="physiology_details_one">Awake Heart Rate: %1$s</string>
     <string name="physiology_title">Physiology</string>

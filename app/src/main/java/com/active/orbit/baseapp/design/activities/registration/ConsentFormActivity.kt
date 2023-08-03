@@ -165,7 +165,7 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
 
                     Router.getInstance()
                         .activityAnimation(ActivityAnimation.LEFT_RIGHT)
-                        .startBaseActivity(this, Activities.PATIENT_DETAILS, bundle)
+                        .startBaseActivity(this, Activities.ON_BOARDING_LOCATION, bundle)
                 } else {
                     UiUtils.showLongToast(this, R.string.accept_toc_please)
                     binding.scrollView.scrollTo(binding.termsLinkContainer.x.roundToInt(), binding.termsLinkContainer.y.roundToInt())
