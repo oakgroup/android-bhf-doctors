@@ -16,6 +16,9 @@ import com.active.orbit.baseapp.core.utils.BaseException
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.design.utils.UiUtils
 import java.lang.Double
+import kotlin.Boolean
+import kotlin.Float
+import kotlin.Int
 import kotlin.math.cos
 import kotlin.math.min
 import kotlin.math.sin
@@ -39,10 +42,11 @@ open class CircularProgressBar(context: Context, attrs: AttributeSet?, defStyleA
     private var mMaxProgress = 100f
 
     private var mDrawText = false
-    private var mRoundedCorners = true
+    private var mRoundedCorners = false
 
     private var mProgressIconResource = R.drawable.ic_progress
     private var progressIcon = BaseImageView(context)
+    private var mDrawIcon = false
 
     private var mLineWidth = UiUtils.dp2px(resources, 20f)
     private var mTextColor = ContextCompat.getColor(context, R.color.textColorPrimaryDark)
@@ -62,7 +66,7 @@ open class CircularProgressBar(context: Context, attrs: AttributeSet?, defStyleA
         drawBackground(canvas)
         drawProgress(canvas)
         if (mDrawText) drawText(canvas)
-        addProgressIcon()
+        if (mDrawIcon) addProgressIcon()
     }
 
     private fun reset() {
@@ -132,6 +136,13 @@ open class CircularProgressBar(context: Context, attrs: AttributeSet?, defStyleA
     fun setProgressIconResource(resourceId: Int) {
         post {
             mProgressIconResource = resourceId
+            invalidate()
+        }
+    }
+
+    fun showProgressIcon(show: Boolean) {
+        post {
+            mDrawIcon = show
             invalidate()
         }
     }

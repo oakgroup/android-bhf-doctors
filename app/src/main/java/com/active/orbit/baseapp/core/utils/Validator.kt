@@ -84,4 +84,19 @@ object Validator {
         }
         return false
     }
+
+
+
+    fun validatePhone(phone: String): Boolean {
+        if (!TextUtils.isEmpty(phone)) {
+            val regex = "^((\\+44)|(0)) ?\\d{4} ?\\d{6}\$"
+
+            val pattern: Pattern = Pattern.compile(regex)
+
+            val matcher: Matcher = pattern.matcher(phone)
+
+            return matcher.matches()
+        }
+        return false
+    }
 }

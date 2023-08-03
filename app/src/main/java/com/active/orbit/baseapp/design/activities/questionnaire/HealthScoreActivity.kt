@@ -140,14 +140,22 @@ class HealthScoreActivity : BaseActivity(), View.OnClickListener {
                                     .startBaseActivity(this@HealthScoreActivity, Activities.HEALTH)
                             } else {
                                 UiUtils.showShortToast(this@HealthScoreActivity, R.string.error)
+                                setResult(ResultCode.RESULT_OK.value)
+                                Router.getInstance()
+                                    .clearTop(true)
+                                    .startBaseActivity(this@HealthScoreActivity, Activities.HEALTH)
                             }
                         }
                     })
                 }
 
             } else {
-                Logger.d("Model wrong:" + healthModel!!.description())
-
+                hideProgressView()
+                UiUtils.showShortToast(this@HealthScoreActivity, R.string.error)
+                setResult(ResultCode.RESULT_OK.value)
+                Router.getInstance()
+                    .clearTop(true)
+                    .startBaseActivity(this@HealthScoreActivity, Activities.HEALTH)
             }
 
         }

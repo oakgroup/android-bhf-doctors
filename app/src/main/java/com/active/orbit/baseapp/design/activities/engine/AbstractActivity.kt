@@ -25,8 +25,8 @@ import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnim
 import com.active.orbit.baseapp.design.activities.main.DoctorActivity
 import com.active.orbit.baseapp.design.activities.main.PatientActivity
 import com.active.orbit.baseapp.design.components.MenuComponent
-import com.active.orbit.baseapp.design.dialogs.DismissPatientDialog
-import com.active.orbit.baseapp.design.dialogs.listeners.DismissPatientDialogListener
+import com.active.orbit.baseapp.design.dialogs.WithdrawDialog
+import com.active.orbit.baseapp.design.dialogs.listeners.WithdrawDialogListener
 import com.active.orbit.baseapp.design.widgets.BaseImageButton
 import com.active.orbit.baseapp.design.widgets.BaseImageView
 import com.active.orbit.baseapp.design.widgets.BaseTextView
@@ -340,14 +340,14 @@ abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListen
     }
 
     fun showDismissPatientDialog() {
-        val dialog = DismissPatientDialog()
+        val dialog = WithdrawDialog()
         dialog.isCancelable = false
-        dialog.listener = object : DismissPatientDialogListener {
+        dialog.listener = object : WithdrawDialogListener {
             override fun onDismiss() {
                 Router.getInstance().logout(this@AbstractActivity)
             }
         }
-        dialog.show(supportFragmentManager, DismissPatientDialog::javaClass.name)
+        dialog.show(supportFragmentManager, WithdrawDialog::javaClass.name)
     }
 
 

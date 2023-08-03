@@ -7,20 +7,18 @@ import android.view.ViewGroup
 import android.view.Window
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.fragment.app.DialogFragment
 import com.active.orbit.baseapp.R
-import com.active.orbit.baseapp.core.preferences.engine.Preferences
-import com.active.orbit.baseapp.design.dialogs.listeners.DismissPatientDialogListener
+import com.active.orbit.baseapp.design.dialogs.listeners.WithdrawDialogListener
 
-class DismissPatientDialog : DialogFragment() {
+class WithdrawDialog : DialogFragment() {
 
-    var listener: DismissPatientDialogListener? = null
+    var listener: WithdrawDialogListener? = null
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         super.onCreateDialog(savedInstanceState)
 
-        val view = layoutInflater.inflate(R.layout.dialog_dismiss_patient, view as ViewGroup?, false)
+        val view = layoutInflater.inflate(R.layout.dialog_withdraw, view as ViewGroup?, false)
         setup(view)
 
         val builder = AlertDialog.Builder(requireContext())
@@ -32,7 +30,6 @@ class DismissPatientDialog : DialogFragment() {
     private fun setup(view: View) {
         val btnCancel = view.findViewById<Button>(R.id.btnCancel)
         val btnDismiss = view.findViewById<Button>(R.id.btnDismiss)
-        val layoutDetails = view.findViewById<LinearLayoutCompat>(R.id.layoutDetails)
 
         btnCancel.setOnClickListener {
             listener?.onCancel()

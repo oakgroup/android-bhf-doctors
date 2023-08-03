@@ -48,6 +48,10 @@ class HealthResponseActivity : BaseActivity(), View.OnClickListener {
                         prepare()
                     }
                 }
+            } else {
+                Logger.e("Model is null ${javaClass.name}")
+                UiUtils.showShortToast(this@HealthResponseActivity, R.string.health_show_error)
+                finish()
             }
         }
 

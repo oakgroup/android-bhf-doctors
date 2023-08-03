@@ -47,6 +47,13 @@ class UserRegistrationRequest : BaseModel {
     @SerializedName("userConsentName")
     var userConsentName: String? = null
 
+    @SerializedName("userEmail")
+    var userEmail: String? = null
+
+    @SerializedName("userPhoneNumber")
+    var userPhoneNumber: String? = null
+
+
     override fun identifier(): String {
         return Constants.EMPTY
     }
@@ -62,6 +69,8 @@ class UserRegistrationRequest : BaseModel {
                 !TextUtils.isEmpty(userConsentName) &&
                 !TextUtils.isEmpty(userIPAddress) &&
                 !TextUtils.isEmpty(userPostcode) &&
+                (!TextUtils.isEmpty(userEmail) ||
+                !TextUtils.isEmpty(userPhoneNumber)) &&
                 userDob != null &&
                 userConsentDate != null &&
                 registrationTimestamp != null

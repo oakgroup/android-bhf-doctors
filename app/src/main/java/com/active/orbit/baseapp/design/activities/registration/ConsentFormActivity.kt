@@ -13,8 +13,8 @@ import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.deserialization.UserRegistrationMap
 import com.active.orbit.baseapp.core.download.Download
 import com.active.orbit.baseapp.core.enums.SuccessMessageType
-import com.active.orbit.baseapp.core.firestore.providers.FirestoreProvider
 import com.active.orbit.baseapp.core.listeners.UserRegistrationListener
+import com.active.orbit.baseapp.core.managers.ConsentFormManager
 import com.active.orbit.baseapp.core.managers.UserManager
 import com.active.orbit.baseapp.core.permissions.Permissions
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
@@ -45,13 +45,6 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
     private var dateOfConsent: Calendar? = null
     private var fromMenu = false
 
-    private var userNhsNumber = Constants.EMPTY
-    private var userFirstName = Constants.EMPTY
-    private var userLastName = Constants.EMPTY
-    private var userDOB = Constants.INVALID.toLong()
-    private var userSex = Constants.EMPTY
-    private var userPostcode = Constants.EMPTY
-
     private var questionsAdapter: ConsentQuestionsAdapter? = null
     private var questionListener: ConsentQuestionListener? = null
 
@@ -67,8 +60,6 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
 
 
         prepare()
-
-
 
     }
 
@@ -97,13 +88,6 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
             prepareQuestions(true)
 
         } else {
-            userNhsNumber = activityBundle.getString(Extra.USER_NHS_NUMBER.key)!!
-            userFirstName = activityBundle.getString(Extra.USER_FIRST_NAME.key)!!
-            userLastName = activityBundle.getString(Extra.USER_LAST_NAME.key)!!
-            userDOB = activityBundle.getLong(Extra.USER_DOB.key)
-            userSex = activityBundle.getString(Extra.USER_SEX.key)!!
-            userPostcode = activityBundle.getString(Extra.USER_POSTCODE.key)!!
-
             binding.progressText.visibility = View.VISIBLE
             binding.steps.visibility = View.VISIBLE
             binding.buttons.visibility = View.VISIBLE
@@ -174,9 +158,14 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
         when (v) {
 
             binding.btnConfirm -> {
-                //TODO compare counter with the size of the
                 if (!TextUtils.isEmpty(binding.fullName.textTrim) && dateOfConsent != null && questionsAcceptedCounter == questionsAdapter!!.numberOfQuestions) {
-                    register()
+                    val bundle = Bundle()
+                    bundle.putString(Extra.USER_CONSENT_NAME.key, binding.fullName.textTrim)
+                    bundle.putLong(Extra.USER_CONSENT_DATE.key, dateOfConsent!!.timeInMillis)
+
+                    Router.getInstance()
+                        .activityAnimation(ActivityAnimation.LEFT_RIGHT)
+                        .startBaseActivity(this, Activities.PATIENT_DETAILS, bundle)
                 } else {
                     UiUtils.showLongToast(this, R.string.accept_toc_please)
                     binding.scrollView.scrollTo(binding.termsLinkContainer.x.roundToInt(), binding.termsLinkContainer.y.roundToInt())
@@ -221,75 +210,6 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
     }
 
 
-    private fun register() {
-        showProgressView()
 
-        val request = UserRegistrationRequest()
-        request.phoneModel = Utils.getPhoneModel()
-        request.appVersion = Utils.getAppVersion(this)
-        request.androidVersion = Utils.getAndroidVersion()
-        request.userNhsNumber = userNhsNumber.toBigInteger()
-        request.userFirstName = userFirstName
-        request.userLastName = userLastName
-        request.userSex = userSex
-        request.userPostcode = userPostcode
-        request.userDob = userDOB
-        request.userIPAddress = Utils.getLocalIPAddress()
-        request.registrationTimestamp = TimeUtils.getCurrent().timeInMillis
-        request.userConsentName = binding.fullName.textTrim
-        request.userConsentDate = dateOfConsent!!.timeInMillis
-
-        UserManager.registerUser(this, request, object : UserRegistrationListener {
-            override fun onSuccess(map: UserRegistrationMap) {
-                //TODO tell Prassana to include participantIDCounter
-                if (map.dataItem.participantIdCounter.counter > 1) {
-                    Logger.d("Already existing user with patient id $userNhsNumber, ask for confirmation")
-                    val dialog = ConfirmRegistrationDialog()
-                    dialog.isCancelable = false
-                    dialog.listener = object : ConfirmRegistrationDialogListener {
-                        override fun onRegister() {
-                            completeRegistration(map)
-                        }
-
-                        override fun onCancel() {
-                            finish()
-                        }
-                    }
-                    dialog.show(supportFragmentManager, ConfirmRegistrationDialog::javaClass.name)
-                } else {
-                    completeRegistration(map)
-                }
-            }
-
-            override fun onError() {
-                hideProgressView()
-                UiUtils.showShortToast(this@ConsentFormActivity, R.string.error)
-            }
-        })
-    }
-
-    private fun completeRegistration(map: UserRegistrationMap) {
-        hideProgressView()
-        Logger.d("User successfully registered with id ${map.dataItem.userId.id}")
-        Preferences.user(this).idUser = map.dataItem.userId.id
-        Preferences.user(this).userNhsNumber = userNhsNumber
-        Preferences.user(this).userFirstName = userFirstName
-        Preferences.user(this).userLastName = userLastName
-        Preferences.user(this).userDateOfBirth = userDOB
-        Preferences.user(this).userSex = userSex
-        Preferences.user(this).userPostcode = userPostcode
-        Preferences.user(this).userConsentDate = dateOfConsent!!.timeInMillis
-        Preferences.user(this).userConsentName = binding.fullName.textTrim
-        Preferences.lifecycle(this).userDetailsUploaded = false
-
-        // check registration with the server
-        TrackerManager.getInstance(this).saveUserRegistrationId(map.dataItem.userId.id)
-        FirestoreProvider.getInstance().updateUserDetails(this)
-
-        val bundle = Bundle()
-        bundle.putInt(Extra.SUCCESS_MESSAGE.key, SuccessMessageType.REGISTRATION.id)
-        Router.getInstance().activityAnimation(ActivityAnimation.BOTTOM_TOP).startBaseActivity(thiss, Activities.SUCCESS_MESSAGE, bundle)
-        finish()
-    }
 
 }

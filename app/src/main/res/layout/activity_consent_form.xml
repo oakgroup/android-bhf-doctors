@@ -12,11 +12,9 @@
         android:id="@+id/title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_lateral"
-        android:layout_marginTop="@dimen/margin_vertical"
-        android:layout_marginEnd="@dimen/margin_lateral"
+        android:layout_marginHorizontal="@dimen/margin_lateral"
         android:gravity="start"
-        android:text="@string/consent_form"
+        android:text="@string/participant_information"
         android:textColor="@color/textColorPrimaryDark"
         android:textSize="@dimen/h2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,8 +26,7 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="@dimen/margin_vertical"
-        android:layout_marginTop="@dimen/margin_vertical_double"
+        android:layout_marginVertical="@dimen/margin_vertical"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@id/bottomLayout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -156,7 +153,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingHorizontal="@dimen/margin_lateral"
-        android:layout_marginTop="@dimen/margin_vertical_double"
         android:paddingBottom="@dimen/margin_vertical_double"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -168,7 +164,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="end"
-            android:text="2/2"
+            android:text="1/3"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/h5"
             app:typeface="semibold"
@@ -199,7 +195,16 @@
                 android:layout_height="10dp"
                 android:layout_marginEnd="@dimen/margin_lateral_half_half"
                 android:layout_weight="1"
-                android:background="@drawable/bg_step_selected" />
+                android:background="@drawable/bg_step_idle" />
+
+            <View
+                android:id="@+id/stepThree"
+                android:layout_width="0dp"
+                android:layout_height="10dp"
+                android:layout_marginEnd="@dimen/margin_lateral_half_half"
+                android:layout_weight="1"
+                android:background="@drawable/bg_step_idle" />
+
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -208,7 +213,7 @@
             android:id="@+id/buttons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_vertical_double"
+            android:layout_marginTop="@dimen/margin_vertical"
             android:gravity="center"
             android:visibility="visible"
             android:orientation="horizontal">
@@ -243,7 +248,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/download"
-            android:visibility="visible"
+            android:visibility="gone"
             app:typeface="semibold" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

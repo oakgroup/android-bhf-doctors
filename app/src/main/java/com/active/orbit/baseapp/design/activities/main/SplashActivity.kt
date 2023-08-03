@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.active.orbit.baseapp.BuildConfig
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.listeners.ResultListener
+import com.active.orbit.baseapp.core.managers.ConsentFormManager
 import com.active.orbit.baseapp.core.preferences.engine.BasePreferences
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.Router
@@ -32,6 +33,8 @@ class SplashActivity : BaseActivity() {
             // remember first installation date
             Preferences.lifecycle(this).firstInstall = TimeUtils.getCurrent().timeInMillis
         }
+
+        ConsentFormManager.retrieveConsentForm(thiss)
 
         if (BuildConfig.DEBUG) printInformationLogs()
     }

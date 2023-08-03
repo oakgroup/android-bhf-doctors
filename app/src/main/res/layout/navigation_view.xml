@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="start"
-    android:layout_marginEnd="60dp"
     android:background="@drawable/bg_drawer_bottom"
     app:headerLayout="@layout/nav_header_main"
     app:itemIconSize="32dp"

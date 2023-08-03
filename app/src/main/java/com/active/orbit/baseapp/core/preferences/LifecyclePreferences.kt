@@ -23,6 +23,14 @@ class LifecyclePreferences : BasePreferences() {
             editor.apply()
         }
 
+    var tourShown: Boolean
+        get() = prefs.getBoolean(res.getString(R.string.preference_lifecycle_tour_shown_key), false)
+        set(value) {
+            val editor = prefs.edit()
+            editor.putBoolean(res.getString(R.string.preference_lifecycle_tour_shown_key), value)
+            editor.apply()
+        }
+
     var onboardingshown: Boolean
         get() = prefs.getBoolean(res.getString(R.string.preference_lifecycle_onboarding_shown_key), false)
         set(value) {

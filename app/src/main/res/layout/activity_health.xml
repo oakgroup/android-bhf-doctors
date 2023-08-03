@@ -11,6 +11,23 @@
         android:layout_height="match_parent"
         android:background="@color/colorBackground">
 
+        <com.active.orbit.baseapp.design.widgets.BaseTextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/margin_lateral"
+            android:lineSpacingExtra="5dp"
+            android:textColor="@color/textColorPrimaryDark"
+            android:text="@string/health_list_description"
+            android:textSize="@dimen/h5"
+            app:typeface="regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            tools:ignore="NotSibling" />
+
+
         <com.active.orbit.baseapp.design.recyclers.engine.BaseRecyclerView
             android:id="@+id/healthRecyclerView"
             android:layout_width="match_parent"
@@ -23,7 +40,7 @@
             app:layout_constraintBottom_toTopOf="@id/bottomNav"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintTop_toBottomOf="@id/description"
             tools:ignore="NotSibling" />
 
         <com.active.orbit.baseapp.design.widgets.BaseTextView
@@ -31,13 +48,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="20dp"
+            android:layout_margin="@dimen/margin_vertical"
             android:gravity="center"
             android:lineSpacingExtra="5dp"
+            android:textColor="@color/textColorPrimaryDark"
             android:text="@string/health_empty_patient"
             android:textAlignment="center"
-            android:textSize="@dimen/h3"
-            android:textStyle="bold"
+            android:textSize="@dimen/h4"
+            app:typeface="regular"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

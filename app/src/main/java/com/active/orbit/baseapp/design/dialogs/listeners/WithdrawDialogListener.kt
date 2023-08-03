@@ -1,6 +1,6 @@
 package com.active.orbit.baseapp.design.dialogs.listeners
 
-interface DismissPatientDialogListener {
+interface WithdrawDialogListener {
 
     fun onDismiss()
 

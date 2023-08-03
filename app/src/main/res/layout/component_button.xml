@@ -26,7 +26,7 @@
             android:text="@string/select"
             android:textColor="@color/textColorPrimaryDark"
             android:textSize="@dimen/button_tertiary_text_dimension"
-            app:typeface="semibold" />
+            app:typeface="medium" />
 
         <FrameLayout
             android:id="@+id/frameIcon"

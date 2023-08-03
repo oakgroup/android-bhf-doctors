@@ -57,8 +57,6 @@
         style="@style/ListItemIcon"
         android:layout_width="48dp"
         android:layout_height="0dp"
-        android:paddingStart="@dimen/margin_lateral_half_half"
-        android:paddingEnd="@dimen/margin_lateral_half_half"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">

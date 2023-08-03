@@ -52,8 +52,6 @@ object HealthManager: CoroutineScope {
         val webService = WebService(activity, Api.INSERT_HEALTH)
         webService.params = Gson().toJson(request)
 
-        webService.urlString = "http://52.56.150.239/v2/user_health_questionnaire"
-
         Connection(webService, object : ConnectionListener {
             override fun onConnectionSuccess(tag: Int, response: String) {
                 var map: UploadHealthMap? = null

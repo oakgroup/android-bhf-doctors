@@ -57,10 +57,10 @@
                     app:helpTitle="@string/patient_details" />
 
                 <com.active.orbit.baseapp.design.components.HelpComponent
-                    android:id="@+id/settingsBattery"
+                    android:id="@+id/locationServices"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:helpTitle="@string/settings_battery" />
+                    app:helpTitle="@string/location_services" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 

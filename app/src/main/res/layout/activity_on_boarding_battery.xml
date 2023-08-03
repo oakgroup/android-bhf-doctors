@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    android:paddingHorizontal="@dimen/margin_lateral"
     tools:context=".design.activities.onboarding.OnBoardingBatteryActivity">
 
     <com.active.orbit.baseapp.design.widgets.BaseTextView
@@ -15,17 +14,21 @@
         android:gravity="center"
         android:paddingVertical="@dimen/margin_vertical_double"
         android:text="@string/battery_settings"
+        android:layout_marginHorizontal="@dimen/margin_lateral"
         android:textColor="@color/textColorPrimaryDark"
         android:textSize="@dimen/h1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:typeface="bold" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:typeface="bold"
+        tools:ignore="NotSibling" />
+
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginVertical="@dimen/margin_vertical_double"
+        android:layout_marginHorizontal="@dimen/margin_lateral"
+        android:layout_marginBottom="@dimen/margin_vertical_double"
         android:background="@drawable/bg_panel"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@id/buttonsLayout"
@@ -67,6 +70,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_vertical"
+        android:layout_marginHorizontal="@dimen/margin_lateral"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

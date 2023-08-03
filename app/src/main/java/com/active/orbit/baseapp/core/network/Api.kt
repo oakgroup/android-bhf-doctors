@@ -14,7 +14,7 @@ enum class Api(private var apiUrl: Int) {
     INSERT_SYMPTOMS(R.string.api_insert_symptoms),
     INSERT_HEALTH(R.string.api_insert_health),
     USER_REGISTRATION(R.string.api_user_registration),
-    RETRIEVE_CONSENT_FORM(R.string.api_user_registration);
+    RETRIEVE_CONSENT_FORM(R.string.api_retrieve_consent_form);
 
 
     private var params = ArrayList<String>()

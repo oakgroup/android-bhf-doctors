@@ -30,9 +30,7 @@ object ConsentFormManager : CoroutineScope {
 
 
         val webService = WebService(activity, Api.RETRIEVE_CONSENT_FORM)
-        webService.urlString = "http://52.56.150.239/v2/user_consent_form"
         webService.method = Network.GET
-
 
         Connection(webService, object : ConnectionListener {
             override fun onConnectionSuccess(tag: Int, response: String) {

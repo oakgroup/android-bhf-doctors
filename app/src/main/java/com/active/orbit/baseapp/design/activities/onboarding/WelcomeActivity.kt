@@ -34,20 +34,24 @@ class WelcomeActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when(v){
             binding.welcomeButton -> {
-                onboarded(object : ResultListener {
-                    override fun onResult(success: Boolean) {
-                        if (!success) {
-                            Router.getInstance()
-                                .activityAnimation(ActivityAnimation.FADE)
-                                .startBaseActivity(this@WelcomeActivity, Activities.ON_BOARDING)
-                        } else {
-                            Router.getInstance()
-                                .activityAnimation(ActivityAnimation.FADE)
-                                .homepage(this@WelcomeActivity)
+                if (Preferences.lifecycle(this).tourShown) {
+                    onboarded(object : ResultListener {
+                        override fun onResult(success: Boolean) {
+                            if (!success) {
+                                Router.getInstance()
+                                    .activityAnimation(ActivityAnimation.FADE)
+                                    .startBaseActivity(this@WelcomeActivity, Activities.ON_BOARDING)
+                            } else {
+                                Router.getInstance()
+                                    .activityAnimation(ActivityAnimation.FADE)
+                                    .homepage(this@WelcomeActivity)
+                            }
                         }
-                        finish()
-                    }
-                })
+                    })
+                } else {
+                    Router.getInstance().activityAnimation(ActivityAnimation.FADE).startBaseActivity(this, Activities.TOUR)
+                }
+                finish()
             }
         }
     }

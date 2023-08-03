@@ -4,8 +4,12 @@ import android.graphics.Paint
 import android.os.Bundle
 import android.view.View
 import androidx.viewpager.widget.ViewPager
+import com.active.orbit.baseapp.core.preferences.engine.Preferences
+import com.active.orbit.baseapp.core.routing.Router
 import com.active.orbit.baseapp.databinding.ActivityTourBinding
+import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
+import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
 import com.active.orbit.baseapp.design.pager.adapters.AppTourAdapter
 
 class TourActivity : BaseActivity(), ViewPager.OnPageChangeListener, View.OnClickListener {
@@ -80,6 +84,12 @@ class TourActivity : BaseActivity(), ViewPager.OnPageChangeListener, View.OnClic
             }
 
             binding.btnClose -> {
+                //TODO needs to start the process of registration
+//                if (!Preferences.user(this).isUserRegistered()) {
+//                    Router.getInstance().activityAnimation(ActivityAnimation.BOTTOM_TOP).startBaseActivity(this,Activities.CONSENT_FORM)
+//                } else {
+//                    Router.getInstance().homepage(this)
+//                }
                 finish()
             }
         }

@@ -21,10 +21,11 @@
     <string name="preference_user_last_name_key" translatable="false">base.app.user.last.name</string>
     <string name="preference_user_consent_date_key" translatable="false">base.app.user.consent.date</string>
     <string name="preference_user_postcode_key" translatable="false">base.app.user.postcode</string>
+    <string name="preference_user_email_key" translatable="false">base.app.user.email</string>
+    <string name="preference_user_phone_key" translatable="false">base.app.user.phone</string>
     <string name="preference_user_consent_name_key" translatable="false">base.app.user.consent.name</string>
     <string name="preference_user_consent_form_text_key" translatable="false">base.app.user.consent.form.text</string>
     <string name="preference_user_consent_form_version_key" translatable="false">base.app.user.consent.form.version</string>
-
 
 
     <!-- lifecycle preferences -->
@@ -35,6 +36,8 @@
     <string name="preference_lifecycle_terms_conditions_accepted_key" translatable="false">base.app.lifecycle.terms.conditions.accepted</string>
     <string name="preference_lifecycle_user_details_uploaded_key" translatable="false">base.app.lifecycle.user.details.uploaded</string>
     <string name="preference_lifecycle_notification_scheduled" translatable="false">base.app.lifecycle.notification.scheduled</string>
+    <string name="preference_lifecycle_tour_shown_key" translatable="false">base.app.lifecycle.tour.shown</string>
+
 
 
 </resources>

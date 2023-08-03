@@ -97,6 +97,24 @@ class UserPreferences : BasePreferences() {
             editor.apply()
         }
 
+    var userEmail: String?
+        get() = prefs.getString(res.getString(R.string.preference_user_email_key), Constants.EMPTY)
+        set(value) {
+            val editor = prefs.edit()
+            if (value != null) editor.putString(res.getString(R.string.preference_user_email_key), value)
+            else editor.remove(res.getString(R.string.preference_user_email_key))
+            editor.apply()
+        }
+
+    var userPhone: String?
+        get() = prefs.getString(res.getString(R.string.preference_user_phone_key), Constants.EMPTY)
+        set(value) {
+            val editor = prefs.edit()
+            if (value != null) editor.putString(res.getString(R.string.preference_user_phone_key), value)
+            else editor.remove(res.getString(R.string.preference_user_phone_key))
+            editor.apply()
+        }
+
     var userConsentDate: Long?
         get() = prefs.getLong(res.getString(R.string.preference_user_consent_date_key), Constants.INVALID.toLong())
         set(value) {
