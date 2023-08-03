@@ -51,11 +51,11 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
     private fun prepare() {
 
         binding.btnSexSelection.setIcon(R.drawable.ic_dropdown)
-        binding.btnSexSelection.setText(getString(R.string.sex))
+        binding.btnSexSelection.setText(getString(R.string.select))
         binding.btnSexSelection.disableClick()
 
         binding.btnDateBirth.setIcon(R.drawable.ic_calendar)
-        binding.btnDateBirth.setText(getString(R.string.date))
+        binding.btnDateBirth.setText(getString(R.string.select))
         binding.btnDateBirth.disableClick()
 
 
@@ -71,10 +71,24 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
             binding.firstName.isEnabled = false
             binding.lastName.isEnabled = false
             binding.postcode.isEnabled = false
+            binding.email.isEnabled = false
+            binding.phone.isEnabled = false
 
             binding.firstName.setText(Preferences.user(this).userFirstName)
             binding.lastName.setText(Preferences.user(this).userLastName)
             binding.postcode.setText(Preferences.user(this).userPostcode)
+
+            if (Preferences.user(this).userEmail != Constants.EMPTY) {
+                binding.email.setText(Preferences.user(this).userEmail)
+            } else {
+                binding.email.hint = getString(R.string.email_address_hint)
+            }
+
+            if (Preferences.user(this).userPhone != Constants.EMPTY) {
+                binding.phone.setText(Preferences.user(this).userPhone)
+            } else {
+                binding.phone.hint = getString(R.string.phone_number_hint)
+            }
 
             dateOfBirth = TimeUtils.getCurrent(Preferences.user(this).userDateOfBirth!!)
             binding.btnDateBirth.setText(TimeUtils.format(dateOfBirth!!, Constants.DATE_FORMAT_YEAR_MONTH_DAY))
@@ -140,6 +154,34 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             })
+
+            binding.email.addTextChangedListener(object : TextWatcher {
+                override fun afterTextChanged(s: Editable?) {
+                    if (!TextUtils.isEmpty(binding.email.textTrim)) {
+                        if (!Validator.validateMail(binding.email.textTrim)) {
+                            binding.email.error = getString(R.string.value_not_admissible_email)
+                        }
+                    }
+                }
+
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            })
+
+            binding.phone.addTextChangedListener(object : TextWatcher {
+                override fun afterTextChanged(s: Editable?) {
+                    if (!TextUtils.isEmpty(binding.phone.textTrim)) {
+                        if (!Validator.validatePhone(binding.phone.textTrim)) {
+                            binding.phone.error = getString(R.string.value_not_admissible_phone)
+                        }
+                    }
+                }
+
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            })
         }
     }
 
@@ -171,7 +213,13 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
             binding.btnNext -> {
                 hideKeyboard()
 
-                if (binding.insertIdEntryView.isComplete() && !TextUtils.isEmpty(binding.firstName.textTrim) && !TextUtils.isEmpty(binding.lastName.textTrim) && dateOfBirth != null && sex != null && Validator.validatePostcode(binding.postcode.textTrim)) {
+                if (binding.insertIdEntryView.isComplete()
+                    && !TextUtils.isEmpty(binding.firstName.textTrim)
+                    && !TextUtils.isEmpty(binding.lastName.textTrim)
+                    && dateOfBirth != null && sex != null
+                    && Validator.validatePostcode(binding.postcode.textTrim)
+                    && (Validator.validateMail(binding.email.textTrim) || Validator.validatePhone(binding.phone.textTrim))) {
+
                     if (!Validator.validateNhsNumber(binding.insertIdEntryView.getPin())) {
                         UiUtils.showShortToast(this, "NHS number is not valid")
                     } else {
@@ -182,7 +230,8 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
                         bundle.putLong(Extra.USER_DOB.key, dateOfBirth!!.timeInMillis)
                         bundle.putString(Extra.USER_SEX.key, sex!!.sex)
                         bundle.putString(Extra.USER_POSTCODE.key, binding.postcode.textTrim)
-
+                        bundle.putString(Extra.USER_SEX.key, sex!!.sex)
+                        bundle.putString(Extra.USER_POSTCODE.key, binding.postcode.textTrim)
 
                         Router.getInstance()
                             .activityAnimation(ActivityAnimation.LEFT_RIGHT)
@@ -213,12 +262,20 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
 
             binding.btnSave -> {
                 hideKeyboard()
-                if (!TextUtils.isEmpty(binding.firstName.textTrim) && !TextUtils.isEmpty(binding.lastName.textTrim) && dateOfBirth != null && sex != null && Validator.validatePostcode(binding.postcode.textTrim)) {
+                if (!TextUtils.isEmpty(binding.firstName.textTrim) && !TextUtils.isEmpty(binding.lastName.textTrim)
+                    && dateOfBirth != null && sex != null
+                    && Validator.validatePostcode(binding.postcode.textTrim)
+                    && (Validator.validateMail(binding.email.textTrim) || Validator.validatePhone(binding.phone.textTrim))) {
+
+
                     Preferences.user(this).userFirstName = binding.firstName.textTrim
                     Preferences.user(this).userLastName = binding.lastName.textTrim
                     Preferences.user(this).userDateOfBirth = dateOfBirth!!.timeInMillis
                     Preferences.user(this).userSex = sex!!.sex
                     Preferences.user(this).userPostcode = binding.postcode.textTrim
+                    Preferences.user(this).userEmail = binding.email.textTrim
+                    Preferences.user(this).userPhone = binding.phone.textTrim
+
 
                     UiUtils.showShortToast(this, R.string.success)
 

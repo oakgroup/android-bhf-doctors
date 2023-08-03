@@ -190,6 +190,8 @@
     <string name="connection_failed_message">Connection failed</string>
     <string name="consent_form">Your Consent Form</string>
     <string name="consent_screening_questions">Eligibility and Consent</string>
+    <string name="contact_details">Contact Details *</string>
+    <string name="contact_necessary">(please provide at least one)</string>
     <string name="contact_support">Contact Support</string>
     <string name="contact_us">Contact Us</string>
     <string name="contact_us_descritpion">You can email us at movinghealth@sheffield.ac.uk</string>
@@ -216,7 +218,7 @@
     <string name="data_status">Data Status</string>
     <string name="data_to_be_sent">Data to upload: %1$s </string>
     <string name="date">Date</string>
-    <string name="date_of_birth">Date of Birth</string>
+    <string name="date_of_birth">Date of Birth *</string>
     <string name="date_of_birth_value">Date of Birth: %1$s </string>
     <string name="date_time">Date &amp; Time</string>
     <string name="day_ago">1 day ago</string>
@@ -254,6 +256,7 @@
     <string name="edit_avatar_dialog_title">Edit Avatar</string>
     <string name="edit_details_description">*Below you can change your details as you want</string>
     <string name="email_address">Email</string>
+    <string name="email_address_hint">Email</string>
     <string name="email_address_current">Current Email</string>
     <string name="email_address_invalid">The email address seems to be invalid</string>
     <string name="email_address_new">New Email</string>
@@ -269,7 +272,7 @@
     <string name="error_location_inactive">Please enable the device location</string>
     <string name="error_location_unavailable">The device location is unavailable</string>
     <string name="error_password_update">There was an error updating your password</string>
-    <string name="error_patient_details">Please fill in all the details</string>
+    <string name="error_patient_details">Please fill in all the mandatory fields</string>
     <string name="error_posting_sing_up">Error posting sign up</string>
     <string name="explore">Explore</string>
     <string name="explorer">Explorer</string>
@@ -305,7 +308,8 @@
     <string name="female">Female</string>
     <string name="filename_rule">Max. length: 8 </string>
     <string name="finish">Finish</string>
-    <string name="first_name">First Name</string>
+    <string name="first_name">First Name *</string>
+    <string name="first_name_hint">First Name</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="frequently_asked_questions">Frequently Asked Questions</string>
     <string name="friday">Friday</string>
@@ -386,7 +390,8 @@
     <string name="km">km</string>
     <string name="last_30_days">Day</string>
     <string name="last_location_sent">Locations</string>
-    <string name="last_name">Last Name</string>
+    <string name="last_name">Last Name *</string>
+    <string name="last_name_hint">Last Name</string>
     <string name="last_seven_days">Last 7 Days</string>
     <string name="last_steps_sent">Steps</string>
     <string name="last_trajectory_sent">Activities</string>
@@ -405,6 +410,7 @@
     <string name="logout_successful">Logout successful</string>
     <string name="male">Male</string>
     <string name="manage_authentication_dialog_title">You have entered the wrong credentials.In order to continue using this account you have the followings options:\n\n1)Try to authenticate your account again.\n2)Logout and you will be redirected to the login page so you can access your account again.</string>
+    <string name="mandatory">* mandatory</string>
     <string name="manually_time">Manually</string>
     <string name="maps">Map</string>
     <string name="mcroberts_manager">McRoberts Manager</string>
@@ -553,7 +559,7 @@
     <string name="patient_options">Patient Options</string>
     <string name="patient_registered_intro">You are now registered as a patient</string>
     <string name="patient_registration">Registration</string>
-    <string name="patient_registration_insert_id">Please add your NHS number.</string>
+    <string name="patient_registration_insert_id">Please add your NHS number *</string>
     <string name="patient_registration_nhs_url">Find NHS number</string>
     <string name="patient_registration_intro">Register so you can participate in the Moving Health Study</string>
     <string name="patient_start_study">Start the study using this button</string>
@@ -574,6 +580,8 @@
     <string name="permissions_will_not_be_granted">As you have chosen not to allow locationsList, the app will now close. Please uninstall it.</string>
     <string name="personal_settings">Personal Settings</string>
     <string name="petrol">Petrol</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="phone_number_hint">Phone Number</string>
     <string name="phone_upload_dialog_description">This device has data to upload, if you want to upload this data please select the \"Upload Now\" button below else close to return to the dismiss patient screen.</string>
     <string name="phone_upload_dialog_title">Phone Data Upload</string>
     <string name="physiology_details_two">Sleep Heart Rate: %1$s</string>
@@ -587,7 +595,8 @@
     <string name="please_select_values">Please select some values or write some notes</string>
     <string name="please_select_your_team">Earn points for your favorite teams!</string>
     <string name="plus">+</string>
-    <string name="postcode">Postcode</string>
+    <string name="postcode">Postcode *</string>
+    <string name="postcode_hint">Postcode</string>
     <string name="power_saving_damage">Remove any Power Saving Settings</string>
     <string name="power_settings">Settings</string>
     <string name="press">Press to Open Camera</string>
@@ -729,7 +738,7 @@
     <string name="severity">Severity</string>
     <string name="seven_day_streak">7 days Streak!</string>
     <string name="severity_empty">Please select a valid severity</string>
-    <string name="sex">Sex</string>
+    <string name="sex">Sex *</string>
     <string name="sex_value">Sex: %1$s</string>
     <string name="shorter_trip">Journeys of less than 5 minutes or 2 miles may not be recognised</string>
     <string name="showPermission">Show Permission</string>
@@ -841,8 +850,10 @@
     <string name="user_id_empty">The user id is empty</string>
     <string name="value_not_admissible">Value not admissible</string>
     <string name="value_not_admissible_active_minutes">Active minutes value not admissible</string>
+    <string name="value_not_admissible_email">Email format is not valid</string>
     <string name="value_not_admissible_heart_minutes">Heart minutes value not admissible</string>
     <string name="value_not_admissible_height">Height value not admissible</string>
+    <string name="value_not_admissible_phone">Phone format is not valid</string>
     <string name="value_not_admissible_postcode">Postcode is not valid</string>
     <string name="value_not_admissible_weight">Weight value not admissible</string>
     <string name="value_not_set">Insert a valid value</string>
