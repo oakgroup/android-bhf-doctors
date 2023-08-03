@@ -56,10 +56,6 @@ enum class Activities(private val activity: Class<out BaseActivity>) : ActivityP
     WEB_VIEW(WebViewActivity::class.java),
     WELCOME(WelcomeActivity::class.java);
 
-
-
-
-
     override fun getActivity(): Class<out BaseActivity> {
         return activity
     }

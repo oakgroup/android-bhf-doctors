@@ -10,31 +10,21 @@ import android.widget.DatePicker
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.active.orbit.baseapp.R
-import com.active.orbit.baseapp.core.deserialization.UserRegistrationMap
 import com.active.orbit.baseapp.core.download.Download
-import com.active.orbit.baseapp.core.enums.SuccessMessageType
-import com.active.orbit.baseapp.core.listeners.UserRegistrationListener
-import com.active.orbit.baseapp.core.managers.ConsentFormManager
-import com.active.orbit.baseapp.core.managers.UserManager
 import com.active.orbit.baseapp.core.permissions.Permissions
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.Router
 import com.active.orbit.baseapp.core.routing.enums.Extra
-import com.active.orbit.baseapp.core.serialization.UserRegistrationRequest
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.core.utils.Logger
 import com.active.orbit.baseapp.core.utils.TimeUtils
-import com.active.orbit.baseapp.core.utils.Utils
 import com.active.orbit.baseapp.databinding.ActivityConsentFormBinding
 import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
-import com.active.orbit.baseapp.design.dialogs.ConfirmRegistrationDialog
-import com.active.orbit.baseapp.design.dialogs.listeners.ConfirmRegistrationDialogListener
 import com.active.orbit.baseapp.design.recyclers.adapters.ConsentQuestionsAdapter
 import com.active.orbit.baseapp.design.recyclers.listeners.ConsentQuestionListener
 import com.active.orbit.baseapp.design.utils.UiUtils
-import uk.ac.shef.tracker.core.tracker.TrackerManager
 import java.util.Calendar
 import java.util.GregorianCalendar
 import kotlin.math.roundToInt
@@ -208,8 +198,6 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
         dateOfConsent!!.set(Calendar.DAY_OF_MONTH, dayOfMonth)
         binding.btnDate.setText(TimeUtils.format(dateOfConsent!!, Constants.DATE_FORMAT_YEAR_MONTH_DAY))
     }
-
-
 
 
 }

@@ -53,9 +53,7 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
         setContentView(binding.root)
         showBackButton()
 
-        if (activityBundle.getBoolean(Extra.FROM_MENU.key) != null) {
-            fromMenu = activityBundle.getBoolean(Extra.FROM_MENU.key)
-        }
+        fromMenu = activityBundle.getBoolean(Extra.FROM_MENU.key)
 
         prepare()
     }
@@ -115,7 +113,7 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
 
         } else {
 
-            userConsentName = activityBundle.getString(Extra.USER_CONSENT_NAME.key)!!
+            userConsentName = activityBundle.getString(Extra.USER_CONSENT_NAME.key) ?: Constants.EMPTY
             userConsentDate = activityBundle.getLong(Extra.USER_CONSENT_DATE.key)
 
 
