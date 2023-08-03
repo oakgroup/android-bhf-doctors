@@ -49,31 +49,28 @@ class OnBoardingLocationActivity : BaseActivity(), View.OnClickListener {
 
         binding.physicalActivityCheckBox.setOnClickListener(this)
         binding.locationServicesCheckBox.setOnClickListener(this)
+    }
 
-        if (hasActivityRecognitionPermissionGranted()){
-            binding.physicalActivityCheckBox.isChecked = true
-        }
-
-        if (hasLocationPermissionGranted() && hasBackgroundLocationPermissionGranted()){
-            binding.locationServicesCheckBox.isChecked = true
-        }
-
-
+    private fun updateCheckBoxes() {
+        binding.physicalActivityCheckBox.isChecked = hasActivityRecognitionPermissionGranted()
+        binding.locationServicesCheckBox.isChecked = hasLocationPermissionGranted() && hasBackgroundLocationPermissionGranted()
     }
 
     override fun onResume() {
         super.onResume()
 
-
+        updateCheckBoxes()
     }
 
     @RequiresApi(Build.VERSION_CODES.Q)
     override fun onPermissionEnabled(requestCode: Int) {
         super.onPermissionEnabled(requestCode)
+        updateCheckBoxes()
         when (requestCode) {
             Permissions.Group.ACCESS_FINE_LOCATION.requestCode -> {
                 requestPermissionBackgroundLocation()
             }
+
             else -> {
                 Logger.e("Undefined request code $requestCode on permission enabled ")
             }
@@ -81,54 +78,35 @@ class OnBoardingLocationActivity : BaseActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-
-        when(v){
-
+        when (v) {
             binding.physicalActivityCheckBox -> {
-                if (binding.physicalActivityCheckBox.isChecked) {
-                    if (!hasActivityRecognitionPermissionGranted())requestPermissionActivityRecognition()
-                }
+                if (!hasActivityRecognitionPermissionGranted()) requestPermissionActivityRecognition()
+                else Router.getInstance().openSettings(this)
             }
 
             binding.locationServicesCheckBox -> {
-                if (binding.locationServicesCheckBox.isChecked) {
-                    if (!hasLocationPermissionGranted()) {
-                        requestPermissionLocation()
-                    } else if (!hasBackgroundLocationPermissionGranted()){
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                            requestPermissionBackgroundLocation()
-                        }
+                if (!hasLocationPermissionGranted()) {
+                    requestPermissionLocation()
+                } else if (!hasBackgroundLocationPermissionGranted()) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                        requestPermissionBackgroundLocation()
                     }
+                } else {
+                    Router.getInstance().openSettings(this)
                 }
             }
 
-
             binding.btnNext -> {
-                if (binding.physicalActivityCheckBox.isChecked) {
-                    if (!hasActivityRecognitionPermissionGranted()) {
-                        requestPermissionActivityRecognition()
-
-                    } else if (!hasLocationPermissionGranted() && binding.locationServicesCheckBox.isChecked ) {
-                        requestPermissionLocation()
-
-                    } else if (!hasBackgroundLocationPermissionGranted() && binding.locationServicesCheckBox.isChecked) {
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                            requestPermissionBackgroundLocation()
-                        }
-                    } else{
-                        val bundle = Bundle()
-                        bundle.putString(Extra.USER_CONSENT_NAME.key, userConsentName)
-                        bundle.putLong(Extra.USER_CONSENT_DATE.key, userConsentDate)
-
-                        Router.getInstance()
-                            .activityAnimation(ActivityAnimation.LEFT_RIGHT)
-                            .startBaseActivity(this, Activities.PATIENT_DETAILS, bundle)
-                    }
-
-                } else{
+                if (hasActivityRecognitionPermissionGranted()) {
+                    val bundle = Bundle()
+                    bundle.putString(Extra.USER_CONSENT_NAME.key, userConsentName)
+                    bundle.putLong(Extra.USER_CONSENT_DATE.key, userConsentDate)
+                    Router.getInstance()
+                        .activityAnimation(ActivityAnimation.LEFT_RIGHT)
+                        .startBaseActivity(this, Activities.PATIENT_DETAILS, bundle)
+                } else {
                     UiUtils.showShortToast(this, R.string.activity_rec_permissions_not_granted)
                     binding.scrollView.scrollTo(binding.permissionsContainer.x.roundToInt(), binding.permissionsContainer.y.roundToInt())
-
                 }
             }
 
@@ -137,5 +115,4 @@ class OnBoardingLocationActivity : BaseActivity(), View.OnClickListener {
             }
         }
     }
-
 }
