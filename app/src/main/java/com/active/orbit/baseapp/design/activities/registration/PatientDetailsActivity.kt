@@ -10,21 +10,30 @@ import android.view.View
 import android.widget.DatePicker
 import androidx.core.content.ContextCompat
 import com.active.orbit.baseapp.R
+import com.active.orbit.baseapp.core.deserialization.UserRegistrationMap
+import com.active.orbit.baseapp.core.enums.SuccessMessageType
+import com.active.orbit.baseapp.core.listeners.UserRegistrationListener
+import com.active.orbit.baseapp.core.managers.UserManager
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.Router
 import com.active.orbit.baseapp.core.routing.enums.Extra
+import com.active.orbit.baseapp.core.serialization.UserRegistrationRequest
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.core.utils.Logger
 import com.active.orbit.baseapp.core.utils.TimeUtils
+import com.active.orbit.baseapp.core.utils.Utils
 import com.active.orbit.baseapp.core.utils.Validator
 import com.active.orbit.baseapp.databinding.ActivityPatientDetailsBinding
 import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
+import com.active.orbit.baseapp.design.dialogs.ConfirmRegistrationDialog
 import com.active.orbit.baseapp.design.dialogs.SelectSexDialog
+import com.active.orbit.baseapp.design.dialogs.listeners.ConfirmRegistrationDialogListener
 import com.active.orbit.baseapp.design.dialogs.listeners.SelectSexDialogListener
 import com.active.orbit.baseapp.design.recyclers.models.SexModel
 import com.active.orbit.baseapp.design.utils.UiUtils
+import uk.ac.shef.tracker.core.tracker.TrackerManager
 import java.util.*
 
 class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerDialog.OnDateSetListener {
@@ -34,6 +43,9 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
     private var sex: SexModel? = null
     private var dateOfBirth: Calendar? = null
     private var fromMenu = false
+
+    private var userConsentName = Constants.EMPTY
+    private var userConsentDate = Constants.INVALID.toLong()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -102,6 +114,11 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
             binding.btnNhsUrl.visibility = View.GONE
 
         } else {
+
+            userConsentName = activityBundle.getString(Extra.USER_CONSENT_NAME.key)!!
+            userConsentDate = activityBundle.getLong(Extra.USER_CONSENT_DATE.key)
+
+
             binding.progressText.visibility = View.VISIBLE
             binding.stepsLayout.visibility = View.VISIBLE
             binding.buttons.visibility = View.VISIBLE
@@ -223,19 +240,7 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
                     if (!Validator.validateNhsNumber(binding.insertIdEntryView.getPin())) {
                         UiUtils.showShortToast(this, "NHS number is not valid")
                     } else {
-                        val bundle = Bundle()
-                        bundle.putString(Extra.USER_NHS_NUMBER.key, binding.insertIdEntryView.getPin())
-                        bundle.putString(Extra.USER_FIRST_NAME.key, binding.firstName.textTrim)
-                        bundle.putString(Extra.USER_LAST_NAME.key, binding.lastName.textTrim)
-                        bundle.putLong(Extra.USER_DOB.key, dateOfBirth!!.timeInMillis)
-                        bundle.putString(Extra.USER_SEX.key, sex!!.sex)
-                        bundle.putString(Extra.USER_POSTCODE.key, binding.postcode.textTrim)
-                        bundle.putString(Extra.USER_SEX.key, sex!!.sex)
-                        bundle.putString(Extra.USER_POSTCODE.key, binding.postcode.textTrim)
-
-                        Router.getInstance()
-                            .activityAnimation(ActivityAnimation.LEFT_RIGHT)
-                            .startBaseActivity(this, Activities.CONSENT_FORM, bundle)
+                        register()
                     }
                 } else {
                     UiUtils.showShortToast(this, R.string.error_patient_details)
@@ -308,5 +313,84 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
         }
 
 
+    }
+
+
+    private fun register() {
+        showProgressView()
+
+        val request = UserRegistrationRequest()
+        request.phoneModel = Utils.getPhoneModel()
+        request.appVersion = Utils.getAppVersion(this)
+        request.androidVersion = Utils.getAndroidVersion()
+        request.userNhsNumber = binding.insertIdEntryView.getPin().toBigInteger()
+        request.userFirstName = binding.firstName.textTrim
+        request.userLastName = binding.lastName.textTrim
+        request.userSex = sex!!.sex
+        request.userPostcode = binding.postcode.textTrim
+        request.userDob = dateOfBirth!!.timeInMillis
+        request.userEmail = binding.email.textTrim
+        request.userPhoneNumber = binding.phone.textTrim
+        request.userIPAddress = Utils.getLocalIPAddress()
+        request.registrationTimestamp = TimeUtils.getCurrent().timeInMillis
+        request.userConsentName = userConsentName
+        request.userConsentDate = userConsentDate
+
+        UserManager.registerUser(this, request, object : UserRegistrationListener {
+            override fun onSuccess(map: UserRegistrationMap) {
+                if (map.dataItem.participantIdCounter.counter > 1) {
+                    Logger.d("Already existing user with patient id ${binding.insertIdEntryView.getPin()}, ask for confirmation")
+                    val dialog = ConfirmRegistrationDialog()
+                    dialog.isCancelable = false
+                    dialog.listener = object : ConfirmRegistrationDialogListener {
+                        override fun onRegister() {
+                            completeRegistration(map)
+                        }
+
+                        override fun onCancel() {
+                            finish()
+                        }
+                    }
+                    dialog.show(supportFragmentManager, ConfirmRegistrationDialog::javaClass.name)
+                } else {
+                    completeRegistration(map)
+                }
+            }
+
+            override fun onError() {
+                hideProgressView()
+                UiUtils.showShortToast(this@PatientDetailsActivity, R.string.error)
+            }
+        })
+    }
+
+    private fun completeRegistration(map: UserRegistrationMap) {
+        hideProgressView()
+        Logger.d("User successfully registered with id ${map.dataItem.userId.id}")
+        Preferences.user(this).idUser = map.dataItem.userId.id
+        Preferences.user(this).userNhsNumber = binding.insertIdEntryView.getPin()
+        Preferences.user(this).userFirstName = binding.firstName.textTrim
+        Preferences.user(this).userLastName = binding.lastName.textTrim
+        Preferences.user(this).userDateOfBirth = dateOfBirth!!.timeInMillis
+        Preferences.user(this).userSex = sex!!.sex
+        Preferences.user(this).userPostcode = binding.postcode.textTrim
+        Preferences.user(this).userConsentDate = userConsentDate
+        Preferences.user(this).userConsentName = userConsentName
+        Preferences.lifecycle(this).userDetailsUploaded = true
+
+        // automatically start the study
+        Preferences.user(thiss).studyStarted = true
+        Preferences.user(thiss).dateStudyStarted = TimeUtils.getCurrent().timeInMillis
+
+        // check registration with the server
+        TrackerManager.getInstance(this).saveUserRegistrationId(map.dataItem.userId.id)
+
+        // do not upload data on firestore
+        // FirestoreProvider.getInstance().updateUserDetails(this)
+
+        val bundle = Bundle()
+        bundle.putInt(Extra.SUCCESS_MESSAGE.key, SuccessMessageType.REGISTRATION.id)
+        Router.getInstance().activityAnimation(ActivityAnimation.BOTTOM_TOP).startBaseActivity(thiss, Activities.SUCCESS_MESSAGE, bundle)
+        finish()
     }
 }

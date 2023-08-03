@@ -15,6 +15,8 @@ enum class Extra(var key: String) {
     USER_LAST_NAME("user_last_name"),
     USER_DOB("user_dob"),
     USER_POSTCODE("user_postcode"),
+    USER_CONSENT_NAME("user_consent_date"),
+    USER_CONSENT_DATE("user_consent_name"),
     FROM_MENU("from_menu"),
     MODEL_ID("model_id_extra"),
     HEALTH_MOBILITY("mobility_response"),

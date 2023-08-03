@@ -28,7 +28,6 @@
     <string name="preference_user_consent_form_version_key" translatable="false">base.app.user.consent.form.version</string>
 
 
-
     <!-- lifecycle preferences -->
     <string name="preference_lifecycle_first_install_key" translatable="false">base.app.lifecycle.first.install</string>
     <string name="preference_lifecycle_welcome_shown_key" translatable="false">base.app.lifecycle.welcome.shown</string>
