@@ -113,9 +113,8 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
 
         } else {
 
-            userConsentName = activityBundle.getString(Extra.USER_CONSENT_NAME.key) ?: Constants.EMPTY
+            userConsentName = activityBundle.getString(Extra.USER_CONSENT_NAME.key)!!
             userConsentDate = activityBundle.getLong(Extra.USER_CONSENT_DATE.key)
-
 
             binding.progressText.visibility = View.VISIBLE
             binding.stepsLayout.visibility = View.VISIBLE
@@ -233,7 +232,8 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
                     && !TextUtils.isEmpty(binding.lastName.textTrim)
                     && dateOfBirth != null && sex != null
                     && Validator.validatePostcode(binding.postcode.textTrim)
-                    && (Validator.validateMail(binding.email.textTrim) || Validator.validatePhone(binding.phone.textTrim))) {
+                    && (Validator.validateMail(binding.email.textTrim) || Validator.validatePhone(binding.phone.textTrim))
+                ) {
 
                     if (!Validator.validateNhsNumber(binding.insertIdEntryView.getPin())) {
                         UiUtils.showShortToast(this, "NHS number is not valid")
@@ -268,7 +268,8 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
                 if (!TextUtils.isEmpty(binding.firstName.textTrim) && !TextUtils.isEmpty(binding.lastName.textTrim)
                     && dateOfBirth != null && sex != null
                     && Validator.validatePostcode(binding.postcode.textTrim)
-                    && (Validator.validateMail(binding.email.textTrim) || Validator.validatePhone(binding.phone.textTrim))) {
+                    && (Validator.validateMail(binding.email.textTrim) || Validator.validatePhone(binding.phone.textTrim))
+                ) {
 
 
                     Preferences.user(this).userFirstName = binding.firstName.textTrim
@@ -375,10 +376,6 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
         Preferences.user(this).userConsentDate = userConsentDate
         Preferences.user(this).userConsentName = userConsentName
         Preferences.lifecycle(this).userDetailsUploaded = true
-
-        // automatically start the study
-        Preferences.user(thiss).studyStarted = true
-        Preferences.user(thiss).dateStudyStarted = TimeUtils.getCurrent().timeInMillis
 
         // check registration with the server
         TrackerManager.getInstance(this).saveUserRegistrationId(map.dataItem.userId.id)

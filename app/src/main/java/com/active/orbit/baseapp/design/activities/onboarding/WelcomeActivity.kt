@@ -2,7 +2,6 @@ package com.active.orbit.baseapp.design.activities.onboarding
 
 import android.os.Bundle
 import android.view.View
-import com.active.orbit.baseapp.core.listeners.ResultListener
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.Router
 import com.active.orbit.baseapp.databinding.ActivityWelcomeBinding
@@ -18,8 +17,6 @@ class WelcomeActivity : BaseActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        Preferences.lifecycle(this).welcomeShown = true
     }
 
     override fun onResume() {
@@ -32,22 +29,12 @@ class WelcomeActivity : BaseActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        when(v){
+        when (v) {
             binding.welcomeButton -> {
                 if (Preferences.lifecycle(this).tourShown) {
-                    onboarded(object : ResultListener {
-                        override fun onResult(success: Boolean) {
-                            if (!success) {
-                                Router.getInstance()
-                                    .activityAnimation(ActivityAnimation.FADE)
-                                    .startBaseActivity(this@WelcomeActivity, Activities.ON_BOARDING)
-                            } else {
-                                Router.getInstance()
-                                    .activityAnimation(ActivityAnimation.FADE)
-                                    .homepage(this@WelcomeActivity)
-                            }
-                        }
-                    })
+                    Router.getInstance()
+                        .activityAnimation(ActivityAnimation.FADE)
+                        .startBaseActivity(this@WelcomeActivity, Activities.CONSENT_FORM)
                 } else {
                     Router.getInstance().activityAnimation(ActivityAnimation.FADE).startBaseActivity(this, Activities.TOUR)
                 }

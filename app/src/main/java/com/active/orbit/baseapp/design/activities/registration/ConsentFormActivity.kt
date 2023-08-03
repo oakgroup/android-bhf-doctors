@@ -44,10 +44,9 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
         super.onCreate(savedInstanceState)
         binding = ActivityConsentFormBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        showBackButton()
 
         fromMenu = activityBundle.getBoolean(Extra.FROM_MENU.key)
-
+        if (fromMenu) showBackButton()
 
         prepare()
 
@@ -75,6 +74,8 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
             binding.buttons.visibility = View.GONE
             binding.btnDownload.visibility = View.GONE
 
+            binding.btnBack.setOnClickListener(this)
+
             prepareQuestions(true)
 
         } else {
@@ -87,9 +88,8 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
             dateOfConsent = TimeUtils.getCurrent()
             binding.btnDate.setText(TimeUtils.format(dateOfConsent!!, Constants.DATE_FORMAT_YEAR_MONTH_DAY))
 
-
             binding.btnConfirm.setOnClickListener(this)
-            binding.btnBack.setOnClickListener(this)
+            binding.btnBack.visibility = View.GONE
 
             prepareQuestions()
 
@@ -152,7 +152,6 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
                     val bundle = Bundle()
                     bundle.putString(Extra.USER_CONSENT_NAME.key, binding.fullName.textTrim)
                     bundle.putLong(Extra.USER_CONSENT_DATE.key, dateOfConsent!!.timeInMillis)
-
                     Router.getInstance()
                         .activityAnimation(ActivityAnimation.LEFT_RIGHT)
                         .startBaseActivity(this, Activities.ON_BOARDING_LOCATION, bundle)

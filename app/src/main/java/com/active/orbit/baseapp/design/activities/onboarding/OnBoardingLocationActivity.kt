@@ -6,6 +6,7 @@ import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.core.text.HtmlCompat
 import com.active.orbit.baseapp.R
+import com.active.orbit.baseapp.core.listeners.ResultListener
 import com.active.orbit.baseapp.core.permissions.Permissions
 import com.active.orbit.baseapp.core.routing.Router
 import com.active.orbit.baseapp.core.routing.enums.Extra
@@ -44,8 +45,10 @@ class OnBoardingLocationActivity : BaseActivity(), View.OnClickListener {
 
         binding.description.text = HtmlCompat.fromHtml(getString(R.string.onboarding_location_1), HtmlCompat.FROM_HTML_MODE_COMPACT)
 
+        if (fromHelp) binding.bottomLayout.visibility = View.GONE
+        else binding.btnNext.setOnClickListener(this)
+
         binding.btnBack.setOnClickListener(this)
-        binding.btnNext.setOnClickListener(this)
 
         binding.physicalActivityCheckBox.setOnClickListener(this)
         binding.locationServicesCheckBox.setOnClickListener(this)
@@ -98,12 +101,34 @@ class OnBoardingLocationActivity : BaseActivity(), View.OnClickListener {
 
             binding.btnNext -> {
                 if (hasActivityRecognitionPermissionGranted()) {
-                    val bundle = Bundle()
-                    bundle.putString(Extra.USER_CONSENT_NAME.key, userConsentName)
-                    bundle.putLong(Extra.USER_CONSENT_DATE.key, userConsentDate)
-                    Router.getInstance()
-                        .activityAnimation(ActivityAnimation.LEFT_RIGHT)
-                        .startBaseActivity(this, Activities.PATIENT_DETAILS, bundle)
+                    if (onboardedBattery()) {
+                        onboardedUnusedRestrictions(object : ResultListener {
+                            override fun onResult(success: Boolean) {
+                                if (success) {
+                                    val bundle = Bundle()
+                                    bundle.putString(Extra.USER_CONSENT_NAME.key, userConsentName)
+                                    bundle.putLong(Extra.USER_CONSENT_DATE.key, userConsentDate)
+                                    Router.getInstance()
+                                        .activityAnimation(ActivityAnimation.LEFT_RIGHT)
+                                        .startBaseActivity(this@OnBoardingLocationActivity, Activities.PATIENT_DETAILS, bundle)
+                                } else {
+                                    val bundle = Bundle()
+                                    bundle.putString(Extra.USER_CONSENT_NAME.key, userConsentName)
+                                    bundle.putLong(Extra.USER_CONSENT_DATE.key, userConsentDate)
+                                    Router.getInstance()
+                                        .activityAnimation(ActivityAnimation.LEFT_RIGHT)
+                                        .startBaseActivity(this@OnBoardingLocationActivity, Activities.ON_BOARDING_BATTERY, bundle)
+                                }
+                            }
+                        })
+                    } else {
+                        val bundle = Bundle()
+                        bundle.putString(Extra.USER_CONSENT_NAME.key, userConsentName)
+                        bundle.putLong(Extra.USER_CONSENT_DATE.key, userConsentDate)
+                        Router.getInstance()
+                            .activityAnimation(ActivityAnimation.LEFT_RIGHT)
+                            .startBaseActivity(this, Activities.ON_BOARDING_BATTERY, bundle)
+                    }
                 } else {
                     UiUtils.showShortToast(this, R.string.activity_rec_permissions_not_granted)
                     binding.scrollView.scrollTo(binding.permissionsContainer.x.roundToInt(), binding.permissionsContainer.y.roundToInt())

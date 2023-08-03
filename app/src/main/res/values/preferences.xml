@@ -10,8 +10,6 @@
     <string name="preference_user_id_user_key" translatable="false">base.app.user.id.user</string>
     <string name="preference_user_id_patient_key" translatable="false">base.app.user.id.patient</string>
     <string name="preference_user_id_program_key" translatable="false">base.app.user.id.program</string>
-    <string name="preference_user_study_started_key" translatable="false">base.app.user.study.started</string>
-    <string name="preference_user_date_study_started_key" translatable="false">base.app.user.date.study.started</string>
     <string name="preference_user_sex_key" translatable="false">base.app.user.sex</string>
     <string name="preference_user_age_key" translatable="false">base.app.user.age</string>
     <string name="preference_user_weight_key" translatable="false">base.app.user.weight</string>
@@ -30,7 +28,6 @@
 
     <!-- lifecycle preferences -->
     <string name="preference_lifecycle_first_install_key" translatable="false">base.app.lifecycle.first.install</string>
-    <string name="preference_lifecycle_welcome_shown_key" translatable="false">base.app.lifecycle.welcome.shown</string>
     <string name="preference_lifecycle_onboarding_shown_key" translatable="false">base.app.lifecycle.onboarding.shown</string>
     <string name="preference_lifecycle_privacy_policy_accepted_key" translatable="false">base.app.lifecycle.privacy.policy.accepted</string>
     <string name="preference_lifecycle_terms_conditions_accepted_key" translatable="false">base.app.lifecycle.terms.conditions.accepted</string>

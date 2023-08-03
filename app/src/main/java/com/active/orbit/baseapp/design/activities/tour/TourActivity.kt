@@ -21,6 +21,8 @@ class TourActivity : BaseActivity(), ViewPager.OnPageChangeListener, View.OnClic
         binding = ActivityTourBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        Preferences.lifecycle(this).tourShown = true
+
         prepare()
     }
 
@@ -84,11 +86,7 @@ class TourActivity : BaseActivity(), ViewPager.OnPageChangeListener, View.OnClic
             }
 
             binding.btnClose -> {
-                if (!Preferences.user(this).isUserRegistered()) {
-                    Router.getInstance().activityAnimation(ActivityAnimation.BOTTOM_TOP).startBaseActivity(this, Activities.CONSENT_FORM)
-                } else {
-                    Router.getInstance().homepage(this)
-                }
+                Router.getInstance().activityAnimation(ActivityAnimation.BOTTOM_TOP).startBaseActivity(this, Activities.CONSENT_FORM)
                 finish()
             }
         }

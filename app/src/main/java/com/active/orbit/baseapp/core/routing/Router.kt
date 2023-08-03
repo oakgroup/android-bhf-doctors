@@ -31,7 +31,7 @@ import kotlin.coroutines.CoroutineContext
  *
  * @author omar.brugna
  */
-class Router: CoroutineScope {
+class Router : CoroutineScope {
 
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Default
@@ -226,12 +226,9 @@ class Router: CoroutineScope {
     fun homepage(context: Context) {
         clearTop(true)
         newTask(true)
-        if (Preferences.user(context).isUserRegistered() && Preferences.user(context).studyStarted) {
+        if (Preferences.user(context).isUserRegistered()) {
             activityAnimation(ActivityAnimation.FADE)
             startBaseActivity(context, Activities.PATIENT)
-        } else {
-            activityAnimation(ActivityAnimation.FADE)
-            startBaseActivity(context, Activities.DOCTOR)
         }
     }
 

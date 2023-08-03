@@ -17,7 +17,6 @@ import com.active.orbit.baseapp.core.permissions.Permissions
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.Router
 import com.active.orbit.baseapp.core.utils.Logger
-import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
 import com.active.orbit.baseapp.design.dialogs.PermissionsDialog
 import com.active.orbit.baseapp.design.dialogs.listeners.PermissionsDialogListener
 
@@ -26,13 +25,17 @@ abstract class PermissionsActivity : AbstractActivity() {
     private var permissionsDialog: PermissionsDialog? = null
     protected var permissionsDialogShown = false
 
-    fun onboarded(listener: ResultListener) {
-        if (!onboardedLocation() || !onboardedBattery() || !onboardedPrivacyPolicy()) listener.onResult(false)
-        else onboardedUnusedRestrictions(listener)
+    fun onboarded(): Boolean {
+        return onboardedActivityRecognition()
+    }
+
+    @Suppress("MemberVisibilityCanBePrivate")
+    fun onboardedActivityRecognition(): Boolean {
+        return hasActivityRecognitionPermissionGranted()
     }
 
     fun onboardedLocation(): Boolean {
-        return hasActivityRecognitionPermissionGranted() && hasLocationPermissionGranted() && hasBackgroundLocationPermissionGranted()
+        return hasLocationPermissionGranted() && hasBackgroundLocationPermissionGranted()
     }
 
     @SuppressLint("NewApi")
@@ -69,26 +72,6 @@ abstract class PermissionsActivity : AbstractActivity() {
 
     fun onboardedPrivacyPolicy(): Boolean {
         return Preferences.lifecycle(this).isPrivacyPolicyAccepted
-    }
-
-    fun manageOnBoarding() {
-        if (!onboardedLocation()) {
-            Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).startBaseActivity(this, Activities.ON_BOARDING_LOCATION)
-        } else if (!onboardedBattery()) {
-            Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).startBaseActivity(this, Activities.ON_BOARDING_BATTERY)
-        } else {
-            onboardedUnusedRestrictions(object : ResultListener {
-                override fun onResult(success: Boolean) {
-                    if (success) {
-                        if (!onboardedPrivacyPolicy()) {
-                            Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).startBaseActivity(this@PermissionsActivity, Activities.PRIVACY_POLICY)
-                        } else {
-                            Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).homepage(this@PermissionsActivity)
-                        }
-                    } else Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).startBaseActivity(this@PermissionsActivity, Activities.ON_BOARDING_UNUSED_RESTRICTIONS)
-                }
-            })
-        }
     }
 
     protected fun hasLocationPermissionGranted(): Boolean {
@@ -171,26 +154,32 @@ abstract class PermissionsActivity : AbstractActivity() {
                     Logger.i("Location permission enabled")
                     onPermissionEnabled(requestCode)
                 }
+
                 Permissions.Group.ACCESS_BACKGROUND_LOCATION.requestCode -> {
                     Logger.i("Background location permission enabled")
                     onPermissionEnabled(requestCode)
                 }
+
                 Permissions.Group.ACCESS_EXTERNAL_STORAGE.requestCode -> {
                     Logger.i("Access external storage permission enabled")
                     onPermissionEnabled(requestCode)
                 }
+
                 Permissions.Group.ACCESS_ACTIVITY_RECOGNITION.requestCode -> {
                     Logger.i("Access activity recognition permission enabled")
                     onPermissionEnabled(requestCode)
                 }
+
                 Permissions.Group.ACCESS_CAMERA_FOR_SCAN.requestCode -> {
                     Logger.i("Access camera permission enabled")
                     onPermissionEnabled(requestCode)
                 }
+
                 Permissions.Group.ACCESS_CAMERA_FOR_CAPTURE.requestCode -> {
                     Logger.i("Access camera permission enabled")
                     onPermissionEnabled(requestCode)
                 }
+
                 Permissions.Group.ACCESS_DOWNLOAD_PDF.requestCode -> {
                     Logger.i("Download pdf permission enabled")
                     onPermissionEnabled(requestCode)
@@ -202,26 +191,32 @@ abstract class PermissionsActivity : AbstractActivity() {
                     Logger.i("Access location permission disabled")
                     showPermissionsDialog(Permissions(Permissions.Group.ACCESS_FINE_LOCATION))
                 }
+
                 Permissions.Group.ACCESS_BACKGROUND_LOCATION.requestCode -> {
                     Logger.i("Access background location permission disabled")
                     showPermissionsDialog(Permissions(Permissions.Group.ACCESS_BACKGROUND_LOCATION))
                 }
+
                 Permissions.Group.ACCESS_EXTERNAL_STORAGE.requestCode -> {
                     Logger.i("Access external storage permission disabled")
                     showPermissionsDialog(Permissions(Permissions.Group.ACCESS_EXTERNAL_STORAGE))
                 }
+
                 Permissions.Group.ACCESS_ACTIVITY_RECOGNITION.requestCode -> {
                     Logger.i("Access activity recognition permission disabled")
                     showPermissionsDialog(Permissions(Permissions.Group.ACCESS_ACTIVITY_RECOGNITION))
                 }
+
                 Permissions.Group.ACCESS_CAMERA_FOR_SCAN.requestCode -> {
                     Logger.i("Access camera permission disabled")
                     showPermissionsDialog(Permissions(Permissions.Group.ACCESS_CAMERA_FOR_SCAN))
                 }
+
                 Permissions.Group.ACCESS_CAMERA_FOR_CAPTURE.requestCode -> {
                     Logger.i("Access camera permission disabled")
                     showPermissionsDialog(Permissions(Permissions.Group.ACCESS_CAMERA_FOR_CAPTURE))
                 }
+
                 Permissions.Group.ACCESS_DOWNLOAD_PDF.requestCode -> {
                     Logger.i("Access download pdf permission disabled")
                     showPermissionsDialog(Permissions(Permissions.Group.ACCESS_DOWNLOAD_PDF))
@@ -260,26 +255,32 @@ abstract class PermissionsActivity : AbstractActivity() {
                             if (deniedForever) Router.getInstance().openSettings(this@PermissionsActivity)
                             else requestPermissionLocation()
                         }
+
                         Permissions.Group.ACCESS_BACKGROUND_LOCATION.requestCode -> {
                             if (deniedForever) Router.getInstance().openSettings(this@PermissionsActivity)
                             else requestPermissionBackgroundLocation()
                         }
+
                         Permissions.Group.ACCESS_EXTERNAL_STORAGE.requestCode -> {
                             if (deniedForever) Router.getInstance().openSettings(this@PermissionsActivity)
                             else requestPermissionReadExternalStorage()
                         }
+
                         Permissions.Group.ACCESS_ACTIVITY_RECOGNITION.requestCode -> {
                             if (deniedForever) Router.getInstance().openSettings(this@PermissionsActivity)
                             else requestPermissionRecognition()
                         }
+
                         Permissions.Group.ACCESS_CAMERA_FOR_SCAN.requestCode -> {
                             if (deniedForever) Router.getInstance().openSettings(this@PermissionsActivity)
                             else requestPermissionCameraForScan()
                         }
+
                         Permissions.Group.ACCESS_CAMERA_FOR_CAPTURE.requestCode -> {
                             if (deniedForever) Router.getInstance().openSettings(this@PermissionsActivity)
                             else requestPermissionCameraForCapture()
                         }
+
                         Permissions.Group.ACCESS_DOWNLOAD_PDF.requestCode -> {
                             if (deniedForever) Router.getInstance().openSettings(this@PermissionsActivity)
                             else requestPermissionDownloadPdf()

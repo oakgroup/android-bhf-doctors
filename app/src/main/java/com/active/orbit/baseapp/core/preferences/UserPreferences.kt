@@ -36,23 +36,6 @@ class UserPreferences : BasePreferences() {
             if (!TextUtils.isEmpty(value)) FirebaseCrashlytics.getInstance().setCustomKey("id_user", value!!)
         }
 
-    var studyStarted: Boolean
-        get() = prefs.getBoolean(res.getString(R.string.preference_user_study_started_key), false)
-        set(value) {
-            val editor = prefs.edit()
-            editor.putBoolean(res.getString(R.string.preference_user_study_started_key), value)
-            editor.apply()
-        }
-
-    var dateStudyStarted: Long?
-        get() = prefs.getLong(res.getString(R.string.preference_user_date_study_started_key), Constants.INVALID.toLong())
-        set(value) {
-            val editor = prefs.edit()
-            if (value != null) editor.putLong(res.getString(R.string.preference_user_date_study_started_key), value)
-            else editor.remove(res.getString(R.string.preference_user_date_study_started_key))
-            editor.apply()
-        }
-
     var userSex: String?
         get() = prefs.getString(res.getString(R.string.preference_user_sex_key), Constants.EMPTY)
         set(value) {
@@ -154,12 +137,9 @@ class UserPreferences : BasePreferences() {
     }
 
 
-
     override fun logout() {
         idUser = null
         userNhsNumber = null
-        studyStarted = false
-        dateStudyStarted = null
         userSex = null
         userFirstName = null
         userLastName = null
