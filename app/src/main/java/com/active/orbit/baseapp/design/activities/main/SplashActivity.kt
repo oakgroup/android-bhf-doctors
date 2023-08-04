@@ -45,7 +45,7 @@ class SplashActivity : BaseActivity() {
         super.onResume()
 
         Utils.delay(TimeUtils.ONE_SECOND_MILLIS * 2) {
-            proceed()
+            if (!permissionsDialogShown) proceed()
         }
     }
 
