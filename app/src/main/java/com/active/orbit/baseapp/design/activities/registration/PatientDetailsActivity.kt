@@ -373,6 +373,8 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
         Preferences.user(this).userDateOfBirth = dateOfBirth!!.timeInMillis
         Preferences.user(this).userSex = sex!!.sex
         Preferences.user(this).userPostcode = binding.postcode.textTrim
+        Preferences.user(this).userEmail = binding.email.textTrim
+        Preferences.user(this).userPhone = binding.phone.textTrim
         Preferences.user(this).userConsentDate = userConsentDate
         Preferences.user(this).userConsentName = userConsentName
         Preferences.lifecycle(this).userDetailsUploaded = true
