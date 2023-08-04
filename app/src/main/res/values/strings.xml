@@ -89,7 +89,8 @@
     <string name="battery_allow">Allow Background</string>
     <string name="battery_open_settings">Check Settings</string>
     <string name="battery_settings">Battery Settings</string>
-    <string name="battery_settings_description">The app needs to run continuously in background to detect outdoor activities. The android operative system has some limitations that do not allow this. Please make sure that you have correctly setup the battery optimisation settings for the app by clicking the button below</string>
+    <string name="battery_settings_description"><![CDATA[During set up your device may display a message informing you that the app uses power in the background and may drain the battery. This is correct. The app has to run continuously in order to collect more accurate data.<br><br>Click on <b>Check Settings</b> and follow the instructions below.<br><ol><li>In Settings, search for Battery Optimisation and select to view All apps.</li><li>Find Moving Health and click on it to view the app setting.</li><li>For the app to work correctly it should be set to <b>Don’t Optimise</b> or <b>Unrestricted</b>.</li><li>Make sure the correct option is selected and then click on Done.</li></ol><br><br>If the above options are not available on your device please do the following:<br><ol><li>Open the Settings app on your device and select Apps</li><li>Select App Management and click on Moving Health</li><li>Select Battery Usage, and turn on <b>Allow background activity</b></li>]]></string>
+    <string name="battery_settings_title">Battery Settings (2.2)</string>
     <string name="big_bike_code_description">Enter four or five digits</string>
     <string name="big_bike_unique_reference">Big bike unique reference:</string>
     <string name="big_bike_user">Big bike user:</string>
@@ -130,6 +131,7 @@
     <string name="check_in_notification">Please checkin to help us count active users</string>
     <string name="check_in_notification_channel_description">Notifications about a requested checkin</string>
     <string name="check_phone_data">Check Phone Data</string>
+    <string name="check_settings">Check Settings</string>
     <string name="check_watch_data">Check Watch Data</string>
     <string name="check_your_credentials">Check Your Credentials</string>
     <string name="check_your_details">Check Your Details</string>
@@ -238,8 +240,9 @@
     <string name="dialog_send_user_id_title_new_registration">You have registered a new patient. Please send user id to the watch by clicking the button below.</string>
     <string name="dialog_unit_selection_title">Unit Selection</string>
     <string name="diesel">Diesel</string>
-    <string name="disable_restrictions">Disable restrictions</string>
-    <string name="disable_restrictions_description">The app needs to continuously have the permissions granted to run in background to detect activities. The android operative system has some limitations that do not allow this. Please make sure that you disable the automatic removal of the permissions if the app is not used for a while, by clicking the button below. Then, click on Permissions and uncheck the "Remove permissions if app isn\'t used" checkbox</string>
+    <string name="disable_restrictions">Unused App Permissions</string>
+    <string name="disable_restrictions_description"><![CDATA[The Moving Health app needs to run continuously in order to record accurate data. If you do not regularly use the app some Android devices will automatically remove the permissions.<br><br>Click on <b>Update Settings</b> and follow the instructions below.<br><br><ol><li>In Settings, search for Apps.</li><li>Tap on Apps and then tap on the Moving Health app.</li><li>Under <q>Unused app setting</q>, turn off <b>Pause app activity if unused</b>.</li><li>If the above option is not available, under <q>Unused app setting</q>, turn off <b>Remove permissions and free up space</b>.</li>]]></string>
+    <string name="disable_restrictions_title">Unused App Permissions (2.3)</string>
     <string name="dismiss">Dismiss</string>
     <string name="dismiss_force"> Force Dismiss</string>
     <string name="dismiss_patient">Withdraw from Study</string>
@@ -729,7 +732,6 @@
     <string name="set_my_targets">Set My Targets</string>
     <string name="set_user_id_explanation">Setting the user id should be done only by an expert user, as it may make the application unusable. \n\nIt can also lose all the data on both the phone and the server. \n\nUnless you know what you are doing, leave the user Id alone!!</string>
     <string name="settings">Settings</string>
-    <string name="settings_battery">Battery Settings</string>
     <string name="settings_active_target">%1$d active minutes</string>
     <string name="settings_age_label">%1$d years old</string>
     <string name="settings_heart_target">%1$d heart minutes</string>
@@ -835,6 +837,7 @@
     <string name="update_details">Update Details</string>
     <string name="update_error">There was an error update your account</string>
     <string name="update_required_title">Update Required</string>
+    <string name="update_settings">Update Settings</string>
     <string name="update_success">Account updated successful</string>
     <string name="update_target">Update Targets</string>
     <string name="updating_details">Updating your account details</string>

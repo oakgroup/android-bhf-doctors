@@ -88,7 +88,7 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
             dateOfConsent = TimeUtils.getCurrent()
             binding.btnDate.setText(TimeUtils.format(dateOfConsent!!, Constants.DATE_FORMAT_YEAR_MONTH_DAY))
 
-            binding.btnConfirm.setOnClickListener(this)
+            binding.btnNext.setOnClickListener(this)
             binding.btnBack.visibility = View.GONE
 
             prepareQuestions()
@@ -147,7 +147,7 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
     override fun onClick(v: View?) {
         when (v) {
 
-            binding.btnConfirm -> {
+            binding.btnNext -> {
                 if (!TextUtils.isEmpty(binding.fullName.textTrim) && dateOfConsent != null && questionsAcceptedCounter == questionsAdapter!!.numberOfQuestions) {
                     val bundle = Bundle()
                     bundle.putString(Extra.USER_CONSENT_NAME.key, binding.fullName.textTrim)

@@ -122,7 +122,7 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
             binding.btnSave.visibility = View.GONE
             binding.btnNhsUrl.visibility = View.VISIBLE
 
-            binding.btnNext.setOnClickListener(this)
+            binding.btnConfirm.setOnClickListener(this)
             binding.btnBack.setOnClickListener(this)
             binding.btnNhsUrl.setOnClickListener(this)
             binding.btnSexSelection.setOnClickListener(this)
@@ -224,7 +224,7 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
     override fun onClick(v: View?) {
 
         when (v) {
-            binding.btnNext -> {
+            binding.btnConfirm -> {
                 hideKeyboard()
 
                 if (binding.insertIdEntryView.isComplete()

@@ -362,14 +362,14 @@
                 app:typeface="semibold" />
 
             <com.active.orbit.baseapp.design.widgets.BaseButton
-                android:id="@+id/btnNext"
+                android:id="@+id/btnConfirm"
                 style="@style/ButtonPrimary"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_lateral"
                 android:layout_weight="2"
                 android:gravity="center"
-                android:text="@string/next"
+                android:text="@string/confirm"
                 app:typeface="semibold" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -385,19 +385,6 @@
             app:typeface="semibold" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="top" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

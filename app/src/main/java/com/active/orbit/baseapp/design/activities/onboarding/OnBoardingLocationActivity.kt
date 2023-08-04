@@ -22,7 +22,7 @@ import kotlin.math.roundToInt
 class OnBoardingLocationActivity : BaseActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityOnBoardingLocationBinding
-    private var fromHelp = false
+    private var fromMenu = false
 
     private var userConsentName = Constants.EMPTY
     private var userConsentDate = Constants.INVALID.toLong()
@@ -41,12 +41,17 @@ class OnBoardingLocationActivity : BaseActivity(), View.OnClickListener {
 
         userConsentName = activityBundle.getString(Extra.USER_CONSENT_NAME.key)!!
         userConsentDate = activityBundle.getLong(Extra.USER_CONSENT_DATE.key)
-        fromHelp = activityBundle.getBoolean(Extra.FROM_HELP.key, false)
+        fromMenu = activityBundle.getBoolean(Extra.FROM_HELP.key, false)
 
         binding.description.text = HtmlCompat.fromHtml(getString(R.string.onboarding_location_1), HtmlCompat.FROM_HTML_MODE_COMPACT)
 
-        if (fromHelp) binding.bottomLayout.visibility = View.GONE
-        else binding.btnNext.setOnClickListener(this)
+        if (fromMenu) {
+            binding.bottomLayout.visibility = View.GONE
+            binding.title.text = getString(R.string.location_services)
+        } else {
+            binding.btnNext.setOnClickListener(this)
+            binding.title.text = getString(R.string.location_services_title)
+        }
 
         binding.btnBack.setOnClickListener(this)
 
@@ -101,6 +106,7 @@ class OnBoardingLocationActivity : BaseActivity(), View.OnClickListener {
 
             binding.btnNext -> {
                 if (hasActivityRecognitionPermissionGranted()) {
+                    //TODO talk with Alan about this
                     if (onboardedBattery()) {
                         onboardedUnusedRestrictions(object : ResultListener {
                             override fun onResult(success: Boolean) {

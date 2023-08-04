@@ -33,7 +33,7 @@ class WelcomeActivity : BaseActivity(), View.OnClickListener {
             binding.welcomeButton -> {
                 if (Preferences.lifecycle(this).tourShown) {
                     Router.getInstance()
-                        .activityAnimation(ActivityAnimation.FADE)
+                        .activityAnimation(ActivityAnimation.BOTTOM_TOP)
                         .startBaseActivity(this@WelcomeActivity, Activities.CONSENT_FORM)
                 } else {
                     Router.getInstance().activityAnimation(ActivityAnimation.FADE).startBaseActivity(this, Activities.TOUR)

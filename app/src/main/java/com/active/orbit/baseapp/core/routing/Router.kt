@@ -13,6 +13,7 @@ import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.enums.Extra
 import com.active.orbit.baseapp.core.utils.BaseException
 import com.active.orbit.baseapp.core.utils.Constants
+import com.active.orbit.baseapp.core.utils.Logger
 import com.active.orbit.baseapp.core.utils.Utils
 import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
@@ -213,6 +214,17 @@ class Router : CoroutineScope {
         val uri = Uri.fromParts("package", Utils.getPackageName(context), null)
         intent.data = uri
         context.startActivity(intent)
+    }
+
+    fun openBatteryOptimisationSettings(context: Context) {
+        try {
+            val intent = Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS)
+            intent.addCategory(Intent.CATEGORY_DEFAULT)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            context.startActivity(intent)
+        } catch (e: Exception) {
+            Logger.e("error in opening Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS " + e.localizedMessage)
+        }
     }
 
     fun openNHS(context: Context) {
