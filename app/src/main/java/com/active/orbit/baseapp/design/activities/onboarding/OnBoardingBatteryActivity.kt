@@ -83,7 +83,6 @@ class OnBoardingBatteryActivity : BaseActivity(), View.OnClickListener {
                 .activityAnimation(ActivityAnimation.LEFT_RIGHT)
                 .startBaseActivity(this, Activities.ON_BOARDING_UNUSED_RESTRICTIONS, bundle)
         }
-        finish()
     }
 
     override fun onClick(v: View?) {

@@ -92,7 +92,6 @@ class OnBoardingUnusedRestrictionsActivity : BaseActivity(), View.OnClickListene
                 .activityAnimation(ActivityAnimation.LEFT_RIGHT)
                 .startBaseActivity(this, Activities.PATIENT_DETAILS, bundle)
         }
-        finish()
     }
 
     override fun onClick(v: View?) {
