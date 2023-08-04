@@ -50,7 +50,7 @@ class PatientActivity : BaseActivity() {
         config.useStepCounter = true
         config.useActivityRecognition = true
         config.useLocationTracking = true
-        config.useHeartRateMonitor = true
+        config.useHeartRateMonitor = false
         config.useMobilityModelling = true
         config.useBatteryMonitor = true
         config.useStayPoints = false
