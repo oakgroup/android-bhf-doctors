@@ -20,7 +20,6 @@ class SettingsActivity : BaseActivity(), View.OnClickListener {
         setContentView(binding.root)
         showBackButton()
 
-
         prepare()
     }
 
@@ -45,6 +44,7 @@ class SettingsActivity : BaseActivity(), View.OnClickListener {
                 bundle.putBoolean(Extra.FROM_MENU.key, true)
                 Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).startBaseActivity(this, Activities.ON_BOARDING_BATTERY, bundle)
             }
+
             binding.patientDetails -> {
                 val bundle = Bundle()
                 bundle.putBoolean(Extra.FROM_MENU.key, true)

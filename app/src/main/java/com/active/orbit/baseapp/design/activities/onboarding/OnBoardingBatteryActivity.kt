@@ -11,8 +11,6 @@ import com.active.orbit.baseapp.databinding.ActivityOnBoardingBatteryBinding
 import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
-import com.aeqora.corepowersettings.BaseApplicationUtils
-import com.aeqora.corepowersettings.utils.AppType
 
 class OnBoardingBatteryActivity : BaseActivity(), View.OnClickListener {
 
@@ -30,9 +28,10 @@ class OnBoardingBatteryActivity : BaseActivity(), View.OnClickListener {
         setContentView(binding.root)
         showBackButton()
 
-
-        userConsentName = activityBundle.getString(Extra.USER_CONSENT_NAME.key)!!
-        userConsentDate = activityBundle.getLong(Extra.USER_CONSENT_DATE.key)
+        if (!fromMenu) {
+            userConsentName = activityBundle.getString(Extra.USER_CONSENT_NAME.key)!!
+            userConsentDate = activityBundle.getLong(Extra.USER_CONSENT_DATE.key)
+        }
 
         prepare()
     }
@@ -88,7 +87,7 @@ class OnBoardingBatteryActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v) {
             binding.btnNext -> {
-              proceed()
+                proceed()
             }
 
             binding.btnBack -> {
