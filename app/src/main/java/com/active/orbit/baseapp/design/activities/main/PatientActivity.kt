@@ -57,7 +57,7 @@ class PatientActivity : BaseActivity() {
         config.compactLocations = false
         config.uploadData = true
 
-        TrackerManager.getInstance(this).askForPermissionAndStartTracker(config)
+        TrackerManager.getInstance(this).startTracker(config)
 
         ConsentFormManager.retrieveConsentForm(thiss)
 
