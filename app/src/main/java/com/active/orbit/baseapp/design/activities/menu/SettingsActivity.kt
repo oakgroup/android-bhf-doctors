@@ -24,17 +24,18 @@ class SettingsActivity : BaseActivity(), View.OnClickListener {
     }
 
     fun prepare() {
-        if (Preferences.user(this).isUserRegistered()) {
-            binding.patientDetails.visibility = View.VISIBLE
-        } else {
-            binding.patientDetails.visibility = View.GONE
-        }
 
         binding.locationServices.disableClick()
         binding.patientDetails.disableClick()
+        binding.batterySettings.disableClick()
+        binding.unusedPermissions.disableClick()
+
 
         binding.locationServices.setOnClickListener(this)
         binding.patientDetails.setOnClickListener(this)
+        binding.batterySettings.setOnClickListener(this)
+        binding.unusedPermissions.setOnClickListener(this)
+
     }
 
     override fun onClick(v: View?) {
@@ -42,13 +43,25 @@ class SettingsActivity : BaseActivity(), View.OnClickListener {
             binding.locationServices -> {
                 val bundle = Bundle()
                 bundle.putBoolean(Extra.FROM_MENU.key, true)
-                Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).startBaseActivity(this, Activities.ON_BOARDING_BATTERY, bundle)
+                Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).startBaseActivity(this, Activities.ON_BOARDING_LOCATION, bundle)
             }
 
             binding.patientDetails -> {
                 val bundle = Bundle()
                 bundle.putBoolean(Extra.FROM_MENU.key, true)
                 Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).startBaseActivity(this, Activities.PATIENT_DETAILS, bundle)
+            }
+
+            binding.batterySettings -> {
+                val bundle = Bundle()
+                bundle.putBoolean(Extra.FROM_MENU.key, true)
+                Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).startBaseActivity(this, Activities.ON_BOARDING_BATTERY, bundle)
+            }
+
+            binding.unusedPermissions -> {
+                val bundle = Bundle()
+                bundle.putBoolean(Extra.FROM_MENU.key, true)
+                Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).startBaseActivity(this, Activities.ON_BOARDING_UNUSED_RESTRICTIONS, bundle)
             }
         }
     }

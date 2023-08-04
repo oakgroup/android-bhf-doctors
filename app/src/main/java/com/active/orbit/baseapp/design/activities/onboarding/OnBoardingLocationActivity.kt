@@ -33,24 +33,30 @@ class OnBoardingLocationActivity : BaseActivity(), View.OnClickListener {
         setContentView(binding.root)
         showBackButton()
 
+
+        fromMenu = activityBundle.getBoolean(Extra.FROM_MENU.key, false)
+
+        if (!fromMenu) {
+            userConsentName = activityBundle.getString(Extra.USER_CONSENT_NAME.key)!!
+            userConsentDate = activityBundle.getLong(Extra.USER_CONSENT_DATE.key)
+        }
+
         prepare()
     }
 
 
     private fun prepare() {
 
-        userConsentName = activityBundle.getString(Extra.USER_CONSENT_NAME.key)!!
-        userConsentDate = activityBundle.getLong(Extra.USER_CONSENT_DATE.key)
-        fromMenu = activityBundle.getBoolean(Extra.FROM_HELP.key, false)
 
         binding.description.text = HtmlCompat.fromHtml(getString(R.string.onboarding_location_1), HtmlCompat.FROM_HTML_MODE_COMPACT)
 
         if (fromMenu) {
             binding.bottomLayout.visibility = View.GONE
-            binding.title.text = getString(R.string.location_services)
+            binding.title.text = getString(R.string.location_services_title_two)
+            binding.physicalActivityCheckBox.isEnabled = false
         } else {
             binding.btnNext.setOnClickListener(this)
-            binding.title.text = getString(R.string.location_services_title)
+            binding.title.text = getString(R.string.location_services_title_one)
         }
 
         binding.btnBack.setOnClickListener(this)

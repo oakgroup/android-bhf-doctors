@@ -60,7 +60,19 @@
                     android:id="@+id/locationServices"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:helpTitle="@string/location_services" />
+                    app:helpTitle="@string/location_services_title_two" />
+
+                <com.active.orbit.baseapp.design.components.HelpComponent
+                    android:id="@+id/batterySettings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:helpTitle="@string/battery_settings" />
+
+                <com.active.orbit.baseapp.design.components.HelpComponent
+                    android:id="@+id/unusedPermissions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:helpTitle="@string/disable_restrictions" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 

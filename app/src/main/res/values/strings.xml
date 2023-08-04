@@ -408,7 +408,8 @@
     <string name="loading_medicines">Loading medicines…</string>
     <string name="location_services">Location Services</string>
     <string name="location_services_permission">I understand and agree that GPS data, provided by the location services on the mobile device, will be gathered by the Moving Health App and used to calculate measurements of mobility (average walking speed, distance walked each day, motor vehicle trips each day, time in motor vehicles each day).</string>
-    <string name="location_services_title">Physical Activity and Location Services (2.1)</string>
+    <string name="location_services_title_one">Physical Activity and Location Services (2.1)</string>
+    <string name="location_services_title_two">Physical Activity and Location Services</string>
     <string name="locationservices_dialog_message">The app requires the use of Location Services in order to work properly. Please enable Location Services.</string>
     <string name="log_out">Log Out</string>
     <string name="logo">Logo</string>
@@ -572,7 +573,7 @@
     <string name="pedalling_speed">Pedalling Speed</string>
     <string name="permission_dialog_title">Permission Needed</string>
     <string name="permission_google_fit_title">Please accept the Google Fit permission, otherwise you will not be able to check your activity data.</string>
-    <string name="permissions_activity_recognition_dialog_title">Please accept the Physical Activity permission, otherwise you will not be to participate in this study.</string>
+    <string name="permissions_activity_recognition_dialog_title">Please accept the Physical Activity permission, otherwise you will not be able to participate in this study.</string>
     <string name="permissions_background_location_dialog_title">Please accept the Background Location permission, otherwise you will not be able to provide accurate results for your activities.</string>
     <string name="permissions_camera_capture_dialog_title">Please accept the CAMERA permission, otherwise you will not be able to capture an image for your avatar.</string>
     <string name="permissions_camera_dialog_title">Please accept the CAMERA permission, otherwise you will not be able to scan the product code.</string>

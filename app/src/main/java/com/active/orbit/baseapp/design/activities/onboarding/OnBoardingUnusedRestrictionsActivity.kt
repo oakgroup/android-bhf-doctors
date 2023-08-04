@@ -29,8 +29,13 @@ class OnBoardingUnusedRestrictionsActivity : BaseActivity(), View.OnClickListene
         setContentView(binding.root)
         showBackButton()
 
-        userConsentName = activityBundle.getString(Extra.USER_CONSENT_NAME.key)!!
-        userConsentDate = activityBundle.getLong(Extra.USER_CONSENT_DATE.key)
+
+        fromMenu = activityBundle.getBoolean(Extra.FROM_MENU.key, false)
+
+        if (!fromMenu) {
+            userConsentName = activityBundle.getString(Extra.USER_CONSENT_NAME.key)!!
+            userConsentDate = activityBundle.getLong(Extra.USER_CONSENT_DATE.key)
+        }
 
         prepare()
     }
@@ -56,7 +61,6 @@ class OnBoardingUnusedRestrictionsActivity : BaseActivity(), View.OnClickListene
     }
 
     private fun prepare() {
-        fromMenu = activityBundle.getBoolean(Extra.FROM_MENU.key, false)
         binding.description.text = HtmlCompat.fromHtml(getString(R.string.disable_restrictions_description), HtmlCompat.FROM_HTML_MODE_COMPACT)
 
         binding.btnSettings.visibility = View.VISIBLE
