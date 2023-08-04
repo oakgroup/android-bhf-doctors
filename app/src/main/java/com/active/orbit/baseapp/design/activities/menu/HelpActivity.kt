@@ -5,6 +5,7 @@ import android.view.View
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.Router
+import com.active.orbit.baseapp.core.routing.enums.Extra
 import com.active.orbit.baseapp.core.utils.TimeUtils
 import com.active.orbit.baseapp.databinding.ActivityHelpBinding
 import com.active.orbit.baseapp.design.activities.engine.Activities
@@ -31,31 +32,29 @@ class HelpActivity : BaseActivity(), View.OnClickListener {
     }
 
     fun prepare() {
-        binding.menuWhatWeOffer.disableClick()
+        binding.menuConsentForm.disableClick()
         binding.menuFaqs.disableClick()
         binding.menuContactUs.disableClick()
         binding.menuTroubleshooting.disableClick()
         binding.menuAbout.disableClick()
         binding.menuUploadData.disableClick()
 
-        binding.menuWhatWeOffer.setOnClickListener(this)
+        binding.menuConsentForm.setOnClickListener(this)
         binding.menuFaqs.setOnClickListener(this)
         binding.menuContactUs.setOnClickListener(this)
         binding.menuTroubleshooting.setOnClickListener(this)
         binding.menuAbout.setOnClickListener(this)
         binding.menuUploadData.setOnClickListener(this)
 
-        if (Preferences.user(this).isUserRegistered()) {
-            binding.menuUploadData.visibility = View.VISIBLE
-        } else {
-            binding.menuUploadData.visibility = View.GONE
-        }
     }
 
     override fun onClick(v: View?) {
         when (v) {
-            binding.menuWhatWeOffer -> {
-                Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).startBaseActivity(this, Activities.TOUR)
+            binding.menuConsentForm -> {
+                val bundle = Bundle()
+                bundle.putBoolean(Extra.FROM_MENU.key, true)
+                bundle.putBoolean(Extra.FROM_HELP.key, true)
+                Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).startBaseActivity(this, Activities.CONSENT_FORM, bundle)
             }
             binding.menuFaqs -> {
                 Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).startBaseActivity(this, Activities.FAQ)
