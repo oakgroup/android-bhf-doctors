@@ -34,6 +34,7 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
     private lateinit var binding: ActivityConsentFormBinding
     private var dateOfConsent: Calendar? = null
     private var fromMenu = false
+    private var fromHelp = false
 
     private var questionsAdapter: ConsentQuestionsAdapter? = null
     private var questionListener: ConsentQuestionListener? = null
@@ -46,7 +47,9 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
         setContentView(binding.root)
 
         fromMenu = activityBundle.getBoolean(Extra.FROM_MENU.key)
-        if (fromMenu) showBackButton()
+        fromHelp = activityBundle.getBoolean(Extra.FROM_MENU.key)
+
+        if (fromMenu || fromHelp) showBackButton()
 
         prepare()
 
@@ -63,6 +66,11 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
 
         if (fromMenu) {
 
+            if (fromHelp) {
+               binding.termsLinkContainer.visibility = View.GONE
+            }
+
+            binding.title.text = getString(R.string.participant_information)
             binding.fullName.isEnabled = false
             binding.fullName.setText(Preferences.user(this).userFullName())
 
@@ -79,6 +87,7 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
             prepareQuestions(true)
 
         } else {
+            binding.title.text = getString(R.string.participant_information_title)
             binding.progressText.visibility = View.VISIBLE
             binding.steps.visibility = View.VISIBLE
             binding.buttons.visibility = View.VISIBLE
@@ -105,6 +114,8 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             })
         }
+
+
     }
 
     private fun prepareQuestions(allAccepted: Boolean = false) {
