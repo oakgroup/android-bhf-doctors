@@ -79,6 +79,7 @@
                     android:id="@+id/menuUploadData"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     app:helpTitle="@string/upload_phone_data" />
 
                 <com.active.orbit.baseapp.design.components.HelpComponent
