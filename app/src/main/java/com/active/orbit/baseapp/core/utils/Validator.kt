@@ -74,12 +74,11 @@ object Validator {
 
     fun validatePostcode(postcode: String): Boolean {
         if (!TextUtils.isEmpty(postcode)) {
-            val regex = "^[A-Z]{1,2}[0-9R][0-9A-Z]? [0-9][ABD-HJLNP-UW-Z]{2}$"
-
+            //other option is this "^[A-Z]{1,2}[0-9R][0-9A-Z]? [0-9][ABD-HJLNP-UW-Z]{2}$"
+            
+            val regex = "^([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([AZa-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9]?[A-Za-z])))) [0-9][A-Za-z]{2})$"
             val pattern: Pattern = Pattern.compile(regex)
-
             val matcher: Matcher = pattern.matcher(postcode)
-
             return matcher.matches()
         }
         return false
@@ -90,11 +89,8 @@ object Validator {
     fun validatePhone(phone: String): Boolean {
         if (!TextUtils.isEmpty(phone)) {
             val regex = "^((\\+44)|(0)) ?\\d{4} ?\\d{6}\$"
-
             val pattern: Pattern = Pattern.compile(regex)
-
             val matcher: Matcher = pattern.matcher(phone)
-
             return matcher.matches()
         }
         return false
