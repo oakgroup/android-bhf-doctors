@@ -25,7 +25,9 @@ class Permissions(val group: Group) {
         private const val REQUEST_ACCESS_ACTIVITY_RECOGNITION = 3
         private const val REQUEST_ACCESS_CAMERA_FOR_SCAN = 4
         private const val REQUEST_ACCESS_CAMERA_FOR_CAPTURE = 5
-        private const val REQUEST_DOWNLOAD_PD = 6
+        private const val REQUEST_DOWNLOAD_PDF = 6
+        private const val REQUEST_NOTIFICATIONS = 7
+
     }
 
     fun check(activity: AppCompatActivity): Boolean {
@@ -85,7 +87,15 @@ class Permissions(val group: Group) {
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
             ),
-            REQUEST_DOWNLOAD_PD
+            REQUEST_DOWNLOAD_PDF
+        ),
+
+        @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+        ACCESS_NOTIFICATIONS(
+            arrayOf(
+                Manifest.permission.POST_NOTIFICATIONS
+            ),
+            REQUEST_NOTIFICATIONS
         )
     }
 }

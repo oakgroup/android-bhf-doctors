@@ -62,7 +62,6 @@ class PatientActivity : BaseActivity() {
         ConsentFormManager.retrieveConsentForm(thiss)
 
         computeResults()
-        scheduleNotification()
     }
 
     override fun onResume() {
@@ -138,17 +137,5 @@ class PatientActivity : BaseActivity() {
 
     private fun prepare() {
 
-    }
-
-
-    private fun scheduleNotification() {
-        //schedule notification only if it has not been scheduled before
-        background {
-            if (Preferences.lifecycle(this@PatientActivity).notificationScheduled == Constants.INVALID) {
-                val notificationToSchedule = NotificationType.HEALTH
-                Preferences.lifecycle(this@PatientActivity).notificationScheduled = notificationToSchedule.id
-                NotificationsManager.scheduleNotification(this@PatientActivity, (com.active.orbit.baseapp.core.utils.TimeUtils.ONE_DAY_MILLIS * 30), notificationToSchedule)
-            }
-        }
     }
 }

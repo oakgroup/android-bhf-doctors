@@ -170,6 +170,7 @@ class HealthScoreActivity : BaseActivity(), View.OnClickListener {
             if (Preferences.lifecycle(this@HealthScoreActivity).notificationScheduled != Constants.INVALID) {
                 scheduledNotification = NotificationType.getById(Preferences.lifecycle(this@HealthScoreActivity).notificationScheduled)
                 NotificationsManager.cancelNotification(this@HealthScoreActivity, scheduledNotification, true)
+                Preferences.lifecycle(this@HealthScoreActivity).notificationScheduled = Constants.INVALID
             }
             val notificationToSchedule = NotificationType.HEALTH
             Preferences.lifecycle(this@HealthScoreActivity).notificationScheduled = notificationToSchedule.id

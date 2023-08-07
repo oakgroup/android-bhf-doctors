@@ -524,6 +524,7 @@
     <string name="not_set">Not set</string>
     <string name="not_valid_qr">This does not look like a valid Beacon QR code</string>
     <string name="notes">Notes:</string>
+    <string name="notifications">Notifications</string>
     <string name="now">Now</string>
     <string name="off">Off</string>
     <string name="ok">OK</string>
@@ -584,6 +585,8 @@
     <string name="permissions_must_be_reinstated"><![CDATA[In order to use the app, allow location tracking under Settings>Apps>Moving Health>Permissions]]></string>
     <string name="permissions_not_granted">You need to accept the location permissions to be able to use this application.</string>
     <string name="permissions_not_granted_recognition">You need to grant the app the access to the physical activity to be able to use this application.</string>
+    <string name="permissions_notifications">We will send you a notification once in a month as a reminder to complete the Health questionnaire.</string>
+
     <string name="permissions_will_not_be_granted">As you have chosen not to allow locationsList, the app will now close. Please uninstall it.</string>
     <string name="personal_settings">Personal Settings</string>
     <string name="petrol">Petrol</string>

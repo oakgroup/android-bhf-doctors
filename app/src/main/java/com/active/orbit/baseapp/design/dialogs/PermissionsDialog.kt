@@ -47,31 +47,41 @@ class PermissionsDialog : BaseDialogFragment() {
         val btnPermission = view.findViewById<BaseButton>(R.id.btnPermission)
         val btnCancel = view.findViewById<BaseButton>(R.id.btnCancel)
 
-        when (requestCode) {
-            Permissions.Group.ACCESS_FINE_LOCATION.requestCode -> {
-                title.text = getString(R.string.location_services)
-                description.text = getString(R.string.permissions_location_dialog_title)
-            }
-            Permissions.Group.ACCESS_BACKGROUND_LOCATION.requestCode -> {
-                title.text = getString(R.string.location_services)
-                description.text = getString(R.string.permissions_background_location_dialog_title)
-            }
-            Permissions.Group.ACCESS_EXTERNAL_STORAGE.requestCode -> {
-                description.text = getString(R.string.permissions_external_storage_dialog_title)
-            }
-            Permissions.Group.ACCESS_ACTIVITY_RECOGNITION.requestCode -> {
-                description.text = getString(R.string.permissions_activity_recognition_dialog_title)
-            }
-            Permissions.Group.ACCESS_CAMERA_FOR_SCAN.requestCode -> {
-                description.text = getString(R.string.permissions_camera_dialog_title)
-            }
-            Permissions.Group.ACCESS_CAMERA_FOR_CAPTURE.requestCode -> {
-                description.text = getString(R.string.permissions_camera_capture_dialog_title)
-            }
-            Permissions.Group.ACCESS_DOWNLOAD_PDF.requestCode -> {
-                description.text = getString(R.string.permissions_download_pdf_title)
-            }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
 
+            when (requestCode) {
+                Permissions.Group.ACCESS_NOTIFICATIONS.requestCode -> {
+                    title.text = getString(R.string.notifications)
+                    description.text = getString(R.string.permissions_notifications)
+                }
+            }
+        } else {
+
+            when (requestCode) {
+                Permissions.Group.ACCESS_FINE_LOCATION.requestCode -> {
+                    title.text = getString(R.string.location_services)
+                    description.text = getString(R.string.permissions_location_dialog_title)
+                }
+                Permissions.Group.ACCESS_BACKGROUND_LOCATION.requestCode -> {
+                    title.text = getString(R.string.location_services)
+                    description.text = getString(R.string.permissions_background_location_dialog_title)
+                }
+                Permissions.Group.ACCESS_EXTERNAL_STORAGE.requestCode -> {
+                    description.text = getString(R.string.permissions_external_storage_dialog_title)
+                }
+                Permissions.Group.ACCESS_ACTIVITY_RECOGNITION.requestCode -> {
+                    description.text = getString(R.string.permissions_activity_recognition_dialog_title)
+                }
+                Permissions.Group.ACCESS_CAMERA_FOR_SCAN.requestCode -> {
+                    description.text = getString(R.string.permissions_camera_dialog_title)
+                }
+                Permissions.Group.ACCESS_CAMERA_FOR_CAPTURE.requestCode -> {
+                    description.text = getString(R.string.permissions_camera_capture_dialog_title)
+                }
+                Permissions.Group.ACCESS_DOWNLOAD_PDF.requestCode -> {
+                    description.text = getString(R.string.permissions_download_pdf_title)
+                }
+            }
         }
 
         btnPermission.setOnClickListener {

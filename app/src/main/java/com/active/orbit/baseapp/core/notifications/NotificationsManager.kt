@@ -8,11 +8,11 @@ import android.graphics.BitmapFactory
 import android.media.AudioAttributes
 import android.media.RingtoneManager
 import android.os.Build
-import android.os.SystemClock
 import android.provider.Settings
 import androidx.annotation.WorkerThread
 import androidx.core.app.NotificationCompat
 import androidx.core.app.TaskStackBuilder
+import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.core.utils.Logger
 import com.active.orbit.baseapp.core.utils.TimeUtils
@@ -147,6 +147,7 @@ class NotificationsManager : BroadcastReceiver() {
 
         val notificationType = NotificationType.getById(notificationId)
         createSimpleNotification(context, notificationType)
+        Preferences.lifecycle(context).notificationScheduled = Constants.INVALID
     }
 
 
