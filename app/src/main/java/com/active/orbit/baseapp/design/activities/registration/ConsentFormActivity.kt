@@ -185,14 +185,7 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
             }
 
             binding.btnDownload -> {
-
-                if (!hasDownloadPdfPermissionGranted()) {
-                    requestPermissionDownloadPdf()
-                } else {
-                    val downloader = Download(this)
-                    //TODO replace with url for consent form
-                    downloader.downloadFile("https://www.africau.edu/images/default/sample.pdf", "application/pdf", "consent_form.pdf")
-                }
+              //TODO if needed
             }
 
 
