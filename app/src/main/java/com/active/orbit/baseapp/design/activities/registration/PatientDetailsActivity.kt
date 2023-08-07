@@ -337,6 +337,10 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
 
         UserManager.registerUser(this, request, object : UserRegistrationListener {
             override fun onSuccess(map: UserRegistrationMap) {
+                completeRegistration(map)
+
+            //Use this if needed
+                /*
                 if (map.dataItem.participantIdCounter.counter > 1) {
                     Logger.d("Already existing user with patient id ${binding.insertIdEntryView.getPin()}, ask for confirmation")
                     val dialog = ConfirmRegistrationDialog()
@@ -354,6 +358,7 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
                 } else {
                     completeRegistration(map)
                 }
+                */
             }
 
             override fun onError() {
