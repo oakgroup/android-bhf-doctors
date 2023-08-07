@@ -47,7 +47,7 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
         setContentView(binding.root)
 
         fromMenu = activityBundle.getBoolean(Extra.FROM_MENU.key)
-        fromHelp = activityBundle.getBoolean(Extra.FROM_MENU.key)
+        fromHelp = activityBundle.getBoolean(Extra.FROM_HELP.key)
 
         if (fromMenu || fromHelp) showBackButton()
 
