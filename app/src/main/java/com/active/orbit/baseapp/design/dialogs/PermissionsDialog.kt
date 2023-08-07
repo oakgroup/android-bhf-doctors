@@ -42,16 +42,18 @@ class PermissionsDialog : BaseDialogFragment() {
 
     @RequiresApi(Build.VERSION_CODES.Q)
     private fun setup(view: View) {
-
+        val title = view.findViewById<BaseTextView>(R.id.title)
         val description = view.findViewById<BaseTextView>(R.id.description)
         val btnPermission = view.findViewById<BaseButton>(R.id.btnPermission)
         val btnCancel = view.findViewById<BaseButton>(R.id.btnCancel)
 
         when (requestCode) {
             Permissions.Group.ACCESS_FINE_LOCATION.requestCode -> {
+                title.text = getString(R.string.location_services)
                 description.text = getString(R.string.permissions_location_dialog_title)
             }
             Permissions.Group.ACCESS_BACKGROUND_LOCATION.requestCode -> {
+                title.text = getString(R.string.location_services)
                 description.text = getString(R.string.permissions_background_location_dialog_title)
             }
             Permissions.Group.ACCESS_EXTERNAL_STORAGE.requestCode -> {

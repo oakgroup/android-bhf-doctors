@@ -574,12 +574,12 @@
     <string name="permission_dialog_title">Permission Needed</string>
     <string name="permission_google_fit_title">Please accept the Google Fit permission, otherwise you will not be able to check your activity data.</string>
     <string name="permissions_activity_recognition_dialog_title">Please accept the Physical Activity permission, otherwise you will not be able to participate in this study.</string>
-    <string name="permissions_background_location_dialog_title">Please accept the Background Location permission, otherwise you will not be able to provide accurate results for your activities.</string>
+    <string name="permissions_background_location_dialog_title">By accepting the Background Location Permission, it will help to provide more accurate results for your activities.</string>
     <string name="permissions_camera_capture_dialog_title">Please accept the CAMERA permission, otherwise you will not be able to capture an image for your avatar.</string>
     <string name="permissions_camera_dialog_title">Please accept the CAMERA permission, otherwise you will not be able to scan the product code.</string>
     <string name="permissions_download_pdf_title">Please accept the permission, otherwise you will not be able to download the consent form on your device.</string>
     <string name="permissions_external_storage_dialog_title">Please accept the Storage permission, otherwise you will not be able to take upload an image.</string>
-    <string name="permissions_location_dialog_title">Please accept the Location permission, otherwise you will not be able to provide accurate results for your activities.</string>
+    <string name="permissions_location_dialog_title">By accepting the Location Permission, it will help to provide more accurate results for your activities.</string>
     <string name="permissions_must_be_reinstated"><![CDATA[In order to use the app, allow location tracking under Settings>Apps>Moving Health>Permissions]]></string>
     <string name="permissions_not_granted">You need to accept the location permissions to be able to use this application.</string>
     <string name="permissions_not_granted_recognition">You need to grant the app the access to the physical activity to be able to use this application.</string>
