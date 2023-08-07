@@ -10,31 +10,21 @@ import android.widget.DatePicker
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.active.orbit.baseapp.R
-import com.active.orbit.baseapp.core.deserialization.UserRegistrationMap
 import com.active.orbit.baseapp.core.download.Download
-import com.active.orbit.baseapp.core.enums.SuccessMessageType
-import com.active.orbit.baseapp.core.listeners.UserRegistrationListener
-import com.active.orbit.baseapp.core.managers.ConsentFormManager
-import com.active.orbit.baseapp.core.managers.UserManager
 import com.active.orbit.baseapp.core.permissions.Permissions
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.Router
 import com.active.orbit.baseapp.core.routing.enums.Extra
-import com.active.orbit.baseapp.core.serialization.UserRegistrationRequest
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.core.utils.Logger
 import com.active.orbit.baseapp.core.utils.TimeUtils
-import com.active.orbit.baseapp.core.utils.Utils
 import com.active.orbit.baseapp.databinding.ActivityConsentFormBinding
 import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
-import com.active.orbit.baseapp.design.dialogs.ConfirmRegistrationDialog
-import com.active.orbit.baseapp.design.dialogs.listeners.ConfirmRegistrationDialogListener
 import com.active.orbit.baseapp.design.recyclers.adapters.ConsentQuestionsAdapter
 import com.active.orbit.baseapp.design.recyclers.listeners.ConsentQuestionListener
 import com.active.orbit.baseapp.design.utils.UiUtils
-import uk.ac.shef.tracker.core.tracker.TrackerManager
 import java.util.Calendar
 import java.util.GregorianCalendar
 import kotlin.math.roundToInt
@@ -44,6 +34,7 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
     private lateinit var binding: ActivityConsentFormBinding
     private var dateOfConsent: Calendar? = null
     private var fromMenu = false
+    private var fromHelp = false
 
     private var questionsAdapter: ConsentQuestionsAdapter? = null
     private var questionListener: ConsentQuestionListener? = null
@@ -54,10 +45,11 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
         super.onCreate(savedInstanceState)
         binding = ActivityConsentFormBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        showBackButton()
 
         fromMenu = activityBundle.getBoolean(Extra.FROM_MENU.key)
+        fromHelp = activityBundle.getBoolean(Extra.FROM_MENU.key)
 
+        if (fromMenu || fromHelp) showBackButton()
 
         prepare()
 
@@ -74,6 +66,11 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
 
         if (fromMenu) {
 
+            if (fromHelp) {
+               binding.termsLinkContainer.visibility = View.GONE
+            }
+
+            binding.title.text = getString(R.string.participant_information)
             binding.fullName.isEnabled = false
             binding.fullName.setText(Preferences.user(this).userFullName())
 
@@ -85,9 +82,12 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
             binding.buttons.visibility = View.GONE
             binding.btnDownload.visibility = View.GONE
 
+            binding.btnBack.setOnClickListener(this)
+
             prepareQuestions(true)
 
         } else {
+            binding.title.text = getString(R.string.participant_information_title)
             binding.progressText.visibility = View.VISIBLE
             binding.steps.visibility = View.VISIBLE
             binding.buttons.visibility = View.VISIBLE
@@ -97,9 +97,8 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
             dateOfConsent = TimeUtils.getCurrent()
             binding.btnDate.setText(TimeUtils.format(dateOfConsent!!, Constants.DATE_FORMAT_YEAR_MONTH_DAY))
 
-
-            binding.btnConfirm.setOnClickListener(this)
-            binding.btnBack.setOnClickListener(this)
+            binding.btnNext.setOnClickListener(this)
+            binding.btnBack.visibility = View.GONE
 
             prepareQuestions()
 
@@ -115,6 +114,8 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             })
         }
+
+
     }
 
     private fun prepareQuestions(allAccepted: Boolean = false) {
@@ -157,15 +158,14 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
     override fun onClick(v: View?) {
         when (v) {
 
-            binding.btnConfirm -> {
+            binding.btnNext -> {
                 if (!TextUtils.isEmpty(binding.fullName.textTrim) && dateOfConsent != null && questionsAcceptedCounter == questionsAdapter!!.numberOfQuestions) {
                     val bundle = Bundle()
                     bundle.putString(Extra.USER_CONSENT_NAME.key, binding.fullName.textTrim)
                     bundle.putLong(Extra.USER_CONSENT_DATE.key, dateOfConsent!!.timeInMillis)
-
                     Router.getInstance()
                         .activityAnimation(ActivityAnimation.LEFT_RIGHT)
-                        .startBaseActivity(this, Activities.PATIENT_DETAILS, bundle)
+                        .startBaseActivity(this, Activities.ON_BOARDING_LOCATION, bundle)
                 } else {
                     UiUtils.showLongToast(this, R.string.accept_toc_please)
                     binding.scrollView.scrollTo(binding.termsLinkContainer.x.roundToInt(), binding.termsLinkContainer.y.roundToInt())
@@ -208,8 +208,6 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
         dateOfConsent!!.set(Calendar.DAY_OF_MONTH, dayOfMonth)
         binding.btnDate.setText(TimeUtils.format(dateOfConsent!!, Constants.DATE_FORMAT_YEAR_MONTH_DAY))
     }
-
-
 
 
 }

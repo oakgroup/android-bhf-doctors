@@ -42,29 +42,20 @@ class SuccessMessageActivity : BaseActivity(), View.OnClickListener {
         when (v) {
             binding.btnClose -> {
                 when (successMessage) {
-                    SuccessMessageType.LOCATION_PERMISSION -> {
-                        manageOnBoarding()
-                    }
-                    SuccessMessageType.BATTERY_PERMISSION -> {
-                        manageOnBoarding()
-                    }
-                    SuccessMessageType.UNUSED_RESTRICTIONS -> {
-                        manageOnBoarding()
-                    }
-                    SuccessMessageType.ON_BOARDING_COMPLETED -> {
-                        manageOnBoarding()
-                    }
                     SuccessMessageType.REGISTRATION -> {
                         Router.getInstance()
                             .activityAnimation(ActivityAnimation.TOP_BOTTOM)
                             .homepage(thiss)
                     }
+
                     SuccessMessageType.MEDICINE_REPORTED -> {
                         finishAndRemoveTask()
                     }
+
                     SuccessMessageType.SYMPTOM_REPORTED -> {
                         finishAndRemoveTask()
                     }
+
                     SuccessMessageType.DISMISS_PATIENT -> {
                         Router.getInstance()
                             .newTask(true)
@@ -72,6 +63,7 @@ class SuccessMessageActivity : BaseActivity(), View.OnClickListener {
                             .activityAnimation(ActivityAnimation.FADE)
                             .startBaseActivity(this, Activities.SPLASH)
                     }
+
                     SuccessMessageType.UNDEFINED -> {
                         Logger.e("Undefined success message type on ${javaClass.name}")
                         Router.getInstance().clearTop(true).startBaseActivity(this, Activities.SPLASH)

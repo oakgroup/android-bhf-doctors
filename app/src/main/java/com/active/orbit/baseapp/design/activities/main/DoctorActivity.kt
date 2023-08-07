@@ -5,11 +5,9 @@ import android.os.Bundle
 import android.view.View
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.enums.MainPanelType
-import com.active.orbit.baseapp.core.listeners.ResultListener
 import com.active.orbit.baseapp.core.managers.ConsentFormManager
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.Router
-import com.active.orbit.baseapp.core.utils.TimeUtils
 import com.active.orbit.baseapp.databinding.ActivityDoctorBinding
 import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
@@ -65,17 +63,13 @@ class DoctorActivity : BaseActivity(), View.OnClickListener {
     override fun onResume() {
         super.onResume()
 
-        onboarded(object : ResultListener {
-            override fun onResult(success: Boolean) {
-                if (!success) {
-                    // we cannot be here if the app has not been correctly onboarded
-                    Router.getInstance()
-                        .newTask(true)
-                        .startBaseActivity(this@DoctorActivity, Activities.SPLASH)
-                    finish()
-                }
-            }
-        })
+        if (!onboarded()) {
+            // we cannot be here if the app has not been correctly onboarded
+            Router.getInstance()
+                .newTask(true)
+                .startBaseActivity(this@DoctorActivity, Activities.SPLASH)
+            finish()
+        }
     }
 
     override fun onClick(v: View?) {
@@ -87,8 +81,6 @@ class DoctorActivity : BaseActivity(), View.OnClickListener {
                     dialog.isCancelable = true
                     dialog.listener = object : StartStudyDialogListener {
                         override fun onStart() {
-                            Preferences.user(thiss).studyStarted = true
-                            Preferences.user(thiss).dateStudyStarted = TimeUtils.getCurrent().timeInMillis
                             Router.getInstance()
                                 .activityAnimation(ActivityAnimation.FADE)
                                 .homepage(thiss)

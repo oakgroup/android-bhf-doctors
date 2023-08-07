@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_lateral"
         android:gravity="start"
-        android:text="@string/participant_information"
+        android:text="@string/participant_information_title"
         android:textColor="@color/textColorPrimaryDark"
         android:textSize="@dimen/h2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -226,17 +226,17 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/back"
+                android:visibility="gone"
                 app:typeface="semibold" />
 
             <com.active.orbit.baseapp.design.widgets.BaseButton
-                android:id="@+id/btnConfirm"
+                android:id="@+id/btnNext"
                 style="@style/ButtonPrimary"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_lateral"
                 android:layout_weight="2"
                 android:gravity="center"
-                android:text="@string/confirm"
+                android:text="@string/next"
                 app:typeface="semibold" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>

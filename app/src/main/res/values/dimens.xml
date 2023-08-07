@@ -27,6 +27,8 @@
     <dimen name="h3">24sp</dimen>
     <dimen name="h4">20sp</dimen>
     <dimen name="h5">16sp</dimen>
+    <dimen name="h6">12sp</dimen>
+
 
 
     <dimen name="logo_dimension">@dimen/h0</dimen>

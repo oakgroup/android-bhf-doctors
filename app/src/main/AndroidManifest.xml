@@ -95,11 +95,6 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".design.activities.onboarding.OnBoardingActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.FullScreen" />
-        <activity
             android:name=".design.activities.onboarding.OnBoardingBatteryActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"

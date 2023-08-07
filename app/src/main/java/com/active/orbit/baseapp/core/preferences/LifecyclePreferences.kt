@@ -15,14 +15,6 @@ class LifecyclePreferences : BasePreferences() {
             editor.apply()
         }
 
-    var welcomeShown: Boolean
-        get() = prefs.getBoolean(res.getString(R.string.preference_lifecycle_welcome_shown_key), false)
-        set(value) {
-            val editor = prefs.edit()
-            editor.putBoolean(res.getString(R.string.preference_lifecycle_welcome_shown_key), value)
-            editor.apply()
-        }
-
     var tourShown: Boolean
         get() = prefs.getBoolean(res.getString(R.string.preference_lifecycle_tour_shown_key), false)
         set(value) {
@@ -66,7 +58,10 @@ class LifecyclePreferences : BasePreferences() {
 
     override fun logout() {
         firstInstall = null
-        welcomeShown = false
+        tourShown = false
+        onboardingshown = false
+        isPrivacyPolicyAccepted = false
         userDetailsUploaded = false
+        notificationScheduled = Constants.INVALID
     }
 }

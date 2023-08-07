@@ -1,11 +1,13 @@
 package com.active.orbit.baseapp.design.activities.main
 
 import android.annotation.SuppressLint
+import android.os.Build
 import android.os.Bundle
+import androidx.annotation.RequiresApi
 import com.active.orbit.baseapp.BuildConfig
 import com.active.orbit.baseapp.R
-import com.active.orbit.baseapp.core.listeners.ResultListener
 import com.active.orbit.baseapp.core.managers.ConsentFormManager
+import com.active.orbit.baseapp.core.permissions.Permissions
 import com.active.orbit.baseapp.core.preferences.engine.BasePreferences
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.Router
@@ -43,27 +45,39 @@ class SplashActivity : BaseActivity() {
         super.onResume()
 
         Utils.delay(TimeUtils.ONE_SECOND_MILLIS * 2) {
+            if (!permissionsDialogShown) proceed()
+        }
+    }
 
-            if (Preferences.lifecycle(this).welcomeShown) {
-                onboarded(object : ResultListener {
-                    override fun onResult(success: Boolean) {
-                        if (!success) {
-                            Router.getInstance()
-                                .activityAnimation(ActivityAnimation.FADE)
-                                .startBaseActivity(this@SplashActivity, Activities.ON_BOARDING)
-                        } else {
-                            Router.getInstance()
-                                .activityAnimation(ActivityAnimation.FADE)
-                                .homepage(this@SplashActivity)
-                        }
-                    }
-                })
+    private fun proceed() {
+        if (Preferences.user(this).isUserRegistered()) {
+            if (!onboarded()) {
+                requestPermissionActivityRecognition()
             } else {
                 Router.getInstance()
                     .activityAnimation(ActivityAnimation.FADE)
-                    .startBaseActivity(this, Activities.WELCOME)
+                    .homepage(this@SplashActivity)
+                finish()
             }
+        } else {
+            Router.getInstance()
+                .activityAnimation(ActivityAnimation.FADE)
+                .startBaseActivity(this, Activities.WELCOME)
             finish()
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.Q)
+    override fun onPermissionEnabled(requestCode: Int) {
+        super.onPermissionEnabled(requestCode)
+        when (requestCode) {
+            Permissions.Group.ACCESS_ACTIVITY_RECOGNITION.requestCode -> {
+                proceed()
+            }
+
+            else -> {
+                Logger.e("Undefined request code $requestCode on permission enabled ")
+            }
         }
     }
 

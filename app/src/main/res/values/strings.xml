@@ -43,7 +43,7 @@
     <string name="activity_info_two_description">See all of your daily activities and view them on a map</string>
     <string name="activity_info_two_title">Detailed Activity</string>
     <string name="activity_previous_usage">From previous app usage</string>
-    <string name="activity_rec_permissions_not_granted">You need to accept the activity recognition permissions to be able to use this application.</string>
+    <string name="activity_rec_permissions_not_granted">You need to accept the physical activity permission in order to continue</string>
     <string name="activity_rec_permissions_will_not_be_granted">As you have chosen not to allow activity recognition permission, the app will now close. Please uninstall it.</string>
     <string name="activity_step">1 Step</string>
     <string name="activity_steps">%1$s Steps</string>
@@ -89,7 +89,8 @@
     <string name="battery_allow">Allow Background</string>
     <string name="battery_open_settings">Check Settings</string>
     <string name="battery_settings">Battery Settings</string>
-    <string name="battery_settings_description">The app needs to run continuously in background to detect outdoor activities. The android operative system has some limitations that do not allow this. Please make sure that you have correctly setup the battery optimisation settings for the app by clicking the button below</string>
+    <string name="battery_settings_description"><![CDATA[During set up your device may display a message informing you that the app uses power in the background and may drain the battery. This is correct. The app has to run continuously in order to collect more accurate data.<br><br>Click on <b>Check Settings</b> and follow the instructions below.<br><ol><li>In Settings, search for Battery Optimisation and select to view All apps.</li><li>Find Moving Health and click on it to view the app setting.</li><li>For the app to work correctly it should be set to <b>Don’t Optimise</b> or <b>Unrestricted</b>.</li><li>Make sure the correct option is selected and then click on Done.</li></ol><br><br>If the above options are not available on your device please do the following:<br><ol><li>Open the Settings app on your device and select Apps</li><li>Select App Management and click on Moving Health</li><li>Select Battery Usage, and turn on <b>Allow background activity</b></li>]]></string>
+    <string name="battery_settings_title">Battery Settings (2.2)</string>
     <string name="big_bike_code_description">Enter four or five digits</string>
     <string name="big_bike_unique_reference">Big bike unique reference:</string>
     <string name="big_bike_user">Big bike user:</string>
@@ -130,6 +131,7 @@
     <string name="check_in_notification">Please checkin to help us count active users</string>
     <string name="check_in_notification_channel_description">Notifications about a requested checkin</string>
     <string name="check_phone_data">Check Phone Data</string>
+    <string name="check_settings">Check Settings</string>
     <string name="check_watch_data">Check Watch Data</string>
     <string name="check_your_credentials">Check Your Credentials</string>
     <string name="check_your_details">Check Your Details</string>
@@ -194,7 +196,7 @@
     <string name="contact_necessary">(please provide at least one)</string>
     <string name="contact_support">Contact Support</string>
     <string name="contact_us">Contact Us</string>
-    <string name="contact_us_descritpion">You can email us at movinghealth@sheffield.ac.uk</string>
+    <string name="contact_us_descritpion">You can email us at movinghealth@sheffield.ac.uk.\n\nYou can call us at 0114 2159000.</string>
     <string name="contact_us_title">How to contact us</string>
     <string name="continue_btn">Continue</string>
     <string name="continue_button">Continue</string>
@@ -238,8 +240,9 @@
     <string name="dialog_send_user_id_title_new_registration">You have registered a new patient. Please send user id to the watch by clicking the button below.</string>
     <string name="dialog_unit_selection_title">Unit Selection</string>
     <string name="diesel">Diesel</string>
-    <string name="disable_restrictions">Disable restrictions</string>
-    <string name="disable_restrictions_description">The app needs to continuously have the permissions granted to run in background to detect activities. The android operative system has some limitations that do not allow this. Please make sure that you disable the automatic removal of the permissions if the app is not used for a while, by clicking the button below. Then, click on Permissions and uncheck the "Remove permissions if app isn\'t used" checkbox</string>
+    <string name="disable_restrictions">Unused App Permissions</string>
+    <string name="disable_restrictions_description"><![CDATA[The Moving Health app needs to run continuously in order to record accurate data. If you do not regularly use the app some Android devices will automatically remove the permissions.<br><br>Click on <b>Update Settings</b> and follow the instructions below.<br><br><ol><li>In Settings, search for Apps.</li><li>Tap on Apps and then tap on the Moving Health app.</li><li>Under <q>Unused app setting</q>, turn off <b>Pause app activity if unused</b>.</li><li>If the above option is not available, under <q>Unused app setting</q>, turn off <b>Remove permissions and free up space</b>.</li>]]></string>
+    <string name="disable_restrictions_title">Unused App Permissions (2.3)</string>
     <string name="dismiss">Dismiss</string>
     <string name="dismiss_force"> Force Dismiss</string>
     <string name="dismiss_patient">Withdraw from Study</string>
@@ -404,6 +407,9 @@
     <string name="loading_medicine">Loading medicine…</string>
     <string name="loading_medicines">Loading medicines…</string>
     <string name="location_services">Location Services</string>
+    <string name="location_services_permission">I understand and agree that GPS data, provided by the location services on the mobile device, will be gathered by the Moving Health App and used to calculate measurements of mobility (average walking speed, distance walked each day, motor vehicle trips each day, time in motor vehicles each day).</string>
+    <string name="location_services_title_one">Physical Activity and Location Services (2.1)</string>
+    <string name="location_services_title_two">Physical Activity and Location Services</string>
     <string name="locationservices_dialog_message">The app requires the use of Location Services in order to work properly. Please enable Location Services.</string>
     <string name="log_out">Log Out</string>
     <string name="logo">Logo</string>
@@ -526,8 +532,7 @@
     <string name="onboarding">Configuration</string>
     <string name="onboarding_description">This device is not correctly configured, please click on the continue button and follow the next steps to complete the configuration</string>
     <string name="onboarding_description_first_install">In order to use the %1$s app, some permissions and the privacy policy need to be accepted. Please click on the continue button and follow the next steps to complete the configuration</string>
-    <string name="onboarding_location_1">This app performs constant location tracking in order to model precisely your physical activity. \n\nPlease select the following options when they appear. Make sure to select \"Allow all the time\" otherwise the app precision will be reduced.</string>
-    <string name="onboarding_location_2">Android may warn you that the App uses power in the background. That is correct. It is necessary in order to track 24/7. The message can be ignored.</string>
+    <string name="onboarding_location_1"><![CDATA[In order to accurately record your activity the app needs to access the Physical Activity and Location data stored on your mobile device.<br>Please follow the instructions below when the permissions are shown.<br><br><b>Physical Activity</b><br><ol><li>Allow Moving Health to access your physical activity?</li><li>Click on Allow.</li></ol><br><br><b>Location Services</b><br><ol><li>Allow Moving Health to access this device’s location?</li><li>Click on <b>Precise</b> and <b>While using the app</b></li><li>Location Permission must be set to <b>Allow all the time</b></li></ol>]]></string>
     <string name="only_for">Before continuing, make sure to read and accept the Terms and Conditions.\n\nThen, we\'ll ask you to switch on the phone\'s motion and fitness sensors and the location detection. \n \nIt will take just a few seconds and it will make sure the app provides you with the best possible experience.</string>
     <string name="open_permissions">Open Permissions</string>
     <string name="opening_times">Opening Times</string>
@@ -541,6 +546,7 @@
     <string name="paragraph_two_about_set_up_gfit">Don\’t worry, you won\'t lose any existing type data, and achievements you\’ve collected.</string>
     <string name="participating_city">Living in a partner city?</string>
     <string name="participant_information">Participant Information and Privacy Policy</string>
+    <string name="participant_information_title">Participant Information and Privacy Policy (1)</string>
     <string name="passive_gps_text">To save battery, we use passive location detection: the path drawn on the map may be imprecise or missing sometimes. This will not make the application imprecise.</string>
     <string name="passive_location_title">Passive Location</string>
     <string name="password">Password</string>
@@ -567,7 +573,7 @@
     <string name="pedalling_speed">Pedalling Speed</string>
     <string name="permission_dialog_title">Permission Needed</string>
     <string name="permission_google_fit_title">Please accept the Google Fit permission, otherwise you will not be able to check your activity data.</string>
-    <string name="permissions_activity_recognition_dialog_title">Please accept the Physical Activity permission, otherwise you will not be able to provide accurate results for your activities.</string>
+    <string name="permissions_activity_recognition_dialog_title">Please accept the Physical Activity permission, otherwise you will not be able to participate in this study.</string>
     <string name="permissions_background_location_dialog_title">Please accept the Background Location permission, otherwise you will not be able to provide accurate results for your activities.</string>
     <string name="permissions_camera_capture_dialog_title">Please accept the CAMERA permission, otherwise you will not be able to capture an image for your avatar.</string>
     <string name="permissions_camera_dialog_title">Please accept the CAMERA permission, otherwise you will not be able to scan the product code.</string>
@@ -584,6 +590,8 @@
     <string name="phone_number_hint">Phone Number</string>
     <string name="phone_upload_dialog_description">This device has data to upload, if you want to upload this data please select the \"Upload Now\" button below else close to return to the dismiss patient screen.</string>
     <string name="phone_upload_dialog_title">Phone Data Upload</string>
+    <string name="physical_activity">Physical Activity *</string>
+    <string name="physical_activity_permission">I agree to give access to my physical activity data. This does not includes any GPS data.</string>
     <string name="physiology_details_two">Sleep Heart Rate: %1$s</string>
     <string name="physiology_details_one">Awake Heart Rate: %1$s</string>
     <string name="physiology_title">Physiology</string>
@@ -725,7 +733,6 @@
     <string name="set_my_targets">Set My Targets</string>
     <string name="set_user_id_explanation">Setting the user id should be done only by an expert user, as it may make the application unusable. \n\nIt can also lose all the data on both the phone and the server. \n\nUnless you know what you are doing, leave the user Id alone!!</string>
     <string name="settings">Settings</string>
-    <string name="settings_battery">Battery Settings</string>
     <string name="settings_active_target">%1$d active minutes</string>
     <string name="settings_age_label">%1$d years old</string>
     <string name="settings_heart_target">%1$d heart minutes</string>
@@ -831,6 +838,7 @@
     <string name="update_details">Update Details</string>
     <string name="update_error">There was an error update your account</string>
     <string name="update_required_title">Update Required</string>
+    <string name="update_settings">Update Settings</string>
     <string name="update_success">Account updated successful</string>
     <string name="update_target">Update Targets</string>
     <string name="updating_details">Updating your account details</string>

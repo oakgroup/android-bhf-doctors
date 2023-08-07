@@ -21,6 +21,8 @@ class TourActivity : BaseActivity(), ViewPager.OnPageChangeListener, View.OnClic
         binding = ActivityTourBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        Preferences.lifecycle(this).tourShown = true
+
         prepare()
     }
 
@@ -84,12 +86,7 @@ class TourActivity : BaseActivity(), ViewPager.OnPageChangeListener, View.OnClic
             }
 
             binding.btnClose -> {
-                //TODO needs to start the process of registration
-//                if (!Preferences.user(this).isUserRegistered()) {
-//                    Router.getInstance().activityAnimation(ActivityAnimation.BOTTOM_TOP).startBaseActivity(this,Activities.CONSENT_FORM)
-//                } else {
-//                    Router.getInstance().homepage(this)
-//                }
+                Router.getInstance().activityAnimation(ActivityAnimation.BOTTOM_TOP).startBaseActivity(this, Activities.CONSENT_FORM)
                 finish()
             }
         }
@@ -102,10 +99,12 @@ class TourActivity : BaseActivity(), ViewPager.OnPageChangeListener, View.OnClic
                 binding.btnBack.visibility = View.INVISIBLE
                 binding.btnNext.visibility = View.VISIBLE
             }
+
             AppTourAdapter.POSITION_TWO -> {
                 binding.btnBack.visibility = View.VISIBLE
                 binding.btnNext.visibility = View.VISIBLE
             }
+
             AppTourAdapter.POSITION_THREE -> {
                 binding.btnBack.visibility = View.VISIBLE
                 binding.btnNext.visibility = View.INVISIBLE

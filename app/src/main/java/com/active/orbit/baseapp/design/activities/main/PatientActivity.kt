@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.annotation.RequiresApi
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.enums.BottomNavItemType
-import com.active.orbit.baseapp.core.listeners.ResultListener
 import com.active.orbit.baseapp.core.managers.ConsentFormManager
 import com.active.orbit.baseapp.core.notifications.NotificationType
 import com.active.orbit.baseapp.core.notifications.NotificationsManager
@@ -51,14 +50,14 @@ class PatientActivity : BaseActivity() {
         config.useStepCounter = true
         config.useActivityRecognition = true
         config.useLocationTracking = true
-        config.useHeartRateMonitor = true
+        config.useHeartRateMonitor = false
         config.useMobilityModelling = true
         config.useBatteryMonitor = true
         config.useStayPoints = false
         config.compactLocations = false
         config.uploadData = true
 
-        TrackerManager.getInstance(this).askForPermissionAndStartTracker(config)
+        TrackerManager.getInstance(this).startTracker(config)
 
         ConsentFormManager.retrieveConsentForm(thiss)
 
@@ -71,25 +70,21 @@ class PatientActivity : BaseActivity() {
 
         binding.bottomNav.setSelected(BottomNavItemType.MAIN)
 
-        onboarded(object : ResultListener {
-            override fun onResult(success: Boolean) {
-                if (!success) {
-                    // we cannot be here if the app has not been correctly onboarded
-                    Router.getInstance()
-                        .newTask(true)
-                        .startBaseActivity(this@PatientActivity, Activities.SPLASH)
-                    finish()
-                } else {
-                    TrackerManager.getInstance(this@PatientActivity).onResume()
+        if (!onboarded()) {
+            // we cannot be here if the app has not been correctly onboarded
+            Router.getInstance()
+                .newTask(true)
+                .startBaseActivity(this@PatientActivity, Activities.SPLASH)
+            finish()
+        } else {
+            TrackerManager.getInstance(this@PatientActivity).onResume()
 
-                    val currentTime = System.currentTimeMillis()
-                    if (currentTime - lastTimeClosed > 180000)
-                        TrackerManager.getInstance(this@PatientActivity).currentDateTime = TimeUtils.midnightInMsecs(currentTime)
-                    Logger.i("Computing results")
-                    computeResults()
-                }
-            }
-        })
+            val currentTime = System.currentTimeMillis()
+            if (currentTime - lastTimeClosed > 180000)
+                TrackerManager.getInstance(this@PatientActivity).currentDateTime = TimeUtils.midnightInMsecs(currentTime)
+            Logger.i("Computing results")
+            computeResults()
+        }
     }
 
     override fun onPause() {
@@ -130,6 +125,7 @@ class PatientActivity : BaseActivity() {
                 binding.activityPanel.setProgress(minutesWalking, minutesHeart, minutesCycling, distanceWalking, distanceHeart, distanceCycling, steps)
                 binding.mobilityPanel.setProgress(vehicleTrips, distanceVehicle, minutesVehicle)
             }
+
             else -> super.onTrackerUpdate(type, data)
         }
     }

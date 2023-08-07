@@ -53,9 +53,7 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
         setContentView(binding.root)
         showBackButton()
 
-        if (activityBundle.getBoolean(Extra.FROM_MENU.key) != null) {
-            fromMenu = activityBundle.getBoolean(Extra.FROM_MENU.key)
-        }
+        fromMenu = activityBundle.getBoolean(Extra.FROM_MENU.key)
 
         prepare()
     }
@@ -118,14 +116,13 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
             userConsentName = activityBundle.getString(Extra.USER_CONSENT_NAME.key)!!
             userConsentDate = activityBundle.getLong(Extra.USER_CONSENT_DATE.key)
 
-
             binding.progressText.visibility = View.VISIBLE
             binding.stepsLayout.visibility = View.VISIBLE
             binding.buttons.visibility = View.VISIBLE
             binding.btnSave.visibility = View.GONE
             binding.btnNhsUrl.visibility = View.VISIBLE
 
-            binding.btnNext.setOnClickListener(this)
+            binding.btnConfirm.setOnClickListener(this)
             binding.btnBack.setOnClickListener(this)
             binding.btnNhsUrl.setOnClickListener(this)
             binding.btnSexSelection.setOnClickListener(this)
@@ -227,7 +224,7 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
     override fun onClick(v: View?) {
 
         when (v) {
-            binding.btnNext -> {
+            binding.btnConfirm -> {
                 hideKeyboard()
 
                 if (binding.insertIdEntryView.isComplete()
@@ -235,7 +232,8 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
                     && !TextUtils.isEmpty(binding.lastName.textTrim)
                     && dateOfBirth != null && sex != null
                     && Validator.validatePostcode(binding.postcode.textTrim)
-                    && (Validator.validateMail(binding.email.textTrim) || Validator.validatePhone(binding.phone.textTrim))) {
+                    && (Validator.validateMail(binding.email.textTrim) || Validator.validatePhone(binding.phone.textTrim))
+                ) {
 
                     if (!Validator.validateNhsNumber(binding.insertIdEntryView.getPin())) {
                         UiUtils.showShortToast(this, "NHS number is not valid")
@@ -270,7 +268,8 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
                 if (!TextUtils.isEmpty(binding.firstName.textTrim) && !TextUtils.isEmpty(binding.lastName.textTrim)
                     && dateOfBirth != null && sex != null
                     && Validator.validatePostcode(binding.postcode.textTrim)
-                    && (Validator.validateMail(binding.email.textTrim) || Validator.validatePhone(binding.phone.textTrim))) {
+                    && (Validator.validateMail(binding.email.textTrim) || Validator.validatePhone(binding.phone.textTrim))
+                ) {
 
 
                     Preferences.user(this).userFirstName = binding.firstName.textTrim
@@ -374,13 +373,11 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
         Preferences.user(this).userDateOfBirth = dateOfBirth!!.timeInMillis
         Preferences.user(this).userSex = sex!!.sex
         Preferences.user(this).userPostcode = binding.postcode.textTrim
+        Preferences.user(this).userEmail = binding.email.textTrim
+        Preferences.user(this).userPhone = binding.phone.textTrim
         Preferences.user(this).userConsentDate = userConsentDate
         Preferences.user(this).userConsentName = userConsentName
         Preferences.lifecycle(this).userDetailsUploaded = true
-
-        // automatically start the study
-        Preferences.user(thiss).studyStarted = true
-        Preferences.user(thiss).dateStudyStarted = TimeUtils.getCurrent().timeInMillis
 
         // check registration with the server
         TrackerManager.getInstance(this).saveUserRegistrationId(map.dataItem.userId.id)

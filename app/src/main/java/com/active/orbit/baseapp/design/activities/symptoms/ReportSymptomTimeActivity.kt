@@ -21,7 +21,8 @@ import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.utils.UiUtils
 import uk.ac.shef.tracker.core.utils.background
 import uk.ac.shef.tracker.core.utils.main
-import java.util.*
+import java.util.Calendar
+import java.util.GregorianCalendar
 
 class ReportSymptomTimeActivity : BaseActivity(), View.OnClickListener, DatePickerDialog.OnDateSetListener {
 
@@ -107,11 +108,12 @@ class ReportSymptomTimeActivity : BaseActivity(), View.OnClickListener, DatePick
             binding.btnDate -> {
                 val cal = symptomDate ?: GregorianCalendar()
                 val dialog = DatePickerDialog(this, R.style.AppCompatAlertDialogStyle, this, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH))
-                dialog.datePicker.minDate = Preferences.user(this).dateStudyStarted!!
+                dialog.datePicker.minDate = Preferences.lifecycle(this).firstInstall!!
                 dialog.show()
                 dialog.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(this, R.color.colorPrimaryDark))
                 dialog.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(this, R.color.colorPrimaryDark))
             }
+
             binding.btnTime -> {
                 var hour = 0
                 var minute = 0

@@ -13,6 +13,7 @@ import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.enums.Extra
 import com.active.orbit.baseapp.core.utils.BaseException
 import com.active.orbit.baseapp.core.utils.Constants
+import com.active.orbit.baseapp.core.utils.Logger
 import com.active.orbit.baseapp.core.utils.Utils
 import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
@@ -31,7 +32,7 @@ import kotlin.coroutines.CoroutineContext
  *
  * @author omar.brugna
  */
-class Router: CoroutineScope {
+class Router : CoroutineScope {
 
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Default
@@ -215,6 +216,17 @@ class Router: CoroutineScope {
         context.startActivity(intent)
     }
 
+    fun openBatteryOptimisationSettings(context: Context) {
+        try {
+            val intent = Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS)
+            intent.addCategory(Intent.CATEGORY_DEFAULT)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            context.startActivity(intent)
+        } catch (e: Exception) {
+            Logger.e("error in opening Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS " + e.localizedMessage)
+        }
+    }
+
     fun openNHS(context: Context) {
         val url = when (Locale.getDefault().language) {
             "en" -> context.resources.getString(R.string.find_nhs_number_link_default)
@@ -226,12 +238,9 @@ class Router: CoroutineScope {
     fun homepage(context: Context) {
         clearTop(true)
         newTask(true)
-        if (Preferences.user(context).isUserRegistered() && Preferences.user(context).studyStarted) {
+        if (Preferences.user(context).isUserRegistered()) {
             activityAnimation(ActivityAnimation.FADE)
             startBaseActivity(context, Activities.PATIENT)
-        } else {
-            activityAnimation(ActivityAnimation.FADE)
-            startBaseActivity(context, Activities.DOCTOR)
         }
     }
 

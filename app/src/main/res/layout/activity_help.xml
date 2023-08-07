@@ -51,7 +51,7 @@
                 app:layout_constraintTop_toBottomOf="@id/stroke">
 
                 <com.active.orbit.baseapp.design.components.HelpComponent
-                    android:id="@+id/menuWhatWeOffer"
+                    android:id="@+id/menuConsentForm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:helpTitle="@string/participant_information" />
@@ -79,6 +79,7 @@
                     android:id="@+id/menuUploadData"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     app:helpTitle="@string/upload_phone_data" />
 
                 <com.active.orbit.baseapp.design.components.HelpComponent
