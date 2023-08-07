@@ -112,35 +112,12 @@ class OnBoardingLocationActivity : BaseActivity(), View.OnClickListener {
 
             binding.btnNext -> {
                 if (hasActivityRecognitionPermissionGranted()) {
-                    //TODO talk with Alan about this
-                    if (onboardedBattery()) {
-                        onboardedUnusedRestrictions(object : ResultListener {
-                            override fun onResult(success: Boolean) {
-                                if (success) {
-                                    val bundle = Bundle()
-                                    bundle.putString(Extra.USER_CONSENT_NAME.key, userConsentName)
-                                    bundle.putLong(Extra.USER_CONSENT_DATE.key, userConsentDate)
-                                    Router.getInstance()
-                                        .activityAnimation(ActivityAnimation.LEFT_RIGHT)
-                                        .startBaseActivity(this@OnBoardingLocationActivity, Activities.PATIENT_DETAILS, bundle)
-                                } else {
-                                    val bundle = Bundle()
-                                    bundle.putString(Extra.USER_CONSENT_NAME.key, userConsentName)
-                                    bundle.putLong(Extra.USER_CONSENT_DATE.key, userConsentDate)
-                                    Router.getInstance()
-                                        .activityAnimation(ActivityAnimation.LEFT_RIGHT)
-                                        .startBaseActivity(this@OnBoardingLocationActivity, Activities.ON_BOARDING_BATTERY, bundle)
-                                }
-                            }
-                        })
-                    } else {
-                        val bundle = Bundle()
-                        bundle.putString(Extra.USER_CONSENT_NAME.key, userConsentName)
-                        bundle.putLong(Extra.USER_CONSENT_DATE.key, userConsentDate)
-                        Router.getInstance()
-                            .activityAnimation(ActivityAnimation.LEFT_RIGHT)
-                            .startBaseActivity(this, Activities.ON_BOARDING_BATTERY, bundle)
-                    }
+                    val bundle = Bundle()
+                    bundle.putString(Extra.USER_CONSENT_NAME.key, userConsentName)
+                    bundle.putLong(Extra.USER_CONSENT_DATE.key, userConsentDate)
+                    Router.getInstance()
+                        .activityAnimation(ActivityAnimation.LEFT_RIGHT)
+                        .startBaseActivity(this, Activities.ON_BOARDING_BATTERY, bundle)
                 } else {
                     UiUtils.showShortToast(this, R.string.activity_rec_permissions_not_granted)
                     binding.scrollView.scrollTo(binding.permissionsContainer.x.roundToInt(), binding.permissionsContainer.y.roundToInt())

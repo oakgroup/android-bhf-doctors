@@ -80,6 +80,7 @@
     <string name="authenticate_dialog_title_email_password">Update Email and Password</string>
     <string name="authenticate_dialog_title_password">Update Password</string>
     <string name="authenticate_error">There was an error authenticating your account</string>
+    <string name="authorised">Correctly Configured</string>
     <string name="automatic">Automatic</string>
     <string name="automatic_time">Automatic</string>
     <string name="back">Back</string>

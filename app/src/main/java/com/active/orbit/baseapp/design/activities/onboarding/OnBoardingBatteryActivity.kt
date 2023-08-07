@@ -41,12 +41,25 @@ class OnBoardingBatteryActivity : BaseActivity(), View.OnClickListener {
     override fun onResume() {
         super.onResume()
 
-        if (settingsOpened && !fromMenu) {
-            binding.buttons.visibility = View.VISIBLE
-            binding.btnSettings.visibility = View.GONE
+        if (onboardedBattery()) {
+            binding.authorisedView.visibility = View.VISIBLE
+            if (!fromMenu) {
+                binding.buttons.visibility = View.VISIBLE
+                binding.btnSettings.visibility = View.GONE
+            } else {
+                binding.buttons.visibility = View.GONE
+                binding.btnSettings.visibility = View.VISIBLE
+            }
         } else {
-            binding.buttons.visibility = View.GONE
-            binding.btnSettings.visibility = View.VISIBLE
+            binding.authorisedView.visibility = View.GONE
+
+            if (!fromMenu && settingsOpened) {
+                binding.buttons.visibility = View.VISIBLE
+                binding.btnSettings.visibility = View.GONE
+            } else {
+                binding.buttons.visibility = View.GONE
+                binding.btnSettings.visibility = View.VISIBLE
+            }
         }
 
     }
@@ -55,19 +68,16 @@ class OnBoardingBatteryActivity : BaseActivity(), View.OnClickListener {
 
         binding.description.text = HtmlCompat.fromHtml(getString(R.string.battery_settings_description), HtmlCompat.FROM_HTML_MODE_COMPACT)
 
-        binding.btnSettings.visibility = View.VISIBLE
         binding.btnSettings.setOnClickListener(this)
         binding.btnNext.setOnClickListener(this)
         binding.btnBack.setOnClickListener(this)
 
 
         if (fromMenu) {
-            binding.buttons.visibility = View.GONE
             binding.stepsLayout.visibility = View.GONE
             binding.progressText.visibility = View.GONE
             binding.title.text = getString(R.string.battery_settings)
         } else {
-            binding.buttons.visibility = View.GONE
             binding.stepsLayout.visibility = View.VISIBLE
             binding.progressText.visibility = View.VISIBLE
             binding.title.text = getString(R.string.battery_settings_title)

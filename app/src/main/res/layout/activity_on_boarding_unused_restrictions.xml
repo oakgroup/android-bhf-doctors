@@ -77,6 +77,32 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/authorisedView"
+            android:layout_width="wrap_content"
+            android:layout_gravity="end"
+            android:visibility="visible"
+            android:layout_marginBottom="@dimen/margin_vertical_half"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <com.active.orbit.baseapp.design.widgets.BaseImageView
+                android:layout_width="18dp"
+                android:layout_marginEnd="@dimen/margin_lateral_half"
+                app:srcCompat="@drawable/ic_success"
+                android:layout_height="match_parent"/>
+
+            <com.active.orbit.baseapp.design.widgets.BaseTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="1dp"
+                android:text="@string/authorised"
+                android:textColor="@color/textColorGray"
+                android:textSize="@dimen/h6"
+                app:typeface="italic" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
         <com.active.orbit.baseapp.design.widgets.BaseTextView
             android:id="@+id/progressText"
             android:layout_width="match_parent"

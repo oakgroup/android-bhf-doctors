@@ -42,40 +42,45 @@ class OnBoardingUnusedRestrictionsActivity : BaseActivity(), View.OnClickListene
 
     override fun onResume() {
         super.onResume()
-        //TODO talk with Alan about this
-//        onboardedUnusedRestrictions(object : ResultListener {
-//            override fun onResult(success: Boolean) {
-//                if (!success) showPermissionButton(R.string.disable_restrictions)
-//                else proceed()
-//            }
-//        })
 
-
-        if (settingsOpened && !fromMenu) {
-            binding.buttons.visibility = View.VISIBLE
-            binding.btnSettings.visibility = View.GONE
-        } else {
-            binding.buttons.visibility = View.GONE
-            binding.btnSettings.visibility = View.VISIBLE
-        }
+        onboardedUnusedRestrictions(object : ResultListener {
+            override fun onResult(success: Boolean) {
+                if (success) {
+                    binding.authorisedView.visibility = View.VISIBLE
+                    if (!fromMenu) {
+                        binding.buttons.visibility = View.VISIBLE
+                        binding.btnSettings.visibility = View.GONE
+                    } else {
+                        binding.buttons.visibility = View.GONE
+                        binding.btnSettings.visibility = View.VISIBLE
+                    }
+                } else {
+                    binding.authorisedView.visibility = View.GONE
+                    if (!fromMenu && settingsOpened) {
+                        binding.buttons.visibility = View.VISIBLE
+                        binding.btnSettings.visibility = View.GONE
+                    } else {
+                        binding.buttons.visibility = View.GONE
+                        binding.btnSettings.visibility = View.VISIBLE
+                    }
+                }
+            }
+        })
     }
 
     private fun prepare() {
         binding.description.text = HtmlCompat.fromHtml(getString(R.string.disable_restrictions_description), HtmlCompat.FROM_HTML_MODE_COMPACT)
 
-        binding.btnSettings.visibility = View.VISIBLE
         binding.btnSettings.setOnClickListener(this)
         binding.btnNext.setOnClickListener(this)
         binding.btnBack.setOnClickListener(this)
 
 
         if (fromMenu) {
-            binding.buttons.visibility = View.GONE
             binding.stepsLayout.visibility = View.GONE
             binding.progressText.visibility = View.GONE
             binding.title.text = getString(R.string.disable_restrictions)
         } else {
-            binding.buttons.visibility = View.GONE
             binding.stepsLayout.visibility = View.VISIBLE
             binding.progressText.visibility = View.VISIBLE
             binding.title.text = getString(R.string.disable_restrictions_title)
