@@ -147,6 +147,7 @@ class UserPreferences : BasePreferences() {
         userPostcode = null
         userConsentDate = null
         userConsentName = null
-
+        userEmail = null
+        userPhone = null
     }
 }
