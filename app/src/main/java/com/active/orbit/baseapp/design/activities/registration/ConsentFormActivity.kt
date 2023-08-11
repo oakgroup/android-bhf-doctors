@@ -8,6 +8,7 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.DatePicker
 import androidx.core.content.ContextCompat
+import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.download.Download
@@ -61,8 +62,7 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
         binding.btnDate.setText(getString(R.string.date))
         binding.btnDate.disableClick()
 
-        binding.consentWebview.loadData(Preferences.user(this).consentFormText, "text/html; charset=utf-8", "UTF-8")
-
+        binding.consentText.text = HtmlCompat.fromHtml(Preferences.user(this).consentFormText, HtmlCompat.FROM_HTML_MODE_COMPACT)
 
         if (fromMenu) {
 

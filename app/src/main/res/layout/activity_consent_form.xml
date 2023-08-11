@@ -56,13 +56,14 @@
                 android:padding="@dimen/margin_vertical"
                 android:orientation="vertical">
 
-                <WebView
-                    android:id="@+id/consentWebview"
+                <com.active.orbit.baseapp.design.widgets.BaseTextView
+                    android:id="@+id/consentText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:scrollbars="none">
-                </WebView>
-
+                    android:text="@string/participant_information"
+                    android:textColor="@color/textColorPrimaryDark"
+                    android:textSize="@dimen/main_text_dimension"
+                    app:typeface="regular"/>
 
 
             </androidx.appcompat.widget.LinearLayoutCompat>
