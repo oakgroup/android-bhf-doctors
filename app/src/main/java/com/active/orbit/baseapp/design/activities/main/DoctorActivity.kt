@@ -37,7 +37,6 @@ class DoctorActivity : BaseActivity(), View.OnClickListener {
         }
         */
 
-        ConsentFormManager.retrieveConsentForm(thiss)
     }
 
     @SuppressLint("ClickableViewAccessibility")

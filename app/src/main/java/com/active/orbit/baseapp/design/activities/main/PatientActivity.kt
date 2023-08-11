@@ -59,8 +59,6 @@ class PatientActivity : BaseActivity() {
 
         TrackerManager.getInstance(this).startTracker(config)
 
-        ConsentFormManager.retrieveConsentForm(thiss)
-
         computeResults()
     }
 
