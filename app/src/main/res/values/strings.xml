@@ -260,8 +260,8 @@
     <string name="edit_avatar_dialog_title">Edit Avatar</string>
     <string name="edit_details_description">*Below you can change your details as you want</string>
     <string name="email_address">Email</string>
-    <string name="email_address_hint">Email</string>
     <string name="email_address_current">Current Email</string>
+    <string name="email_address_hint">Email</string>
     <string name="email_address_invalid">The email address seems to be invalid</string>
     <string name="email_address_new">New Email</string>
     <string name="email_already_in_use">Email address already in use</string>
