@@ -4,12 +4,14 @@ import android.view.View
 import android.view.ViewGroup
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.database.models.DBConsentQuestion
+import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.listeners.ItemListener
 import com.active.orbit.baseapp.design.recyclers.engine.BaseRecyclerCell
 import com.active.orbit.baseapp.design.recyclers.listeners.ConsentQuestionListener
+import com.active.orbit.baseapp.design.utils.UiUtils
 import com.active.orbit.baseapp.design.widgets.BaseCheckBox
 
-class ConsentQuestionViewHolder(itemView: View, var listener: ConsentQuestionListener? = null, var itemListener: ItemListener? = null, var allAccepted: Boolean = false) : BaseRecyclerCell<DBConsentQuestion>(itemView) {
+class ConsentQuestionViewHolder(private var activity: BaseActivity, itemView: View, var listener: ConsentQuestionListener? = null, var itemListener: ItemListener? = null, var allAccepted: Boolean = false) : BaseRecyclerCell<DBConsentQuestion>(itemView) {
 
     private var consentRoot: ViewGroup
     private var question: BaseCheckBox
@@ -27,6 +29,7 @@ class ConsentQuestionViewHolder(itemView: View, var listener: ConsentQuestionLis
             question.isChecked = true
             question.setOnClickListener {
                 question.isChecked = true
+                UiUtils.showShortToast(activity, R.string.your_answer_cannot_change)
             }
         } else {
             question.setOnClickListener {

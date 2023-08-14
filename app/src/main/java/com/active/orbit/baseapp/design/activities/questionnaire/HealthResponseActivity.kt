@@ -102,27 +102,27 @@ class HealthResponseActivity : BaseActivity(), View.OnClickListener {
         when (v) {
             binding.mobilityResponse -> {
                 binding.mobilityResponse.isChecked = true
-                UiUtils.showShortToast(this, "Your answer cannot change")
+                UiUtils.showShortToast(this, R.string.your_answer_cannot_change)
             }
 
             binding.selfcareResponse -> {
                 binding.selfcareResponse.isChecked = true
-                UiUtils.showShortToast(this, "Your answer cannot change")
+                UiUtils.showShortToast(this, R.string.your_answer_cannot_change)
             }
 
             binding.usualActivitiesResponse -> {
                 binding.usualActivitiesResponse.isChecked = true
-                UiUtils.showShortToast(this, "Your answer cannot change")
+                UiUtils.showShortToast(this, R.string.your_answer_cannot_change)
             }
 
             binding.painResponse -> {
                 binding.painResponse.isChecked = true
-                UiUtils.showShortToast(this, "Your answer cannot change")
+                UiUtils.showShortToast(this, R.string.your_answer_cannot_change)
             }
 
             binding.anxietyResponse -> {
                 binding.anxietyResponse.isChecked = true
-                UiUtils.showShortToast(this, "Your answer cannot change")
+                UiUtils.showShortToast(this, R.string.your_answer_cannot_change)
             }
         }
     }

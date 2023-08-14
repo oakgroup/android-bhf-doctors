@@ -25,7 +25,7 @@ class ConsentQuestionsAdapter(private var activity: BaseActivity, var listener: 
 
     override fun getViewHolder(parent: ViewGroup, viewType: Int): BaseRecyclerCell<DBConsentQuestion> {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_consent_question, parent, false)
-        return ConsentQuestionViewHolder(view, listener, this, allAccepted)
+        return ConsentQuestionViewHolder(activity, view, listener, this, allAccepted)
     }
 
     override fun onItemHeight(height: Int) {

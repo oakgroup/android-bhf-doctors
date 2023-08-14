@@ -918,6 +918,7 @@
     <string name="year_ago">1 year ago</string>
     <string name="years_ago">%1$s years ago</string>
     <string name="yes">Yes</string>
+    <string name="your_answer_cannot_change">Your answer cannot change</string>
     <string name="you_can_fill_this_later">You can fill this out later</string>
     <string name="you_have">You have</string>
     <string name="you_have_changed_id">You have changed the User Id. Do you want to delete all the data of the previous user?</string>
