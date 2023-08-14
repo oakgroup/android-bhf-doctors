@@ -24,7 +24,7 @@ class WebViewActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityWebViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        hideToolbar()
+        showBackButton()
 
         if (activityBundle.getString(Extra.WEB_VIEW_URL.key) != null) {
             webViewUrl = activityBundle.getString(Extra.WEB_VIEW_URL.key, Constants.EMPTY)!!
