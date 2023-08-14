@@ -16,6 +16,9 @@ import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.design.utils.UiUtils
 import java.lang.Double
+import kotlin.Boolean
+import kotlin.Float
+import kotlin.Int
 
 open class HorizontalProgressBar(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : View(context, attrs, defStyleAttr) {
 
@@ -46,7 +49,7 @@ open class HorizontalProgressBar(context: Context, attrs: AttributeSet?, defStyl
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        (parent as ViewGroup).removeView(progressIcon)
+        if (!hideProgressIcon) (parent as ViewGroup).removeView(progressIcon)
         drawBackground(canvas)
         if (mProgress > 0f) drawProgress(canvas)
         if (!hideProgressIcon) addProgressIcon(mProgress > 0f)
