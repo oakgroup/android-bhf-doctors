@@ -157,106 +157,94 @@ abstract class PermissionsActivity : AbstractActivity() {
         permission.request(this)
     }
 
+    @SuppressLint("NewApi")
     @RequiresApi(Build.VERSION_CODES.Q)
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                when (requestCode) {
-                    Permissions.Group.ACCESS_NOTIFICATIONS.requestCode -> {
-                        Logger.i("Notification permission enabled")
-                        onPermissionEnabled(requestCode)
-                    }
+            when (requestCode) {
+                Permissions.Group.ACCESS_FINE_LOCATION.requestCode -> {
+                    Logger.i("Location permission enabled")
+                    onPermissionEnabled(requestCode)
                 }
-            } else {
-                when (requestCode) {
-                    Permissions.Group.ACCESS_FINE_LOCATION.requestCode -> {
-                        Logger.i("Location permission enabled")
-                        onPermissionEnabled(requestCode)
-                    }
 
-                    Permissions.Group.ACCESS_BACKGROUND_LOCATION.requestCode -> {
-                        Logger.i("Background location permission enabled")
-                        onPermissionEnabled(requestCode)
-                    }
+                Permissions.Group.ACCESS_BACKGROUND_LOCATION.requestCode -> {
+                    Logger.i("Background location permission enabled")
+                    onPermissionEnabled(requestCode)
+                }
 
-                    Permissions.Group.ACCESS_EXTERNAL_STORAGE.requestCode -> {
-                        Logger.i("Access external storage permission enabled")
-                        onPermissionEnabled(requestCode)
-                    }
+                Permissions.Group.ACCESS_EXTERNAL_STORAGE.requestCode -> {
+                    Logger.i("Access external storage permission enabled")
+                    onPermissionEnabled(requestCode)
+                }
 
-                    Permissions.Group.ACCESS_ACTIVITY_RECOGNITION.requestCode -> {
-                        Logger.i("Access activity recognition permission enabled")
-                        onPermissionEnabled(requestCode)
-                    }
+                Permissions.Group.ACCESS_ACTIVITY_RECOGNITION.requestCode -> {
+                    Logger.i("Access activity recognition permission enabled")
+                    onPermissionEnabled(requestCode)
+                }
 
-                    Permissions.Group.ACCESS_CAMERA_FOR_SCAN.requestCode -> {
-                        Logger.i("Access camera permission enabled")
-                        onPermissionEnabled(requestCode)
-                    }
+                Permissions.Group.ACCESS_CAMERA_FOR_SCAN.requestCode -> {
+                    Logger.i("Access camera permission enabled")
+                    onPermissionEnabled(requestCode)
+                }
 
-                    Permissions.Group.ACCESS_CAMERA_FOR_CAPTURE.requestCode -> {
-                        Logger.i("Access camera permission enabled")
-                        onPermissionEnabled(requestCode)
-                    }
+                Permissions.Group.ACCESS_CAMERA_FOR_CAPTURE.requestCode -> {
+                    Logger.i("Access camera permission enabled")
+                    onPermissionEnabled(requestCode)
+                }
 
-                    Permissions.Group.ACCESS_DOWNLOAD_PDF.requestCode -> {
-                        Logger.i("Download pdf permission enabled")
-                        onPermissionEnabled(requestCode)
-                    }
+                Permissions.Group.ACCESS_DOWNLOAD_PDF.requestCode -> {
+                    Logger.i("Download pdf permission enabled")
+                    onPermissionEnabled(requestCode)
+                }
+
+                Permissions.Group.ACCESS_NOTIFICATIONS.requestCode -> {
+                    Logger.i("Notification permission enabled")
+                    onPermissionEnabled(requestCode)
                 }
             }
         } else {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                    when (requestCode) {
-                        Permissions.Group.ACCESS_NOTIFICATIONS.requestCode -> {
-                            Logger.i("Access notification permission disabled")
-                            showPermissionsDialog(Permissions(Permissions.Group.ACCESS_NOTIFICATIONS))
-                        }
-                    }
-                } else {
-                    when (requestCode) {
-                        Permissions.Group.ACCESS_FINE_LOCATION.requestCode -> {
-                            Logger.i("Access location permission disabled")
-                            showPermissionsDialog(Permissions(Permissions.Group.ACCESS_FINE_LOCATION))
-                        }
+            when (requestCode) {
+                Permissions.Group.ACCESS_FINE_LOCATION.requestCode -> {
+                    Logger.i("Access location permission disabled")
+                    showPermissionsDialog(Permissions(Permissions.Group.ACCESS_FINE_LOCATION))
+                }
 
-                        Permissions.Group.ACCESS_BACKGROUND_LOCATION.requestCode -> {
-                            Logger.i("Access background location permission disabled")
-                            showPermissionsDialog(Permissions(Permissions.Group.ACCESS_BACKGROUND_LOCATION))
-                        }
+                Permissions.Group.ACCESS_BACKGROUND_LOCATION.requestCode -> {
+                    Logger.i("Access background location permission disabled")
+                    showPermissionsDialog(Permissions(Permissions.Group.ACCESS_BACKGROUND_LOCATION))
+                }
 
-                        Permissions.Group.ACCESS_EXTERNAL_STORAGE.requestCode -> {
-                            Logger.i("Access external storage permission disabled")
-                            showPermissionsDialog(Permissions(Permissions.Group.ACCESS_EXTERNAL_STORAGE))
-                        }
+                Permissions.Group.ACCESS_EXTERNAL_STORAGE.requestCode -> {
+                    Logger.i("Access external storage permission disabled")
+                    showPermissionsDialog(Permissions(Permissions.Group.ACCESS_EXTERNAL_STORAGE))
+                }
 
-                        Permissions.Group.ACCESS_ACTIVITY_RECOGNITION.requestCode -> {
-                            Logger.i("Access activity recognition permission disabled")
-                            showPermissionsDialog(Permissions(Permissions.Group.ACCESS_ACTIVITY_RECOGNITION))
-                        }
+                Permissions.Group.ACCESS_ACTIVITY_RECOGNITION.requestCode -> {
+                    Logger.i("Access activity recognition permission disabled")
+                    showPermissionsDialog(Permissions(Permissions.Group.ACCESS_ACTIVITY_RECOGNITION))
+                }
 
-                        Permissions.Group.ACCESS_CAMERA_FOR_SCAN.requestCode -> {
-                            Logger.i("Access camera permission disabled")
-                            showPermissionsDialog(Permissions(Permissions.Group.ACCESS_CAMERA_FOR_SCAN))
-                        }
+                Permissions.Group.ACCESS_CAMERA_FOR_SCAN.requestCode -> {
+                    Logger.i("Access camera permission disabled")
+                    showPermissionsDialog(Permissions(Permissions.Group.ACCESS_CAMERA_FOR_SCAN))
+                }
 
-                        Permissions.Group.ACCESS_CAMERA_FOR_CAPTURE.requestCode -> {
-                            Logger.i("Access camera permission disabled")
-                            showPermissionsDialog(Permissions(Permissions.Group.ACCESS_CAMERA_FOR_CAPTURE))
-                        }
+                Permissions.Group.ACCESS_CAMERA_FOR_CAPTURE.requestCode -> {
+                    Logger.i("Access camera permission disabled")
+                    showPermissionsDialog(Permissions(Permissions.Group.ACCESS_CAMERA_FOR_CAPTURE))
+                }
 
-                        Permissions.Group.ACCESS_DOWNLOAD_PDF.requestCode -> {
-                            Logger.i("Access download pdf permission disabled")
-                            showPermissionsDialog(Permissions(Permissions.Group.ACCESS_DOWNLOAD_PDF))
-
-                        }
-                    }
+                Permissions.Group.ACCESS_DOWNLOAD_PDF.requestCode -> {
+                    Logger.i("Access download pdf permission disabled")
+                    showPermissionsDialog(Permissions(Permissions.Group.ACCESS_DOWNLOAD_PDF))
 
                 }
 
-
+                Permissions.Group.ACCESS_NOTIFICATIONS.requestCode -> {
+                    Logger.i("Access notification permission disabled")
+                    showPermissionsDialog(Permissions(Permissions.Group.ACCESS_NOTIFICATIONS))
+                }
             }
         }
     }
@@ -281,55 +269,51 @@ abstract class PermissionsActivity : AbstractActivity() {
             permissionsDialog?.arguments = bundle
             permissionsDialog?.isCancelable = false
             permissionsDialog?.listener = object : PermissionsDialogListener {
+                @SuppressLint("NewApi")
                 @RequiresApi(Build.VERSION_CODES.Q)
                 override fun onShowPermission(requestCode: Int) {
                     permissionsDialogShown = false
                     permissionsDialog = null
+                    when (requestCode) {
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                        when (requestCode) {
-                            Permissions.Group.ACCESS_NOTIFICATIONS.requestCode -> {
-                                if (deniedForever) Router.getInstance().openSettings(this@PermissionsActivity)
-                                else requestPermissionNotifications()
-                            }
+                        Permissions.Group.ACCESS_FINE_LOCATION.requestCode -> {
+                            if (deniedForever) Router.getInstance().openSettings(this@PermissionsActivity)
+                            else requestPermissionLocation()
                         }
-                    } else {
-                        when (requestCode) {
 
-                            Permissions.Group.ACCESS_FINE_LOCATION.requestCode -> {
-                                if (deniedForever) Router.getInstance().openSettings(this@PermissionsActivity)
-                                else requestPermissionLocation()
-                            }
+                        Permissions.Group.ACCESS_BACKGROUND_LOCATION.requestCode -> {
+                            if (deniedForever) Router.getInstance().openSettings(this@PermissionsActivity)
+                            else requestPermissionBackgroundLocation()
+                        }
 
-                            Permissions.Group.ACCESS_BACKGROUND_LOCATION.requestCode -> {
-                                if (deniedForever) Router.getInstance().openSettings(this@PermissionsActivity)
-                                else requestPermissionBackgroundLocation()
-                            }
+                        Permissions.Group.ACCESS_EXTERNAL_STORAGE.requestCode -> {
+                            if (deniedForever) Router.getInstance().openSettings(this@PermissionsActivity)
+                            else requestPermissionReadExternalStorage()
+                        }
 
-                            Permissions.Group.ACCESS_EXTERNAL_STORAGE.requestCode -> {
-                                if (deniedForever) Router.getInstance().openSettings(this@PermissionsActivity)
-                                else requestPermissionReadExternalStorage()
-                            }
+                        Permissions.Group.ACCESS_ACTIVITY_RECOGNITION.requestCode -> {
+                            if (deniedForever) Router.getInstance().openSettings(this@PermissionsActivity)
+                            else requestPermissionRecognition()
+                        }
 
-                            Permissions.Group.ACCESS_ACTIVITY_RECOGNITION.requestCode -> {
-                                if (deniedForever) Router.getInstance().openSettings(this@PermissionsActivity)
-                                else requestPermissionRecognition()
-                            }
+                        Permissions.Group.ACCESS_CAMERA_FOR_SCAN.requestCode -> {
+                            if (deniedForever) Router.getInstance().openSettings(this@PermissionsActivity)
+                            else requestPermissionCameraForScan()
+                        }
 
-                            Permissions.Group.ACCESS_CAMERA_FOR_SCAN.requestCode -> {
-                                if (deniedForever) Router.getInstance().openSettings(this@PermissionsActivity)
-                                else requestPermissionCameraForScan()
-                            }
+                        Permissions.Group.ACCESS_CAMERA_FOR_CAPTURE.requestCode -> {
+                            if (deniedForever) Router.getInstance().openSettings(this@PermissionsActivity)
+                            else requestPermissionCameraForCapture()
+                        }
 
-                            Permissions.Group.ACCESS_CAMERA_FOR_CAPTURE.requestCode -> {
-                                if (deniedForever) Router.getInstance().openSettings(this@PermissionsActivity)
-                                else requestPermissionCameraForCapture()
-                            }
+                        Permissions.Group.ACCESS_DOWNLOAD_PDF.requestCode -> {
+                            if (deniedForever) Router.getInstance().openSettings(this@PermissionsActivity)
+                            else requestPermissionDownloadPdf()
+                        }
 
-                            Permissions.Group.ACCESS_DOWNLOAD_PDF.requestCode -> {
-                                if (deniedForever) Router.getInstance().openSettings(this@PermissionsActivity)
-                                else requestPermissionDownloadPdf()
-                            }
+                        Permissions.Group.ACCESS_NOTIFICATIONS.requestCode -> {
+                            if (deniedForever) Router.getInstance().openSettings(this@PermissionsActivity)
+                            else requestPermissionNotifications()
                         }
                     }
                 }
