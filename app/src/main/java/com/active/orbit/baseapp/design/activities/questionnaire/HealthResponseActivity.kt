@@ -23,7 +23,6 @@ class HealthResponseActivity : BaseActivity(), View.OnClickListener {
 
     var response: Int = Constants.INVALID
 
-    var healthType: HealthType = HealthType.UNDEFINED
     var healthResponse: DBHealth? = null
 
 
@@ -59,10 +58,7 @@ class HealthResponseActivity : BaseActivity(), View.OnClickListener {
 
     private fun prepare() {
 
-        healthType = HealthType.MOBILITY
-
         binding.timestamp.text = TimeUtils.format(TimeUtils.getCurrent(healthResponse?.healthID!!), Constants.DATE_FORMAT_YEAR_MONTH_DAY_HOUR_MINUTE_SECOND)
-
 
         binding.mobilityTitle.text = getString(HealthType.MOBILITY.title)
         binding.selfcareTitle.text = getString(HealthType.SELF_CARE.title)
@@ -70,11 +66,11 @@ class HealthResponseActivity : BaseActivity(), View.OnClickListener {
         binding.painTitle.text = getString(HealthType.PAIN.title)
         binding.anxietyTitle.text = getString(HealthType.ANXIETY.title)
 
-        binding.mobilityResponse.text = healthType.getResponse(healthResponse?.healthMobility!!, this)
-        binding.selfcareResponse.text = healthType.getResponse(healthResponse?.healthSelfCare!!, this)
-        binding.usualActivitiesResponse.text = healthType.getResponse(healthResponse?.healthActivities!!, this)
-        binding.painResponse.text = healthType.getResponse(healthResponse?.healthPain!!, this)
-        binding.anxietyResponse.text = healthType.getResponse(healthResponse?.healthAnxiety!!, this)
+        binding.mobilityResponse.text = HealthType.MOBILITY.getResponse(healthResponse?.healthMobility!!, this)
+        binding.selfcareResponse.text = HealthType.SELF_CARE.getResponse(healthResponse?.healthSelfCare!!, this)
+        binding.usualActivitiesResponse.text = HealthType.USUAL_ACTIVITIES.getResponse(healthResponse?.healthActivities!!, this)
+        binding.painResponse.text = HealthType.PAIN.getResponse(healthResponse?.healthPain!!, this)
+        binding.anxietyResponse.text = HealthType.ANXIETY.getResponse(healthResponse?.healthAnxiety!!, this)
 
         binding.mobilityResponse.isChecked = true
         binding.selfcareResponse.isChecked = true
