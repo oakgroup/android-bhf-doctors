@@ -28,7 +28,7 @@ abstract class BaseRecyclerAdapter<T : BaseModel> : RecyclerView.Adapter<BaseRec
     @Suppress("LeakingThis")
     var models = SortedModels(this)
 
-    private var recyclerView: BaseRecyclerView? = null
+    protected var recyclerView: BaseRecyclerView? = null
 
     abstract fun getViewHolder(parent: ViewGroup, viewType: Int): BaseRecyclerCell<T>
 
