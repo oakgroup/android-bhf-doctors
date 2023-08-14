@@ -11,6 +11,7 @@ import com.active.orbit.baseapp.core.network.Network
 import com.active.orbit.baseapp.core.network.WebService
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.utils.Logger
+import com.active.orbit.baseapp.core.utils.Utils
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
@@ -53,9 +54,9 @@ object ConsentFormManager : CoroutineScope {
                         TableConsentQuestions.truncate(activity)
                         TableConsentQuestions.upsert(activity, map.dbQuestions())
                         main {
-                            //TODO check for version. If version has changed show a dialog that they need to consent to the new consent form
+                            // TODO check for version. If version has changed show a dialog that they need to consent to the new consent form
                             Preferences.user(activity).consentFormText = HtmlCompat.fromHtml(map.consentText!!, HtmlCompat.FROM_HTML_MODE_COMPACT).toString()
-                            Preferences.user(activity).consentVersion = map.version!!
+                            Preferences.user(activity).consentVersion = Utils.numbersFromString(map.version!!)
                             listener?.onResult(true)
                         }
                     }

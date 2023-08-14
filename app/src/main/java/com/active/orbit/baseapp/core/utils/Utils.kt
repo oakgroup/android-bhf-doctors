@@ -7,12 +7,14 @@ import android.os.BatteryManager
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
+import android.text.TextUtils
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.active.orbit.baseapp.R
 import java.net.Inet4Address
 import java.net.NetworkInterface
-import java.util.*
+import java.util.UUID
+import kotlin.math.abs
 
 /**
  * Utility class that provides some general useful methods
@@ -170,5 +172,28 @@ object Utils {
         }
 
         return null
+    }
+
+    /**
+     * Convert a literal string to a new integer with the corresponding sequence of integers found
+     *
+     * @param string the input [String]
+     * @return the output [Int]
+     */
+    fun numbersFromString(string: String?): Int {
+        if (TextUtils.isEmpty(string)) {
+            Logger.e("Called numbersFromString method with an invalid string")
+            return Constants.INVALID
+        }
+        val builder = StringBuilder()
+        string!!.forEach { char ->
+            if (Character.isDigit(char)) builder.append(char)
+        }
+        var identifier = builder.toString()
+        if (identifier.length > 16) {
+            // remove the prefix to avoid cast to long exceptions
+            identifier = identifier.substring(identifier.length - 16)
+        }
+        return abs(identifier.toLong().toInt())
     }
 }

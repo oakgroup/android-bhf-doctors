@@ -124,11 +124,11 @@ class UserPreferences : BasePreferences() {
             editor.apply()
         }
 
-    var consentVersion: String
-        get() = prefs.getString(res.getString(R.string.preference_user_consent_form_version_key), Constants.EMPTY) ?: Constants.EMPTY
+    var consentVersion: Int
+        get() = prefs.getInt(res.getString(R.string.preference_user_consent_form_version_key), Constants.INVALID)
         set(value) {
             val editor = prefs.edit()
-            editor.putString(res.getString(R.string.preference_user_consent_form_version_key), value)
+            editor.putInt(res.getString(R.string.preference_user_consent_form_version_key), value)
             editor.apply()
         }
 
@@ -145,9 +145,11 @@ class UserPreferences : BasePreferences() {
         userLastName = null
         userDateOfBirth = null
         userPostcode = null
-        userConsentDate = null
-        userConsentName = null
         userEmail = null
         userPhone = null
+        userConsentDate = null
+        userConsentName = null
+        // consentFormText = Constants.EMPTY
+        // consentVersion = Constants.EMPTY
     }
 }
