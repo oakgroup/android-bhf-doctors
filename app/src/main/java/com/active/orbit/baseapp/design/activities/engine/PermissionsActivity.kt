@@ -207,52 +207,55 @@ abstract class PermissionsActivity : AbstractActivity() {
             when (requestCode) {
                 Permissions.Group.ACCESS_FINE_LOCATION.requestCode -> {
                     Logger.i("Access location permission disabled")
-                    showPermissionsDialog(Permissions(Permissions.Group.ACCESS_FINE_LOCATION))
+                    onPermissionDisabled(Permissions(Permissions.Group.ACCESS_FINE_LOCATION))
                 }
 
                 Permissions.Group.ACCESS_BACKGROUND_LOCATION.requestCode -> {
                     Logger.i("Access background location permission disabled")
-                    showPermissionsDialog(Permissions(Permissions.Group.ACCESS_BACKGROUND_LOCATION))
+                    onPermissionDisabled(Permissions(Permissions.Group.ACCESS_BACKGROUND_LOCATION))
                 }
 
                 Permissions.Group.ACCESS_EXTERNAL_STORAGE.requestCode -> {
                     Logger.i("Access external storage permission disabled")
-                    showPermissionsDialog(Permissions(Permissions.Group.ACCESS_EXTERNAL_STORAGE))
+                    onPermissionDisabled(Permissions(Permissions.Group.ACCESS_EXTERNAL_STORAGE))
                 }
 
                 Permissions.Group.ACCESS_ACTIVITY_RECOGNITION.requestCode -> {
                     Logger.i("Access activity recognition permission disabled")
-                    showPermissionsDialog(Permissions(Permissions.Group.ACCESS_ACTIVITY_RECOGNITION))
+                    onPermissionDisabled(Permissions(Permissions.Group.ACCESS_ACTIVITY_RECOGNITION))
                 }
 
                 Permissions.Group.ACCESS_CAMERA_FOR_SCAN.requestCode -> {
                     Logger.i("Access camera permission disabled")
-                    showPermissionsDialog(Permissions(Permissions.Group.ACCESS_CAMERA_FOR_SCAN))
+                    onPermissionDisabled(Permissions(Permissions.Group.ACCESS_CAMERA_FOR_SCAN))
                 }
 
                 Permissions.Group.ACCESS_CAMERA_FOR_CAPTURE.requestCode -> {
                     Logger.i("Access camera permission disabled")
-                    showPermissionsDialog(Permissions(Permissions.Group.ACCESS_CAMERA_FOR_CAPTURE))
+                    onPermissionDisabled(Permissions(Permissions.Group.ACCESS_CAMERA_FOR_CAPTURE))
                 }
 
                 Permissions.Group.ACCESS_DOWNLOAD_PDF.requestCode -> {
                     Logger.i("Access download pdf permission disabled")
-                    showPermissionsDialog(Permissions(Permissions.Group.ACCESS_DOWNLOAD_PDF))
-
+                    onPermissionDisabled(Permissions(Permissions.Group.ACCESS_DOWNLOAD_PDF))
                 }
 
                 Permissions.Group.ACCESS_NOTIFICATIONS.requestCode -> {
                     Logger.i("Access notification permission disabled")
-                    showPermissionsDialog(Permissions(Permissions.Group.ACCESS_NOTIFICATIONS))
+                    onPermissionDisabled(Permissions(Permissions.Group.ACCESS_NOTIFICATIONS))
                 }
             }
         }
     }
 
-    @SuppressLint("NewApi")
     @CallSuper
     open fun onPermissionEnabled(requestCode: Int) {
         // override to customise
+    }
+
+    open fun onPermissionDisabled(permission: Permissions) {
+        // override to customise
+        showPermissionsDialog(permission)
     }
 
     private fun showPermissionsDialog(permission: Permissions) {

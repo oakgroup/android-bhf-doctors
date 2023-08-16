@@ -34,8 +34,5 @@
     <string name="preference_lifecycle_user_details_uploaded_key" translatable="false">base.app.lifecycle.user.details.uploaded</string>
     <string name="preference_lifecycle_notification_scheduled" translatable="false">base.app.lifecycle.notification.scheduled</string>
     <string name="preference_lifecycle_tour_shown_key" translatable="false">base.app.lifecycle.tour.shown</string>
-    <string name="preference_lifecycle_notification_permission_requested" translatable="false">base.app.lifecycle.notification.permission.requested</string>
-
-
 
 </resources>

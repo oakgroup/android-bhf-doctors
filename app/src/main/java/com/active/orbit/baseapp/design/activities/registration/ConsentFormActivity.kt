@@ -1,6 +1,8 @@
 package com.active.orbit.baseapp.design.activities.registration
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
@@ -12,6 +14,8 @@ import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.download.Download
+import com.active.orbit.baseapp.core.notifications.NotificationType
+import com.active.orbit.baseapp.core.notifications.NotificationsManager
 import com.active.orbit.baseapp.core.permissions.Permissions
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.Router
@@ -26,6 +30,7 @@ import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnim
 import com.active.orbit.baseapp.design.recyclers.adapters.ConsentQuestionsAdapter
 import com.active.orbit.baseapp.design.recyclers.listeners.ConsentQuestionListener
 import com.active.orbit.baseapp.design.utils.UiUtils
+import uk.ac.shef.tracker.core.utils.background
 import java.util.Calendar
 import java.util.GregorianCalendar
 import kotlin.math.roundToInt
@@ -67,7 +72,7 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
         if (fromMenu) {
 
             if (fromHelp) {
-               binding.termsLinkContainer.visibility = View.GONE
+                binding.termsLinkContainer.visibility = View.GONE
             }
 
             binding.title.text = getString(R.string.participant_information)
@@ -139,18 +144,36 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
         }
     }
 
+    @SuppressLint("NewApi")
     override fun onPermissionEnabled(requestCode: Int) {
         super.onPermissionEnabled(requestCode)
         when (requestCode) {
-
             Permissions.Group.ACCESS_DOWNLOAD_PDF.requestCode -> {
                 val downloader = Download(this)
                 //TODO replace with url for consent form
                 downloader.downloadFile("https://www.africau.edu/images/default/sample.pdf", "application/pdf", "consent_form.pdf")
             }
 
+            Permissions.Group.ACCESS_NOTIFICATIONS.requestCode -> {
+                scheduleNotification()
+                proceed()
+            }
+
             else -> {
                 Logger.e("Undefined request code $requestCode on permission enabled ")
+            }
+        }
+    }
+
+    @SuppressLint("NewApi")
+    override fun onPermissionDisabled(permission: Permissions) {
+        when (permission.group.requestCode) {
+            Permissions.Group.ACCESS_NOTIFICATIONS.requestCode -> {
+                proceed()
+            }
+
+            else -> {
+                super.onPermissionDisabled(permission)
             }
         }
     }
@@ -160,12 +183,17 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
 
             binding.btnNext -> {
                 if (!TextUtils.isEmpty(binding.fullName.textTrim) && dateOfConsent != null && questionsAcceptedCounter == questionsAdapter!!.numberOfQuestions) {
-                    val bundle = Bundle()
-                    bundle.putString(Extra.USER_CONSENT_NAME.key, binding.fullName.textTrim)
-                    bundle.putLong(Extra.USER_CONSENT_DATE.key, dateOfConsent!!.timeInMillis)
-                    Router.getInstance()
-                        .activityAnimation(ActivityAnimation.LEFT_RIGHT)
-                        .startBaseActivity(this, Activities.ON_BOARDING_LOCATION, bundle)
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                        if (!hasNotificationPermissionGranted()) {
+                            requestPermissionNotifications()
+                        } else {
+                            scheduleNotification()
+                            proceed()
+                        }
+                    } else {
+                        scheduleNotification()
+                        proceed()
+                    }
                 } else {
                     UiUtils.showLongToast(this, R.string.accept_toc_please)
                     binding.scrollView.scrollTo(binding.termsLinkContainer.x.roundToInt(), binding.termsLinkContainer.y.roundToInt())
@@ -185,13 +213,19 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
             }
 
             binding.btnDownload -> {
-              //TODO if needed
+                //TODO if needed
             }
-
-
         }
     }
 
+    private fun proceed() {
+        val bundle = Bundle()
+        bundle.putString(Extra.USER_CONSENT_NAME.key, binding.fullName.textTrim)
+        bundle.putLong(Extra.USER_CONSENT_DATE.key, dateOfConsent!!.timeInMillis)
+        Router.getInstance()
+            .activityAnimation(ActivityAnimation.LEFT_RIGHT)
+            .startBaseActivity(this, Activities.ON_BOARDING_LOCATION, bundle)
+    }
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
         Logger.d("Date of consent")
@@ -202,5 +236,14 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
         binding.btnDate.setText(TimeUtils.format(dateOfConsent!!, Constants.DATE_FORMAT_YEAR_MONTH_DAY))
     }
 
-
+    private fun scheduleNotification() {
+        //schedule notification only if it has not been scheduled before
+        background {
+            if (Preferences.lifecycle(this@ConsentFormActivity).notificationScheduled == Constants.INVALID) {
+                val notificationToSchedule = NotificationType.HEALTH
+                Preferences.lifecycle(this@ConsentFormActivity).notificationScheduled = notificationToSchedule.id
+                NotificationsManager.scheduleNotification(this@ConsentFormActivity, (TimeUtils.ONE_DAY_MILLIS * 30), notificationToSchedule)
+            }
+        }
+    }
 }

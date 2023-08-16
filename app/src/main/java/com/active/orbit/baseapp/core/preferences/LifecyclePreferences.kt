@@ -47,14 +47,6 @@ class LifecyclePreferences : BasePreferences() {
             editor.apply()
         }
 
-    var notificationPermissionRequested: Boolean
-        get() = prefs.getBoolean(res.getString(R.string.preference_lifecycle_notification_permission_requested), false)
-        set(value) {
-            val editor = prefs.edit()
-            editor.putBoolean(res.getString(R.string.preference_lifecycle_notification_permission_requested), value)
-            editor.apply()
-        }
-
     var notificationScheduled: Int
         get() = prefs.getInt(res.getString(R.string.preference_lifecycle_notification_scheduled), Constants.INVALID)
         set(value) {
@@ -71,6 +63,5 @@ class LifecyclePreferences : BasePreferences() {
         isPrivacyPolicyAccepted = false
         userDetailsUploaded = false
         notificationScheduled = Constants.INVALID
-        notificationPermissionRequested = false
     }
 }
