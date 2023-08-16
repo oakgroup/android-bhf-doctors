@@ -91,7 +91,7 @@
     <string name="battery_open_settings">Check Settings</string>
     <string name="battery_settings">Battery Settings</string>
     <string name="battery_settings_description"><![CDATA[During set up your device may display a message informing you that the app uses power in the background and may drain the battery. This is correct. The app has to run continuously in order to collect more accurate data.<br><br>Click on <b>Check Settings</b> and follow the instructions below:<br><br>1. In Settings, search for Battery Optimisation and select to view All apps.<br>2. Find Moving Health and click on it to view the app setting.<br>3. For the app to work correctly it should be set to <b>Don’t Optimise</b> or <b>Unrestricted</b>.<br>4. Make sure the correct option is selected and then click on Done.<br><br>If the above options are not available on your device please do the following:<br><br>1. Open the Settings app on your device and select Apps<br>2. Select App Management and click on Moving Health<br>3. Select Battery Usage, and turn on <b>Allow background activity</b>]]></string>
-    <string name="battery_settings_title">Battery Settings (2.2)</string>
+    <string name="battery_settings_title">Battery Settings</string>
     <string name="big_bike_code_description">Enter four or five digits</string>
     <string name="big_bike_unique_reference">Big bike unique reference:</string>
     <string name="big_bike_user">Big bike user:</string>
@@ -243,7 +243,7 @@
     <string name="diesel">Diesel</string>
     <string name="disable_restrictions">Unused App Permissions</string>
     <string name="disable_restrictions_description"><![CDATA[The Moving Health app needs to run continuously in order to record accurate data. If you do not regularly use the app some Android devices will automatically remove the permissions.<br><br>Click on <b>Update Settings</b> and follow the instructions below:<br><br>1. In Settings, search for Apps.<br>2. Tap on Apps and then tap on the Moving Health app.<br>3. Under <q>Unused app setting</q>, turn off <b>Pause app activity if unused</b>.<br>4. If the above option is not available, under <q>Unused app setting</q>, turn off <b>Remove permissions and free up space</b>.]]></string>
-    <string name="disable_restrictions_title">Unused App Permissions (2.3)</string>
+    <string name="disable_restrictions_title">Unused App Permissions</string>
     <string name="dismiss">Dismiss</string>
     <string name="dismiss_force"> Force Dismiss</string>
     <string name="dismiss_patient">Withdraw from Study</string>
@@ -409,7 +409,7 @@
     <string name="loading_medicines">Loading medicines…</string>
     <string name="location_services">Location Services</string>
     <string name="location_services_permission">I understand and agree that GPS data, provided by the location services on the mobile device, will be gathered by the Moving Health App and used to calculate measurements of mobility (average walking speed, distance walked each day, motor vehicle trips each day, time in motor vehicles each day).</string>
-    <string name="location_services_title_one">Physical Activity and Location Services (2.1)</string>
+    <string name="location_services_title_one">Physical Activity and Location Services</string>
     <string name="location_services_title_two">Physical Activity and Location Services</string>
     <string name="locationservices_dialog_message">The app requires the use of Location Services in order to work properly. Please enable Location Services.</string>
     <string name="log_out">Log Out</string>
@@ -548,7 +548,7 @@
     <string name="paragraph_two_about_set_up_gfit">Don\’t worry, you won\'t lose any existing type data, and achievements you\’ve collected.</string>
     <string name="participating_city">Living in a partner city?</string>
     <string name="participant_information">Participant Information and Privacy Policy</string>
-    <string name="participant_information_title">Participant Information and Privacy Policy (1)</string>
+    <string name="participant_information_title">Participant Information and Privacy Policy</string>
     <string name="passive_gps_text">To save battery, we use passive location detection: the path drawn on the map may be imprecise or missing sometimes. This will not make the application imprecise.</string>
     <string name="passive_location_title">Passive Location</string>
     <string name="password">Password</string>
