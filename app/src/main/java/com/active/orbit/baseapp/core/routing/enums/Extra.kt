@@ -24,6 +24,7 @@ enum class Extra(var key: String) {
     HEALTH_ACTIVITY("activity_response"),
     HEALTH_ANXIETY("anxiety_response"),
     HEALTH_PAIN("pain_response"),
+    WEB_VIEW_TITLE("web_view_title"),
     WEB_VIEW_URL("web_view_url");
 
 }

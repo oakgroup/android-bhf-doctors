@@ -27,9 +27,7 @@ import com.active.orbit.baseapp.databinding.ActivityPatientDetailsBinding
 import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
-import com.active.orbit.baseapp.design.dialogs.ConfirmRegistrationDialog
 import com.active.orbit.baseapp.design.dialogs.SelectSexDialog
-import com.active.orbit.baseapp.design.dialogs.listeners.ConfirmRegistrationDialogListener
 import com.active.orbit.baseapp.design.dialogs.listeners.SelectSexDialogListener
 import com.active.orbit.baseapp.design.recyclers.models.SexModel
 import com.active.orbit.baseapp.design.utils.UiUtils
@@ -299,6 +297,7 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
             binding.btnNhsUrl -> {
                 val bundle = Bundle()
                 bundle.putString(Extra.WEB_VIEW_URL.key, getString(R.string.find_nhs_number_link_default))
+                bundle.putString(Extra.WEB_VIEW_TITLE.key, binding.btnNhsUrl.text.toString())
                 Router.getInstance().activityAnimation(ActivityAnimation.BOTTOM_TOP).startBaseActivity(this, Activities.WEB_VIEW, bundle)
             }
 

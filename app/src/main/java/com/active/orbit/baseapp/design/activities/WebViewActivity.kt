@@ -26,6 +26,9 @@ class WebViewActivity : BaseActivity() {
         setContentView(binding.root)
         showBackButton()
 
+        if (activityBundle.getString(Extra.WEB_VIEW_TITLE.key) != null) {
+            setToolbarTitle(activityBundle.getString(Extra.WEB_VIEW_TITLE.key)!!)
+        }
         if (activityBundle.getString(Extra.WEB_VIEW_URL.key) != null) {
             webViewUrl = activityBundle.getString(Extra.WEB_VIEW_URL.key, Constants.EMPTY)!!
         }
