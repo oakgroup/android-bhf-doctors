@@ -3,7 +3,6 @@ package com.active.orbit.baseapp.design.activities.registration
 import android.os.Bundle
 import android.view.View
 import androidx.core.text.HtmlCompat
-import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.Router
 import com.active.orbit.baseapp.core.routing.enums.Extra
@@ -36,21 +35,14 @@ class ConsentPrivacyActivity : BaseActivity(), View.OnClickListener {
         binding.consentText.text = HtmlCompat.fromHtml(Preferences.user(this).consentFormText, HtmlCompat.FROM_HTML_MODE_COMPACT)
 
         if (fromMenu) {
-
-            binding.title.text = getString(R.string.privacy_policy)
-
             binding.progressText.visibility = View.GONE
             binding.steps.visibility = View.GONE
             binding.buttons.visibility = View.GONE
-
             binding.btnBack.setOnClickListener(this)
-
         } else {
-            binding.title.text = getString(R.string.privacy_policy)
             binding.progressText.visibility = View.VISIBLE
             binding.steps.visibility = View.VISIBLE
             binding.buttons.visibility = View.VISIBLE
-
             binding.btnNext.setOnClickListener(this)
             binding.btnBack.visibility = View.GONE
         }

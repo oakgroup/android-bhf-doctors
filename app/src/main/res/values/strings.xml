@@ -550,7 +550,8 @@
     <string name="paragraph_third_about_set_up">Please read and accept our Terms and Conditions.</string>
     <string name="paragraph_two_about_set_up">Your account and email address will not be shared with us.\n\nAll data collected will be completely anonymous.</string>
     <string name="paragraph_two_about_set_up_gfit">Don\’t worry, you won\'t lose any existing type data, and achievements you\’ve collected.</string>
-    <string name="participant_information">Participant Information</string>
+    <string name="participant_eligibility">Eligibility and Consent</string>
+    <string name="participant_information">Participant Information and Privacy Policy</string>
     <string name="participating_city">Living in a partner city?</string>
     <string name="passive_gps_text">To save battery, we use passive location detection: the path drawn on the map may be imprecise or missing sometimes. This will not make the application imprecise.</string>
     <string name="passive_location_title">Passive Location</string>

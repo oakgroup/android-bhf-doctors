@@ -72,7 +72,6 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
                 binding.termsLinkContainer.visibility = View.GONE
             }
 
-            binding.title.text = getString(R.string.participant_information)
             binding.fullName.isEnabled = false
             binding.fullName.setText(Preferences.user(this).userFullName())
 
@@ -89,7 +88,6 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
             prepareQuestions(true)
 
         } else {
-            binding.title.text = getString(R.string.participant_information)
             binding.progressText.visibility = View.VISIBLE
             binding.steps.visibility = View.VISIBLE
             binding.buttons.visibility = View.VISIBLE

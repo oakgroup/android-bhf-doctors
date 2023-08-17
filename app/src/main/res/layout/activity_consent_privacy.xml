@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_lateral"
         android:gravity="start"
-        android:text="@string/privacy_policy"
+        android:text="@string/participant_information"
         android:textColor="@color/textColorPrimaryDark"
         android:textSize="@dimen/h2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -162,7 +162,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:gravity="center"
-                android:text="@string/accept"
+                android:text="@string/next"
                 app:typeface="semibold" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
