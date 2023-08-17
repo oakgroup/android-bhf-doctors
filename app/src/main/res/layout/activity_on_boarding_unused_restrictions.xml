@@ -23,7 +23,6 @@
         tools:ignore="NotSibling" />
 
 
-
     <FrameLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -90,7 +89,7 @@
                 android:layout_width="18dp"
                 android:layout_marginEnd="@dimen/margin_lateral_half"
                 app:srcCompat="@drawable/ic_success"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent" />
 
             <com.active.orbit.baseapp.design.widgets.BaseTextView
                 android:layout_width="match_parent"
@@ -108,7 +107,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="end"
-            android:text="2/3"
+            android:text="3/4"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/h5"
             android:visibility="visible"
@@ -147,6 +146,15 @@
 
             <View
                 android:id="@+id/stepThree"
+                android:layout_width="0dp"
+                android:layout_height="10dp"
+                android:layout_marginEnd="@dimen/margin_lateral_half_half"
+                android:layout_weight="1"
+                android:background="@drawable/bg_step_selected"
+                android:visibility="visible" />
+
+            <View
+                android:id="@+id/stepFour"
                 android:layout_width="0dp"
                 android:layout_height="10dp"
                 android:layout_marginEnd="@dimen/margin_lateral_half_half"

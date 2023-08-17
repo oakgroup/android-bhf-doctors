@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    tools:context=".design.activities.onboarding.OnBoardingBatteryActivity">
+    tools:context=".design.activities.registration.ConsentFormActivity">
+
 
     <com.active.orbit.baseapp.design.widgets.BaseTextView
         android:id="@+id/title"
@@ -13,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_lateral"
         android:gravity="start"
-        android:text="@string/battery_settings_title"
+        android:text="@string/privacy_policy"
         android:textColor="@color/textColorPrimaryDark"
         android:textSize="@dimen/h2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,48 +23,48 @@
         app:typeface="bold"
         tools:ignore="NotSibling" />
 
-
-    <FrameLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginHorizontal="@dimen/margin_lateral"
         android:layout_marginVertical="@dimen/margin_vertical"
-        android:background="@drawable/bg_panel"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@id/bottomLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title">
+        app:layout_constraintTop_toBottomOf="@id/title"
+        tools:ignore="NotSibling">
 
-
-        <ScrollView
+        <androidx.core.widget.NestedScrollView
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="none">
+            android:layout_marginHorizontal="@dimen/margin_lateral"
+            android:background="@drawable/bg_panel"
+            android:scrollIndicators="end"
+            android:scrollbarThumbVertical="@color/colorAccent"
+            android:scrollbars="vertical">
 
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:padding="@dimen/margin_vertical">
 
                 <com.active.orbit.baseapp.design.widgets.BaseTextView
-                    android:id="@+id/description"
+                    android:id="@+id/consentText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:lineSpacingExtra="1dp"
-                    android:text="@string/battery_settings_description"
+                    android:text="@string/participant_information"
                     android:textColor="@color/textColorPrimaryDark"
-                    android:textSize="@dimen/description_text_dimension"
+                    android:textSize="@dimen/main_text_dimension"
                     app:typeface="regular" />
 
+            </FrameLayout>
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.core.widget.NestedScrollView>
 
-        </ScrollView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
-    </FrameLayout>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/bottomLayout"
@@ -72,57 +73,29 @@
         android:orientation="vertical"
         android:paddingHorizontal="@dimen/margin_lateral"
         android:paddingBottom="@dimen/margin_vertical_double"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/authorisedView"
-            android:layout_width="wrap_content"
-            android:layout_gravity="end"
-            android:visibility="visible"
-            android:layout_marginBottom="@dimen/margin_vertical_half"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-
-            <com.active.orbit.baseapp.design.widgets.BaseImageView
-                android:layout_width="18dp"
-                android:layout_marginEnd="@dimen/margin_lateral_half"
-                app:srcCompat="@drawable/ic_success"
-                android:layout_height="match_parent" />
-
-            <com.active.orbit.baseapp.design.widgets.BaseTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="1dp"
-                android:text="@string/authorised"
-                android:textColor="@color/textColorGray"
-                android:textSize="@dimen/h6"
-                app:typeface="italic" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
 
         <com.active.orbit.baseapp.design.widgets.BaseTextView
             android:id="@+id/progressText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="end"
-            android:text="3/4"
+            android:text="1/4"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/h5"
-            android:visibility="visible"
             app:typeface="semibold"
             tools:ignore="HardcodedText" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/stepsLayout"
+            android:id="@+id/steps"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_vertical_half_half"
             android:gravity="center"
-            android:layout_marginBottom="16dp"
             android:orientation="horizontal"
-            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title">
@@ -141,8 +114,7 @@
                 android:layout_height="10dp"
                 android:layout_marginEnd="@dimen/margin_lateral_half_half"
                 android:layout_weight="1"
-                android:background="@drawable/bg_step_selected"
-                android:visibility="visible" />
+                android:background="@drawable/bg_step_idle" />
 
             <View
                 android:id="@+id/stepThree"
@@ -150,8 +122,7 @@
                 android:layout_height="10dp"
                 android:layout_marginEnd="@dimen/margin_lateral_half_half"
                 android:layout_weight="1"
-                android:background="@drawable/bg_step_selected"
-                android:visibility="visible" />
+                android:background="@drawable/bg_step_idle" />
 
             <View
                 android:id="@+id/stepFour"
@@ -159,20 +130,19 @@
                 android:layout_height="10dp"
                 android:layout_marginEnd="@dimen/margin_lateral_half_half"
                 android:layout_weight="1"
-                android:background="@drawable/bg_step_idle"
-                android:visibility="visible" />
+                android:background="@drawable/bg_step_idle" />
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>
-
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/buttons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_vertical"
             android:gravity="center"
             android:orientation="horizontal"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <com.active.orbit.baseapp.design.widgets.BaseButton
                 android:id="@+id/btnBack"
@@ -182,6 +152,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/back"
+                android:visibility="gone"
                 app:typeface="semibold" />
 
             <com.active.orbit.baseapp.design.widgets.BaseButton
@@ -189,24 +160,14 @@
                 style="@style/ButtonPrimary"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_lateral"
                 android:layout_weight="2"
                 android:gravity="center"
-                android:text="@string/next"
+                android:text="@string/accept"
                 app:typeface="semibold" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <com.active.orbit.baseapp.design.widgets.BaseButton
-            android:id="@+id/btnSettings"
-            style="@style/ButtonPrimary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:visibility="visible"
-            android:text="@string/check_settings"
-            app:typeface="semibold" />
-
     </androidx.appcompat.widget.LinearLayoutCompat>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

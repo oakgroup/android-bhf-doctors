@@ -54,19 +54,24 @@ class HelpActivity : BaseActivity(), View.OnClickListener {
                 val bundle = Bundle()
                 bundle.putBoolean(Extra.FROM_MENU.key, true)
                 bundle.putBoolean(Extra.FROM_HELP.key, true)
-                Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).startBaseActivity(this, Activities.CONSENT_FORM, bundle)
+                Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).startBaseActivity(this, Activities.CONSENT_PRIVACY, bundle)
             }
+
             binding.menuFaqs -> {
                 Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).startBaseActivity(this, Activities.FAQ)
             }
+
             binding.menuContactUs -> {
                 Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).startBaseActivity(this, Activities.CONTACT_US)
             }
+
             binding.menuTroubleshooting -> {
             }
+
             binding.menuAbout -> {
                 Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).startBaseActivity(this, Activities.ABOUT)
             }
+
             binding.menuUploadData -> {
                 if (Preferences.user(this).isUserRegistered()) {
                     background {

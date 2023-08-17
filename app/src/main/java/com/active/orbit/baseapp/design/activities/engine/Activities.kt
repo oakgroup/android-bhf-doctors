@@ -28,6 +28,7 @@ import com.active.orbit.baseapp.design.activities.questionnaire.HealthScoreActiv
 import com.active.orbit.baseapp.design.activities.questionnaire.HealthSelfCareActivity
 import com.active.orbit.baseapp.design.activities.questionnaire.HealthUsualActivitiesActivity
 import com.active.orbit.baseapp.design.activities.registration.ConsentFormActivity
+import com.active.orbit.baseapp.design.activities.registration.ConsentPrivacyActivity
 import com.active.orbit.baseapp.design.activities.registration.PatientDetailsActivity
 import com.active.orbit.baseapp.design.activities.symptoms.ReportSymptomDetailsActivity
 import com.active.orbit.baseapp.design.activities.symptoms.ReportSymptomTimeActivity
@@ -66,6 +67,7 @@ enum class Activities(private val activity: Class<out BaseActivity>) : ActivityP
     SUCCESS_MESSAGE(SuccessMessageActivity::class.java),
     SYMPTOMS(SymptomsActivity::class.java),
     CONSENT_FORM(ConsentFormActivity::class.java),
+    CONSENT_PRIVACY(ConsentPrivacyActivity::class.java),
     TOUR(TourActivity::class.java),
     WEB_VIEW(WebViewActivity::class.java),
     WELCOME(WelcomeActivity::class.java);

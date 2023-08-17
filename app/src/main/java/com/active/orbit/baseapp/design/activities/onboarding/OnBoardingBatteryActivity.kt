@@ -18,7 +18,6 @@ class OnBoardingBatteryActivity : BaseActivity(), View.OnClickListener {
     private var fromMenu = false
     private var settingsOpened = false
 
-
     private var userConsentName = Constants.EMPTY
     private var userConsentDate = Constants.INVALID.toLong()
 

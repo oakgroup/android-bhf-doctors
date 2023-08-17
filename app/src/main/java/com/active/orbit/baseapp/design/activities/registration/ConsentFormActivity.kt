@@ -10,7 +10,6 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.DatePicker
 import androidx.core.content.ContextCompat
-import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.download.Download
@@ -51,6 +50,7 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
         super.onCreate(savedInstanceState)
         binding = ActivityConsentFormBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        showBackButton()
 
         fromMenu = activityBundle.getBoolean(Extra.FROM_MENU.key)
         fromHelp = activityBundle.getBoolean(Extra.FROM_HELP.key)
@@ -58,7 +58,6 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
         if (fromMenu || fromHelp) showBackButton()
 
         prepare()
-
     }
 
     private fun prepare() {
@@ -66,8 +65,6 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
         binding.btnDate.setIcon(R.drawable.ic_calendar)
         binding.btnDate.setText(getString(R.string.date))
         binding.btnDate.disableClick()
-
-        binding.consentText.text = HtmlCompat.fromHtml(Preferences.user(this).consentFormText, HtmlCompat.FROM_HTML_MODE_COMPACT)
 
         if (fromMenu) {
 
@@ -92,7 +89,7 @@ class ConsentFormActivity : BaseActivity(), View.OnClickListener, DatePickerDial
             prepareQuestions(true)
 
         } else {
-            binding.title.text = getString(R.string.participant_information_title)
+            binding.title.text = getString(R.string.participant_information)
             binding.progressText.visibility = View.VISIBLE
             binding.steps.visibility = View.VISIBLE
             binding.buttons.visibility = View.VISIBLE

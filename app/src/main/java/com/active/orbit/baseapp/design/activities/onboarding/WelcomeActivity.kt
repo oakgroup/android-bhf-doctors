@@ -34,7 +34,7 @@ class WelcomeActivity : BaseActivity(), View.OnClickListener {
                 if (Preferences.lifecycle(this).tourShown) {
                     Router.getInstance()
                         .activityAnimation(ActivityAnimation.BOTTOM_TOP)
-                        .startBaseActivity(this@WelcomeActivity, Activities.CONSENT_FORM)
+                        .startBaseActivity(this@WelcomeActivity, Activities.CONSENT_PRIVACY)
                 } else {
                     Router.getInstance().activityAnimation(ActivityAnimation.FADE).startBaseActivity(this, Activities.TOUR)
                 }

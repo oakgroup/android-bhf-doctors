@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_lateral"
         android:gravity="start"
-        android:text="@string/participant_information_title"
+        android:text="@string/participant_information"
         android:textColor="@color/textColorPrimaryDark"
         android:textSize="@dimen/h2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,38 +46,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_lateral"
+                android:background="@drawable/bg_panel"
                 android:orientation="vertical">
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/margin_vertical"
-                    android:background="@drawable/bg_panel"
-                    android:orientation="vertical"
-                    android:padding="@dimen/margin_vertical">
-
-                    <com.active.orbit.baseapp.design.widgets.BaseTextView
-                        android:id="@+id/consentText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/participant_information"
-                        android:textColor="@color/textColorPrimaryDark"
-                        android:textSize="@dimen/main_text_dimension"
-                        app:typeface="regular" />
-
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/termsLinkContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_panel"
                     android:orientation="vertical"
                     android:paddingHorizontal="@dimen/margin_lateral"
                     android:paddingVertical="@dimen/margin_vertical"
                     app:layout_constraintBottom_toTopOf="@id/bottomLayout">
-
 
                     <com.active.orbit.baseapp.design.widgets.BaseTextView
                         android:layout_width="match_parent"
@@ -134,9 +113,7 @@
                         android:clickable="true"
                         android:focusable="true" />
 
-
                 </androidx.appcompat.widget.LinearLayoutCompat>
-
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -162,7 +139,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="end"
-            android:text="1/3"
+            android:text="2/4"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/h5"
             app:typeface="semibold"
@@ -193,10 +170,18 @@
                 android:layout_height="10dp"
                 android:layout_marginEnd="@dimen/margin_lateral_half_half"
                 android:layout_weight="1"
-                android:background="@drawable/bg_step_idle" />
+                android:background="@drawable/bg_step_selected" />
 
             <View
                 android:id="@+id/stepThree"
+                android:layout_width="0dp"
+                android:layout_height="10dp"
+                android:layout_marginEnd="@dimen/margin_lateral_half_half"
+                android:layout_weight="1"
+                android:background="@drawable/bg_step_idle" />
+
+            <View
+                android:id="@+id/stepFour"
                 android:layout_width="0dp"
                 android:layout_height="10dp"
                 android:layout_marginEnd="@dimen/margin_lateral_half_half"

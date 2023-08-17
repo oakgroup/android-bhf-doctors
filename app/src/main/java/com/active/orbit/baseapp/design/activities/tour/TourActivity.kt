@@ -86,7 +86,7 @@ class TourActivity : BaseActivity(), ViewPager.OnPageChangeListener, View.OnClic
             }
 
             binding.btnClose -> {
-                Router.getInstance().activityAnimation(ActivityAnimation.BOTTOM_TOP).startBaseActivity(this, Activities.CONSENT_FORM)
+                Router.getInstance().activityAnimation(ActivityAnimation.BOTTOM_TOP).startBaseActivity(this, Activities.CONSENT_PRIVACY)
                 finish()
             }
         }
