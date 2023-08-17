@@ -47,48 +47,51 @@
                 android:layout_marginHorizontal="@dimen/margin_lateral"
                 android:orientation="vertical">
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/bg_panel"
-                android:layout_marginBottom="@dimen/margin_vertical"
-                android:padding="@dimen/margin_vertical"
-                android:orientation="vertical">
-
-                <com.active.orbit.baseapp.design.widgets.BaseTextView
-                    android:id="@+id/description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/onboarding_location_1"
-                    android:textSize="@dimen/main_text_dimension"
-                    android:textColor="@color/textColorPrimaryDark"
-                    app:typeface="regular">
-
-                </com.active.orbit.baseapp.design.widgets.BaseTextView>
-
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-
                 <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/permissionsContainer"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/margin_vertical"
                     android:background="@drawable/bg_panel"
                     android:orientation="vertical"
-                    android:paddingHorizontal="@dimen/margin_lateral"
-                    android:paddingVertical="@dimen/margin_vertical"
-                    app:layout_constraintBottom_toTopOf="@id/bottomLayout">
+                    android:padding="@dimen/margin_vertical">
+
+                    <com.active.orbit.baseapp.design.widgets.BaseTextView
+                        android:id="@+id/descriptionTop"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/onboarding_location_0"
+                        android:textColor="@color/textColorPrimaryDark"
+                        android:textSize="@dimen/main_text_dimension"
+                        app:typeface="regular" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/margin_vertical"
+                    android:background="@drawable/bg_panel"
+                    android:orientation="vertical"
+                    android:padding="@dimen/margin_vertical">
+
+                    <com.active.orbit.baseapp.design.widgets.BaseTextView
+                        android:id="@+id/descriptionPhysical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/onboarding_location_1"
+                        android:textColor="@color/textColorPrimaryDark"
+                        android:textSize="@dimen/main_text_dimension"
+                        app:typeface="regular" />
 
                     <com.active.orbit.baseapp.design.widgets.BaseTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/mandatory"
                         android:layout_gravity="end"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:text="@string/mandatory"
                         android:textColor="@color/textColorGray"
                         android:textSize="@dimen/h6"
                         app:typeface="italic" />
-
 
                     <com.active.orbit.baseapp.design.widgets.BaseTextView
                         android:layout_width="match_parent"
@@ -102,39 +105,54 @@
                         android:id="@+id/physicalActivityCheckBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layoutDirection="rtl"
                         android:layout_marginTop="@dimen/margin_vertical_half"
+                        android:layoutDirection="rtl"
                         android:text="@string/physical_activity_permission"
                         android:textSize="@dimen/main_text_dimension"
                         app:typeface="regular" />
 
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/permissionsContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_panel"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="@dimen/margin_lateral"
+                    android:paddingVertical="@dimen/margin_vertical"
+                    app:layout_constraintBottom_toTopOf="@id/bottomLayout">
+
+                    <com.active.orbit.baseapp.design.widgets.BaseTextView
+                        android:id="@+id/descriptionLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/onboarding_location_2"
+                        android:textColor="@color/textColorPrimaryDark"
+                        android:textSize="@dimen/main_text_dimension"
+                        app:typeface="regular" />
 
                     <com.active.orbit.baseapp.design.widgets.BaseTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_vertical"
                         android:text="@string/location_services"
                         android:textColor="@color/textColorPrimaryDark"
                         android:textSize="@dimen/main_text_dimension"
-                        android:layout_marginTop="@dimen/margin_vertical"
                         app:typeface="semibold" />
 
                     <com.active.orbit.baseapp.design.widgets.BaseCheckBox
                         android:id="@+id/locationServicesCheckBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layoutDirection="rtl"
                         android:layout_marginTop="@dimen/margin_vertical_half"
+                        android:layoutDirection="rtl"
                         android:text="@string/location_services_permission"
                         android:textSize="@dimen/main_text_dimension"
                         app:typeface="regular" />
 
-
-
-
-
                 </androidx.appcompat.widget.LinearLayoutCompat>
-
-
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -201,7 +219,6 @@
                 android:background="@drawable/bg_step_idle" />
 
 
-
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -210,8 +227,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_vertical"
             android:gravity="center"
-            android:visibility="visible"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="visible">
 
             <com.active.orbit.baseapp.design.widgets.BaseButton
                 android:id="@+id/btnBack"
@@ -237,8 +254,6 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

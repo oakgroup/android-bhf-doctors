@@ -6,7 +6,6 @@ import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.core.text.HtmlCompat
 import com.active.orbit.baseapp.R
-import com.active.orbit.baseapp.core.listeners.ResultListener
 import com.active.orbit.baseapp.core.permissions.Permissions
 import com.active.orbit.baseapp.core.routing.Router
 import com.active.orbit.baseapp.core.routing.enums.Extra
@@ -33,7 +32,6 @@ class OnBoardingLocationActivity : BaseActivity(), View.OnClickListener {
         setContentView(binding.root)
         showBackButton()
 
-
         fromMenu = activityBundle.getBoolean(Extra.FROM_MENU.key, false)
 
         if (!fromMenu) {
@@ -44,11 +42,11 @@ class OnBoardingLocationActivity : BaseActivity(), View.OnClickListener {
         prepare()
     }
 
-
     private fun prepare() {
 
-
-        binding.description.text = HtmlCompat.fromHtml(getString(R.string.onboarding_location_1), HtmlCompat.FROM_HTML_MODE_COMPACT)
+        binding.descriptionTop.text = HtmlCompat.fromHtml(getString(R.string.onboarding_location_0), HtmlCompat.FROM_HTML_MODE_COMPACT)
+        binding.descriptionPhysical.text = HtmlCompat.fromHtml(getString(R.string.onboarding_location_1), HtmlCompat.FROM_HTML_MODE_COMPACT)
+        binding.descriptionLocation.text = HtmlCompat.fromHtml(getString(R.string.onboarding_location_2), HtmlCompat.FROM_HTML_MODE_COMPACT)
 
         if (fromMenu) {
             binding.bottomLayout.visibility = View.GONE
