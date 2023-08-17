@@ -551,7 +551,8 @@
     <string name="paragraph_two_about_set_up">Your account and email address will not be shared with us.\n\nAll data collected will be completely anonymous.</string>
     <string name="paragraph_two_about_set_up_gfit">Don\’t worry, you won\'t lose any existing type data, and achievements you\’ve collected.</string>
     <string name="participant_eligibility">Eligibility and Consent</string>
-    <string name="participant_information">Participant Information and Privacy Policy</string>
+    <string name="participant_information">Participant Information</string>
+    <string name="participant_information_and_policy">Participant Information and Privacy Policy</string>
     <string name="participating_city">Living in a partner city?</string>
     <string name="passive_gps_text">To save battery, we use passive location detection: the path drawn on the map may be imprecise or missing sometimes. This will not make the application imprecise.</string>
     <string name="passive_location_title">Passive Location</string>
@@ -639,6 +640,7 @@
     <string name="progress_loading_progress_data">Updating your progress data</string>
     <string name="progress_retrieving_current_location">Retrieving current location</string>
     <string name="progress_updated">Progress Updated</string>
+    <string name="questionnaire_saved">Thank you for completing the questionnaire. Your responses have been saved</string>
     <string name="question_bus">Do you ever take the bus?</string>
     <string name="question_car">Do you ever use the car?</string>
     <string name="question_cycling">Do you ever cycle?</string>

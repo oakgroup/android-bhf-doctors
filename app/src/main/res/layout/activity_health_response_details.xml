@@ -57,17 +57,26 @@
                     android:id="@+id/timestamp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="end"
                     android:textColor="@color/gray"
                     android:textSize="12dp"
-                    android:layout_gravity="end"
                     app:typeface="italic"
                     tools:text="Filled In" />
+
+                <com.active.orbit.baseapp.design.widgets.BaseTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_vertical"
+                    android:text="@string/questionnaire_saved"
+                    android:textColor="@color/textColorPrimaryDark"
+                    android:textSize="@dimen/main_text_dimension"
+                    app:typeface="regular" />
 
                 <com.active.orbit.baseapp.design.widgets.BaseTextView
                     android:id="@+id/mobilityTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_vertical"
+                    android:layout_marginTop="@dimen/margin_vertical_double"
                     android:text="@string/mobility_title"
                     android:textColor="@color/textColorPrimaryDark"
                     android:textSize="@dimen/panel_title_dimension"
@@ -77,8 +86,8 @@
                     android:id="@+id/mobilityResponse"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     android:layout_marginVertical="@dimen/margin_vertical_half"
+                    android:checked="true"
                     android:text="@string/health_mobility_response_one"
                     android:textSize="@dimen/main_text_dimension"
                     app:typeface="semibold" />
@@ -97,8 +106,8 @@
                     android:id="@+id/selfcareResponse"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     android:layout_marginVertical="@dimen/margin_vertical_half"
+                    android:checked="true"
                     android:text="@string/health_self_care_response_three"
                     android:textSize="@dimen/main_text_dimension"
                     app:typeface="semibold" />
@@ -117,8 +126,8 @@
                     android:id="@+id/usualActivitiesResponse"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     android:layout_marginVertical="@dimen/margin_vertical_half"
+                    android:checked="true"
                     android:text="@string/health_usual_activities_response_two"
                     android:textSize="@dimen/main_text_dimension"
                     app:typeface="semibold" />
@@ -137,8 +146,8 @@
                     android:id="@+id/painResponse"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     android:layout_marginVertical="@dimen/margin_vertical_half"
+                    android:checked="true"
                     android:text="@string/health_pain_response_three"
                     android:textSize="@dimen/main_text_dimension"
                     app:typeface="semibold" />
@@ -158,8 +167,8 @@
                     android:id="@+id/anxietyResponse"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     android:layout_marginVertical="@dimen/margin_vertical_half"
+                    android:checked="true"
                     android:text="@string/health_anxiety_response_one"
                     android:textSize="@dimen/main_text_dimension"
                     app:typeface="semibold" />
@@ -170,8 +179,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:gravity="center"
                     android:layout_marginTop="@dimen/margin_vertical_double"
+                    android:gravity="center"
                     android:textColor="@color/textColorBlack"
                     android:textSize="@dimen/h5"
                     app:typeface="semibold"
@@ -180,8 +189,8 @@
                 <com.active.orbit.baseapp.design.widgets.HorizontalProgressBar
                     android:id="@+id/healthScoreProgress"
                     android:layout_width="match_parent"
-                    android:layout_marginTop="8dp"
                     android:layout_height="20dp"
+                    android:layout_marginTop="8dp"
                     android:paddingStart="10dp"
                     android:paddingEnd="10dp" />
 
@@ -189,7 +198,6 @@
             </androidx.appcompat.widget.LinearLayoutCompat>
 
         </androidx.core.widget.NestedScrollView>
-
 
 
     </FrameLayout>
@@ -273,7 +281,6 @@
                 android:background="@drawable/bg_step_idle" />
 
 
-
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -282,8 +289,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_vertical_double"
             android:gravity="center"
-            android:visibility="visible"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="visible">
 
             <com.active.orbit.baseapp.design.widgets.BaseButton
                 android:id="@+id/btnBack"

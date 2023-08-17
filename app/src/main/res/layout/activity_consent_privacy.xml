@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_lateral"
         android:gravity="start"
-        android:text="@string/participant_information"
+        android:text="@string/participant_information_and_policy"
         android:textColor="@color/textColorPrimaryDark"
         android:textSize="@dimen/h2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,7 +54,7 @@
                     android:id="@+id/consentText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/participant_information"
+                    android:text="@string/participant_information_and_policy"
                     android:textColor="@color/textColorPrimaryDark"
                     android:textSize="@dimen/main_text_dimension"
                     app:typeface="regular" />
