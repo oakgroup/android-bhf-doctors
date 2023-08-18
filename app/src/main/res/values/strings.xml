@@ -251,7 +251,7 @@
     <string name="dismiss_patient_activity_description">Before you dismiss, we need to make sure that all the data has been uploaded. Please use the following actions to do this. For "Check Watch Data", please open the Moving Health wear app before taking the action.</string>
     <string name="dismiss_patient_dialog_description">Are you sure you want to withdraw from the study?</string>
     <string name="dismiss_patient_dialog_description_force">Not all data has been uploaded, please see the previous screen for details. If you continue with dismissing this patient, any non-uploaded data will be lost. Select \"Dismiss\" to continue or \"Cancel\" to return to complete the data uploads.</string>
-    <string name="dismiss_patient_dialog_information">Withdrawing from the study means we will collect no further data in relation to your activity for this study but we may use the data that have been collected up until this point.</string>
+    <string name="dismiss_patient_dialog_information">Withdrawing from the study means we will no longer collect your activity data for this study. However, any activity data already collected up to this point may still be used.</string>
     <string name="dismiss_watch_wait_one">Waiting to Dismiss from Watch</string>
     <string name="dismiss_watch_wait_two">If not seeing the \"Dismiss\" option on the watch, please open the Moving Health wear app, press \"Dismiss\" again here and check the watch again.</string>
     <string name="done">Done</string>
@@ -348,8 +348,8 @@
     <string name="health_anxiety_response_three">I am moderately anxious or depressed</string>
     <string name="health_anxiety_response_two">I am slightly anxious or depressed</string>
     <string name="health_description">Please tick the ONE box that best describes your %1$s TODAY.</string>
-    <string name="health_empty_patient">A response has not been given for your health yet.</string>
-    <string name="health_list_description">Please complete the health questionnaire at least once a month. It has six questions and take less than three minutes.\nPress the button to start the questionnaire.</string>
+    <string name="health_empty_patient">No health questionnaire has been completed yet.</string>
+    <string name="health_list_description">Please complete the health questionnaire at least once a month. There are only six questions which should take less than three minutes to answer.\nPress the button to start the questionnaire.</string>
     <string name="health_mobility_response_five">I am unable to walk about</string>
     <string name="health_mobility_response_four">I have severe problems in walking about</string>
     <string name="health_mobility_response_one">I have no problems in walking about</string>
@@ -362,7 +362,7 @@
     <string name="health_pain_response_three">I have moderate pain or discomfort</string>
     <string name="health_pain_response_two">I have slight pain or discomfort</string>
     <string name="health_score">My Health Today</string>
-    <string name="health_score_description">How good or bad if your health today?\n\n100 means the best health you can imagine\n0 means the worst health you can imagine\n\nNow, enter the number that describes your health TODAY.</string>
+    <string name="health_score_description">How good or bad is your health today?\n\n100 means the best health you can imagine\n0 means the worst health you can imagine\n\nNow, enter the number that describes your health TODAY.</string>
     <string name="health_score_label">%1$s / 100</string>
     <string name="health_select_something">Please select your answer</string>
     <string name="health_self_care">Self-care</string>
@@ -492,6 +492,7 @@
     <string name="minutes">Minutes</string>
     <string name="minutes_ago">%1$s minutes ago</string>
     <string name="missing_user_id">Using local user id, click on the phone app "Sync Id to watch" from the menu</string>
+    <string name="mobility">Mobility</string>
     <string name="mobility_details_one">Away from home: %1$s h </string>
     <string name="mobility_details_two">Motor Vehicle Trips: %1$s</string>
     <string name="mobility_title">Your Mobility</string>
@@ -548,7 +549,7 @@
     <string name="onboarding_description_first_install">In order to use the %1$s app, some permissions and the privacy policy need to be accepted. Please click on the continue button and follow the next steps to complete the configuration</string>
     <string name="onboarding_location_0"><![CDATA[In order to accurately record your activity the app needs to access the Physical Activity and Location data stored on your mobile device.<br>Please follow the instructions below when the permissions are shown.]]></string>
     <string name="onboarding_location_1"><![CDATA[<b>Physical Activity</b><br><br>1. Allow Moving Health to access your physical activity?<br>2. Click on Allow.]]></string>
-    <string name="onboarding_location_2"><![CDATA[<b>Location Services</b><br><br>1. Allow Moving Health to access this device’s location?<br>2. Click on <b>Precise</b> and <b>While using the app</b><br>3. Location Permission must be set to <b>Allow all the time</b>]]></string>
+    <string name="onboarding_location_2"><![CDATA[<b>Location Services</b><br><br>1. Allow Moving Health to access this device’s location?<br>2. Click on <b>While using the app</b><br>3. Location Permission must be set to <b>Allow all the time</b>]]></string>
     <string name="only_for">Before continuing, make sure to read and accept the Terms and Conditions.\n\nThen, we\'ll ask you to switch on the phone\'s motion and fitness sensors and the location detection. \n \nIt will take just a few seconds and it will make sure the app provides you with the best possible experience.</string>
     <string name="open_permissions">Open Permissions</string>
     <string name="open_wear_app">*Open wear app before confirming your action so two devices can synchronize</string>
@@ -609,7 +610,7 @@
     <string name="phone_upload_dialog_description">This device has data to upload, if you want to upload this data please select the \"Upload Now\" button below else close to return to the dismiss patient screen.</string>
     <string name="phone_upload_dialog_title">Phone Data Upload</string>
     <string name="physical_activity">Physical Activity *</string>
-    <string name="physical_activity_permission">I agree to give access to my physical activity data. This does not includes any GPS data.</string>
+    <string name="physical_activity_permission">I agree to give access to my physical activity data. This does not include any GPS data.</string>
     <string name="physiology_details_one">Awake Heart Rate: %1$s</string>
     <string name="physiology_details_two">Sleep Heart Rate: %1$s</string>
     <string name="physiology_title">Physiology</string>
@@ -793,7 +794,7 @@
     <string name="success_battery_settings">You have successfully set up the battery settings</string>
     <string name="success_disable_restrictions">You have successfully disabled the permissions restrictions</string>
     <string name="success_dismiss_patient">You have successfully finished your study</string>
-    <string name="success_health_report">You have successfully reported your health</string>
+    <string name="success_health_report">You have successfully submitted your health questionnaire</string>
     <string name="success_location_permissions">You have successfully set up the location settings</string>
     <string name="success_medicine_reported">You have successfully reported a medicine</string>
     <string name="success_on_boarding">You have successfully configured your device. You are ready to use the application</string>
