@@ -45,7 +45,7 @@ object HealthManager: CoroutineScope {
         healthRequest.usualActivities = health.healthActivities
         healthRequest.pain = health.healthPain
         healthRequest.anxiety = health.healthAnxiety
-        healthRequest.score = health.healthSelfCare
+        healthRequest.score = health.healthScore
 
         request.healthResponse = healthRequest
 
