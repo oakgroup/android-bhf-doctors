@@ -75,19 +75,9 @@
                     android:padding="@dimen/margin_vertical">
 
                     <com.active.orbit.baseapp.design.widgets.BaseTextView
-                        android:id="@+id/descriptionPhysical"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/onboarding_location_1"
-                        android:textColor="@color/textColorPrimaryDark"
-                        android:textSize="@dimen/main_text_dimension"
-                        app:typeface="regular" />
-
-                    <com.active.orbit.baseapp.design.widgets.BaseTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
-                        android:layout_marginTop="@dimen/activity_vertical_margin"
                         android:text="@string/mandatory"
                         android:textColor="@color/textColorGray"
                         android:textSize="@dimen/h6"
@@ -98,14 +88,24 @@
                         android:layout_height="wrap_content"
                         android:text="@string/physical_activity"
                         android:textColor="@color/textColorPrimaryDark"
-                        android:textSize="@dimen/description_text_dimension"
+                        android:textSize="@dimen/main_text_dimension"
                         app:typeface="semibold" />
+
+                    <com.active.orbit.baseapp.design.widgets.BaseTextView
+                        android:id="@+id/descriptionPhysical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/onboarding_location_1"
+                        android:textColor="@color/textColorPrimaryDark"
+                        android:layout_marginTop="@dimen/margin_vertical_half"
+                        android:textSize="@dimen/main_text_dimension"
+                        app:typeface="regular" />
 
                     <com.active.orbit.baseapp.design.widgets.BaseCheckBox
                         android:id="@+id/physicalActivityCheckBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_vertical_half"
+                        android:layout_marginTop="@dimen/margin_vertical_double"
                         android:layoutDirection="rtl"
                         android:text="@string/physical_activity_permission"
                         android:textSize="@dimen/main_text_dimension"
@@ -125,28 +125,29 @@
                     app:layout_constraintBottom_toTopOf="@id/bottomLayout">
 
                     <com.active.orbit.baseapp.design.widgets.BaseTextView
-                        android:id="@+id/descriptionLocation"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/onboarding_location_2"
-                        android:textColor="@color/textColorPrimaryDark"
-                        android:textSize="@dimen/main_text_dimension"
-                        app:typeface="regular" />
-
-                    <com.active.orbit.baseapp.design.widgets.BaseTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_vertical"
                         android:text="@string/location_services"
                         android:textColor="@color/textColorPrimaryDark"
                         android:textSize="@dimen/main_text_dimension"
                         app:typeface="semibold" />
 
+                    <com.active.orbit.baseapp.design.widgets.BaseTextView
+                        android:id="@+id/descriptionLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_vertical_half"
+                        android:text="@string/onboarding_location_2"
+                        android:textColor="@color/textColorPrimaryDark"
+                        android:textSize="@dimen/main_text_dimension"
+                        app:typeface="regular" />
+
+
                     <com.active.orbit.baseapp.design.widgets.BaseCheckBox
                         android:id="@+id/locationServicesCheckBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_vertical_half"
+                        android:layout_marginTop="@dimen/margin_vertical_double"
                         android:layoutDirection="rtl"
                         android:text="@string/location_services_permission"
                         android:textSize="@dimen/main_text_dimension"
