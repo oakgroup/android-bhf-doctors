@@ -14,6 +14,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.active.orbit.baseapp.BuildConfig
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.broadcast.BaseBroadcast
 import com.active.orbit.baseapp.core.broadcast.BroadcastHost
@@ -268,6 +269,9 @@ abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListen
         val patientId = mNavigationView?.getHeaderView(0)?.findViewById<BaseTextView>(R.id.userNhsNumber)
         val dismissPatientMenuItem = mNavigationView?.menu?.findItem(R.id.finishStudy)
         val consentFormMenuItem = mNavigationView?.menu?.findItem(R.id.consentForm)
+        val debugMenuItem = mNavigationView?.menu?.findItem(R.id.debugView)
+
+        debugMenuItem?.isVisible = BuildConfig.DEBUG
 
         if (Preferences.user(this).isUserRegistered()) {
             patientLayout?.visibility = View.VISIBLE
@@ -326,13 +330,21 @@ abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListen
             R.id.help -> {
                 Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).startBaseActivity(this, Activities.HELP)
             }
+
             R.id.consentForm -> {
                 val bundle = Bundle()
                 bundle.putBoolean(Extra.FROM_MENU.key, true)
                 Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).startBaseActivity(this, Activities.CONSENT_FORM, bundle)
             }
+
             R.id.finishStudy -> {
                 showDismissPatientDialog()
+            }
+
+            R.id.debugView -> {
+                Router.getInstance()
+                    .activityAnimation(ActivityAnimation.BOTTOM_TOP)
+                    .startBaseActivity(this, Activities.DEBUG)
             }
         }
         mDrawerLayout?.closeDrawer(GravityCompat.START)

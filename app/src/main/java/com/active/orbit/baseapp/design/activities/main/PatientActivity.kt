@@ -5,12 +5,8 @@ import android.os.Bundle
 import androidx.annotation.RequiresApi
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.enums.BottomNavItemType
-import com.active.orbit.baseapp.core.managers.ConsentFormManager
-import com.active.orbit.baseapp.core.notifications.NotificationType
-import com.active.orbit.baseapp.core.notifications.NotificationsManager
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.Router
-import com.active.orbit.baseapp.core.utils.Constants
 import com.active.orbit.baseapp.core.utils.Logger
 import com.active.orbit.baseapp.databinding.ActivityPatientBinding
 import com.active.orbit.baseapp.design.activities.engine.Activities
@@ -22,7 +18,6 @@ import uk.ac.shef.tracker.core.observers.TrackerObserverType
 import uk.ac.shef.tracker.core.tracker.TrackerConfig
 import uk.ac.shef.tracker.core.tracker.TrackerManager
 import uk.ac.shef.tracker.core.utils.TimeUtils
-import uk.ac.shef.tracker.core.utils.background
 import kotlin.math.roundToInt
 
 class PatientActivity : BaseActivity() {

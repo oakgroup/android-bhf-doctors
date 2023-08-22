@@ -51,7 +51,7 @@ class DebugActivity : BaseActivity() {
     @SuppressLint("SetTextI18n")
     private fun refreshMobilityChart(mobilityChart: List<MobilityData>?) {
         val textField = binding.mobilityChart
-        if (mobilityChart != null && mobilityChart.isNotEmpty()) {
+        if (!mobilityChart.isNullOrEmpty()) {
             var concatenatedString = ""
             for (mobilityElement in mobilityChart) {
                 concatenatedString += "\n" + mobilityElement.toString()
@@ -113,7 +113,6 @@ class DebugActivity : BaseActivity() {
 
     /**
      * This refreshes the content of the interface     *
-     * @param binding the binding of the interface
      */
     private fun resetInterface() {
         refreshActivitiesData(ArrayList())
