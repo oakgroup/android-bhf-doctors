@@ -25,5 +25,9 @@
             android:id="@+id/debugView"
             android:icon="@drawable/ic_menu_dismiss_patient"
             android:title="@string/debug_view" />
+        <item
+            android:id="@+id/history"
+            android:icon="@drawable/ic_menu_dismiss_patient"
+            android:title="@string/history" />
     </group>
 </menu>

@@ -12,6 +12,7 @@ import uk.ac.shef.tracker.core.observers.TrackerObserver
 import uk.ac.shef.tracker.core.observers.TrackerObserverType
 import uk.ac.shef.tracker.core.tracker.TrackerManager
 import uk.ac.shef.tracker.core.utils.TimeUtils
+import java.util.Calendar
 import kotlin.coroutines.CoroutineContext
 
 /**
@@ -100,5 +101,10 @@ abstract class BaseActivity : PermissionsActivity(), CoroutineScope, TrackerObse
 
     override fun onTrackerUpdate(type: TrackerObserverType, data: Any) {
         Logger.d("Tracker observer update $type")
+    }
+
+    override fun onDateSelected(selectedDateTime: Calendar) {
+        TrackerManager.getInstance(this).currentDateTime = selectedDateTime.timeInMillis
+        computeResults()
     }
 }

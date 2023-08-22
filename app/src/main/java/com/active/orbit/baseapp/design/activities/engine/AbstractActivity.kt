@@ -1,12 +1,14 @@
 package com.active.orbit.baseapp.design.activities.engine
 
 import android.annotation.SuppressLint
+import android.app.DatePickerDialog
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.DatePicker
 import androidx.activity.OnBackPressedCallback
 import androidx.annotation.ColorInt
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +23,7 @@ import com.active.orbit.baseapp.core.broadcast.BroadcastHost
 import com.active.orbit.baseapp.core.preferences.engine.Preferences
 import com.active.orbit.baseapp.core.routing.Router
 import com.active.orbit.baseapp.core.routing.enums.Extra
+import com.active.orbit.baseapp.core.utils.TimeUtils
 import com.active.orbit.baseapp.core.utils.Utils
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
 import com.active.orbit.baseapp.design.activities.main.DoctorActivity
@@ -32,13 +35,15 @@ import com.active.orbit.baseapp.design.widgets.BaseImageButton
 import com.active.orbit.baseapp.design.widgets.BaseImageView
 import com.active.orbit.baseapp.design.widgets.BaseTextView
 import com.google.android.material.navigation.NavigationView
+import uk.ac.shef.tracker.core.tracker.TrackerManager
+import java.util.Calendar
 
 /**
  * Abstract activity that exposes useful methods
  *
  * @author omar.brugna
  */
-abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListener, NavigationView.OnNavigationItemSelectedListener, BroadcastHost {
+abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListener, NavigationView.OnNavigationItemSelectedListener, BroadcastHost, DatePickerDialog.OnDateSetListener {
 
     private lateinit var mRootView: ViewGroup
 
@@ -270,8 +275,10 @@ abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListen
         val dismissPatientMenuItem = mNavigationView?.menu?.findItem(R.id.finishStudy)
         val consentFormMenuItem = mNavigationView?.menu?.findItem(R.id.consentForm)
         val debugMenuItem = mNavigationView?.menu?.findItem(R.id.debugView)
+        val historyItem = mNavigationView?.menu?.findItem(R.id.history)
 
         debugMenuItem?.isVisible = BuildConfig.DEBUG
+        historyItem?.isVisible = BuildConfig.DEBUG
 
         if (Preferences.user(this).isUserRegistered()) {
             patientLayout?.visibility = View.VISIBLE
@@ -324,9 +331,11 @@ abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListen
                 if (this !is DoctorActivity && this !is PatientActivity)
                     Router.getInstance().homepage(this)
             }
+
             R.id.settings -> {
                 Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).startBaseActivity(this, Activities.SETTINGS)
             }
+
             R.id.help -> {
                 Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).startBaseActivity(this, Activities.HELP)
             }
@@ -345,6 +354,16 @@ abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListen
                 Router.getInstance()
                     .activityAnimation(ActivityAnimation.BOTTOM_TOP)
                     .startBaseActivity(this, Activities.DEBUG)
+            }
+
+            R.id.history -> {
+                val cal = TimeUtils.getCurrent(TrackerManager.getInstance(this).currentDateTime)
+                val dialog = DatePickerDialog(this, R.style.AppCompatAlertDialogStyle, this, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH))
+                dialog.datePicker.minDate = Preferences.lifecycle(this).firstInstall!!
+                dialog.datePicker.maxDate = TimeUtils.getCurrent().timeInMillis
+                dialog.show()
+                dialog.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(this, R.color.colorPrimaryDark))
+                dialog.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(this, R.color.colorPrimaryDark))
             }
         }
         mDrawerLayout?.closeDrawer(GravityCompat.START)
@@ -400,5 +419,17 @@ abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListen
 
     override fun getContext(): Context? {
         return this
+    }
+
+    override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
+        val selectedDateTime = TimeUtils.getZeroSeconds(TimeUtils.getCurrent())
+        selectedDateTime.set(Calendar.YEAR, year)
+        selectedDateTime.set(Calendar.MONTH, month)
+        selectedDateTime.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+        onDateSelected(selectedDateTime)
+    }
+
+    open fun onDateSelected(selectedDateTime: Calendar) {
+        // override to customise
     }
 }
