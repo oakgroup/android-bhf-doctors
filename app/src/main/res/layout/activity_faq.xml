@@ -12,7 +12,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_lateral"
-        android:layout_marginTop="@dimen/margin_vertical"
         android:gravity="start"
         android:text="@string/frequently_asked_questions"
         android:textColor="@color/textColorPrimaryDark"
