@@ -49,7 +49,12 @@ class ActivityPanelComponent : FrameLayout {
 
     fun setProgress(minutesWalking: Long, minutesHeart: Long, minutesCycling: Long, distanceWalking: Int, distanceHeart: Int, distanceCycling: Int, steps: Int) {
 
-        binding.heartActivityProgress.setProgress(minutesHeart.toFloat())
+        if (minutesHeart > 100) {
+            binding.heartActivityProgress.setProgress(100.toFloat())
+        } else {
+            binding.heartActivityProgress.setProgress(minutesHeart.toFloat())
+        }
+
         binding.walkingActivityProgress.setProgress(minutesWalking.toFloat())
 
         if (minutesWalking == 1L) binding.walkingProgressText.text = context.getString(R.string.activity_distance_active_minute)
