@@ -53,7 +53,7 @@
                     android:id="@+id/menuConsentForm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:helpTitle="@string/participant_information" />
+                    app:helpTitle="@string/participant_information_and_policy" />
 
                 <com.active.orbit.baseapp.design.components.HelpComponent
                     android:id="@+id/menuFaqs"
