@@ -91,27 +91,22 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".design.activities.onboarding.OnBoardingBatteryActivity"
+            android:name=".design.activities.registration.OnBoardingBatteryActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.FullScreen" />
         <activity
-            android:name=".design.activities.onboarding.OnBoardingLocationActivity"
+            android:name=".design.activities.registration.OnBoardingLocationActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.FullScreen" />
         <activity
-            android:name=".design.activities.onboarding.OnBoardingUnusedRestrictionsActivity"
+            android:name=".design.activities.registration.OnBoardingUnusedRestrictionsActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.FullScreen" />
         <activity
             android:name=".design.activities.onboarding.WelcomeActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.FullScreen" />
-        <activity
-            android:name=".design.activities.onboarding.PrivacyPolicyActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.FullScreen" />

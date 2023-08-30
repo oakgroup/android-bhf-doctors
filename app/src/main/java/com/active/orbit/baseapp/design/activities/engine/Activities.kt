@@ -14,10 +14,9 @@ import com.active.orbit.baseapp.design.activities.menu.FaqActivity
 import com.active.orbit.baseapp.design.activities.menu.HelpActivity
 import com.active.orbit.baseapp.design.activities.menu.SettingsActivity
 import com.active.orbit.baseapp.design.activities.messaging.SuccessMessageActivity
-import com.active.orbit.baseapp.design.activities.onboarding.OnBoardingBatteryActivity
-import com.active.orbit.baseapp.design.activities.onboarding.OnBoardingLocationActivity
-import com.active.orbit.baseapp.design.activities.onboarding.OnBoardingUnusedRestrictionsActivity
-import com.active.orbit.baseapp.design.activities.onboarding.PrivacyPolicyActivity
+import com.active.orbit.baseapp.design.activities.registration.OnBoardingBatteryActivity
+import com.active.orbit.baseapp.design.activities.registration.OnBoardingLocationActivity
+import com.active.orbit.baseapp.design.activities.registration.OnBoardingUnusedRestrictionsActivity
 import com.active.orbit.baseapp.design.activities.onboarding.WelcomeActivity
 import com.active.orbit.baseapp.design.activities.questionnaire.HealthActivity
 import com.active.orbit.baseapp.design.activities.questionnaire.HealthAnxietyActivity
@@ -59,7 +58,6 @@ enum class Activities(private val activity: Class<out BaseActivity>) : ActivityP
     ON_BOARDING_UNUSED_RESTRICTIONS(OnBoardingUnusedRestrictionsActivity::class.java),
     PATIENT(PatientActivity::class.java),
     PATIENT_DETAILS(PatientDetailsActivity::class.java),
-    PRIVACY_POLICY(PrivacyPolicyActivity::class.java),
     REPORT_SYMPTOM_DATE_TIME(ReportSymptomTimeActivity::class.java),
     REPORT_SYMPTOM_DETAILS(ReportSymptomDetailsActivity::class.java),
     SETTINGS(SettingsActivity::class.java),

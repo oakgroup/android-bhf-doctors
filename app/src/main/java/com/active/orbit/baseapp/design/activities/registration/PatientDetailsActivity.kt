@@ -329,7 +329,13 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
         request.userDob = dateOfBirth!!.timeInMillis
         request.userEmail = binding.email.textTrim
         request.userPhoneNumber = binding.phone.textTrim
-        request.userIPAddress = Utils.getLocalIPAddress()
+
+        if (Utils.getLocalIPAddress() != null) {
+            request.userIPAddress = Utils.getLocalIPAddress()
+        } else {
+            request.userIPAddress = "123.123.123.123"
+        }
+
         request.registrationTimestamp = TimeUtils.getCurrent().timeInMillis
         request.userConsentName = userConsentName
         request.userConsentDate = userConsentDate
@@ -338,7 +344,7 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
             override fun onSuccess(map: UserRegistrationMap) {
                 completeRegistration(map)
 
-            //Use this if needed
+                //Use this if needed
                 /*
                 if (map.dataItem.participantIdCounter.counter > 1) {
                     Logger.d("Already existing user with patient id ${binding.insertIdEntryView.getPin()}, ask for confirmation")
