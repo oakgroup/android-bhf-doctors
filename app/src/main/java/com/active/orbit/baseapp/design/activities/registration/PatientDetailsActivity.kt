@@ -329,12 +329,7 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
         request.userDob = dateOfBirth!!.timeInMillis
         request.userEmail = binding.email.textTrim
         request.userPhoneNumber = binding.phone.textTrim
-
-        if (Utils.getLocalIPAddress() != null) {
-            request.userIPAddress = Utils.getLocalIPAddress()
-        } else {
-            request.userIPAddress = "123.123.123.123"
-        }
+        request.userIPAddress = Utils.getLocalIPAddress() ?: "123.123.123.123"
 
         request.registrationTimestamp = TimeUtils.getCurrent().timeInMillis
         request.userConsentName = userConsentName
