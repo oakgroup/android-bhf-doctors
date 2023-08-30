@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="privacy_policy_link_default" translatable="false">@string/privacy_policy_link_en</string>
-    <string name="privacy_policy_link_en" translatable="false">http://api2.mobinmobility.org/privacy-policy.html</string>
+    <string name="privacy_policy_link_en" translatable="false">http://api2.mobinmobility.org/moving-health-pis.html</string>
     <string name="terms_and_conditions_link_default" translatable="false">@string/terms_and_conditions_link_en</string>
     <string name="terms_and_conditions_link_en" translatable="false">https://aeqora.weebly.com/terms-and-conditions.html</string>
     <string name="troubleshooting_link_default" translatable="false">@string/troubleshooting_link_en</string>

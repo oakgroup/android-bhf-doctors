@@ -1,5 +1,6 @@
 package com.active.orbit.baseapp.design.activities.registration
 
+import android.graphics.Paint
 import android.os.Bundle
 import android.view.View
 import androidx.core.text.HtmlCompat
@@ -34,6 +35,11 @@ class ConsentPrivacyActivity : BaseActivity(), View.OnClickListener {
 
         binding.consentText.text = HtmlCompat.fromHtml(Preferences.user(this).consentFormText, HtmlCompat.FROM_HTML_MODE_COMPACT)
 
+        binding.privacyLink.paintFlags = binding.privacyLink.paintFlags or Paint.UNDERLINE_TEXT_FLAG
+
+        binding.privacyLink.setOnClickListener(this)
+
+
         if (fromMenu) {
             binding.progressText.visibility = View.GONE
             binding.steps.visibility = View.GONE
@@ -58,6 +64,10 @@ class ConsentPrivacyActivity : BaseActivity(), View.OnClickListener {
             }
 
             binding.btnBack -> finish()
+
+            binding.privacyLink -> {
+                Router.getInstance().openPrivacyPolicy(this)
+            }
         }
     }
 }

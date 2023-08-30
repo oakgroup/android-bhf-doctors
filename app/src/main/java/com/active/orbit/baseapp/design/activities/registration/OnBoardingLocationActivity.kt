@@ -1,4 +1,4 @@
-package com.active.orbit.baseapp.design.activities.onboarding
+package com.active.orbit.baseapp.design.activities.registration
 
 import android.os.Build
 import android.os.Bundle

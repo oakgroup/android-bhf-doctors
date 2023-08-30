@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    tools:context=".design.activities.onboarding.OnBoardingUnusedRestrictionsActivity">
+    tools:context=".design.activities.registration.OnBoardingUnusedRestrictionsActivity">
 
     <com.active.orbit.baseapp.design.widgets.BaseTextView
         android:id="@+id/title"
