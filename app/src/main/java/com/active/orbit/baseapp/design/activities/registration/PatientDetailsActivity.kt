@@ -31,6 +31,7 @@ import com.active.orbit.baseapp.design.dialogs.SelectSexDialog
 import com.active.orbit.baseapp.design.dialogs.listeners.SelectSexDialogListener
 import com.active.orbit.baseapp.design.recyclers.models.SexModel
 import com.active.orbit.baseapp.design.utils.UiUtils
+import uk.ac.shef.tracker.core.restarter.TrackerRestarter
 import uk.ac.shef.tracker.core.tracker.TrackerManager
 import java.util.*
 
@@ -359,6 +360,10 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
                     completeRegistration(map)
                 }
                 */
+                // start the tracker after registration
+                val trackerRestarter = TrackerRestarter()
+                Logger.i("Starting tracker")
+                trackerRestarter.startTrackerAndDataUpload(baseContext)
             }
 
             override fun onError() {
