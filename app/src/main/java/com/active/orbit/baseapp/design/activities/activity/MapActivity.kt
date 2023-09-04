@@ -164,7 +164,10 @@ class MapActivity : BaseActivity(), OnMapReadyCallback, View.OnClickListener {
      * This callback is triggered when the map is ready to be used.
      */
     override fun onMapReady(googleMap: GoogleMap) {
-        drawMap(googleMap)
+        // draw map needs that the container is laid out though otherwise width and height will be zero
+        binding.mapContainer.post {
+            drawMap(googleMap)
+        }
     }
 
     private fun drawMap(googleMap: GoogleMap) {
@@ -228,7 +231,8 @@ class MapActivity : BaseActivity(), OnMapReadyCallback, View.OnClickListener {
         try {
             map!!.moveCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, width, height, padding))
             val zoom = map!!.cameraPosition.zoom
-            if (zoom > 18.0f) map!!.animateCamera(CameraUpdateFactory.zoomTo(17.5f))
+            if (zoom > 18.0f)
+                map!!.animateCamera(CameraUpdateFactory.zoomTo(17.5f))
         } catch (e: Exception) {
             Logger.i("Exception trying to move the map camera " + e.localizedMessage)
         }
