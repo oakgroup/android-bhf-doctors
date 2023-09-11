@@ -369,6 +369,7 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
             override fun onError() {
                 hideProgressView()
                 UiUtils.showShortToast(this@PatientDetailsActivity, R.string.error)
+                continueWithoutRegistration()
             }
         })
     }
@@ -399,5 +400,19 @@ class PatientDetailsActivity : BaseActivity(), View.OnClickListener, DatePickerD
         bundle.putInt(Extra.SUCCESS_MESSAGE.key, SuccessMessageType.REGISTRATION.id)
         Router.getInstance().activityAnimation(ActivityAnimation.BOTTOM_TOP).startBaseActivity(thiss, Activities.SUCCESS_MESSAGE, bundle)
         finish()
+    }
+
+    /**
+     * this currently does not work. if you activate it, then the setup starts again because
+     * some missing information is detected
+     * I am leaving it here in case it can be recovered
+     */
+    private fun continueWithoutRegistration(){
+        /*
+        val bundle = Bundle()
+        bundle.putInt(Extra.SUCCESS_MESSAGE.key, SuccessMessageType.REGISTRATION.id)
+        Router.getInstance().activityAnimation(ActivityAnimation.BOTTOM_TOP).startBaseActivity(thiss, Activities.SUCCESS_MESSAGE, bundle)
+        finish()
+         */
     }
 }
