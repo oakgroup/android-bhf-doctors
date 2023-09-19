@@ -940,5 +940,6 @@
     <string name="your_age">Your age</string>
     <string name="your_answer_cannot_change">Your answer cannot change</string>
     <string name="zero">0</string>
+    <string name="special_battery_settings">Special Battery Settings</string>
 
 </resources>

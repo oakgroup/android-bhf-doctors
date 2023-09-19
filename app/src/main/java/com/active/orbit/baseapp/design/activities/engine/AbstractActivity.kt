@@ -34,6 +34,7 @@ import com.active.orbit.baseapp.design.dialogs.listeners.WithdrawDialogListener
 import com.active.orbit.baseapp.design.widgets.BaseImageButton
 import com.active.orbit.baseapp.design.widgets.BaseImageView
 import com.active.orbit.baseapp.design.widgets.BaseTextView
+import com.aeqora.corepowersettings.PowerAPI
 import com.google.android.material.navigation.NavigationView
 import uk.ac.shef.tracker.core.tracker.TrackerManager
 import java.util.Calendar
@@ -335,7 +336,10 @@ abstract class AbstractActivity : AppCompatActivity(), DrawerLayout.DrawerListen
             R.id.settings -> {
                 Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).startBaseActivity(this, Activities.SETTINGS)
             }
-
+            R.id.battery_settings -> {
+                val powerAPI = PowerAPI()
+                powerAPI.requestBatteryPermission(this, true)
+            }
             R.id.help -> {
                 Router.getInstance().activityAnimation(ActivityAnimation.LEFT_RIGHT).startBaseActivity(this, Activities.HELP)
             }

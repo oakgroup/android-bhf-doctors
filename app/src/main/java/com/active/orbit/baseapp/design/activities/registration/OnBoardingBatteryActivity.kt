@@ -11,6 +11,7 @@ import com.active.orbit.baseapp.databinding.ActivityOnBoardingBatteryBinding
 import com.active.orbit.baseapp.design.activities.engine.Activities
 import com.active.orbit.baseapp.design.activities.engine.BaseActivity
 import com.active.orbit.baseapp.design.activities.engine.animations.ActivityAnimation
+import com.aeqora.corepowersettings.PowerAPI
 
 class OnBoardingBatteryActivity : BaseActivity(), View.OnClickListener {
 
@@ -20,6 +21,7 @@ class OnBoardingBatteryActivity : BaseActivity(), View.OnClickListener {
 
     private var userConsentName = Constants.EMPTY
     private var userConsentDate = Constants.INVALID.toLong()
+    private var powerApiRequested = false;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,9 +90,15 @@ class OnBoardingBatteryActivity : BaseActivity(), View.OnClickListener {
             val bundle = Bundle()
             bundle.putString(Extra.USER_CONSENT_NAME.key, userConsentName)
             bundle.putLong(Extra.USER_CONSENT_DATE.key, userConsentDate)
-            Router.getInstance()
-                .activityAnimation(ActivityAnimation.LEFT_RIGHT)
-                .startBaseActivity(this, Activities.ON_BOARDING_UNUSED_RESTRICTIONS, bundle)
+            if (!powerApiRequested) {
+                val powerAPI = PowerAPI()
+                powerAPI.requestBatteryPermission(this, false)
+                powerApiRequested = true
+            } else {
+                Router.getInstance()
+                    .activityAnimation(ActivityAnimation.LEFT_RIGHT)
+                    .startBaseActivity(this, Activities.ON_BOARDING_UNUSED_RESTRICTIONS, bundle)
+            }
         }
     }
 
