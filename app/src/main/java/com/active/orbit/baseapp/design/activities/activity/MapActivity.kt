@@ -1,3 +1,7 @@
+/**
+ * code created by Fabio Ciravegna, The University of Sheffield.
+ * refactored by Omar Brugna and George Stavrou
+ */
 package com.active.orbit.baseapp.design.activities.activity
 
 import android.graphics.Color

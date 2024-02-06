@@ -47,7 +47,7 @@ class ActivityPanelComponent : FrameLayout {
     }
 
 
-    fun setProgress(minutesWalking: Long, minutesHeart: Long, minutesCycling: Long, distanceWalking: Int, distanceHeart: Int, distanceCycling: Int, steps: Int) {
+    fun setProgress(minutesWalking: Long, minutesHeart: Long, minutesCycling: Long, distanceWalking: Float, distanceHeart: Int, distanceCycling: Int, steps: Int) {
 
         if (minutesHeart > 100) {
             binding.heartActivityProgress.setProgress(100.toFloat())
@@ -60,8 +60,11 @@ class ActivityPanelComponent : FrameLayout {
         if (minutesWalking == 1L) binding.walkingProgressText.text = context.getString(R.string.activity_distance_active_minute)
         else binding.walkingProgressText.text = context.getString(R.string.activity_distance_active_minutes, minutesWalking.toString(), distanceWalking.toString())
 
+//        if (minutesHeart == 1L) binding.heartProgressText.text = context.getString(R.string.activity_distance_heart_minute)
+//        else binding.heartProgressText.text = context.getString(R.string.activity_distance_heart_minutes, minutesHeart.toString(), distanceHeart.toString())
+
         if (minutesHeart == 1L) binding.heartProgressText.text = context.getString(R.string.activity_distance_heart_minute)
-        else binding.heartProgressText.text = context.getString(R.string.activity_distance_heart_minutes, minutesHeart.toString(), distanceHeart.toString())
+        else binding.heartProgressText.text = context.getString(R.string.activity_distance_heart_minutes, minutesHeart.toString())
 
         if (minutesCycling == 1L) binding.bicycleProgressText.text = context.getString(R.string.activity_distance_cycling_minute)
         else binding.bicycleProgressText.text = context.getString(R.string.activity_distance_cycling_minutes, minutesCycling.toString(), distanceCycling.toString())

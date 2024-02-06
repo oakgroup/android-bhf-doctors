@@ -1,3 +1,7 @@
+/**
+ * code created by Fabio Ciravegna, The University of Sheffield.
+ * refactored by Omar Brugna and George Stavrou
+ */
 package com.active.orbit.baseapp.design.utils
 
 import android.graphics.Color
@@ -43,7 +47,7 @@ class CadenceGraphDisplay(private var combinedChart: CombinedChart, private val 
                 Logger.i("Steps: ${currentTrip.chart[index].cadence}")
                 val lineEntry = Entry((index - base).toFloat(), if (currentTrip.activityType == DetectedActivity.ON_BICYCLE) 40f else 100f)
                 lineEntries.add(lineEntry)
-                xEntries.add(TimeUtils.formatMillis(currentTrip.chart[index].timeInMSecs, Constants.DATE_FORMAT_HOUR_MINUTE))
+                xEntries.add(TimeUtils.formatMillis(currentTrip.chart[index].timeInMSecs, Constants.DATE_FORMAT_HOUR_MINUTE_SECONDS))
             }
         }
 

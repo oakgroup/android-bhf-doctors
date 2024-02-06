@@ -32,8 +32,10 @@
     <string name="activity_distance_active_minutes">%1$s Move Minutes (%2$s km)</string>
     <string name="activity_distance_cycling_minute">1 Cycling Minute (0 km)</string>
     <string name="activity_distance_cycling_minutes">%1$s Cycling Minutes (%2$s km)</string>
-    <string name="activity_distance_heart_minute">1 ♥ Minute (0 km)</string>
-    <string name="activity_distance_heart_minutes">%1$s ♥ Minutes (%2$s km)</string>
+    <string name="activity_distance_heart_minute">1 ♥ Minute </string>
+<!--    <string name="activity_distance_heart_minute">1 ♥ Minute (0 km)</string>-->
+<!--    <string name="activity_distance_heart_minutes">%1$s ♥ Minutes (%2$s km)</string>-->
+    <string name="activity_distance_heart_minutes">%1$s ♥ Minutes </string>
     <string name="activity_distance_vehicle">km distance</string>
     <string name="activity_distance_vehicle_minute">1 Vehicle Minute (0 km)</string>
     <string name="activity_distance_vehicle_minutes">%1$s Vehicle Minutes (%2$s km)</string>

@@ -91,7 +91,7 @@ class PatientActivity : BaseActivity() {
                 val mobilityChart = data as MobilityComputation
 
                 var minutesWalking = 0L
-                var distanceWalking = 0
+                var distanceWalking = 0.0f
                 var minutesHeart = 0L
                 var distanceHeart = 0
                 var minutesCycling = 0L
@@ -102,10 +102,11 @@ class PatientActivity : BaseActivity() {
                 var steps = 0
                 if (mobilityChart.chart.isNotEmpty()) {
                     val summary = mobilityChart.summaryData
-                    minutesWalking = summary.walkingMsecs / com.active.orbit.baseapp.core.utils.TimeUtils.ONE_MINUTE_MILLIS
-                    distanceWalking = summary.walkingDistance.roundToInt()
-                    minutesHeart = summary.runningMsecs / com.active.orbit.baseapp.core.utils.TimeUtils.ONE_MINUTE_MILLIS
-                    distanceHeart = summary.runningDistance.roundToInt()
+                    minutesWalking = (summary.walkingMsecs +summary.runningMsecs)/ com.active.orbit.baseapp.core.utils.TimeUtils.ONE_MINUTE_MILLIS
+                    val distInM = summary.walkingDistance+summary.runningDistance
+                    distanceWalking = (10*distInM).roundToInt()/10f
+                    minutesHeart = summary.heartMsecs / com.active.orbit.baseapp.core.utils.TimeUtils.ONE_MINUTE_MILLIS
+                    distanceHeart = summary.heartDistance.roundToInt()
                     minutesCycling = summary.cyclingMsecs / com.active.orbit.baseapp.core.utils.TimeUtils.ONE_MINUTE_MILLIS
                     distanceCycling = summary.cyclingDistance.roundToInt()
                     minutesVehicle = summary.vehicleMsecs / com.active.orbit.baseapp.core.utils.TimeUtils.ONE_MINUTE_MILLIS

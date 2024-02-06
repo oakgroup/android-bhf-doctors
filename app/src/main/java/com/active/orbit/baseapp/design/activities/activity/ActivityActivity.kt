@@ -49,11 +49,14 @@ class ActivityActivity : BaseActivity() {
         binding.heartActivityProgress.setLineWidth(40f)
         binding.heartActivityProgress.setMaxProgress(Constants.NHS_WEEK_HEART_TARGET.toFloat())
 
-        computeResults()
-
         binding.pullToRefresh.setOnRefreshListener {
             computeResults()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        computeResults()
     }
 
     override fun onTrackerUpdate(type: TrackerObserverType, data: Any) {
