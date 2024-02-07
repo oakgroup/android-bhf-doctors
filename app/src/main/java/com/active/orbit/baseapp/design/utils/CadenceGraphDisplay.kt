@@ -40,14 +40,17 @@ class CadenceGraphDisplay(private var combinedChart: CombinedChart, private val 
 
         //input data
         val base = currentTrip.startTime
+        var counter =0
         for (index in base..currentTrip.endTime) {
             if (currentTrip.chart[index].steps != INVALID_VALUE) {
-                val barEntry = BarEntry((index - base).toFloat(), currentTrip.chart[index].cadence.toFloat())
+                val barEntry = BarEntry(counter.toFloat(), currentTrip.chart[index].cadence.toFloat())
                 yEntries.add(barEntry)
                 Logger.i("Steps: ${currentTrip.chart[index].cadence}")
-                val lineEntry = Entry((index - base).toFloat(), if (currentTrip.activityType == DetectedActivity.ON_BICYCLE) 40f else 100f)
+                val lineEntry = Entry(counter.toFloat(), if (currentTrip.activityType == DetectedActivity.ON_BICYCLE) 40f else 100f)
                 lineEntries.add(lineEntry)
+                Logger.i("${TimeUtils.formatMillis(currentTrip.chart[index].timeInMSecs, Constants.DATE_FORMAT_HOUR_MINUTE_SECONDS)} --- $barEntry")
                 xEntries.add(TimeUtils.formatMillis(currentTrip.chart[index].timeInMSecs, Constants.DATE_FORMAT_HOUR_MINUTE_SECONDS))
+                counter++
             }
         }
 
