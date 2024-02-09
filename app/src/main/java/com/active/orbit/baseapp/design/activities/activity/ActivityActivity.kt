@@ -95,11 +95,21 @@ class ActivityActivity : BaseActivity() {
                 if (minutesHeart == 1L) binding.heartProgressText.text = getString(R.string.activity_distance_heart_minute)
                 else binding.heartProgressText.text = getString(R.string.activity_distance_heart_minutes, minutesHeart.toString(), distanceHeart.toString())
 
-                if (minutesCycling == 1L) binding.bicycleProgressText.text = getString(R.string.activity_distance_cycling_minute)
-                else binding.bicycleProgressText.text = getString(R.string.activity_distance_cycling_minutes, minutesCycling.toString(), distanceCycling.toString())
+                if (minutesCycling>0) {
+                    if (minutesCycling == 1L) binding.bicycleProgressText.text = getString(R.string.activity_distance_cycling_minute)
+                    else binding.bicycleProgressText.text = getString(R.string.activity_distance_cycling_minutes, minutesCycling.toString(), distanceCycling.toString())
+                } else {
+                    binding.vehicleProgressText.text = ""
+                }
 
-                if (minutesVehicle == 1L) binding.vehicleProgressText.text = getString(R.string.activity_distance_vehicle_minute)
-                else binding.vehicleProgressText.text = getString(R.string.activity_distance_vehicle_minutes, minutesVehicle.toString(), distanceVehicle.toString())
+                if (minutesVehicle == 1L) binding.vehicleProgressText.text =
+                        getString(R.string.activity_distance_vehicle_minute)
+                else binding.vehicleProgressText.text = getString(
+                        R.string.activity_distance_vehicle_minutes,
+                        minutesVehicle.toString(),
+                        distanceVehicle.toString()
+                    )
+
 
                 if (steps == 1) binding.stepsProgressText.text = getString(R.string.activity_step)
                 else binding.stepsProgressText.text = getString(R.string.activity_steps, steps.toString())
