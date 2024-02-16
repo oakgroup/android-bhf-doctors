@@ -85,3 +85,5 @@ proguard/
 # Log Files
 *.log
 .DS_Store
+
+app/dev/release/
