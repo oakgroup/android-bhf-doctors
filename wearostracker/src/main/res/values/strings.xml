@@ -1,0 +1,27 @@
+<!--
+  ~ Copyright (c) Code Developed by Prof. Fabio Ciravegna
+  ~ All rights Reserved
+  -->
+
+<resources>
+    <string name="app_name">Mobin</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+    <string name="three_dots">...</string>
+    <string name="no_data_yet">No Data</string>
+    <string name="heart_rate">heart rate</string>
+    <string name="heart_rate_summary">heart rate readings</string>
+    <string name="steps">Steps</string>
+    <string name="send_data">Send Data</string>
+    <string name="none">None</string>
+
+<!--    wear sync -->
+    <string name="mobile_device_is_connected">Mobile device not paired</string>
+    <string name="message_log">IDs log</string>
+    <string name="init">...</string>
+    <string name="wearsync">Get Id From Mobile</string>
+    <string name="set_id_button">Set as Id</string>
+</resources>

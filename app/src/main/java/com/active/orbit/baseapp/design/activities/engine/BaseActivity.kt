@@ -1,6 +1,8 @@
 package com.active.orbit.baseapp.design.activities.engine
 
 import android.os.Bundle
+import androidx.activity.viewModels
+import androidx.fragment.app.activityViewModels
 import com.active.orbit.baseapp.R
 import com.active.orbit.baseapp.core.routing.enums.Extra
 import com.active.orbit.baseapp.core.utils.Logger
@@ -10,17 +12,23 @@ import kotlinx.coroutines.Dispatchers
 import uk.ac.shef.tracker.core.computation.DailyComputation
 import uk.ac.shef.tracker.core.observers.TrackerObserver
 import uk.ac.shef.tracker.core.observers.TrackerObserverType
+import uk.ac.shef.tracker.core.observers.TrackerViewModel
 import uk.ac.shef.tracker.core.tracker.TrackerManager
 import uk.ac.shef.tracker.core.utils.TimeUtils
 import java.util.Calendar
 import kotlin.coroutines.CoroutineContext
+import androidx.fragment.app.activityViewModels
+import uk.ac.shef.tracker.core.computation.MobilityComputation
+import uk.ac.shef.tracker.core.database.models.TrackerDBActivity
+import uk.ac.shef.tracker.core.database.models.TrackerDBLocation
+import uk.ac.shef.tracker.core.database.models.TrackerDBStep
 
 /**
  * Abstract activity that should be extended from all the other activities
  *
  * @author omar.brugna
  */
-abstract class BaseActivity : PermissionsActivity(), CoroutineScope, TrackerObserver {
+abstract class BaseActivity : PermissionsActivity(), CoroutineScope {
 
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Default
@@ -29,9 +37,7 @@ abstract class BaseActivity : PermissionsActivity(), CoroutineScope, TrackerObse
     private var isFromOnCreate = true
 
     protected lateinit var thiss: BaseActivity
-
-    var dailyComputation: DailyComputation? = null
-
+    private val viewModel: TrackerViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,8 +52,29 @@ abstract class BaseActivity : PermissionsActivity(), CoroutineScope, TrackerObse
             ActivityAnimation.TOP_BOTTOM.value -> overridePendingTransition(R.anim.shift_to_bottom_out, R.anim.no_animation)
             else -> Logger.e("Undefined activity animation")
         }
+        initObservers()
     }
 
+    private fun initObservers(){
+        viewModel.mobilityChart.observe(this) { mobilityChart ->
+            onTrackerUpdate(TrackerObserverType.MOBILITY, mobilityChart)
+        }
+        viewModel.activites.observe(this) { activities ->
+            onTrackerUpdate(TrackerObserverType.ACTIVITIES, activities)
+        }
+        viewModel.locations.observe(this) { locations ->
+            onTrackerUpdate(TrackerObserverType.LOCATIONS, locations)
+        }
+        viewModel.heartRates.observe(this) { hrs ->
+            onTrackerUpdate(TrackerObserverType.HEART_RATES, hrs)
+        }
+        viewModel.steps.observe(this) { steps ->
+            onTrackerUpdate(TrackerObserverType.STEPS, steps)
+        }
+        viewModel.batteries.observe(this) { batteries ->
+            onTrackerUpdate(TrackerObserverType.BATTERIES, batteries)
+        }
+    }
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putAll(activityBundle)
         super.onSaveInstanceState(outState)
@@ -78,8 +105,7 @@ abstract class BaseActivity : PermissionsActivity(), CoroutineScope, TrackerObse
 
     override fun onDestroy() {
         super.onDestroy()
-
-        dailyComputation?.unregisterObserver()
+        viewModel.unregisterObservers()
     }
 
     private fun getAnimationType(): ActivityAnimation {
@@ -91,20 +117,16 @@ abstract class BaseActivity : PermissionsActivity(), CoroutineScope, TrackerObse
      * This computes the results and causes the refresh of the interface via the active data
      */
     protected fun computeResults() {
-        val currentDateTime = TrackerManager.getInstance(this).currentDateTime
-        val midnight = TimeUtils.midnightInMsecs(currentDateTime)
-        val endOfDay = midnight + TimeUtils.ONE_DAY_MILLIS
-        dailyComputation = DailyComputation(this, midnight, endOfDay)
-        dailyComputation?.registerObserver(this)
-        dailyComputation?.computeResultsAsync()
+        viewModel.createTrackerManager(this)
+        viewModel.computeResults()
     }
 
-    override fun onTrackerUpdate(type: TrackerObserverType, data: Any) {
-        Logger.d("Tracker observer update $type")
-    }
 
     override fun onDateSelected(selectedDateTime: Calendar) {
-        TrackerManager.getInstance(this).currentDateTime = selectedDateTime.timeInMillis
-        computeResults()
+        viewModel.createTrackerManager(this)
+        viewModel.changeResultsDate(selectedDateTime)
+    }
+
+    open fun onTrackerUpdate(type: TrackerObserverType, data: Any) {
     }
 }

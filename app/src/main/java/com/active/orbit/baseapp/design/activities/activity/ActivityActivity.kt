@@ -93,7 +93,7 @@ class ActivityActivity : BaseActivity() {
                 else binding.walkingProgressText.text = getString(R.string.activity_distance_active_minutes, minutesWalking.toString(), distanceWalking.toString())
 
                 if (minutesHeart == 1L) binding.heartProgressText.text = getString(R.string.activity_distance_heart_minute)
-                else binding.heartProgressText.text = getString(R.string.activity_distance_heart_minutes, minutesHeart.toString(), distanceHeart.toString())
+                else binding.heartProgressText.text = getString(R.string.activity_distance_heart_minutes, minutesHeart.toString())
 
                 if (minutesCycling>0) {
                     if (minutesCycling == 1L) binding.bicycleProgressText.text = getString(R.string.activity_distance_cycling_minute)

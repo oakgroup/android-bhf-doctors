@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2019. This code has been developed by Fabio Ciravegna, The University of Sheffield. All rights reserved. No part of this code can be used without the explicit written permission by the author
+  -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_heart_rate"
+        android:icon="@drawable/ic_heart"
+        android:textColor="@color/menuTextColor"
+        android:title="@string/heart_rate" />
+    <item
+        android:id="@+id/menu_heart_rate_summary"
+        android:icon="@drawable/ic_heart_summary"
+        android:textColor="@color/menuTextColor"
+        android:title="@string/heart_rate_summary" />
+
+    <item
+        android:id="@+id/menu_steps"
+        android:icon="@drawable/ic_activity"
+        android:textColor="@color/menuTextColor"
+        android:title="@string/steps" />
+    <item
+        android:id="@+id/menu_send_data"
+        android:icon="@drawable/ic_send"
+        android:textColor="@color/menuTextColor"
+        android:title="@string/send_data" />
+    <item
+        android:id="@+id/menu_get_id"
+        android:icon="@drawable/ic_sync"
+        android:textColor="@color/menuTextColor"
+        android:title="@string/wearsync" />
+</menu>

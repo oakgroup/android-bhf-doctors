@@ -1,0 +1,11 @@
+<!--
+  ~ Copyright (c) Code Developed by Prof. Fabio Ciravegna
+  ~ All rights Reserved
+  -->
+
+<resources>
+    <style name="AppTheme">Theme.AppCompat.NoActionBar</style>
+    <style name="AppTheme.BrandedLaunch" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/branded_logo</item>
+    </style>
+</resources>

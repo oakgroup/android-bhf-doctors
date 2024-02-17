@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2019. This code has been developed by Fabio Ciravegna, The University of Sheffield. All rights reserved. No part of this code can be used without the explicit written permission by the author
+  -->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <color android:color="@color/black" />
+    </item>
+    <item>
+        <bitmap
+            android:src="@drawable/logo"
+            android:tileMode="disabled"
+            android:gravity="center" />
+    </item>
+</layer-list>

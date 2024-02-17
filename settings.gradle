@@ -3,6 +3,9 @@ rootProject.name = "MovingHealth"
 include ':app'
 include ':tracker'
 include ':power_settings'
+include ':wearostracker'
 
 project(':tracker').projectDir = new File('android-tracker/')
+project(':wearostracker').projectDir = new File('wearostracker/')
 project(':power_settings').projectDir = new File('android-brandPowerSettings/')
+
